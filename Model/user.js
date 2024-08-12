@@ -24,7 +24,7 @@ const userSchema = new mongoose.Schema({
     type: String,
   },
   phone: {
-    type: String,
+    type: Number,
   },
   carCollection: [
     {

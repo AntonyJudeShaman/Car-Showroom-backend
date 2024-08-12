@@ -15,9 +15,9 @@ async function createUserInDB(
     return { status: 400, error: "Username or Email already exists" };
   }
 
-  password = passwordHasher(password);
+  // password = passwordHasher(password);
 
-  console.log(password);
+  // console.log(password);
 
   user = new User({
     username,

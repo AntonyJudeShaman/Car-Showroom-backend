@@ -2,17 +2,26 @@ const express = require("express");
 const mongoose = require("mongoose");
 const bodyParser = require("body-parser");
 const cors = require("cors");
-const http = require("http");
-const jwt = require("jsonwebtoken");
-const router = express.Router();
-// const passport = require("passport");
-
+const passport = require("passport");
+const authMiddleware = require("./config/middleware");
+const passportConfig = require("./config/passport");
 const userRoutes = require("./Routes/user");
 
 const app = express();
 
 app.use(cors());
 app.use(bodyParser.json());
+
+app.use(passport.initialize());
+
+const publicRoutes = ["/api/user/login", "/api/user/register", "/"];
+
+app.use((req, res, next) => {
+  if (publicRoutes.includes(req.path)) {
+    return next();
+  }
+  return authMiddleware(req, res, next);
+});
 
 app.use("/api/user", userRoutes);
 
@@ -29,17 +38,3 @@ app.get("/", (req, res) => {
 app.listen(3000, () => {
   console.log("Server is running");
 });
-
-// router.post("/api/auth", (req, res, next) => {
-//   const token = req.header("x-auth-token");
-//   if (!token) {
-//     return res.status(401).json({ msg: "No token, authorization denied" });
-//   }
-//   try {
-//     const decoded = jwt.verify(token, "secret");
-//     req.user = decoded.user;
-//     next();
-//   } catch (err) {
-//     res.status(400).json({ msg: "Token is not valid" });
-//   }
-// });
