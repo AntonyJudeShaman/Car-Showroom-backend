@@ -7,12 +7,12 @@ const jwt = require("jsonwebtoken");
 const router = express.Router();
 // const passport = require("passport");
 
+const userRoutes = require("./Routes/user");
+
 const app = express();
 
 app.use(cors());
 app.use(bodyParser.json());
-
-const userRoutes = require("./Routes/user");
 
 app.use("/api/user", userRoutes);
 
@@ -21,6 +21,10 @@ mongoose
   .connect(db)
   .then(() => console.log("MongoDB connected"))
   .catch((err) => console.log(err));
+
+app.get("/", (req, res) => {
+  res.send("Server Online");
+});
 
 app.listen(3000, () => {
   console.log("Server is running");

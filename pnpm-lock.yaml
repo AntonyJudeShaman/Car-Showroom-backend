@@ -17,6 +17,9 @@ dependencies:
   express:
     specifier: ^4.19.2
     version: 4.19.2
+  is-empty:
+    specifier: ^1.2.0
+    version: 1.2.0
   jsonwebtoken:
     specifier: ^9.0.2
     version: 9.0.2
@@ -32,6 +35,9 @@ dependencies:
   passport-local:
     specifier: ^1.0.0
     version: 1.0.0
+  validator:
+    specifier: ^13.12.0
+    version: 13.12.0
 
 packages:
 
@@ -512,6 +518,10 @@ packages:
   /ipaddr.js@1.9.1:
     resolution: {integrity: sha512-0KI/607xoxSToH7GjN1FfSbLoU0+btTicjsQSWQlh/hZykN8KpmMf7uYwPW3R+akZ6R/w18ZlXSHBYXiYUPO3g==}
     engines: {node: '>= 0.10'}
+    dev: false
+
+  /is-empty@1.2.0:
+    resolution: {integrity: sha512-F2FnH/otLNJv0J6wc73A5Xo7oHLNnqplYqZhUu01tD54DIPvxIRSTSLkrUB/M0nHO4vo1O9PDfN4KoTxCzLh/w==}
     dev: false
 
   /is-fullwidth-code-point@3.0.0:
@@ -1076,6 +1086,11 @@ packages:
   /utils-merge@1.0.1:
     resolution: {integrity: sha512-pMZTvIkT1d+TFGvDOqodOclx0QWkkgi6Tdoa8gC8ffGAAqz9pzPTZWAybbsHHoED/ztMtkv/VoYTYyShUn81hA==}
     engines: {node: '>= 0.4.0'}
+    dev: false
+
+  /validator@13.12.0:
+    resolution: {integrity: sha512-c1Q0mCiPlgdTVVVIJIrBuxNicYE+t/7oKeI9MWLj3fh/uq2Pxh/3eeWbVZ4OcGW1TUf53At0njHw5SMdA3tmMg==}
+    engines: {node: '>= 0.10'}
     dev: false
 
   /vary@1.1.2:
