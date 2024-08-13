@@ -1,41 +1,40 @@
-const Validator = require("validator");
-const { isEmpty } = require("../lib/utils");
+const { body } = require("express-validator");
 
-module.exports = function validRegistrationInput(data) {
-  let errors = {};
+const userValidations = [
+  body("email").optional().isEmail().withMessage("Invalid email"),
+  body("address").optional().notEmpty().withMessage("Address is Invalid"),
+  body("phone")
+    .optional()
+    .matches(/^\d{10}$/)
+    .withMessage("Phone number must be exactly 10 digits"),
+  body("role").optional().notEmpty().withMessage("Role is Invalid"),
+];
 
-  data.username = !isEmpty(data.username) ? data.username : "";
-  data.email = !isEmpty(data.email) ? data.email : "";
-  data.password = !isEmpty(data.password) ? data.password : "";
-  data.address = !isEmpty(data.address) ? data.address : "";
-  data.phone = !isEmpty(data.phone) ? data.phone : "";
+const userRegisterValidations = [
+  body("username").notEmpty().withMessage("Username is required"),
+  body("password")
+    .isLength({ min: 6, max: 25 })
+    .withMessage("Password must be between 6 and 25 characters"),
 
-  if (!Validator.isLength(data.username, { min: 4, max: 30 })) {
-    errors.username = "Username Must be between 4 to 30";
-  }
+  body("email").optional().isEmail().withMessage("Invalid email"),
+  body("address").optional().notEmpty().withMessage("Address is Invalid"),
+  body("phone")
+    .optional()
+    .matches(/^\d{10}$/)
+    .withMessage("Phone number must be exactly 10 digits"),
+  body("role").optional().notEmpty().withMessage("Role is Invalid"),
+];
 
-  if (Validator.isEmpty(data.username)) {
-    errors.username = "Username field is Required";
-  }
+const userLoginValidations = [
+  body("username").optional().notEmpty().withMessage("Username is required"),
+  body("email").optional().notEmpty().isEmail().withMessage("Invalid email"),
+  body("password")
+    .isLength({ min: 6, max: 25 })
+    .withMessage("Password must be between 6 and 25 characters"),
+];
 
-  if (!Validator.isEmail(data.email)) {
-    errors.email = "Email is Invalid";
-  }
-
-  if (!Validator.isLength(data.password, { min: 6, max: 30 })) {
-    errors.password = "Password must between 6 to 30 Characters";
-  }
-
-  if (Validator.isEmpty(data.address)) {
-    errors.address = "Address field is Required";
-  }
-
-  if (!Validator.isLength(data.phone, { min: 10, max: 10 })) {
-    errors.phone = "Phone must be 10 digits";
-  }
-
-  return {
-    errors,
-    isValid: isEmpty(errors),
-  };
+module.exports = {
+  userValidations,
+  userRegisterValidations,
+  userLoginValidations,
 };

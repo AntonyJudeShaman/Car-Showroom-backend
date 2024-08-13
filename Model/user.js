@@ -26,6 +26,9 @@ const userSchema = new mongoose.Schema({
   phone: {
     type: Number,
   },
+  jwt: {
+    type: String,
+  },
   carCollection: [
     {
       type: mongoose.Schema.Types.ObjectId,

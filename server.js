@@ -4,7 +4,7 @@ const bodyParser = require("body-parser");
 const cors = require("cors");
 const passport = require("passport");
 const authMiddleware = require("./config/middleware");
-const passportConfig = require("./config/passport");
+require("./config/passport");
 const userRoutes = require("./Routes/user");
 
 const app = express();
@@ -14,7 +14,11 @@ app.use(bodyParser.json());
 
 app.use(passport.initialize());
 
-const publicRoutes = ["/api/user/login", "/api/user/register", "/"];
+const publicRoutes = [
+  "/api/user/login",
+  "/api/user/register",
+  "/api/user/verify-user",
+];
 
 app.use((req, res, next) => {
   if (publicRoutes.includes(req.path)) {
