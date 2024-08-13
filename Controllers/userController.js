@@ -2,8 +2,6 @@ const { validationResult } = require("express-validator");
 const jwt = require("jsonwebtoken");
 const { handleErrors } = require("../lib/utils");
 const userServices = require("../Services/userServices");
-const User = require("../Model/user");
-const bcrypt = require("bcrypt");
 
 exports.register = async (req, res) => {
   const errors = validationResult(req);
@@ -41,8 +39,8 @@ exports.login = async (req, res) => {
     return res.status(400).json({ errors: errors.array() });
   }
   try {
-    const { nameOrEmail, password } = req.body;
-    const loginResult = await userServices.loginUser(nameOrEmail, password);
+    const { credential, password } = req.body;
+    const loginResult = await userServices.loginUser(credential, password);
     if (loginResult.error) {
       return res.status(loginResult.status).json({ error: loginResult.error });
     }
@@ -120,6 +118,41 @@ exports.viewUser = async (req, res) => {
 
     res.status(200).json(user);
   } catch {
+    handleErrors(res, err);
+  }
+};
+
+exports.deleteUser = async (req, res) => {
+  try {
+    const userExists = await userServices.checkToken(req);
+    if (!userExists) {
+      return res.status(401).json({ error: "Unauthorized" });
+    }
+    const user = await userServices.getUserById(req.params.id);
+    if (!user) return res.status(404).json({ error: "No user found" });
+    let resp = await userServices.deleteUser(req.params.id);
+    if (!resp) return res.status(404).json({ error: "Cannot delete user" });
+    res.status(200).json({ message: "User deleted successfully" });
+  } catch (err) {
+    handleErrors(res, err);
+  }
+};
+
+exports.logout = async (req, res) => {
+  res.clearCookie("token");
+  res.status(200).json({ message: "Logged out successfully" });
+};
+
+exports.searchUser = async (req, res) => {
+  try {
+    const user = await userServices.checkToken(req);
+    if (!user) {
+      return res.status(401).json({ error: "Unauthorized" });
+    }
+    const users = await userServices.searchUser(req.query.q);
+    if (!users.length) return res.status(404).json({ error: "No user found" });
+    res.status(200).json(users);
+  } catch (err) {
     handleErrors(res, err);
   }
 };

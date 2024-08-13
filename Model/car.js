@@ -39,7 +39,6 @@ const carSchema = new mongoose.Schema({
   engine: {
     type: String,
     required: true,
-    enum: ["1000cc", "1500cc", "2000cc", "2500cc"],
   },
   tyres: {
     type: String,

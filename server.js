@@ -6,6 +6,7 @@ const passport = require("passport");
 const authMiddleware = require("./config/middleware");
 require("./config/passport");
 const userRoutes = require("./Routes/user");
+const carRoutes = require("./Routes/car");
 
 const app = express();
 
@@ -28,6 +29,7 @@ app.use((req, res, next) => {
 });
 
 app.use("/api/user", userRoutes);
+app.use("/api/car", carRoutes);
 
 const db = process.env.MONGODB_URI;
 mongoose
@@ -42,3 +44,5 @@ app.get("/", (req, res) => {
 app.listen(3000, () => {
   console.log("Server is running");
 });
+
+module.exports = app;

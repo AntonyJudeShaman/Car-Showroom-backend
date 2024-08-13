@@ -1,4 +1,4 @@
-const { passwordHasher } = require("../lib/utils");
+const { passwordHasher, handleErrors } = require("../lib/utils");
 const User = require("../Model/user");
 const jwt = require("jsonwebtoken");
 const bcrypt = require("bcrypt");
@@ -20,9 +20,6 @@ exports.registerUser = async (
     phone,
     role
   );
-  if (user.status === 400) {
-    return user;
-  }
   return user;
 };
 
@@ -49,13 +46,13 @@ exports.createUserInDB = async (
     if (error.code === 11000) {
       return { status: 400, error: "Username or email already exists" };
     }
-    throw error;
+    handleErrors(res, error);
   }
 };
 
-exports.loginUser = async (nameOrEmail, password) => {
+exports.loginUser = async (credential, password) => {
   const user = await User.findOne({
-    $or: [{ username: nameOrEmail }, { email: nameOrEmail }],
+    $or: [{ username: credential }, { email: credential }],
   });
   if (!user) {
     return { status: 404, error: "User not found" };
@@ -85,7 +82,7 @@ exports.checkToken = async (req) => {
     const user = await User.findById(decoded.id);
     return user || null;
   } catch (err) {
-    return null;
+    handleErrors(res, err);
   }
 };
 
@@ -95,4 +92,25 @@ exports.getAllUsers = async () => {
 
 exports.getUserById = async (userId) => {
   return await User.findById(userId);
+};
+
+exports.deleteUser = async (userId) => {
+  return await User.findByIdAndDelete(userId);
+};
+
+exports.searchUser = async (searchQuery) => {
+  return await User.find({
+    $or: [
+      { username: { $regex: searchQuery, $options: "i" } },
+      { email: { $regex: searchQuery, $options: "i" } },
+      { role: { $regex: searchQuery, $options: "i" } },
+      { address: { $regex: searchQuery, $options: "i" } },
+      {
+        $or: [
+          { "carCollection.name": { $regex: searchQuery, $options: "i" } },
+          { "carCollection.brand": { $regex: searchQuery, $options: "i" } },
+        ],
+      },
+    ],
+  });
 };
