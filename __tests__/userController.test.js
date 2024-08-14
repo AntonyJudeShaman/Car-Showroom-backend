@@ -1,7 +1,7 @@
 const app = require("../server");
 const request = require("supertest");
 
-describe("User Controller", () => {
+describe("User Module", () => {
   it("should register a user", async () => {
     const res = await request(app).post("/api/user/register").send({
       username: "testuser",

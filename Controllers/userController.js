@@ -1,80 +1,81 @@
-const { validationResult } = require("express-validator");
-const jwt = require("jsonwebtoken");
-const { handleErrors } = require("../lib/utils");
-const userServices = require("../Services/userServices");
+const { validationResult } = require('express-validator');
+const jwt = require('jsonwebtoken');
+const helpers = require('../lib/utils');
+const userServices = require('../Services/userServices');
+const errorMessages = require('../config/errors');
 
 exports.register = async (req, res) => {
   const errors = validationResult(req);
   if (!errors.isEmpty()) {
-    return res.status(400).json({ errors: errors.array() });
+    return res.status(400).json({ error: errorMessages.DATA_NOT_VALID, details: errors.array() });
   }
   try {
     const { username, email, password, address, phone, role } = req.body;
-    const user = await userServices.registerUser(
-      username,
-      email,
-      password,
-      address,
-      phone,
-      role
-    );
-    if (user.status === 400) {
-      return res.status(400).json({ error: user.error });
+
+    const userExists =
+      (await userServices.getUserByEmail(email)) ||
+      (await userServices.getUserByUsername(username));
+
+    if (userExists) {
+      return res.status(400).json({ error: errorMessages.ALREADY_EXISTS });
+    }
+
+    const user = await userServices.registerUser(username, email, password, address, phone, role);
+    if (!user) {
+      return res.status(400).json({ error: errorMessages.USER_NOT_CREATED });
     }
     const token = jwt.sign({ id: user._id }, process.env.JWT_SECRET);
-    res.cookie("token", token, {
+    res.cookie('token', token, {
       httpOnly: true,
       secure: true,
       maxAge: 15 * 24 * 60 * 60 * 1000,
     });
-    res.status(200).json({ user, token });
+    res.status(201).json({ user, token });
   } catch (err) {
-    handleErrors(res, err);
+    helpers.handleErrors(res, err);
   }
 };
 
 exports.login = async (req, res) => {
   const errors = validationResult(req);
   if (!errors.isEmpty()) {
-    return res.status(400).json({ errors: errors.array() });
+    return res.status(400).json({ error: errorMessages.DATA_NOT_VALID, details: errors.array() });
   }
   try {
     const { credential, password } = req.body;
-    const loginResult = await userServices.loginUser(credential, password);
-    if (loginResult.error) {
-      return res.status(loginResult.status).json({ error: loginResult.error });
+    const login = await userServices.loginUser(credential, password);
+    if (login.error) {
+      return res.status(401).json({ error: login.error });
     }
-    const { user, token } = loginResult;
-    res.cookie("token", token, {
+    const { user, token } = login;
+    res.cookie('token', token, {
       httpOnly: true,
       secure: true,
       maxAge: 15 * 24 * 60 * 60 * 1000,
     });
     res.status(200).json({ user, token });
   } catch (err) {
-    handleErrors(res, err);
+    helpers.handleErrors(res, err);
   }
 };
 
 exports.updateUser = async (req, res) => {
+  if (!req.params.id) return res.status(400).json({ error: errorMessages.INVALID_ID });
   const errors = validationResult(req);
-  if (!errors.isEmpty())
-    return res.status(400).json({ errors: errors.array() });
+  if (!errors.isEmpty()) {
+    return res.status(400).json({ error: errorMessages.DATA_NOT_VALID, details: errors.array() });
+  }
   try {
     const { username, password, role, ...updateData } = req.body;
     if (username || password || role) {
-      return res
-        .status(400)
-        .json({ error: "Username/Password/Role cannot be changed" });
+      return res.status(400).json({ error: errorMessages.CANNOT_CHANGE_CREDENTIALS });
     }
-    const updatedUser = await userServices.updateUser(
-      req.params.id,
-      updateData
-    );
-    if (!updatedUser) return res.status(404).json({ error: "User not found" });
-    res.status(200).json(updatedUser);
+
+    const updatedUser = await userServices.updateUser(req.params.id, updateData);
+    if (!updatedUser) return res.status(404).json({ error: errorMessages.USER_NOT_FOUND });
+    res.status(200).json({ message: errorMessages.USER_UPDATED, user: updatedUser });
   } catch (err) {
-    handleErrors(res, err);
+    helpers.handleErrors(res, err);
   }
 };
 
@@ -82,77 +83,97 @@ exports.viewAllUser = async (req, res) => {
   try {
     const user = await userServices.checkToken(req);
     if (!user) {
-      return res.status(401).json({ error: "Unauthorized" });
+      return res.status(401).json({ error: errorMessages.UNAUTHORIZED });
     }
-    if (user.role !== "admin") {
-      return res
-        .status(403)
-        .json({ error: "Forbidden. Admin access required" });
+    if (user.role !== 'admin') {
+      return res.status(403).json({ error: errorMessages.FORBIDDEN });
     }
     const users = await userServices.getAllUsers();
     res.status(200).json(users);
   } catch (err) {
-    handleErrors(res, err);
+    helpers.handleErrors(res, err);
   }
 };
 
 exports.checkToken = async (req, res) => {
   try {
     const user = await userServices.checkToken(req);
-    if (!user) return res.status(401).json({ error: "Unauthorized" });
+    if (!user) return res.status(401).json({ error: errorMessages.UNAUTHORIZED });
     res.status(200).json(user);
   } catch (err) {
-    handleErrors(res, err);
+    helpers.handleErrors(res, err);
   }
 };
 
 exports.viewUser = async (req, res) => {
   try {
-    const userExists = await userServices.checkToken(req);
-    if (!userExists) {
-      return res.status(401).json({ error: "Unauthorized" });
+    if (!req.params.id || req.params.id.length !== 24) {
+      return res.status(400).json({ error: errorMessages.INVALID_ID });
     }
-    const user = await userServices.getUserById(req.params.id);
-
-    if (!user) return res.status(404).json({ error: "No user found" });
-
-    res.status(200).json(user);
-  } catch {
-    handleErrors(res, err);
+    const user = await userServices.checkToken(req);
+    if (!user) {
+      return res.status(401).json({ error: errorMessages.UNAUTHORIZED });
+    }
+    const viewedUser = await userServices.getUserById(req.params.id);
+    if (!viewedUser) return res.status(404).json({ error: errorMessages.USER_NOT_FOUND });
+    res.status(200).json(viewedUser);
+  } catch (err) {
+    helpers.handleErrors(res, err);
   }
 };
 
 exports.deleteUser = async (req, res) => {
   try {
-    const userExists = await userServices.checkToken(req);
-    if (!userExists) {
-      return res.status(401).json({ error: "Unauthorized" });
+    if (!req.params.id) return res.status(400).json({ error: errorMessages.INVALID_ID });
+    const user = await userServices.checkToken(req);
+    if (!user) {
+      return res.status(401).json({ error: errorMessages.UNAUTHORIZED });
     }
-    const user = await userServices.getUserById(req.params.id);
-    if (!user) return res.status(404).json({ error: "No user found" });
-    let resp = await userServices.deleteUser(req.params.id);
-    if (!resp) return res.status(404).json({ error: "Cannot delete user" });
-    res.status(200).json({ message: "User deleted successfully" });
+    const deletedUser = await userServices.deleteUser(req.params.id);
+    if (!deletedUser) return res.status(404).json({ error: errorMessages.USER_NOT_FOUND });
+    res.status(200).json({ message: errorMessages.USER_DELETED });
   } catch (err) {
-    handleErrors(res, err);
+    helpers.handleErrors(res, err);
   }
 };
 
 exports.logout = async (req, res) => {
-  res.clearCookie("token");
-  res.status(200).json({ message: "Logged out successfully" });
+  res.clearCookie('token');
+  res.status(200).json({ message: errorMessages.LOGGED_OUT });
 };
 
 exports.searchUser = async (req, res) => {
   try {
+    if (!req.query.q) return res.status(400).json({ error: errorMessages.NO_SEARCH_QUERY });
     const user = await userServices.checkToken(req);
     if (!user) {
-      return res.status(401).json({ error: "Unauthorized" });
+      return res.status(401).json({ error: errorMessages.UNAUTHORIZED });
     }
     const users = await userServices.searchUser(req.query.q);
-    if (!users.length) return res.status(404).json({ error: "No user found" });
+    if (!users.length) return res.status(404).json({ error: errorMessages.NO_RESULTS });
     res.status(200).json(users);
   } catch (err) {
-    handleErrors(res, err);
+    helpers.handleErrors(res, err);
+  }
+};
+
+exports.buyCar = async (req, res) => {
+  try {
+    const carId = req.body.id;
+    const user = await userServices.checkToken(req);
+    if (!user) {
+      return res.status(401).json({ error: errorMessages.UNAUTHORIZED });
+    }
+    const { updatedUser, car } = await userServices.buyCar(user._id, carId);
+    if (!car) {
+      return res.status(404).json({ error: errorMessages.CAR_NOT_FOUND });
+    }
+    const updatedCar = await userServices.updateCar(carId, { quantity: car.quantity - 1 });
+    if (!updatedCar) {
+      return res.status(400).json({ error: errorMessages.CAR_NOT_UPDATED });
+    }
+    res.status(200).json({ user: updatedUser, car: updatedCar }); // sending car to display on browser about the bought car
+  } catch (err) {
+    helpers.handleErrors(res, err);
   }
 };

@@ -19,6 +19,7 @@ const publicRoutes = [
   "/api/user/login",
   "/api/user/register",
   "/api/user/verify-user",
+  "/api/car/view-all-cars",
 ];
 
 app.use((req, res, next) => {

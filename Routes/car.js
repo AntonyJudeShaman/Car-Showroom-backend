@@ -9,4 +9,10 @@ const {
 
 router.post("/create-car", createCarValidations, carController.createCar);
 
+router.get("/view-all-cars", carController.getAllCars);
+
+router.get("/view-car/:id", carController.getCar);
+
+router.put("/update-car/:id", carUpdateValidations, carController.updateCar);
+
 module.exports = router;

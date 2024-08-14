@@ -1,50 +1,50 @@
-const mongoose = require("mongoose");
+const mongoose = require('mongoose');
 
-const userSchema = new mongoose.Schema({
-  username: {
-    type: String,
-    unique: true,
-  },
-  name: {
-    type: String,
-  },
-  email: {
-    type: String,
-    unique: true,
-  },
-  password: {
-    type: String,
-  },
-  role: {
-    type: String,
-    enum: ["admin", "customer"],
-    default: "customer",
-  },
-  address: {
-    type: String,
-  },
-  phone: {
-    type: Number,
-  },
-  jwt: {
-    type: String,
-  },
-  carCollection: [
-    {
-      type: mongoose.Schema.Types.ObjectId,
-      ref: "Car",
+const userSchema = new mongoose.Schema(
+  {
+    username: {
+      type: String,
+      unique: true,
+      required: true,
     },
-  ],
-  created_at: {
-    type: Date,
-    default: Date.now,
+    name: {
+      type: String,
+    },
+    email: {
+      type: String,
+      unique: true,
+      required: true,
+    },
+    password: {
+      type: String,
+      required: true,
+    },
+    role: {
+      type: String,
+      enum: ['admin', 'customer'],
+      default: 'customer',
+    },
+    address: {
+      type: String,
+    },
+    phone: {
+      type: Number,
+    },
+    wallet: {
+      type: Number,
+      required: true,
+      default: 100000,
+    },
+    carCollection: [
+      {
+        type: Object,
+        ref: 'Car',
+      },
+    ],
   },
-  updated_at: {
-    type: Date,
-    default: Date.now,
-  },
-});
+  { timestamps: true },
+);
 
-const User = mongoose.model("User", userSchema);
+const User = mongoose.model('User', userSchema);
 
 module.exports = User;
