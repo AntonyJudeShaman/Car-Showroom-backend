@@ -41,6 +41,12 @@ const userSchema = new mongoose.Schema(
         ref: 'Car',
       },
     ],
+    invoices: [
+      {
+        type: Object,
+        ref: 'Invoice',
+      },
+    ],
   },
   { timestamps: true },
 );

@@ -18,4 +18,6 @@ router.get('/search-user', userController.searchUser);
 
 router.post('/buy-car', userController.buyCar);
 
+router.get('/view-car-collection', userController.viewCarCollection);
+
 module.exports = router;

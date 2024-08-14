@@ -161,18 +161,39 @@ exports.buyCar = async (req, res) => {
   try {
     const carId = req.body.id;
     const user = await userServices.checkToken(req);
+
     if (!user) {
       return res.status(401).json({ error: errorMessages.UNAUTHORIZED });
     }
-    const { updatedUser, car } = await userServices.buyCar(user._id, carId);
-    if (!car) {
+
+    const result = await userServices.buyCar(user, carId);
+    if (result.error) {
+      return res.status(400).json({ error: result.error });
+    }
+    if (!result) {
       return res.status(404).json({ error: errorMessages.CAR_NOT_FOUND });
     }
-    const updatedCar = await userServices.updateCar(carId, { quantity: car.quantity - 1 });
-    if (!updatedCar) {
-      return res.status(400).json({ error: errorMessages.CAR_NOT_UPDATED });
+
+    const { updatedUser, updatedCar } = result;
+
+    res.status(200).json({ user: updatedUser, car: updatedCar.car });
+  } catch (err) {
+    helpers.handleErrors(res, err);
+  }
+};
+
+exports.viewCarCollection = async (req, res) => {
+  try {
+    const id = req.query.id;
+    // const user = await userServices.checkToken(req);
+    // if (!user) {
+    //   return res.status(401).json({ error: errorMessages.UNAUTHORIZED });
+    // }
+    const collection = await userServices.getCarCollection(id);
+    if (collection.error) {
+      return res.status(400).json({ error: collection.error });
     }
-    res.status(200).json({ user: updatedUser, car: updatedCar }); // sending car to display on browser about the bought car
+    res.status(200).json(collection.carCollection);
   } catch (err) {
     helpers.handleErrors(res, err);
   }

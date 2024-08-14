@@ -99,33 +99,109 @@ exports.searchUser = async (searchQuery) => {
   });
 };
 
-exports.buyCar = async (userId, carId) => {
-  if (!userId || !carId) return null;
-  console.log(carId);
-  const car = await fetch(`http://localhost:3000/api/car/view-car/${carId}`, {
-    method: 'GET',
-    headers: {
-      Authorization: `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY2YmM0ZDFiMDc3NDc2ZTA5NTMwNjdlYSIsImlhdCI6MTcyMzYxODg4MX0.grv8uwqKnrwHF5JuKUOH1W45rq1e9Ye8J746JqNdySc`,
-    },
-  });
-  const user = await User.findByIdAndUpdate(
-    userId,
-    { $push: { carCollection: car } },
-    { new: true },
-  );
+exports.buyCar = async (user, carId) => {
+  if (!user._id || !carId) return { error: errorMessages.INVALID_ID };
+  try {
+    const carResponse = await fetch(`http://localhost:3000/api/car/view-car/${carId}`, {
+      method: 'GET',
+      headers: {
+        Authorization: `Bearer ${process.env.JWT_TOKEN}`,
+      },
+    });
+    if (!carResponse.ok) {
+      return { error: errorMessages.FAILED_TO_FETCH_CAR };
+    }
+    const carData = await carResponse.json();
 
-  return { user, car };
+    if (!carData || !carData.car) {
+      return { error: errorMessages.INVALID_CAR_DATA };
+    }
+
+    if (carData.car.quantity < 1) {
+      return { error: errorMessages.CAR_OUT_OF_STOCK };
+    }
+
+    if (user.wallet < carData.car.price) {
+      return { error: errorMessages.INSUFFICIENT_BALANCE };
+    }
+
+    const { quantity, createdAt, updatedAt, ...car } = carData.car;
+
+    const updatedCar = await this.updateCar(carData);
+    if (updatedCar.error) {
+      return { error: updatedCar.error };
+    }
+
+    const invoice = await helpers.generateInvoice(user, carData);
+
+    const updatedUser = await User.findByIdAndUpdate(
+      user._id,
+      {
+        $push: {
+          carCollection: car,
+          invoices: invoice,
+        },
+        $inc: { wallet: -carData.car.price },
+      },
+      { new: true },
+    );
+
+    if (!updatedUser) {
+      return { error: errorMessages.FAILED_TO_UPDATE_USER };
+    }
+
+    const saved = await invoice.save();
+
+    if (!saved) {
+      return { error: errorMessages.FAILED_TO_SAVE_INVOICE };
+    }
+
+    return { updatedUser, updatedCar };
+  } catch (error) {
+    console.error('Error in buyCar:', error);
+    return { error: errorMessages.SOME_ERROR };
+  }
 };
 
-exports.updateCar = async (carId, quantity) => {
-  const res = await fetch(`http://localhost:3000/api/car/update-car/${carId}`, {
-    method: 'PUT',
-    headers: {
-      'Content-Type': 'application/json',
-      Authorization: `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY2YmM0ZDFiMDc3NDc2ZTA5NTMwNjdlYSIsImlhdCI6MTcyMzYxODg4MX0.grv8uwqKnrwHF5JuKUOH1W45rq1e9Ye8J746JqNdySc`,
-    },
-    body: JSON.stringify({ quantity: quantity - 1 }),
-  });
+exports.updateCar = async (carData) => {
+  if (!carData || !carData.car || !carData.car._id) {
+    return { error: errorMessages.INVALID_CAR_DATA };
+  }
 
-  return await res.json();
+  const car = carData.car;
+
+  try {
+    const response = await fetch(`http://localhost:3000/api/car/update-car/${car._id}`, {
+      method: 'PUT',
+      headers: {
+        'Content-Type': 'application/json',
+        Authorization: `Bearer ${process.env.JWT_TOKEN}`,
+      },
+      body: JSON.stringify({ quantity: car.quantity - 1 }),
+    });
+
+    if (!response.ok) {
+      return { error: errorMessages.CAR_NOT_UPDATED };
+    }
+
+    const updatedCar = await response.json();
+
+    if (!updatedCar) {
+      return { error: errorMessages.CAR_NOT_UPDATED };
+    }
+
+    return updatedCar;
+  } catch (error) {
+    return { error: errorMessages.CAR_NOT_UPDATED };
+  }
+};
+
+exports.getCarCollection = async (userId) => {
+  if (!userId) return { error: errorMessages.INVALID_ID };
+
+  const user = await User.findById(userId).select('carCollection');
+
+  if (!user) return { error: errorMessages.USER_NOT_FOUND };
+
+  return user;
 };

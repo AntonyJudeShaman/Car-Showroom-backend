@@ -1,5 +1,5 @@
-const helpers = require('../lib/utils');
 const Car = require('../Model/car');
+const errorMessages = require('../config/errors');
 
 exports.createCar = async (name, brand, price, color, fuel, engine, tyres, bodyType) => {
   try {
@@ -17,10 +17,10 @@ exports.createCar = async (name, brand, price, color, fuel, engine, tyres, bodyT
     return car;
   } catch (error) {
     if (error.code === 11000) {
-      return { status: 400, error: 'Car already exists' };
+      return { status: 400, error: errorMessages.CAR_ALREADY_EXISTS };
     }
     console.log(error.message);
-    return { status: 500, error: 'Internal server error' };
+    return { status: 500, error: errorMessages.CAR_NOT_CREATED };
   }
 };
 
@@ -42,7 +42,7 @@ exports.getCarByName = async (name) => {
 };
 
 exports.updateCar = async (id, data) => {
-  if (!id || data.length <= 0) return null;
+  if (!id) return null;
   const car = await Car.findByIdAndUpdate(id, data, {
     new: true,
     runValidators: true,
