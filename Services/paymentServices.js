@@ -1,9 +1,35 @@
-exports.createInvoiceValidations = [
-  body('name').notEmpty().withMessage('Name is required'),
-  body('brand').notEmpty().withMessage('Brand is required'),
-  body('basePrice').notEmpty().withMessage('Base Price is required'),
-  body('remainingBalance').notEmpty().withMessage('Remaining Balance is required'),
-  body('totalAmount').notEmpty().withMessage('Total Amount is required'),
-  body('features').notEmpty().withMessage('Features is required'),
-  body('tax').notEmpty().withMessage('Tax is required'),
-];
+const Payment = require('../Model/payment');
+
+exports.createPayment = async (paymentInfo) => {
+  try {
+    const payment = await Payment.create(paymentInfo);
+    if (!payment) {
+      return { error: errorMessages.INVALID_PAYMENT };
+    }
+    const savedPayment = await payment.save();
+    if (!savedPayment) {
+      return { error: errorMessages.FAILED_TO_SAVE_PAYMENT };
+    }
+    return payment;
+  } catch (err) {
+    return { error: errorMessages.SOME_ERROR };
+  }
+};
+
+exports.verifyPayment = async (paymentId) => {
+  try {
+    const payment = await Payment.findById(paymentId);
+
+    if (!payment) {
+      return { error: errorMessages.PAYMENT_NOT_FOUND };
+    }
+
+    if (payment.status !== 'completed') {
+      return { error: errorMessages.PAYMENT_PENDING };
+    }
+
+    return payment.status !== 'completed' ? { success: false } : { success: true };
+  } catch (err) {
+    return { error: errorMessages.SOME_ERROR };
+  }
+};

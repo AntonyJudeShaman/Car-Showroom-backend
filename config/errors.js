@@ -24,4 +24,11 @@ module.exports = {
   FAILED_TO_UPDATE_CAR: 'Failed to update car quantity',
   FAILED_TO_SAVE_INVOICE: 'Failed to save invoice',
   FAILED_TO_GENERATE_INVOICE: 'Failed to generate invoice',
+  NO_INVOICES: 'No invoices found',
+  INVOICE_NOT_FOUND: 'Invoice not found',
+  NO_USER_INVOICES: 'No invoices found for this user',
+  FAILED_TO_SAVE_PAYMENT: 'Failed to save payment',
+  INVALID_PAYMENT: 'Invalid payment details',
+  PAYMENT_NOT_FOUND: 'Payment not found',
+  PAYMENT_PENDING: 'Payment is pending',
 };

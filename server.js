@@ -7,6 +7,8 @@ const authMiddleware = require('./config/middleware');
 require('./config/passport');
 const userRoutes = require('./Routes/user');
 const carRoutes = require('./Routes/car');
+const invoiceRoutes = require('./Routes/invoice');
+const paymentRoutes = require('./Routes/payment');
 
 const app = express();
 
@@ -31,6 +33,8 @@ app.use((req, res, next) => {
 
 app.use('/api/user', userRoutes);
 app.use('/api/car', carRoutes);
+app.use('/api/invoice', invoiceRoutes);
+app.use('/api/payment', paymentRoutes);
 
 const db = process.env.MONGODB_URI;
 mongoose

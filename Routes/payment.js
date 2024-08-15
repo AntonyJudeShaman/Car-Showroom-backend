@@ -1,13 +1,9 @@
 const router = require('express').Router();
 
-const invoiceController = require('../Controllers/invoiceController');
+const paymentController = require('../Controllers/paymentController');
 
-const { createInvoiceValidations } = require('../Validators/invoiceValidator');
+router.post('/create-payment', paymentController.createPayment);
 
-router.post('/create-invoice', createInvoiceValidations, invoiceController.createInvoice);
-
-router.get('/view-all-invoices', invoiceController.getAllInvoices);
-
-router.get('/view-invoice/:id', invoiceController.getInvoice);
+router.post('/verify-payment', paymentController.verifyPayment);
 
 module.exports = router;

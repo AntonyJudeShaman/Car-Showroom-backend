@@ -161,13 +161,25 @@ exports.buyCar = async (req, res) => {
   try {
     const carId = req.body.id;
     const selectedFeatures = req.body.features || [];
+    const paymentDetails = req.body.paymentDetails;
     const user = await userServices.checkToken(req);
+
+    console.log('Buying process started');
+
+    paymentDetails.transactionId = helpers.generateTransactionId('AJS');
+
+    console.log('Transaction id generated');
 
     if (!user) {
       return res.status(401).json({ error: errorMessages.UNAUTHORIZED });
     }
 
-    const result = await userServices.buyCar(user, carId, selectedFeatures);
+    if (!paymentDetails || !paymentDetails.method || !paymentDetails.transactionId) {
+      return res.status(400).json({ error: errorMessages.MISSING_PAYMENT_DETAILS });
+    }
+
+    const result = await userServices.buyCar(user, carId, selectedFeatures, paymentDetails);
+
     if (result.error) {
       return res.status(400).json({ error: result.error });
     }
@@ -175,12 +187,14 @@ exports.buyCar = async (req, res) => {
       return res.status(404).json({ error: errorMessages.CAR_NOT_FOUND });
     }
 
-    const { updatedUser, updatedCar } = result;
+    const { updatedUser, updatedCar, invoice, payment } = result;
 
     res.status(200).json({
       user: updatedUser,
       car: updatedCar.car,
       totalPrice: updatedCar.car.totalPrice,
+      invoice,
+      payment,
     });
   } catch (err) {
     helpers.handleErrors(res, err);

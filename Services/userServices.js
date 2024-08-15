@@ -3,7 +3,9 @@ const User = require('../Model/user');
 const jwt = require('jsonwebtoken');
 const bcrypt = require('bcrypt');
 const errorMessages = require('../config/errors');
-const { add } = require('winston');
+const Payment = require('../Model/payment');
+const paymentServices = require('./paymentServices');
+const Invoice = require('../Model/invoice');
 
 exports.registerUser = async (username, email, password, address, phone, role) => {
   password = await helpers.passwordHasher(password);
@@ -100,7 +102,7 @@ exports.searchUser = async (searchQuery) => {
   });
 };
 
-exports.buyCar = async (user, carId, selectedFeatures = []) => {
+exports.buyCar = async (user, carId, selectedFeatures = [], paymentDetails) => {
   if (!user._id || !carId) return { error: errorMessages.INVALID_ID };
   try {
     const carResponse = await fetch(`http://localhost:3000/api/car/view-car/${carId}`, {
@@ -113,73 +115,122 @@ exports.buyCar = async (user, carId, selectedFeatures = []) => {
       return { error: errorMessages.FAILED_TO_FETCH_CAR };
     }
     const carData = await carResponse.json();
-
+    console.log('car found');
     if (!carData || !carData.car) {
       return { error: errorMessages.INVALID_CAR_DATA };
     }
-
     if (carData.car.stock.quantity < 1 || carData.car.status === 'sold_out') {
       return { error: errorMessages.CAR_OUT_OF_STOCK };
     }
 
-    const { totalPrice, addedFeatures } = helpers.calculateTotalPrice(
+    console.log('car stock available');
+    const { totalPrice, addedFeatures, discount } = helpers.calculateTotalPrice(
       carData.car.basePrice,
       selectedFeatures,
       carData.car.features,
       carData.car.tax,
     );
 
+    console.log(
+      'total price',
+      totalPrice,
+      'calculated with discount',
+      discount,
+      'and features',
+      addedFeatures,
+      'tax',
+      carData.car.tax * 100,
+    );
     if (user.wallet < totalPrice) {
       return { error: errorMessages.INSUFFICIENT_BALANCE };
     }
 
-    const { stock, createdAt, updatedAt, ...carToBeAdded } = carData.car;
-    carToBeAdded.features = addedFeatures;
-    carToBeAdded.totalPrice = totalPrice;
-
-    console.log(addedFeatures, totalPrice);
-    const updatedCar = await this.updateCar(carData);
-
-    if (updatedCar.error) {
-      return { error: updatedCar.error };
-    }
-
+    console.log('user has enough balance');
     const invoice = await helpers.generateInvoice(user, {
       ...carData,
       totalPrice,
       addedFeatures,
       tax: carData.car.tax,
+      discount,
     });
     if (!invoice) {
       return { error: errorMessages.FAILED_TO_GENERATE_INVOICE };
     }
-    console.log(invoice);
+    console.log('invoice generated');
 
+    const savedPayment = await this.processPayment({
+      user: user._id,
+      car: carId,
+      invoice: invoice._id,
+      paymentMethod: paymentDetails.method,
+      amount: totalPrice,
+      status: 'completed',
+      transactionId: paymentDetails.transactionId,
+    });
+    if (savedPayment.error) {
+      return { error: savedPayment.error };
+    }
+
+    console.log('payment processed');
     const savedInvoice = await invoice.save();
     if (!savedInvoice) {
+      await Payment.findByIdAndRemove(savedPayment._id);
       return { error: errorMessages.FAILED_TO_SAVE_INVOICE };
     }
+
+    const verifyPayment = await this.verifyPayment(savedPayment._id);
+
+    if (verifyPayment.error) {
+      await Invoice.findByIdAndRemove(savedInvoice._id);
+      await Payment.findByIdAndRemove(savedPayment._id);
+      return { error: verifyPayment.error };
+    }
+
+    if (verifyPayment.success) {
+      console.log('Payment verified successfully');
+    }
+
+    const updatedCar = await this.updateCar(carData);
+    if (updatedCar.error) {
+      await Invoice.findByIdAndRemove(savedInvoice._id);
+      await Payment.findByIdAndRemove(savedPayment._id);
+      return { error: updatedCar.error };
+    }
+
+    console.log('car quantity updated');
+    const { stock, createdAt, updatedAt, ...carToBeAdded } = carData.car;
+    carToBeAdded.features = addedFeatures;
+    carToBeAdded.totalPrice = totalPrice;
 
     const updatedUser = await User.findByIdAndUpdate(
       user._id,
       {
         $push: {
           carCollection: carToBeAdded,
-          invoices: savedInvoice,
+          invoices: savedInvoice._id,
         },
         $set: { wallet: user.wallet - totalPrice, updatedAt: new Date() },
       },
       { new: true },
     );
-
     if (!updatedUser) {
-      await savedInvoice.remove();
+      await Invoice.findByIdAndRemove(savedInvoice._id);
+      await Payment.findByIdAndRemove(savedPayment._id);
+      await this.updateCar({ ...carData, reverse: true });
       return { error: errorMessages.FAILED_TO_UPDATE_USER };
     }
 
-    return { updatedUser, updatedCar, invoice: savedInvoice };
+    console.log('car added to collection');
+    // console.log('savedInvoice:', savedInvoice);
+    // console.log('savedPayment:', savedPayment);
+
+    return {
+      updatedUser,
+      updatedCar,
+      invoice: savedInvoice,
+      payment: savedPayment,
+    };
   } catch (error) {
-    console.error('Error in buyCar:', error);
     return { error: errorMessages.SOME_ERROR };
   }
 };
@@ -191,6 +242,8 @@ exports.updateCar = async (carData) => {
 
   const car = carData.car;
 
+  const quantity = carData?.reverse ? 1 : -1;
+
   try {
     const response = await fetch(`http://localhost:3000/api/car/update-car/${car._id}`, {
       method: 'PUT',
@@ -199,8 +252,8 @@ exports.updateCar = async (carData) => {
         Authorization: `Bearer ${process.env.JWT_TOKEN}`,
       },
       body: JSON.stringify({
-        'stock.quantity': car.stock.quantity - 1,
-        status: car.stock.quantity - 1 === 0 ? 'sold_out' : 'available',
+        'stock.quantity': car.stock.quantity + quantity,
+        status: car.stock.quantity - quantity === 0 ? 'sold_out' : 'available',
       }),
     });
 
@@ -228,4 +281,30 @@ exports.getCarCollection = async (userId) => {
   if (!user) return { error: errorMessages.USER_NOT_FOUND };
 
   return user;
+};
+
+exports.processPayment = async (paymentInfo) => {
+  const savedPayment = await fetch('http://localhost:3000/api/payment/create-payment', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+      Authorization: `Bearer ${process.env.JWT_TOKEN}`,
+    },
+    body: JSON.stringify(paymentInfo),
+  });
+
+  return savedPayment.json();
+};
+
+exports.verifyPayment = async (paymentId) => {
+  const payment = await fetch('http://localhost:3000/api/payment/verify-payment', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+      Authorization: `Bearer ${process.env.JWT_TOKEN}`,
+    },
+    body: JSON.stringify({ id: paymentId }),
+  });
+
+  return payment.json();
 };
