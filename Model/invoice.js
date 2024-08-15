@@ -42,8 +42,8 @@ const invoiceSchema = new mongoose.Schema(
       default: 0,
     },
     tax: {
-      type: String,
-      default: '10%',
+      type: Number,
+      default: 0.1,
     },
     date: {
       type: Date,

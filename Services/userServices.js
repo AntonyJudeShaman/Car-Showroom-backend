@@ -207,7 +207,7 @@ exports.buyCar = async (user, carId, selectedFeatures = [], paymentDetails) => {
       {
         $push: {
           carCollection: carToBeAdded,
-          invoices: savedInvoice._id,
+          invoices: savedInvoice,
         },
         $set: { wallet: user.wallet - totalPrice, updatedAt: new Date() },
       },
