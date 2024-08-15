@@ -1,18 +1,9 @@
 const Car = require('../Model/car');
 const errorMessages = require('../config/errors');
 
-exports.createCar = async (name, brand, price, color, fuel, engine, tyres, bodyType) => {
+exports.createCar = async (carData) => {
   try {
-    const car = new Car({
-      name,
-      brand,
-      price,
-      color,
-      fuel,
-      engine,
-      tyres,
-      bodyType,
-    });
+    const car = new Car(carData);
     await car.save();
     return car;
   } catch (error) {

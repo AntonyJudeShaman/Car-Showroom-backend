@@ -3,6 +3,7 @@ const User = require('../Model/user');
 const jwt = require('jsonwebtoken');
 const bcrypt = require('bcrypt');
 const errorMessages = require('../config/errors');
+const { add } = require('winston');
 
 exports.registerUser = async (username, email, password, address, phone, role) => {
   password = await helpers.passwordHasher(password);
@@ -99,7 +100,7 @@ exports.searchUser = async (searchQuery) => {
   });
 };
 
-exports.buyCar = async (user, carId) => {
+exports.buyCar = async (user, carId, selectedFeatures = []) => {
   if (!user._id || !carId) return { error: errorMessages.INVALID_ID };
   try {
     const carResponse = await fetch(`http://localhost:3000/api/car/view-car/${carId}`, {
@@ -117,46 +118,66 @@ exports.buyCar = async (user, carId) => {
       return { error: errorMessages.INVALID_CAR_DATA };
     }
 
-    if (carData.car.quantity < 1) {
+    if (carData.car.stock.quantity < 1 || carData.car.status === 'sold_out') {
       return { error: errorMessages.CAR_OUT_OF_STOCK };
     }
 
-    if (user.wallet < carData.car.price) {
+    const { totalPrice, addedFeatures } = helpers.calculateTotalPrice(
+      carData.car.basePrice,
+      selectedFeatures,
+      carData.car.features,
+      carData.car.tax,
+    );
+
+    if (user.wallet < totalPrice) {
       return { error: errorMessages.INSUFFICIENT_BALANCE };
     }
 
-    const { quantity, createdAt, updatedAt, ...car } = carData.car;
+    const { stock, createdAt, updatedAt, ...carToBeAdded } = carData.car;
+    carToBeAdded.features = addedFeatures;
+    carToBeAdded.totalPrice = totalPrice;
 
+    console.log(addedFeatures, totalPrice);
     const updatedCar = await this.updateCar(carData);
+
     if (updatedCar.error) {
       return { error: updatedCar.error };
     }
 
-    const invoice = await helpers.generateInvoice(user, carData);
+    const invoice = await helpers.generateInvoice(user, {
+      ...carData,
+      totalPrice,
+      addedFeatures,
+      tax: carData.car.tax,
+    });
+    if (!invoice) {
+      return { error: errorMessages.FAILED_TO_GENERATE_INVOICE };
+    }
+    console.log(invoice);
+
+    const savedInvoice = await invoice.save();
+    if (!savedInvoice) {
+      return { error: errorMessages.FAILED_TO_SAVE_INVOICE };
+    }
 
     const updatedUser = await User.findByIdAndUpdate(
       user._id,
       {
         $push: {
-          carCollection: car,
-          invoices: invoice,
+          carCollection: carToBeAdded,
+          invoices: savedInvoice,
         },
-        $inc: { wallet: -carData.car.price },
+        $set: { wallet: user.wallet - totalPrice, updatedAt: new Date() },
       },
       { new: true },
     );
 
     if (!updatedUser) {
+      await savedInvoice.remove();
       return { error: errorMessages.FAILED_TO_UPDATE_USER };
     }
 
-    const saved = await invoice.save();
-
-    if (!saved) {
-      return { error: errorMessages.FAILED_TO_SAVE_INVOICE };
-    }
-
-    return { updatedUser, updatedCar };
+    return { updatedUser, updatedCar, invoice: savedInvoice };
   } catch (error) {
     console.error('Error in buyCar:', error);
     return { error: errorMessages.SOME_ERROR };
@@ -177,7 +198,10 @@ exports.updateCar = async (carData) => {
         'Content-Type': 'application/json',
         Authorization: `Bearer ${process.env.JWT_TOKEN}`,
       },
-      body: JSON.stringify({ quantity: car.quantity - 1 }),
+      body: JSON.stringify({
+        'stock.quantity': car.stock.quantity - 1,
+        status: car.stock.quantity - 1 === 0 ? 'sold_out' : 'available',
+      }),
     });
 
     if (!response.ok) {

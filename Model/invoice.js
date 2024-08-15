@@ -19,13 +19,27 @@ const invoiceSchema = new mongoose.Schema(
       type: String,
       required: true,
     },
-    amount: {
+    basePrice: {
       type: Number,
       required: true,
     },
     remainingBalance: {
       type: Number,
       required: true,
+    },
+    totalAmount: {
+      type: Number,
+      required: true,
+    },
+    features: [
+      {
+        type: String,
+        required: true,
+      },
+    ],
+    tax: {
+      type: String,
+      default: '10%',
     },
     date: {
       type: Date,

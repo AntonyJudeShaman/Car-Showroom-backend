@@ -23,4 +23,5 @@ module.exports = {
   FAILED_TO_UPDATE_USER: 'Failed to update user',
   FAILED_TO_UPDATE_CAR: 'Failed to update car quantity',
   FAILED_TO_SAVE_INVOICE: 'Failed to save invoice',
+  FAILED_TO_GENERATE_INVOICE: 'Failed to generate invoice',
 };

@@ -9,26 +9,15 @@ exports.createCar = async (req, res) => {
     return res.status(400).json({ error: errorMessages.DATA_NOT_VALID, details: errors.array() });
   }
   try {
-    const { name, brand, price, color, fuel, engine, tyres, bodyType, quantity } = req.body;
     const isAdmin = await helpers.checkAdmin(req);
     if (!isAdmin) {
       return res.status(403).json({ error: errorMessages.FORBIDDEN });
     }
-    const carExists = await carServices.getCarByName(name);
+    const carExists = await carServices.getCarByName(req.body.name);
     if (carExists) {
       return res.status(400).json({ error: errorMessages.CAR_ALREADY_EXISTS });
     }
-    const car = await carServices.createCar(
-      name,
-      brand,
-      price,
-      color,
-      fuel,
-      engine,
-      tyres,
-      bodyType,
-      quantity,
-    );
+    const car = await carServices.createCar(req.body);
     if (!car) {
       return res.status(400).json({ error: errorMessages.CAR_NOT_CREATED });
     }
@@ -79,18 +68,7 @@ exports.updateCar = async (req, res) => {
     if (!car) {
       return res.status(404).json({ error: errorMessages.CAR_NOT_FOUND });
     }
-    const { name, brand, price, color, fuel, engine, tyres, bodyType, quantity } = req.body;
-    const updatedCar = await carServices.updateCar(req.params.id, {
-      name,
-      brand,
-      price,
-      color,
-      fuel,
-      engine,
-      tyres,
-      bodyType,
-      quantity,
-    });
+    const updatedCar = await carServices.updateCar(req.params.id, req.body);
     if (!updatedCar) {
       return res.status(400).json({ error: errorMessages.CAR_NOT_UPDATED });
     }

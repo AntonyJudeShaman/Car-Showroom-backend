@@ -1,70 +1,128 @@
 const mongoose = require('mongoose');
 
-const carSchema = new mongoose.Schema({
-  name: {
-    type: String,
-    required: true,
-    unique: true,
-  },
-  brand: {
-    type: String,
-    required: true,
-    enum: [
-      'Toyota',
-      'KIA',
-      'Hyundai',
-      'Audi',
-      'BMW',
-      'Mercedes',
-      'Koenigsegg',
-      'Tesla',
-      'Ferrari',
-      'Lamborghini',
-      'Bugatti',
+const featureList = require('../config/constants');
+
+const carSchema = new mongoose.Schema(
+  {
+    name: {
+      type: String,
+      required: true,
+      unique: true,
+    },
+    brand: {
+      type: String,
+      required: true,
+      enum: [
+        'Toyota',
+        'KIA',
+        'Hyundai',
+        'Audi',
+        'BMW',
+        'Mercedes',
+        'Koenigsegg',
+        'Tesla',
+        'Ferrari',
+        'Lamborghini',
+        'Bugatti',
+        'Porsche',
+      ],
+    },
+    basePrice: {
+      type: Number,
+      required: true,
+    },
+    color: {
+      type: String,
+      required: true,
+      enum: ['red', 'blue', 'black', 'white', 'silver', 'matte black'],
+    },
+    fuelType: {
+      type: String,
+      required: true,
+      enum: ['petrol', 'diesel', 'electric', 'hybrid'],
+    },
+    engine: {
+      capacity: {
+        type: Number,
+        required: true,
+      },
+      cylinders: Number,
+      horsepower: Number,
+    },
+    transmission: {
+      type: String,
+      required: true,
+      enum: ['automatic', 'manual'],
+    },
+    features: [
+      {
+        name: {
+          type: String,
+          enum: [
+            'sunroof',
+            'leather seats',
+            'heated seats',
+            'backup camera',
+            'bluetooth',
+            'keyless entry',
+            'remote start',
+            'adaptive cruise control',
+            'lane departure warning',
+            'navigation system',
+            'parking sensors',
+            'blind spot monitoring',
+            'automatic parking',
+            'carplay',
+            'android auto',
+            'premium sound system',
+          ],
+          required: true,
+        },
+        price: {
+          type: Number,
+          required: true,
+        },
+      },
     ],
+    tyres: {
+      type: String,
+      required: true,
+      enum: ['tubeless', 'normal', 'bulletproof'],
+    },
+    bodyType: {
+      type: String,
+      required: true,
+      enum: ['sedan', 'hatchback', 'SUV', 'coupe', 'convertible', 'truck', 'targa'],
+    },
+    bodyMaterial: {
+      type: String,
+      required: true,
+      enum: ['steel', 'aluminium', 'carbon fiber', 'plastic'],
+    },
+    stock: {
+      quantity: {
+        type: Number,
+        required: true,
+        default: 5,
+      },
+    },
+    status: {
+      type: String,
+      enum: ['available', 'sold_out', 'discontinued'],
+      default: 'available',
+    },
+    tax: {
+      type: Number,
+      default: 0.1,
+    },
   },
-  price: {
-    type: Number,
-    required: true,
+  {
+    timestamps: true,
   },
-  color: {
-    type: String,
-    required: true,
-    enum: ['red', 'blue', 'black', 'white', 'silver', 'matte black'],
-  },
-  fuel: {
-    type: String,
-    required: true,
-    enum: ['petrol', 'diesel', 'electric', 'hybrid'],
-  },
-  engine: {
-    type: String,
-    required: true,
-  },
-  tyres: {
-    type: String,
-    required: true,
-    enum: ['tubeless', 'normal', 'bulletproof'],
-  },
-  bodyType: {
-    type: String,
-    required: true,
-    enum: ['plain', 'armored', 'bulletproof', 'carbon fiber'],
-  },
-  quantity: {
-    type: Number,
-    required: true,
-    default: 5,
-  },
-  createdAt: {
-    type: Date,
-    default: Date.now,
-  },
-  updatedAt: {
-    type: Date,
-    default: Date.now,
-  },
-});
+);
+
+carSchema.index({ brand: 1, name: 1 });
+carSchema.index({ basePrice: 1 });
 
 const Car = mongoose.model('Car', carSchema);
 

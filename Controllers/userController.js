@@ -160,13 +160,14 @@ exports.searchUser = async (req, res) => {
 exports.buyCar = async (req, res) => {
   try {
     const carId = req.body.id;
+    const selectedFeatures = req.body.features || [];
     const user = await userServices.checkToken(req);
 
     if (!user) {
       return res.status(401).json({ error: errorMessages.UNAUTHORIZED });
     }
 
-    const result = await userServices.buyCar(user, carId);
+    const result = await userServices.buyCar(user, carId, selectedFeatures);
     if (result.error) {
       return res.status(400).json({ error: result.error });
     }
@@ -176,7 +177,11 @@ exports.buyCar = async (req, res) => {
 
     const { updatedUser, updatedCar } = result;
 
-    res.status(200).json({ user: updatedUser, car: updatedCar.car });
+    res.status(200).json({
+      user: updatedUser,
+      car: updatedCar.car,
+      totalPrice: updatedCar.car.totalPrice,
+    });
   } catch (err) {
     helpers.handleErrors(res, err);
   }

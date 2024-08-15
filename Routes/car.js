@@ -1,18 +1,15 @@
-const router = require("express").Router();
+const router = require('express').Router();
 
-const carController = require("../Controllers/carController");
+const carController = require('../Controllers/carController');
 
-const {
-  createCarValidations,
-  carUpdateValidations,
-} = require("../Validators/carValidator");
+const { createCarValidations, carUpdateValidations } = require('../Validators/carValidator');
 
-router.post("/create-car", createCarValidations, carController.createCar);
+router.post('/create-car', carController.createCar);
 
-router.get("/view-all-cars", carController.getAllCars);
+router.get('/view-all-cars', carController.getAllCars);
 
-router.get("/view-car/:id", carController.getCar);
+router.get('/view-car/:id', carController.getCar);
 
-router.put("/update-car/:id", carUpdateValidations, carController.updateCar);
+router.put('/update-car/:id', carUpdateValidations, carController.updateCar);
 
 module.exports = router;
