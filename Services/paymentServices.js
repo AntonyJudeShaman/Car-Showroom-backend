@@ -1,4 +1,5 @@
 const Payment = require('../Model/payment');
+const errorMessages = require('../config/errors');
 
 exports.createPayment = async (paymentInfo) => {
   try {
@@ -11,7 +12,7 @@ exports.createPayment = async (paymentInfo) => {
       return { error: errorMessages.FAILED_TO_SAVE_PAYMENT };
     }
     return payment;
-  } catch (err) {
+  } catch {
     return { error: errorMessages.SOME_ERROR };
   }
 };
@@ -29,7 +30,7 @@ exports.verifyPayment = async (paymentId) => {
     }
 
     return payment.status !== 'completed' ? { success: false } : { success: true };
-  } catch (err) {
+  } catch {
     return { error: errorMessages.SOME_ERROR };
   }
 };

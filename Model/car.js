@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 
-const featureList = require('../config/constants');
+const featureList = require('../config/constants').featureList;
 
 const carSchema = new mongoose.Schema(
   {
@@ -58,24 +58,7 @@ const carSchema = new mongoose.Schema(
       {
         name: {
           type: String,
-          enum: [
-            'sunroof',
-            'leather seats',
-            'heated seats',
-            'backup camera',
-            'bluetooth',
-            'keyless entry',
-            'remote start',
-            'adaptive cruise control',
-            'lane departure warning',
-            'navigation system',
-            'parking sensors',
-            'blind spot monitoring',
-            'automatic parking',
-            'carplay',
-            'android auto',
-            'premium sound system',
-          ],
+          enum: featureList.map((f) => f.name),
           required: true,
         },
         price: {

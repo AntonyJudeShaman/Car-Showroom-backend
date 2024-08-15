@@ -1,4 +1,5 @@
 const paymentServices = require('../Services/paymentServices');
+const helpers = require('../lib/utils');
 
 exports.createPayment = async (req, res) => {
   try {
@@ -9,7 +10,7 @@ exports.createPayment = async (req, res) => {
     }
     res.status(201).json(payment);
   } catch (err) {
-    handleErrors(res, err);
+    helpers.handleErrors(res, err);
   }
 };
 
@@ -22,6 +23,6 @@ exports.verifyPayment = async (req, res) => {
     }
     res.status(200).json(payment);
   } catch (err) {
-    handleErrors(res, err);
+    helpers.handleErrors(res, err);
   }
 };

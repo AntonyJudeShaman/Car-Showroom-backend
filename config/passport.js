@@ -1,7 +1,7 @@
-const passport = require("passport");
-const JwtStrategy = require("passport-jwt").Strategy;
-const ExtractJwt = require("passport-jwt").ExtractJwt;
-const User = require("../Model/user");
+const passport = require('passport');
+const JwtStrategy = require('passport-jwt').Strategy;
+const ExtractJwt = require('passport-jwt').ExtractJwt;
+const User = require('../Model/user');
 
 const options = {
   jwtFromRequest: ExtractJwt.fromAuthHeaderAsBearerToken(),
@@ -15,14 +15,14 @@ passport.use(
       // console.log(payload);
       // process.write(payload);
       if (user) {
-        return done(null, user, "User found");
+        return done(null, user, 'User found');
       } else {
-        return done(null, false, "User not found");
+        return done(null, false, 'User not found');
       }
     } catch (error) {
-      return done(error, false, "Some error occured");
+      return done(error, false, 'Some error occured');
     }
-  })
+  }),
 );
 
 module.passport = passport;

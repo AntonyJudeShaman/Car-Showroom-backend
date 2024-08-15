@@ -2,7 +2,7 @@ const router = require('express').Router();
 
 const carController = require('../Controllers/carController');
 
-const { createCarValidations, carUpdateValidations } = require('../Validators/carValidator');
+const { carUpdateValidations } = require('../Validators/carValidator');
 
 router.post('/create-car', carController.createCar);
 

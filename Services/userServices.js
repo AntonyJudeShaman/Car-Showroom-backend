@@ -4,16 +4,14 @@ const jwt = require('jsonwebtoken');
 const bcrypt = require('bcrypt');
 const errorMessages = require('../config/errors');
 const Payment = require('../Model/payment');
-const paymentServices = require('./paymentServices');
 const Invoice = require('../Model/invoice');
 
 exports.registerUser = async (username, email, password, address, phone, role) => {
-  password = await helpers.passwordHasher(password);
   try {
     const user = new User({
       username,
       email,
-      password,
+      password: await helpers.passwordHasher(password),
       address,
       phone,
       role,
@@ -24,7 +22,7 @@ exports.registerUser = async (username, email, password, address, phone, role) =
     if (error.code === 11000) {
       return { status: 400, error: errorMessages.ALREADY_EXISTS };
     }
-    helpers.handleErrors(res, error);
+    return { status: 400, error: errorMessages.USER_NOT_CREATED };
   }
 };
 
@@ -53,14 +51,14 @@ exports.updateUser = async (userId, updateData) => {
 
 exports.checkToken = async (req) => {
   try {
-    let authHeader = req.headers['authorization'];
-    let token = authHeader && authHeader.split(' ')[1];
+    const authHeader = req.headers['authorization'];
+    const token = authHeader && authHeader.split(' ')[1];
     if (!token) return null;
     const decoded = jwt.verify(token, process.env.JWT_SECRET);
     const user = await User.findById(decoded.id);
     return user || null;
-  } catch (err) {
-    handleErrors(res, err);
+  } catch {
+    return null;
   }
 };
 
@@ -230,7 +228,7 @@ exports.buyCar = async (user, carId, selectedFeatures = [], paymentDetails) => {
       invoice: savedInvoice,
       payment: savedPayment,
     };
-  } catch (error) {
+  } catch {
     return { error: errorMessages.SOME_ERROR };
   }
 };
@@ -268,7 +266,7 @@ exports.updateCar = async (carData) => {
     }
 
     return updatedCar;
-  } catch (error) {
+  } catch {
     return { error: errorMessages.CAR_NOT_UPDATED };
   }
 };

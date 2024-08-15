@@ -7,6 +7,7 @@ module.exports = {
   INVALID_ID: 'Invalid ID',
   USER_NOT_UPDATED: 'User not updated',
   USER_NOT_DELETED: 'User not deleted',
+  USER_NOT_CREATED: 'User not created',
   USER_DELETED: 'User deleted successfully',
   USER_UPDATED: 'User updated successfully',
   LOGGED_OUT: 'User logged out successfully',

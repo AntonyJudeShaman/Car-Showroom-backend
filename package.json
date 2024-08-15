@@ -5,7 +5,9 @@
   "main": "index.js",
   "scripts": {
     "dev": "node --env-file=.env.local server.js",
-    "test": "jest --runInBand --detectOpenHandles"
+    "test": "jest --runInBand --detectOpenHandles",
+    "lint": "eslint .",
+    "lint:fix": "eslint . --fix"
   },
   "keywords": [],
   "author": "",
@@ -29,8 +31,10 @@
   "devDependencies": {
     "@babel/core": "^7.25.2",
     "@babel/preset-env": "^7.25.3",
+    "@eslint/js": "^9.9.0",
     "babel-jest": "^29.7.0",
-    "jest": "^29.7.0",
-    "mongodb-memory-server": "^10.0.0"
+    "eslint": "^9.9.0",
+    "globals": "^15.9.0",
+    "jest": "^29.7.0"
   }
 }
