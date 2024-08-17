@@ -38,5 +38,7 @@ module.exports = {
   APPOINTMENT_NOT_FOUND: 'Appointment not found',
   APPOINTMENT_NOT_CANCELED: 'Appointment not canceled',
   NO_APPOINTMENTS_FOUND: 'No Appointments found',
-  SLOT_NOT_AVAILABLE: 'Slot not available',
+  SLOT_NOT_AVAILABLE: 'Slot not available. Please choose another slot',
+  INVALID_TIME_FORMAT: 'Invalid time format',
+  INVALID_TIME_SLOT_DIFF: 'Invalid time slot difference (one hour)',
 };

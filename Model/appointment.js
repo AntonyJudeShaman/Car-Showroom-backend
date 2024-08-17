@@ -9,8 +9,13 @@ const appointmentSchema = new mongoose.Schema({
   appointmentId: {
     type: String,
     required: true,
+    unique: true,
   },
   date: {
+    type: String,
+    required: true,
+  },
+  dateKey: {
     type: String,
     required: true,
   },

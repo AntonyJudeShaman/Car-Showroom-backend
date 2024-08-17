@@ -8,7 +8,7 @@ exports.createAppointment = async (req, res) => {
     if (result.error) {
       return res.status(400).json({ error: result.error });
     }
-    res.status(201).json({ appointment: result.appointment, slot: result.slot });
+    res.status(201).json({ appointment: result.appointment });
   } catch (err) {
     helpers.handleErrors(res, err);
   }
