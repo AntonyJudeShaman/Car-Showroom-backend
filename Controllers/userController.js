@@ -7,7 +7,7 @@ const errorMessages = require('../config/errors');
 exports.register = async (req, res) => {
   const errors = validationResult(req);
   if (!errors.isEmpty()) {
-    return res.status(400).json({ error: errorMessages.DATA_NOT_VALID, details: errors.array() });
+    res.status(400).json({ error: errorMessages.DATA_NOT_VALID, details: errors.array() });
   }
   try {
     const { username, email, password, address, phone, role } = req.body;
@@ -17,12 +17,12 @@ exports.register = async (req, res) => {
       (await userServices.getUserByUsername(username));
 
     if (userExists) {
-      return res.status(400).json({ error: errorMessages.ALREADY_EXISTS });
+      res.status(400).json({ error: errorMessages.ALREADY_EXISTS });
     }
 
     const user = await userServices.registerUser(username, email, password, address, phone, role);
     if (!user) {
-      return res.status(400).json({ error: errorMessages.USER_NOT_CREATED });
+      res.status(400).json({ error: errorMessages.USER_NOT_CREATED });
     }
     const token = jwt.sign({ id: user._id }, process.env.JWT_SECRET);
     res.cookie('token', token, {
@@ -39,13 +39,13 @@ exports.register = async (req, res) => {
 exports.login = async (req, res) => {
   const errors = validationResult(req);
   if (!errors.isEmpty()) {
-    return res.status(400).json({ error: errorMessages.DATA_NOT_VALID, details: errors.array() });
+    res.status(400).json({ error: errorMessages.DATA_NOT_VALID, details: errors.array() });
   }
   try {
     const { credential, password } = req.body;
     const login = await userServices.loginUser(credential, password);
     if (login.error) {
-      return res.status(401).json({ error: login.error });
+      res.status(401).json({ error: login.error });
     }
     const { user, token } = login;
     res.cookie('token', token, {
@@ -60,19 +60,19 @@ exports.login = async (req, res) => {
 };
 
 exports.updateUser = async (req, res) => {
-  if (!req.params.id) return res.status(400).json({ error: errorMessages.INVALID_ID });
+  if (!req.params.id) res.status(400).json({ error: errorMessages.INVALID_ID });
   const errors = validationResult(req);
   if (!errors.isEmpty()) {
-    return res.status(400).json({ error: errorMessages.DATA_NOT_VALID, details: errors.array() });
+    res.status(400).json({ error: errorMessages.DATA_NOT_VALID, details: errors.array() });
   }
   try {
     const { username, password, role, ...updateData } = req.body;
     if (username || password || role) {
-      return res.status(400).json({ error: errorMessages.CANNOT_CHANGE_CREDENTIALS });
+      res.status(400).json({ error: errorMessages.CANNOT_CHANGE_CREDENTIALS });
     }
 
     const updatedUser = await userServices.updateUser(req.params.id, updateData);
-    if (!updatedUser) return res.status(404).json({ error: errorMessages.USER_NOT_FOUND });
+    if (!updatedUser) res.status(404).json({ error: errorMessages.USER_NOT_FOUND });
     res.status(200).json({ message: errorMessages.USER_UPDATED, user: updatedUser });
   } catch (err) {
     helpers.handleErrors(res, err);
@@ -83,10 +83,10 @@ exports.viewAllUser = async (req, res) => {
   try {
     const user = await userServices.checkToken(req);
     if (!user) {
-      return res.status(401).json({ error: errorMessages.UNAUTHORIZED });
+      res.status(401).json({ error: errorMessages.UNAUTHORIZED });
     }
     if (user.role !== 'admin') {
-      return res.status(403).json({ error: errorMessages.FORBIDDEN });
+      res.status(403).json({ error: errorMessages.FORBIDDEN });
     }
     const users = await userServices.getAllUsers();
     res.status(200).json(users);
@@ -98,7 +98,7 @@ exports.viewAllUser = async (req, res) => {
 exports.checkToken = async (req, res) => {
   try {
     const user = await userServices.checkToken(req);
-    if (!user) return res.status(401).json({ error: errorMessages.UNAUTHORIZED });
+    if (!user) res.status(401).json({ error: errorMessages.UNAUTHORIZED });
     res.status(200).json(user);
   } catch (err) {
     helpers.handleErrors(res, err);
@@ -108,14 +108,14 @@ exports.checkToken = async (req, res) => {
 exports.viewUser = async (req, res) => {
   try {
     if (!req.params.id || req.params.id.length !== 24) {
-      return res.status(400).json({ error: errorMessages.INVALID_ID });
+      res.status(400).json({ error: errorMessages.INVALID_ID });
     }
     const user = await userServices.checkToken(req);
     if (!user) {
-      return res.status(401).json({ error: errorMessages.UNAUTHORIZED });
+      res.status(401).json({ error: errorMessages.UNAUTHORIZED });
     }
     const viewedUser = await userServices.getUserById(req.params.id);
-    if (!viewedUser) return res.status(404).json({ error: errorMessages.USER_NOT_FOUND });
+    if (!viewedUser) res.status(404).json({ error: errorMessages.USER_NOT_FOUND });
     res.status(200).json(viewedUser);
   } catch (err) {
     helpers.handleErrors(res, err);
@@ -124,13 +124,13 @@ exports.viewUser = async (req, res) => {
 
 exports.deleteUser = async (req, res) => {
   try {
-    if (!req.params.id) return res.status(400).json({ error: errorMessages.INVALID_ID });
+    if (!req.params.id) res.status(400).json({ error: errorMessages.INVALID_ID });
     const user = await userServices.checkToken(req);
     if (!user) {
-      return res.status(401).json({ error: errorMessages.UNAUTHORIZED });
+      res.status(401).json({ error: errorMessages.UNAUTHORIZED });
     }
     const deletedUser = await userServices.deleteUser(req.params.id);
-    if (!deletedUser) return res.status(404).json({ error: errorMessages.USER_NOT_FOUND });
+    if (!deletedUser) res.status(404).json({ error: errorMessages.USER_NOT_FOUND });
     res.status(200).json({ message: errorMessages.USER_DELETED });
   } catch (err) {
     helpers.handleErrors(res, err);
@@ -144,13 +144,13 @@ exports.logout = async (req, res) => {
 
 exports.searchUser = async (req, res) => {
   try {
-    if (!req.query.q) return res.status(400).json({ error: errorMessages.NO_SEARCH_QUERY });
+    if (!req.query.q) res.status(400).json({ error: errorMessages.NO_SEARCH_QUERY });
     const user = await userServices.checkToken(req);
     if (!user) {
-      return res.status(401).json({ error: errorMessages.UNAUTHORIZED });
+      res.status(401).json({ error: errorMessages.UNAUTHORIZED });
     }
     const users = await userServices.searchUser(req.query.q);
-    if (!users.length) return res.status(404).json({ error: errorMessages.NO_RESULTS });
+    if (!users.length) res.status(404).json({ error: errorMessages.NO_RESULTS });
     res.status(200).json(users);
   } catch (err) {
     helpers.handleErrors(res, err);
@@ -171,20 +171,20 @@ exports.buyCar = async (req, res) => {
     console.log('Transaction id generated');
 
     if (!user) {
-      return res.status(401).json({ error: errorMessages.UNAUTHORIZED });
+      res.status(401).json({ error: errorMessages.UNAUTHORIZED });
     }
 
     if (!paymentDetails || !paymentDetails.method || !paymentDetails.transactionId) {
-      return res.status(400).json({ error: errorMessages.MISSING_PAYMENT_DETAILS });
+      res.status(400).json({ error: errorMessages.MISSING_PAYMENT_DETAILS });
     }
 
     const result = await userServices.buyCar(user, carId, selectedFeatures, paymentDetails);
 
     if (result.error) {
-      return res.status(400).json({ error: result.error });
+      res.status(400).json({ error: result.error });
     }
     if (!result) {
-      return res.status(404).json({ error: errorMessages.CAR_NOT_FOUND });
+      res.status(404).json({ error: errorMessages.CAR_NOT_FOUND });
     }
 
     const { updatedUser, updatedCar, invoice, payment } = result;
@@ -206,11 +206,11 @@ exports.viewCarCollection = async (req, res) => {
     const id = req.query.id;
     // const user = await userServices.checkToken(req);
     // if (!user) {
-    //   return res.status(401).json({ error: errorMessages.UNAUTHORIZED });
+    //   res.status(401).json({ error: errorMessages.UNAUTHORIZED });
     // }
     const collection = await userServices.getCarCollection(id);
     if (collection.error) {
-      return res.status(400).json({ error: collection.error });
+      res.status(400).json({ error: collection.error });
     }
     res.status(200).json(collection.carCollection);
   } catch (err) {
@@ -223,9 +223,49 @@ exports.createAppointment = async (req, res) => {
     const user = await userServices.checkToken(req);
     const appointment = await userServices.createAppointment(req.body, user);
     if (appointment.error) {
-      return res.status(400).json({ error: appointment.error });
+      res.status(400).json({ error: appointment.error });
     }
     res.status(201).json(appointment);
+  } catch (err) {
+    helpers.handleErrors(res, err);
+  }
+};
+
+exports.subscribe = async (req, res) => {
+  try {
+    const user = await userServices.checkToken(req);
+    if (!user) res.status(401).json({ error: errorMessages.UNAUTHORIZED });
+    const subscribe = await userServices.subscribe(user._id);
+    if (subscribe.error) {
+      res.status(400).json({ error: subscribe.error });
+    }
+    res.status(200).json(subscribe);
+  } catch (err) {
+    helpers.handleErrors(res, err);
+  }
+};
+
+exports.unsubscribe = async (req, res) => {
+  try {
+    const user = await userServices.checkToken(req);
+    if (!user) res.status(401).json({ error: errorMessages.UNAUTHORIZED });
+    const unsubscribe = await userServices.unsubscribe(user._id);
+    if (unsubscribe.error) {
+      res.status(400).json({ error: unsubscribe.error });
+    }
+    res.status(200).json(unsubscribe);
+  } catch (err) {
+    helpers.handleErrors(res, err);
+  }
+};
+
+exports.sendNotification = async (req, res) => {
+  try {
+    const notification = await userServices.sendNotification(req.body.car);
+    if (notification.error) {
+      return { error: notification.error };
+    }
+    res.status(200).json('Notification sent successfully');
   } catch (err) {
     helpers.handleErrors(res, err);
   }

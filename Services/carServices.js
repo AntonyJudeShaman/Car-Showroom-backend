@@ -4,14 +4,15 @@ const errorMessages = require('../config/errors');
 exports.createCar = async (carData) => {
   try {
     const car = new Car(carData);
+    if (!car) {
+      return { error: errorMessages.CAR_NOT_CREATED };
+    }
     await car.save();
+
     return car;
   } catch (error) {
-    if (error.code === 11000) {
-      return { status: 400, error: errorMessages.CAR_ALREADY_EXISTS };
-    }
     console.log(error.message);
-    return { status: 500, error: errorMessages.CAR_NOT_CREATED };
+    return { error: errorMessages.CAR_NOT_CREATED };
   }
 };
 

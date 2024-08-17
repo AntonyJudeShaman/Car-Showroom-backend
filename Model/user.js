@@ -53,6 +53,10 @@ const userSchema = new mongoose.Schema(
         ref: 'Appointment',
       },
     ],
+    subscribed: {
+      type: Boolean,
+      default: false,
+    },
   },
   { timestamps: true },
 );

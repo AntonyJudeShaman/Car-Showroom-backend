@@ -22,4 +22,10 @@ router.get('/view-car-collection', userController.viewCarCollection);
 
 router.get('/create-appointment', userController.createAppointment);
 
+router.get('/subscribe', userController.subscribe);
+
+router.get('/unsubscribe', userController.unsubscribe);
+
+router.post('/send-notification', userController.sendNotification);
+
 module.exports = router;

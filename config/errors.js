@@ -1,7 +1,7 @@
 module.exports = {
   USER_NOT_FOUND: 'User not found',
   CAR_NOT_FOUND: 'Car not found',
-  UNAUTHORIZED: 'Unauthorized',
+  UNAUTHORIZED: 'User not authorized',
   FORBIDDEN: 'Forbidden. Admin access required',
   ALREADY_EXISTS: 'Username/Email already exists',
   INVALID_ID: 'Invalid ID',
@@ -41,4 +41,8 @@ module.exports = {
   SLOT_NOT_AVAILABLE: 'Slot not available. Please choose another slot',
   INVALID_TIME_FORMAT: 'Invalid time format',
   INVALID_TIME_SLOT_DIFF: 'Invalid time slot difference (one hour)',
+  SUBSCRIPTION_FAILED: 'Cannot subscribe currently',
+  UNSUBSCRIPTION_FAILED: 'Cannot unsubscribe currently',
+  NO_SUBSCRIBED_USERS: 'No subscribed users found',
+  FAILED_TO_SEND_NOTIFICATION: 'Failed to send notification',
 };

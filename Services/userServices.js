@@ -5,6 +5,7 @@ const bcrypt = require('bcrypt');
 const errorMessages = require('../config/errors');
 const Payment = require('../Model/payment');
 const Invoice = require('../Model/invoice');
+const emailjs = require('@emailjs/nodejs');
 
 exports.registerUser = async (username, email, password, address, phone, role) => {
   try {
@@ -325,5 +326,64 @@ exports.createAppointment = async (appointmentData, user) => {
     return appointment.json();
   } catch (error) {
     return { error: errorMessages.APPOINTMENT_NOT_CREATED };
+  }
+};
+
+exports.subscribe = async (userId) => {
+  try {
+    const updatedUser = await User.findByIdAndUpdate(userId, { subscribed: true }, { new: true });
+    if (!updatedUser) return { error: errorMessages.SUBSCRIPTION_FAILED };
+
+    return updatedUser;
+  } catch (error) {
+    return { error: errorMessages.SUBSCRIPTION_FAILED };
+  }
+};
+
+exports.unsubscribe = async (userId) => {
+  try {
+    const updatedUser = await User.findByIdAndUpdate(userId, { subscribed: false }, { new: true });
+    if (!updatedUser) return { error: errorMessages.UNSUBSCRIPTION_FAILED };
+
+    return updatedUser;
+  } catch (error) {
+    return { error: errorMessages.UNSUBSCRIPTION_FAILED };
+  }
+};
+
+exports.sendNotification = async (car) => {
+  try {
+    emailjs.init({
+      publicKey: 'FLt3iRev4AyCe_ZiR',
+      privateKey: '_o8_U7ezbWLTz8bUWP1hy',
+    });
+    const subscribedUsers = await User.find({ subscribed: true });
+
+    if (!subscribedUsers) return { error: errorMessages.NO_SUBSCRIBED_USERS };
+
+    console.log('Sending notifications');
+
+    for (let user of subscribedUsers) {
+      const res = await emailjs.send('service_zx4f0n8', 'template_i8ow49a', {
+        to_email: user.email,
+        to_name: user.name ? user.name : user.username,
+        car_name: car.name,
+        car_model: car.brand,
+        car_price: car.basePrice,
+        features: car.features,
+        link: 'https://antonyjudeshaman.vercel.app',
+      });
+
+      if (!res) {
+        console.log('Error sending notification to', user.email);
+        return { error: errorMessages.FAILED_TO_SEND_NOTIFICATION };
+      }
+
+      console.log('Notification sent to', user.email);
+    }
+
+    return true;
+  } catch (error) {
+    return { error: errorMessages.SOME_ERROR };
   }
 };
