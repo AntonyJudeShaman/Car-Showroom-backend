@@ -127,7 +127,7 @@ const carUpdateValidations = [
     .isIn(['automatic', 'manual'])
     .withMessage('Invalid transmission type'),
   check('features').optional().isArray().withMessage('Features must be an array'),
-  check('features.*.name')
+  check('features.name')
     .optional()
     .isIn([
       'sunroof',

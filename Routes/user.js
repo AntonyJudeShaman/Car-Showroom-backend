@@ -20,4 +20,6 @@ router.post('/buy-car', userController.buyCar);
 
 router.get('/view-car-collection', userController.viewCarCollection);
 
+router.get('/create-appointment', userController.createAppointment);
+
 module.exports = router;

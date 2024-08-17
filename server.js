@@ -9,6 +9,7 @@ const userRoutes = require('./Routes/user');
 const carRoutes = require('./Routes/car');
 const invoiceRoutes = require('./Routes/invoice');
 const paymentRoutes = require('./Routes/payment');
+const appoinmentRoutes = require('./Routes/appointment');
 
 const app = express();
 
@@ -35,8 +36,10 @@ app.use('/api/user', userRoutes);
 app.use('/api/car', carRoutes);
 app.use('/api/invoice', invoiceRoutes);
 app.use('/api/payment', paymentRoutes);
+app.use('/api/appointment', appoinmentRoutes);
 
 const db = process.env.MONGODB_URI;
+
 mongoose
   .connect(db)
   .then(() => console.log('MongoDB connected'))

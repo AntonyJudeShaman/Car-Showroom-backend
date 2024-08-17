@@ -32,4 +32,11 @@ module.exports = {
   INVALID_PAYMENT: 'Invalid payment details',
   PAYMENT_NOT_FOUND: 'Payment not found',
   PAYMENT_PENDING: 'Payment is pending',
+  INVALID_APPOINTMENT: 'Invalid appointment details',
+  APPOINTMENT_NOT_CREATED: 'Appointment not created',
+  FAILED_TO_SAVE_APPOINTMENT: 'Failed to save appointment',
+  APPOINTMENT_NOT_FOUND: 'Appointment not found',
+  APPOINTMENT_NOT_CANCELED: 'Appointment not canceled',
+  NO_APPOINTMENTS_FOUND: 'No Appointments found',
+  SLOT_NOT_AVAILABLE: 'Slot not available',
 };

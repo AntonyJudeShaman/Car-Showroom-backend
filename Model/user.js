@@ -47,6 +47,12 @@ const userSchema = new mongoose.Schema(
         ref: 'Invoice',
       },
     ],
+    appointments: [
+      {
+        type: Object,
+        ref: 'Appointment',
+      },
+    ],
   },
   { timestamps: true },
 );

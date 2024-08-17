@@ -20,9 +20,9 @@ exports.registerUser = async (username, email, password, address, phone, role) =
     return user;
   } catch (error) {
     if (error.code === 11000) {
-      return { status: 400, error: errorMessages.ALREADY_EXISTS };
+      return { error: errorMessages.ALREADY_EXISTS };
     }
-    return { status: 400, error: errorMessages.USER_NOT_CREATED };
+    return { error: errorMessages.USER_NOT_CREATED };
   }
 };
 
@@ -31,11 +31,11 @@ exports.loginUser = async (credential, password) => {
     $or: [{ username: credential }, { email: credential }],
   });
   if (!user) {
-    return { status: 404, error: errorMessages.USER_NOT_FOUND };
+    return { error: errorMessages.USER_NOT_FOUND };
   }
   const check = await bcrypt.compare(password, user.password);
   if (!check) {
-    return { status: 400, error: errorMessages.INVALID_CREDENTIALS };
+    return { error: errorMessages.INVALID_CREDENTIALS };
   }
   const token = jwt.sign({ id: user._id }, process.env.JWT_SECRET);
   return { user, token };
@@ -83,7 +83,7 @@ exports.deleteUser = async (userId) => {
 };
 
 exports.searchUser = async (searchQuery) => {
-  if (!searchQuery) return { status: 400, error: errorMessages.NO_SEARCH_QUERY };
+  if (!searchQuery) return { error: errorMessages.NO_SEARCH_QUERY };
   return await User.find({
     $or: [
       { username: { $regex: searchQuery, $options: 'i' } },
@@ -101,8 +101,9 @@ exports.searchUser = async (searchQuery) => {
 };
 
 exports.buyCar = async (user, carId, selectedFeatures = [], paymentDetails) => {
-  if (!user._id || !carId) return { error: errorMessages.INVALID_ID };
+  if (!user._id || !carId || carId.length !== 24) return { error: errorMessages.INVALID_ID };
   try {
+    console.log('Getting car details');
     const carResponse = await fetch(`http://localhost:3000/api/car/view-car/${carId}`, {
       method: 'GET',
       headers: {
@@ -140,6 +141,7 @@ exports.buyCar = async (user, carId, selectedFeatures = [], paymentDetails) => {
       carData.car.tax * 100,
     );
     if (user.wallet < totalPrice) {
+      console.log('user has insufficient balance');
       return { error: errorMessages.INSUFFICIENT_BALANCE };
     }
 
@@ -305,4 +307,23 @@ exports.verifyPayment = async (paymentId) => {
   });
 
   return payment.json();
+};
+
+exports.createAppointment = async (appointmentData, user) => {
+  try {
+    appointmentData.user = user._id;
+    appointmentData.appointmentId = helpers.generateTransactionId('APPT');
+
+    const appointment = fetch('http://localhost:3000/api/appointment/create-appointment', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        Authorization: `Bearer ${process.env.JWT_TOKEN}`,
+      },
+      body: JSON.stringify(appointmentData, user),
+    });
+    return appointment.json();
+  } catch (error) {
+    return { error: errorMessages.APPOINTMENT_NOT_CREATED };
+  }
 };

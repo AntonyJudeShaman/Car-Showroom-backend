@@ -63,6 +63,7 @@ const carSchema = new mongoose.Schema(
         },
         price: {
           type: Number,
+          enum: featureList.map((f) => f.price),
           required: true,
         },
       },

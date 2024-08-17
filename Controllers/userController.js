@@ -217,3 +217,16 @@ exports.viewCarCollection = async (req, res) => {
     helpers.handleErrors(res, err);
   }
 };
+
+exports.createAppointment = async (req, res) => {
+  try {
+    const user = await userServices.checkToken(req);
+    const appointment = await userServices.createAppointment(req.body, user);
+    if (appointment.error) {
+      return res.status(400).json({ error: appointment.error });
+    }
+    res.status(201).json(appointment);
+  } catch (err) {
+    helpers.handleErrors(res, err);
+  }
+};
