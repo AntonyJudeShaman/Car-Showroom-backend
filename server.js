@@ -29,7 +29,12 @@ app.use((req, res, next) => {
   if (publicRoutes.includes(req.path)) {
     return next();
   }
-  return authMiddleware(req, res, next);
+  authMiddleware(req, res, (err) => {
+    if (err) {
+      return res.status(401).json({ error: 'Unauthorized' });
+    }
+    next();
+  });
 });
 
 app.use('/api/user', userRoutes);
