@@ -1,10 +1,10 @@
 const router = require('express').Router();
 const userController = require('../Controllers/userController');
 const {
-  userRegisterValidations,
   userUpdateValidations,
+  userRegisterValidations,
   userLoginValidations,
-} = require('../validators/userValidator');
+} = require('../Validators/userValidator');
 
 router.post('/register', userRegisterValidations, userController.register);
 router.post('/login', userLoginValidations, userController.login);
