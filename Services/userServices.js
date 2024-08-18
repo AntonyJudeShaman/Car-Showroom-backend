@@ -354,8 +354,8 @@ exports.unsubscribe = async (userId) => {
 exports.sendNotification = async (car) => {
   try {
     emailjs.init({
-      publicKey: 'FLt3iRev4AyCe_ZiR',
-      privateKey: '_o8_U7ezbWLTz8bUWP1hy',
+      publicKey: process.env.EMAILJS_PUBLIC_KEY,
+      privateKey: process.env.EMAILJS_PRIVATE_KEY,
     });
     const subscribedUsers = await User.find({ subscribed: true });
 
@@ -364,18 +364,22 @@ exports.sendNotification = async (car) => {
     console.log('Sending notifications');
 
     for (let user of subscribedUsers) {
-      const res = await emailjs.send('service_zx4f0n8', 'template_i8ow49a', {
-        to_email: user.email,
-        to_name: user.name ? user.name : user.username,
-        car_name: car.name,
-        car_model: car.brand,
-        car_price: car.basePrice,
-        features: car.features,
-        link: 'https://antonyjudeshaman.vercel.app',
-      });
+      const res = await emailjs.send(
+        process.env.EMAILJS_SERVICE_ID,
+        process.env.EMAILJS_TEMPLATE_ID,
+        {
+          to_email: user.email,
+          to_name: user.name ? user.name : user.username,
+          car_name: car.name,
+          car_model: car.brand,
+          car_price: car.basePrice,
+          features: car.features,
+          link: 'https://antonyjudeshaman.vercel.app',
+        },
+      );
 
       if (!res) {
-        console.log('Error sending notification to', user.email);
+        console.log('notification not sent', user.email);
         return { error: errorMessages.FAILED_TO_SEND_NOTIFICATION };
       }
 
