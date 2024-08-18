@@ -4,6 +4,7 @@
   "description": "",
   "main": "server.js",
   "scripts": {
+    "build": "echo 'No build required'",
     "dev": "node --env-file=.env.local server.js",
     "test": "jest ",
     "lint": "eslint .",
