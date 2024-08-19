@@ -13,6 +13,7 @@ const appoinmentRoutes = require('./Routes/appointment');
 const cron = require('node-cron');
 const logger = require('./config/winston');
 const sendMail = require('./lib/sendWeeklyMail');
+const BookedCars = require('./Model/bookedCars');
 
 const app = express();
 
