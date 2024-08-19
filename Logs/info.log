@@ -54,3 +54,63 @@
 {"level":"info","message":"\n    Sending weekly report:\n    Total cars sold: 1\n    Total amount: 1815600\n  ","timestamp":"2024-08-19T08:00:26.820Z"}
 {"level":"info","message":"Server Online","timestamp":"2024-08-19T08:01:13.598Z"}
 {"level":"info","message":"Server running","timestamp":"2024-08-19T08:01:13.598Z"}
+{"level":"info","message":"Server running","timestamp":"2024-08-19T08:01:13.598Z"}
+{"level":"info","message":"Server running","timestamp":"2024-08-19T08:01:13.598Z"}
+{"level":"info","message":"Server running","timestamp":"2024-08-19T08:01:13.598Z"}
+{"level":"info","message":"Server running","timestamp":"2024-08-19T08:01:13.598Z"}
+{"level":"info","message":"Server running","timestamp":"2024-08-19T08:01:13.598Z"}
+{"level":"info","message":"Server running","timestamp":"2024-08-19T08:01:13.598Z"}
+{"level":"info","message":"Server running","timestamp":"2024-08-19T08:01:13.598Z"}
+{"level":"info","message":"Server running","timestamp":"2024-08-19T08:01:13.598Z"}
+{"level":"info","message":"Server running","timestamp":"2024-08-19T08:01:13.598Z"}
+{"level":"info","message":"Server running","timestamp":"2024-08-19T08:01:13.598Z"}
+{"level":"info","message":"Server Online","timestamp":"2024-08-19T09:18:06.586Z"}
+{"level":"info","message":"Server Online","timestamp":"2024-08-19T09:18:22.121Z"}
+{"level":"info","message":"Server running","timestamp":"2024-08-19T09:18:22.121Z"}
+{"level":"info","message":"Server running","timestamp":"2024-08-19T09:18:22.121Z"}
+{"level":"info","message":"Server Online","timestamp":"2024-08-19 14:51:04"}
+{"level":"info","message":"Server running","timestamp":"2024-08-19 14:51:10"}
+{"level":"info","message":"Server running","timestamp":"2024-08-19 14:51:20"}
+{"level":"info","message":"Server running","timestamp":"2024-08-19 14:51:30"}
+{"level":"info","message":"Server Online","timestamp":"19-08-2024 14:51:48"}
+{"level":"info","message":"Server running","timestamp":"19-08-2024 14:52:00"}
+{"level":"info","message":"Server running","timestamp":"19-08-2024 14:53:00"}
+{"level":"info","message":"Server running","timestamp":"19-08-2024 15:00:00"}
+{"level":"info","message":"Server running","timestamp":"19-08-2024 15:07:00"}
+{"level":"info","message":"Server running","timestamp":"19-08-2024 15:07:10"}
+{"level":"info","message":"Server running","timestamp":"19-08-2024 15:07:20"}
+{"level":"info","message":"Server running","timestamp":"19-08-2024 15:07:30"}
+{"level":"info","message":"\n    Sending weekly report:\n    Total cars sold: 1\n    Total amount: 1815600\n  ","timestamp":"19-08-2024 15:17:00"}
+{"level":"info","message":"[authMiddleware] User authenticated:  Evil12-evil12@gmail.com /api/user/buy-car ::1","timestamp":"19-08-2024 15:18:18"}
+{"level":"info","message":"[authMiddleware] User authenticated:  Evil12-evil12@gmail.com /api/car/view-car/66bed88cf8602ec51afee225 ::1","timestamp":"19-08-2024 15:18:18"}
+{"level":"info","message":"[authMiddleware] User authenticated:  Evil12-evil12@gmail.com /api/payment/create-payment ::1","timestamp":"19-08-2024 15:18:18"}
+{"level":"info","message":"[authMiddleware] User authenticated:  Evil12-evil12@gmail.com /api/payment/verify-payment ::1","timestamp":"19-08-2024 15:18:18"}
+{"level":"info","message":"[authMiddleware] User authenticated:  Evil12-evil12@gmail.com /api/car/update-car/66bed88cf8602ec51afee225 ::1","timestamp":"19-08-2024 15:18:18"}
+{"level":"info","message":"[authMiddleware] User authenticated:  Evil12-evil12@gmail.com /api/user/buy-car ::1","timestamp":"19-08-2024 15:19:27"}
+{"level":"info","message":"[authMiddleware] User authenticated:  Evil12-evil12@gmail.com /api/car/view-car/66bed89af8602ec51afee22c ::1","timestamp":"19-08-2024 15:19:27"}
+{"level":"info","message":"[authMiddleware] User authenticated:  Evil12-evil12@gmail.com /api/payment/create-payment ::1","timestamp":"19-08-2024 15:19:27"}
+{"level":"info","message":"[authMiddleware] User authenticated:  Evil12-evil12@gmail.com /api/payment/verify-payment ::1","timestamp":"19-08-2024 15:19:28"}
+{"level":"info","message":"[authMiddleware] User authenticated:  Evil12-evil12@gmail.com /api/car/update-car/66bed89af8602ec51afee22c ::1","timestamp":"19-08-2024 15:19:28"}
+{"level":"info","message":"Sending weekly report.","timestamp":"19-08-2024 15:27:40"}
+{"level":"info","message":"Weekly Report Email sent successfully","timestamp":"19-08-2024 15:27:43"}
+{"level":"info","message":"Sending weekly report.","timestamp":"19-08-2024 15:31:21"}
+{"level":"info","message":"Weekly Report Email sent successfully","timestamp":"19-08-2024 15:31:23"}
+{"level":"info","message":"Sending weekly report.","timestamp":"19-08-2024 15:31:30"}
+{"level":"info","message":"Weekly Report Email sent successfully","timestamp":"19-08-2024 15:31:33"}
+{"level":"info","message":"Sending weekly report.","timestamp":"19-08-2024 15:31:40"}
+{"level":"info","message":"Weekly Report Email sent successfully","timestamp":"19-08-2024 15:31:44"}
+{"level":"info","message":"Sending weekly report.","timestamp":"19-08-2024 15:32:00"}
+{"level":"info","message":"Weekly Report Email sent successfully","timestamp":"19-08-2024 15:32:02"}
+{"level":"info","message":"Sending weekly report.","timestamp":"19-08-2024 16:08:31"}
+{"level":"info","message":"Weekly Report Email sent successfully","timestamp":"19-08-2024 16:08:33"}
+{"level":"info","message":"Sending weekly report.","timestamp":"19-08-2024 16:08:41"}
+{"level":"info","message":"Sending weekly report.","timestamp":"19-08-2024 16:19:10"}
+{"level":"info","message":"Weekly Report Email sent successfully","timestamp":"19-08-2024 16:19:13"}
+{"level":"info","message":"Sending weekly report.","timestamp":"19-08-2024 16:28:01"}
+{"level":"info","message":"Weekly Report Email sent successfully","timestamp":"19-08-2024 16:28:04"}
+{"level":"info","message":"Sending weekly report.","timestamp":"19-08-2024 16:29:54"}
+{"level":"info","message":"Weekly Report Email sent successfully","timestamp":"19-08-2024 16:29:58"}
+{"level":"info","message":"Sending weekly report.","timestamp":"19-08-2024 16:31:22"}
+{"level":"info","message":"Weekly Report Email sent successfully","timestamp":"19-08-2024 16:31:25"}
+{"level":"info","message":"Sending weekly report.","timestamp":"19-08-2024 16:31:58"}
+{"level":"info","message":"Weekly Report Email sent successfully","timestamp":"19-08-2024 16:32:02"}

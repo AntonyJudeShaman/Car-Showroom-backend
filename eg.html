@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  </head>
+  <body
+    style="
+      font-family: Arial, sans-serif;
+      background-color: #fff;
+      color: #ffffff;
+      margin: 0;
+      padding: 0;
+    "
+  >
+    <div
+      style="
+        max-width: 600px;
+        margin: 20px auto;
+        background-color: #1a1a1a;
+        padding: 20px;
+        border-radius: 12px;
+        box-shadow: 0 0 10px rgba(255, 255, 255, 0.1);
+      "
+    >
+      <div
+        style="
+          text-align: center;
+          padding: 10px 0;
+          background-color: #fff;
+          color: #000;
+          border-radius: 8px 8px;
+        "
+      >
+        <h2 style="margin: 0">AJS Car Showroom - Weekly Report</h2>
+      </div>
+      <div style="margin: 20px 0">
+        <h2 style="color: #fff">Total Cars Sold: ${soldCars.length}</h2>
+        <h3 style="color: #fff">Total Revenue: ${totalAmount}</h3>
+        <div style="border-radius: 8px; overflow: hidden; border: 1px solid white">
+          <table
+            style="width: 100%; text-align: left; border-collapse: separate; border-spacing: 0"
+          >
+            <thead>
+              <tr>
+                <th
+                  style="
+                    padding: 10px;
+                    border: 1px solid #fff;
+                    text-align: center;
+                    background-color: #fff;
+                    color: #000;
+                    font-size: large;
+                  "
+                >
+                  Car Name
+                </th>
+                <th
+                  style="
+                    font-size: large;
+                    padding: 10px;
+                    border: 1px solid #fff;
+                    text-align: center;
+                    background-color: #fff;
+                    color: #000;
+                  "
+                >
+                  Price
+                </th>
+              </tr>
+            </thead>
+            <tbody>
+              ${carRows}
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
