@@ -30,3 +30,25 @@
 {"level":"info","message":"Server Online","timestamp":"2024-08-19T07:28:49.535Z"}
 {"level":"info","message":"[authMiddleware] User authenticated:  Antony-antonyjudeshaman.24cs@licet.ac.in /api/car/create-car ::1","timestamp":"2024-08-19T07:28:49.535Z"}
 {"level":"error","message":"[createCar controller] Car already exists: Porsche 911 Carrera S","timestamp":"2024-08-19T07:28:49.535Z"}
+{"level":"info","message":"Server Online","timestamp":"2024-08-19T07:52:23.672Z"}
+{"level":"info","message":"[authMiddleware] User authenticated:  Evil12-evil12@gmail.com /api/user/buy-car ::1","timestamp":"2024-08-19T07:52:23.672Z"}
+{"level":"info","message":"[authMiddleware] User authenticated:  Evil12-evil12@gmail.com /api/car/view-car/66bed945f8602ec51afee27b ::1","timestamp":"2024-08-19T07:52:23.672Z"}
+{"level":"info","message":"[authMiddleware] User authenticated:  Evil12-evil12@gmail.com /api/payment/create-payment ::1","timestamp":"2024-08-19T07:52:23.672Z"}
+{"level":"info","message":"[authMiddleware] User authenticated:  Evil12-evil12@gmail.com /api/payment/verify-payment ::1","timestamp":"2024-08-19T07:52:23.672Z"}
+{"level":"info","message":"[authMiddleware] User authenticated:  Evil12-evil12@gmail.com /api/car/update-car/66bed945f8602ec51afee27b ::1","timestamp":"2024-08-19T07:52:23.672Z"}
+{"level":"info","message":"Server Online","timestamp":"2024-08-19T07:54:13.286Z"}
+{"level":"info","message":"[authMiddleware] User authenticated:  Evil12-evil12@gmail.com /api/user/buy-car ::1","timestamp":"2024-08-19T07:54:13.286Z"}
+{"level":"info","message":"[authMiddleware] User authenticated:  Evil12-evil12@gmail.com /api/car/view-car/66bed945f8602ec51afee27b ::1","timestamp":"2024-08-19T07:54:13.286Z"}
+{"level":"info","message":"[authMiddleware] User authenticated:  Evil12-evil12@gmail.com /api/payment/create-payment ::1","timestamp":"2024-08-19T07:54:13.286Z"}
+{"level":"info","message":"[authMiddleware] User authenticated:  Evil12-evil12@gmail.com /api/payment/verify-payment ::1","timestamp":"2024-08-19T07:54:13.286Z"}
+{"level":"info","message":"[authMiddleware] User authenticated:  Evil12-evil12@gmail.com /api/car/update-car/66bed945f8602ec51afee27b ::1","timestamp":"2024-08-19T07:54:13.286Z"}
+{"level":"info","message":"Server Online","timestamp":"2024-08-19T07:59:49.535Z"}
+{"level":"info","message":"Server running","timestamp":"2024-08-19T07:59:49.535Z"}
+{"level":"info","message":"Server running","timestamp":"2024-08-19T07:59:49.535Z"}
+{"level":"info","message":"Server running","timestamp":"2024-08-19T07:59:49.535Z"}
+{"level":"info","message":"Server running","timestamp":"2024-08-19T07:59:49.535Z"}
+{"level":"info","message":"Server Online","timestamp":"2024-08-19T08:00:26.820Z"}
+{"level":"info","message":"Server running","timestamp":"2024-08-19T08:00:26.820Z"}
+{"level":"info","message":"\n    Sending weekly report:\n    Total cars sold: 1\n    Total amount: 1815600\n  ","timestamp":"2024-08-19T08:00:26.820Z"}
+{"level":"info","message":"Server running","timestamp":"2024-08-19T08:00:26.820Z"}
+{"level":"info","message":"\n    Sending weekly report:\n    Total cars sold: 1\n    Total amount: 1815600\n  ","timestamp":"2024-08-19T08:00:26.820Z"}

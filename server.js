@@ -10,8 +10,11 @@ const carRoutes = require('./Routes/car');
 const invoiceRoutes = require('./Routes/invoice');
 const paymentRoutes = require('./Routes/payment');
 const appoinmentRoutes = require('./Routes/appointment');
+const cron = require('node-cron');
+const User = require('./Model/user');
 
 const logger = require('./config/winston');
+const BookedCars = require('./Model/bookedCars');
 
 const app = express();
 
@@ -59,6 +62,26 @@ app.get('/', (req, res) => {
 app.listen(3000, () => {
   console.log('Server is running');
   logger.info('Server Online');
+});
+// 1 hour
+cron.schedule('*/3600 * * * * *', async () => {
+  logger.info('Server running');
+});
+
+// saturday 12am
+cron.schedule('0 0 * * 6', async () => {
+  let amount = 0;
+  const soldCars = await BookedCars.find();
+
+  soldCars.forEach((car) => {
+    amount += car.carPrice;
+  });
+
+  logger.info(`
+    Sending weekly report:
+    Total cars sold: ${soldCars.length}
+    Total amount: ${amount}
+  `);
 });
 
 module.exports = app;

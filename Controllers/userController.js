@@ -4,6 +4,7 @@ const helpers = require('../lib/utils');
 const userServices = require('../Services/userServices');
 const errorMessages = require('../config/errors');
 const logger = require('../config/winston');
+const BookedCars = require('../Model/bookedCars');
 
 exports.register = async (req, res) => {
   const errors = validationResult(req);
@@ -229,10 +230,25 @@ exports.buyCar = async (req, res) => {
 
     const { updatedUser, updatedCar, invoice, payment } = result;
 
+    const updateBookedCars = new BookedCars({
+      carId: updatedCar.car._id,
+      carName: updatedCar.car.name,
+      carPrice: invoice.totalAmount,
+      userId: user._id,
+    });
+
+    if (!updateBookedCars) {
+      logger.error('[buyCar controller] Car booking record not created');
+    }
+
+    updateBookedCars.save();
+
+    console.log('Car booking record created');
+
     return res.status(200).json({
       user: updatedUser,
       car: updatedCar.car,
-      totalPrice: updatedCar.car.totalPrice,
+      totalPrice: invoice.totalAmount,
       invoice,
       payment,
     });
