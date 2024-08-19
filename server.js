@@ -11,6 +11,8 @@ const invoiceRoutes = require('./Routes/invoice');
 const paymentRoutes = require('./Routes/payment');
 const appoinmentRoutes = require('./Routes/appointment');
 
+const logger = require('./config/winston');
+
 const app = express();
 
 app.use(cors());
@@ -56,6 +58,7 @@ app.get('/', (req, res) => {
 
 app.listen(3000, () => {
   console.log('Server is running');
+  logger.info('Server Online');
 });
 
 module.exports = app;

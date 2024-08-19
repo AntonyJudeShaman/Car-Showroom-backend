@@ -1,17 +1,20 @@
 const Car = require('../Model/car');
 const errorMessages = require('../config/errors');
+const logger = require('../config/winston');
+const helpers = require('../lib/utils');
 
 exports.createCar = async (carData) => {
   try {
     const car = new Car(carData);
     if (!car) {
-      return { error: errorMessages.CAR_NOT_CREATED };
+      logger.error(`[createCar service] Car not created: ${carData}`);
+      return null;
     }
     await car.save();
 
     return car;
   } catch (error) {
-    console.log(error.message);
+    helpers.handleErrors(res, error);
     return { error: errorMessages.CAR_NOT_CREATED };
   }
 };

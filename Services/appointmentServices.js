@@ -29,8 +29,6 @@ exports.createAppointment = async (appointmentData) => {
     }
     console.log(savedAppointment);
 
-    // save appointment to user
-
     const user = await User.findByIdAndUpdate(appointmentData.user, {
       $push: { appointments: savedAppointment },
     });
@@ -46,7 +44,7 @@ exports.createAppointment = async (appointmentData) => {
 
     return { appointment: savedAppointment };
   } catch (error) {
-    console.error('Error creating appointment:', error);
+    helpers.handleErrors(res, error);
     return { error: errorMessages.APPOINTMENT_NOT_CREATED };
   }
 };
@@ -54,8 +52,13 @@ exports.createAppointment = async (appointmentData) => {
 exports.getAppointment = async (id) => {
   try {
     const appointments = await Appointment.findById(id);
+    if (!appointments) {
+      logger.error(`[getAppointment service] Appointment not found: ${id}`);
+      return { error: errorMessages.APPOINTMENT_NOT_FOUND };
+    }
     return appointments;
   } catch (error) {
+    helpers.handleErrors(res, error);
     return { error: errorMessages.APPOINTMENT_NOT_FOUND };
   }
 };
@@ -68,10 +71,12 @@ exports.cancelAppointment = async (id) => {
       { new: true },
     );
     if (!appointment) {
+      logger.error(`[cancelAppointment service] Appointment not found: ${id}`);
       return { error: errorMessages.APPOINTMENT_NOT_FOUND };
     }
     return appointment;
   } catch (error) {
+    helpers.handleErrors(res, error);
     return { error: errorMessages.APPOINTMENT_NOT_CANCELED };
   }
 };
@@ -79,8 +84,13 @@ exports.cancelAppointment = async (id) => {
 exports.viewAllAppointments = async () => {
   try {
     const appointments = await Appointment.find();
+    if (!appointments) {
+      logger.error('[viewAllAppointments service] No appointments found');
+      return { error: errorMessages.NO_APPOINTMENTS_FOUND };
+    }
     return appointments;
   } catch (error) {
+    helpers.handleErrors(res, error);
     return { error: errorMessages.NO_APPOINTMENTS_FOUND };
   }
 };

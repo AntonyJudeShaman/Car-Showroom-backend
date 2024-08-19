@@ -1,14 +1,16 @@
 const appointmentServices = require('../Services/appointmentServices');
 
 const helpers = require('../lib/utils');
+const logger = require('../config/winston');
 
 exports.createAppointment = async (req, res) => {
   try {
     const result = await appointmentServices.createAppointment(req.body);
     if (result.error) {
+      logger.error(`[createAppointment controller] Appointment not created: ${req.body}`);
       return res.status(400).json({ error: result.error });
     }
-    res.status(201).json({ appointment: result.appointment });
+    return res.status(201).json({ appointment: result.appointment });
   } catch (err) {
     helpers.handleErrors(res, err);
   }
@@ -20,7 +22,7 @@ exports.viewAppointment = async (req, res) => {
     if (appointment.error) {
       return res.status(400).json({ error: appointment.error });
     }
-    res.status(200).json(appointment);
+    return res.status(200).json(appointment);
   } catch (err) {
     helpers.handleErrors(res, err);
   }
@@ -32,7 +34,7 @@ exports.cancelAppointment = async (req, res) => {
     if (appointment.error) {
       return res.status(400).json({ error: appointment.error });
     }
-    res.status(200).json(appointment);
+    return res.status(200).json(appointment);
   } catch (err) {
     helpers.handleErrors(res, err);
   }
@@ -41,10 +43,10 @@ exports.cancelAppointment = async (req, res) => {
 exports.viewAllAppointments = async (req, res) => {
   try {
     const appointments = await appointmentServices.viewAllAppointments();
-    if (appointments.error) {
+    if (!appointments) {
       return res.status(400).json({ error: appointments.error });
     }
-    res.status(200).json(appointments);
+    return res.status(200).json(appointments);
   } catch (err) {
     helpers.handleErrors(res, err);
   }

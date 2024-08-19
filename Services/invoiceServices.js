@@ -1,5 +1,6 @@
 const Invoice = require('../Model/invoice');
 const errorMessages = require('../config/errors');
+const helpers = require('../lib/utils');
 
 exports.viewInvoice = async (id) => {
   try {
@@ -9,7 +10,8 @@ exports.viewInvoice = async (id) => {
     }
 
     return invoice;
-  } catch {
+  } catch (error) {
+    helpers.handleErrors(res, error);
     return { error: errorMessages.SOME_ERROR };
   }
 };
@@ -21,7 +23,8 @@ exports.viewAllInvoices = async () => {
       return { error: errorMessages.NO_INVOICES };
     }
     return invoices;
-  } catch {
+  } catch (error) {
+    helpers.handleErrors(res, error);
     return { error: errorMessages.SOME_ERROR };
   }
 };
@@ -33,7 +36,8 @@ exports.viewUserInvoices = async (id) => {
       return { error: errorMessages.NO_USER_INVOICES };
     }
     return invoices;
-  } catch {
+  } catch (error) {
+    helpers.handleErrors(res, error);
     return { error: errorMessages.SOME_ERROR };
   }
 };

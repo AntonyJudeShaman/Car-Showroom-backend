@@ -2,24 +2,29 @@ const { validationResult } = require('express-validator');
 const helpers = require('../lib/utils');
 const carServices = require('../Services/carServices');
 const errorMessages = require('../config/errors');
+const logger = require('../config/winston');
 
 exports.createCar = async (req, res) => {
   const errors = validationResult(req);
   if (!errors.isEmpty()) {
-    res.status(400).json({ error: errorMessages.DATA_NOT_VALID, details: errors.array() });
+    logger.error(`[createCar controller] Data not valid: ${errors.array()}`);
+    return res.status(400).json({ error: errorMessages.DATA_NOT_VALID, details: errors.array() });
   }
   try {
     const isAdmin = await helpers.checkAdmin(req);
     if (!isAdmin) {
-      res.status(403).json({ error: errorMessages.FORBIDDEN });
+      logger.error('[createCar controller] User is not an admin');
+      return res.status(403).json({ error: errorMessages.FORBIDDEN });
     }
     const carExists = await carServices.getCarByName(req.body.name);
     if (carExists) {
-      res.status(400).json({ error: errorMessages.CAR_ALREADY_EXISTS });
+      logger.error(`[createCar controller] Car already exists: ${req.body.name}`);
+      return res.status(400).json({ error: errorMessages.CAR_ALREADY_EXISTS });
     }
     const car = await carServices.createCar(req.body);
     if (!car) {
-      res.status(400).json({ error: errorMessages.CAR_NOT_CREATED });
+      logger.error(`[createCar controller] Car not created: ${req.body}`);
+      return res.status(400).json({ error: errorMessages.CAR_NOT_CREATED });
     }
     const notification = await fetch('http://localhost:3000/api/user/send-notification', {
       method: 'POST',
@@ -32,14 +37,16 @@ exports.createCar = async (req, res) => {
 
     if (!notification.ok) {
       console.log(notification);
+      logger.error('[createCar controller] Notification not sent');
       console.log('Notification not sent');
     }
 
     if (notification.error) {
-      res.status(400).json({ error: errorMessages.error });
+      logger.error('[createCar controller] Notification not sent');
+      return res.status(400).json({ error: errorMessages.error });
     }
 
-    res.status(201).json({ car });
+    return res.status(201).json({ car });
   } catch (err) {
     helpers.handleErrors(res, err);
   }
@@ -48,7 +55,11 @@ exports.createCar = async (req, res) => {
 exports.getAllCars = async (req, res) => {
   try {
     const cars = await carServices.getAllCars();
-    res.status(200).json({ cars });
+    if (!cars) {
+      logger.error('[getAllCars controller] No cars found');
+      return res.status(404).json({ error: errorMessages.CARS_NOT_FOUND });
+    }
+    return res.status(200).json({ cars });
   } catch (err) {
     helpers.handleErrors(res, err);
   }
@@ -57,13 +68,15 @@ exports.getAllCars = async (req, res) => {
 exports.getCar = async (req, res) => {
   try {
     if (!req.params.id || req.params.id.length !== 24) {
-      res.status(400).json({ error: errorMessages.INVALID_ID });
+      logger.error(`[getCar controller] Invalid ID: ${req.params.id}`);
+      return res.status(400).json({ error: errorMessages.INVALID_ID });
     }
     const car = await carServices.getCarById(req.params.id);
     if (!car) {
-      res.status(404).json({ error: errorMessages.CAR_NOT_FOUND });
+      logger.error(`[getCar controller] Car not found: ${req.params.id}`);
+      return res.status(404).json({ error: errorMessages.CAR_NOT_FOUND });
     }
-    res.status(200).json({ car });
+    return res.status(200).json({ car });
   } catch (err) {
     helpers.handleErrors(res, err);
   }
@@ -72,29 +85,31 @@ exports.getCar = async (req, res) => {
 exports.updateCar = async (req, res) => {
   const errors = validationResult(req);
   if (!errors.isEmpty()) {
-    res.status(400).json({ error: errorMessages.DATA_NOT_VALID, details: errors.array() });
+    logger.error(`[updateCar controller] Data not valid: ${errors.array()}`);
+    return res.status(400).json({ error: errorMessages.DATA_NOT_VALID, details: errors.array() });
   }
   if (!req.params.id || req.params.id.length !== 24) {
-    res.status(400).json({ error: errorMessages.INVALID_ID });
+    logger.error(`[updateCar controller] Invalid ID: ${req.params.id}`);
+    return res.status(400).json({ error: errorMessages.INVALID_ID });
   }
   try {
     const isAdmin = await helpers.checkAdmin(req);
     if (!isAdmin) {
-      res.status(403).json({ error: errorMessages.FORBIDDEN });
+      logger.error('[updateCar controller] User is not an admin');
+      return res.status(403).json({ error: errorMessages.FORBIDDEN });
     }
     const car = await carServices.getCarById(req.params.id);
     if (!car) {
-      res.status(404).json({ error: errorMessages.CAR_NOT_FOUND });
+      logger.error(`[updateCar controller] Car not found: ${req.params.id}`);
+      return res.status(404).json({ error: errorMessages.CAR_NOT_FOUND });
     }
     const updatedCar = await carServices.updateCar(req.params.id, req.body);
     if (!updatedCar) {
-      res.status(400).json({ error: errorMessages.CAR_NOT_UPDATED });
+      logger.error(`[updateCar controller] Car not updated: ${req.params.id}`);
+      return res.status(400).json({ error: errorMessages.CAR_NOT_UPDATED });
     }
-    res.status(200).json({ car: updatedCar });
+    return res.status(200).json({ car: updatedCar });
   } catch (err) {
-    if (err.name === 'ValidationError') {
-      res.status(400).json({ error: errorMessages.DATA_NOT_VALID });
-    }
     helpers.handleErrors(res, err);
   }
 };

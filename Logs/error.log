@@ -1,0 +1,16 @@
+{"level":"error","message":"[registerUser] Evil123  not created","timestamp":"2024-08-19T06:10:56.474Z"}
+{"level":"error","message":"[registerUser] username:Evil1235 not created","timestamp":"2024-08-19T06:13:20.586Z"}
+{"level":"error","message":"[register controller] User already exists: ${username} ${email}","timestamp":"2024-08-19T06:17:21.060Z"}
+{"level":"error","message":"[register controller] User already exists: Evil12 evil12@gmail.com","timestamp":"2024-08-19T06:17:38.541Z"}
+{"level":"error","message":"[register controller] User already exists: Evil12 evil12@gmail.com","timestamp":"2024-08-19T07:15:40.579Z"}
+{"0":{"location":"body","msg":"Password must be between 6 and 25 characters","path":"password","type":"field","value":"anton"},"level":"error","message":"[login controller] Data not valid","timestamp":"2024-08-19T07:15:40.579Z"}
+{"level":"error","message":"[login controller] Login error","timestamp":"2024-08-19T07:15:40.579Z"}
+{"level":"error","message":"[loginUser service]  credential:Antony invalid password","timestamp":"2024-08-19T07:19:48.000Z"}
+{"level":"error","message":"[login controller] Login error Invalid Credentials","timestamp":"2024-08-19T07:19:48.000Z"}
+{"level":"error","message":"[createCar controller] Car already exists: Porsche 911 Carrera S","timestamp":"2024-08-19T07:19:48.000Z"}
+{"level":"error","timestamp":"2024-08-19T07:19:48.000Z"}
+{"level":"error","message":"[authMiddleware] Unauthorized: /api/car/create-car","timestamp":"2024-08-19T07:25:31.290Z"}
+{"level":"error","message":"[authMiddleware] Unauthorized: /api/car/create-car POST ::1","timestamp":"2024-08-19T07:26:36.125Z"}
+{"level":"error","message":"[authMiddleware] Unauthorized: /api/car/create-car POST false","timestamp":"2024-08-19T07:26:57.128Z"}
+{"level":"error","message":"[createCar controller] Car already exists: Porsche 911 Carrera S","timestamp":"2024-08-19T07:27:51.974Z"}
+{"level":"error","message":"[createCar controller] Car already exists: Porsche 911 Carrera S","timestamp":"2024-08-19T07:28:49.535Z"}

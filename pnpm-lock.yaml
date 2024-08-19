@@ -5,9 +5,6 @@ settings:
   excludeLinksFromLockfile: false
 
 dependencies:
-  '@emailjs/browser':
-    specifier: ^4.4.1
-    version: 4.4.1
   '@emailjs/nodejs':
     specifier: ^4.0.4
     version: 4.0.4
@@ -26,9 +23,6 @@ dependencies:
   express-validator:
     specifier: ^7.2.0
     version: 7.2.0
-  is-empty:
-    specifier: ^1.2.0
-    version: 1.2.0
   jsonwebtoken:
     specifier: ^9.0.2
     version: 9.0.2
@@ -1358,11 +1352,6 @@ packages:
       colorspace: 1.1.4
       enabled: 2.0.0
       kuler: 2.0.0
-    dev: false
-
-  /@emailjs/browser@4.4.1:
-    resolution: {integrity: sha512-DGSlP9sPvyFba3to2A50kDtZ+pXVp/0rhmqs2LmbMS3I5J8FSOgLwzY2Xb4qfKlOVHh29EAutLYwe5yuEZmEFg==}
-    engines: {node: '>=14.0.0'}
     dev: false
 
   /@emailjs/nodejs@4.0.4:
@@ -3084,10 +3073,6 @@ packages:
     dependencies:
       hasown: 2.0.2
     dev: true
-
-  /is-empty@1.2.0:
-    resolution: {integrity: sha512-F2FnH/otLNJv0J6wc73A5Xo7oHLNnqplYqZhUu01tD54DIPvxIRSTSLkrUB/M0nHO4vo1O9PDfN4KoTxCzLh/w==}
-    dev: false
 
   /is-extglob@2.1.1:
     resolution: {integrity: sha512-SbKbANkN603Vi4jEZv49LeVJMn4yGwsbzZworEoyEiutsN3nJYdbO36zfhGJ6QEDpOZIFkDtnq5JRxmvl3jsoQ==}

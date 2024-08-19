@@ -6,6 +6,7 @@ const errorMessages = require('../config/errors');
 const Payment = require('../Model/payment');
 const Invoice = require('../Model/invoice');
 const emailjs = require('@emailjs/nodejs');
+const logger = require('../config/winston');
 
 exports.registerUser = async (username, email, password, address, phone, role) => {
   try {
@@ -17,37 +18,60 @@ exports.registerUser = async (username, email, password, address, phone, role) =
       phone,
       role,
     });
+    if (!user) {
+      logger.error(`[registerUser service] username:${username} not created`);
+      return { error: errorMessages.USER_NOT_CREATED };
+    }
     await user.save();
     return user;
   } catch (error) {
-    if (error.code === 11000) {
-      return { error: errorMessages.ALREADY_EXISTS };
-    }
+    logger.error(`[registerUser service] username:${username} not created`);
+    helpers.handleErrors(res, error);
     return { error: errorMessages.USER_NOT_CREATED };
   }
 };
 
 exports.loginUser = async (credential, password) => {
-  const user = await User.findOne({
-    $or: [{ username: credential }, { email: credential }],
-  });
-  if (!user) {
-    return { error: errorMessages.USER_NOT_FOUND };
+  try {
+    const user = await User.findOne({
+      $or: [{ username: credential }, { email: credential }],
+    });
+    if (!user) {
+      logger.error(`[loginUser service]  credential:${credential} not found`);
+      return { error: errorMessages.USER_NOT_FOUND };
+    }
+    const check = await bcrypt.compare(password, user.password);
+    if (!check) {
+      logger.error(`[loginUser service]  credential:${credential} invalid password`);
+      return { error: errorMessages.INVALID_CREDENTIALS };
+    }
+    const token = jwt.sign({ id: user._id }, process.env.JWT_SECRET);
+    return { user, token };
+  } catch (error) {
+    logger.error(`[loginUser service]  credential:${username} Cannot login`);
+    helpers.handleErrors(res, error);
+    return { error: errorMessages.SOME_ERROR };
   }
-  const check = await bcrypt.compare(password, user.password);
-  if (!check) {
-    return { error: errorMessages.INVALID_CREDENTIALS };
-  }
-  const token = jwt.sign({ id: user._id }, process.env.JWT_SECRET);
-  return { user, token };
 };
 
 exports.updateUser = async (userId, updateData) => {
-  const updatedUser = await User.findByIdAndUpdate(userId, updateData, {
-    new: true,
-    runValidators: true,
-  });
-  return updatedUser;
+  try {
+    if (!userId || userId.length !== 24) return { error: errorMessages.INVALID_ID };
+
+    const updatedUser = await User.findByIdAndUpdate(userId, updateData, {
+      new: true,
+      runValidators: true,
+    });
+    if (!updatedUser) {
+      logger.error(`[updateUser service]  userId:${userId} Cannot update`);
+      return { error: errorMessages.USER_NOT_UPDATED };
+    }
+    return updatedUser;
+  } catch (error) {
+    logger.error(`[updateUser service]  userId:${userId} Cannot update`);
+    helpers.handleErrors(res, error);
+    return { error: errorMessages.SOME_ERROR };
+  }
 };
 
 exports.checkToken = async (req) => {
@@ -57,8 +81,14 @@ exports.checkToken = async (req) => {
     if (!token) return null;
     const decoded = jwt.verify(token, process.env.JWT_SECRET);
     const user = await User.findById(decoded.id);
-    return user || null;
-  } catch {
+    if (!user) {
+      logger.error(`[checkToken service] token: ${authHeader}  User not found`);
+      return null;
+    }
+    return user;
+  } catch (error) {
+    logger.error(`[checkToken service] token: ${authHeader}  Cannot verify token`);
+    helpers.handleErrors(res, error);
     return null;
   }
 };
@@ -84,7 +114,10 @@ exports.deleteUser = async (userId) => {
 };
 
 exports.searchUser = async (searchQuery) => {
-  if (!searchQuery) return { error: errorMessages.NO_SEARCH_QUERY };
+  if (!searchQuery) {
+    logger.error(`[searchUser service]  No search query`);
+    return { error: errorMessages.NO_SEARCH_QUERY };
+  }
   return await User.find({
     $or: [
       { username: { $regex: searchQuery, $options: 'i' } },
@@ -112,14 +145,17 @@ exports.buyCar = async (user, carId, selectedFeatures = [], paymentDetails) => {
       },
     });
     if (!carResponse.ok) {
+      logger.error(`[buyCar service]  carId:${carId} Cannot fetch car`);
       return { error: errorMessages.FAILED_TO_FETCH_CAR };
     }
     const carData = await carResponse.json();
     console.log('car found');
     if (!carData || !carData.car) {
+      logger.error(`[buyCar service]  carId:${carId} no car found`);
       return { error: errorMessages.INVALID_CAR_DATA };
     }
     if (carData.car.stock.quantity < 1 || carData.car.status === 'sold_out') {
+      logger.error(`[buyCar service]  carId:${carId} out of stock`);
       return { error: errorMessages.CAR_OUT_OF_STOCK };
     }
 
@@ -143,6 +179,7 @@ exports.buyCar = async (user, carId, selectedFeatures = [], paymentDetails) => {
     );
     if (user.wallet < totalPrice) {
       console.log('user has insufficient balance');
+      logger.error(`[buyCar service]  user:${user.username} insufficient balance`);
       return { error: errorMessages.INSUFFICIENT_BALANCE };
     }
 
@@ -155,6 +192,7 @@ exports.buyCar = async (user, carId, selectedFeatures = [], paymentDetails) => {
       discount,
     });
     if (!invoice) {
+      logger.error(`[buyCar service]  user:${user.username} failed to generate invoice`);
       return { error: errorMessages.FAILED_TO_GENERATE_INVOICE };
     }
     console.log('invoice generated');
@@ -176,6 +214,7 @@ exports.buyCar = async (user, carId, selectedFeatures = [], paymentDetails) => {
     const savedInvoice = await invoice.save();
     if (!savedInvoice) {
       await Payment.findByIdAndRemove(savedPayment._id);
+      logger.error(`[buyCar service]  user:${user.username} failed to save invoice`);
       return { error: errorMessages.FAILED_TO_SAVE_INVOICE };
     }
 
@@ -184,6 +223,7 @@ exports.buyCar = async (user, carId, selectedFeatures = [], paymentDetails) => {
     if (verifyPayment.error) {
       await Invoice.findByIdAndRemove(savedInvoice._id);
       await Payment.findByIdAndRemove(savedPayment._id);
+      logger.error(`[buyCar service]  user:${user.username} failed to verify payment`);
       return { error: verifyPayment.error };
     }
 
@@ -195,6 +235,7 @@ exports.buyCar = async (user, carId, selectedFeatures = [], paymentDetails) => {
     if (updatedCar.error) {
       await Invoice.findByIdAndRemove(savedInvoice._id);
       await Payment.findByIdAndRemove(savedPayment._id);
+      logger.error(`[buyCar service]  user:${user.username} failed to update car`);
       return { error: updatedCar.error };
     }
 
@@ -218,6 +259,7 @@ exports.buyCar = async (user, carId, selectedFeatures = [], paymentDetails) => {
       await Invoice.findByIdAndRemove(savedInvoice._id);
       await Payment.findByIdAndRemove(savedPayment._id);
       await this.updateCar({ ...carData, reverse: true });
+      logger.error(`[buyCar service]  user:${user.username} failed to update user`);
       return { error: errorMessages.FAILED_TO_UPDATE_USER };
     }
 
@@ -231,7 +273,8 @@ exports.buyCar = async (user, carId, selectedFeatures = [], paymentDetails) => {
       invoice: savedInvoice,
       payment: savedPayment,
     };
-  } catch {
+  } catch (error) {
+    helpers.handleErrors(res, error);
     return { error: errorMessages.SOME_ERROR };
   }
 };
@@ -323,8 +366,15 @@ exports.createAppointment = async (appointmentData, user) => {
       },
       body: JSON.stringify(appointmentData, user),
     });
+    if (!appointment.ok) {
+      logger.error(
+        `[createAppointment service]  user:${user.username} failed to create appointment`,
+      );
+      return { error: errorMessages.APPOINTMENT_NOT_CREATED };
+    }
     return appointment.json();
   } catch (error) {
+    helpers.handleErrors(res, error);
     return { error: errorMessages.APPOINTMENT_NOT_CREATED };
   }
 };
@@ -332,10 +382,14 @@ exports.createAppointment = async (appointmentData, user) => {
 exports.subscribe = async (userId) => {
   try {
     const updatedUser = await User.findByIdAndUpdate(userId, { subscribed: true }, { new: true });
-    if (!updatedUser) return { error: errorMessages.SUBSCRIPTION_FAILED };
+    if (!updatedUser) {
+      logger.error(`[subscribe service]  userId:${userId} failed to subscribe`);
+      return { error: errorMessages.SUBSCRIPTION_FAILED };
+    }
 
     return updatedUser;
   } catch (error) {
+    helpers.handleErrors(res, error);
     return { error: errorMessages.SUBSCRIPTION_FAILED };
   }
 };
@@ -343,10 +397,14 @@ exports.subscribe = async (userId) => {
 exports.unsubscribe = async (userId) => {
   try {
     const updatedUser = await User.findByIdAndUpdate(userId, { subscribed: false }, { new: true });
-    if (!updatedUser) return { error: errorMessages.UNSUBSCRIPTION_FAILED };
+    if (!updatedUser) {
+      logger.error(`[unsubscribe service]  userId:${userId} failed to unsubscribe`);
+      return { error: errorMessages.UNSUBSCRIPTION_FAILED };
+    }
 
     return updatedUser;
   } catch (error) {
+    helpers.handleErrors(res, error);
     return { error: errorMessages.UNSUBSCRIPTION_FAILED };
   }
 };
@@ -359,11 +417,14 @@ exports.sendNotification = async (car) => {
     });
     const subscribedUsers = await User.find({ subscribed: true });
 
-    if (!subscribedUsers) return { error: errorMessages.NO_SUBSCRIBED_USERS };
+    if (!subscribedUsers) {
+      logger.error(`[sendNotification service]  no subscribers found`);
+      return { error: errorMessages.NO_SUBSCRIBED_USERS };
+    }
 
     console.log('Sending notifications');
 
-    for (let user of subscribedUsers) {
+    for (const user of subscribedUsers) {
       const res = await emailjs.send(
         process.env.EMAILJS_SERVICE_ID,
         process.env.EMAILJS_TEMPLATE_ID,
@@ -380,6 +441,7 @@ exports.sendNotification = async (car) => {
 
       if (!res) {
         console.log('notification not sent', user.email);
+        logger.error(`[sendNotification service]  email:${user.email} failed to send notification`);
         return { error: errorMessages.FAILED_TO_SEND_NOTIFICATION };
       }
 
@@ -388,6 +450,7 @@ exports.sendNotification = async (car) => {
 
     return true;
   } catch (error) {
+    helpers.handleErrors(res, error);
     return { error: errorMessages.SOME_ERROR };
   }
 };
