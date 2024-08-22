@@ -53,8 +53,7 @@ exports.login = async (req, res) => {
     const { credential, password } = req.body;
     const login = await userServices.loginUser(credential, password);
     if (login.error) {
-      logger.error(`[login controller] Login error ${login.error}`);
-      return res.status(401).json({ error: login.error });
+      return res.status(404).json({ error: login.error });
     }
     const { user, token } = login;
     res.cookie('token', token, {
@@ -69,23 +68,29 @@ exports.login = async (req, res) => {
 };
 
 exports.updateUser = async (req, res) => {
-  if (!req.params.id) return res.status(400).json({ error: errorMessages.INVALID_ID });
+  // if (!req.params.id) return res.status(400).json({ error: errorMessages.INVALID_ID });
+  const user = await userServices.checkToken(req);
   const errors = validationResult(req);
   if (!errors.isEmpty()) {
     logger.error('[updateUser controller] Data not valid', errors.array());
     return res.status(400).json({ error: errorMessages.DATA_NOT_VALID, details: errors.array() });
   }
   try {
-    const { username, password, role, ...updateData } = req.body;
+    const { username, password, role, carCollection, ...updateData } = req.body;
     if (username || password || role) {
       logger.error('[updateUser controller] Cannot change credentials restricted values');
       return res.status(400).json({ error: errorMessages.CANNOT_CHANGE_CREDENTIALS });
     }
 
-    const updatedUser = await userServices.updateUser(req.params.id, updateData);
-    if (!updatedUser) {
-      logger.error(`[updateUser controller] User not updated: ${req.params.id}`);
-      return res.status(404).json({ error: errorMessages.USER_NOT_FOUND });
+    const updatedUser = await userServices.updateUser(user._id, updateData);
+    if (updatedUser.error) {
+      logger.error(
+        `[updateUser controller] User not updated: ${user._id}, Error: ${updatedUser.error}`,
+      );
+      console.log(
+        `[updateUser controller] User not updated: ${user._id}, Error: ${updatedUser.error}`,
+      );
+      return res.status(400).json({ error: updatedUser.error });
     }
     return res.status(200).json({ user: updatedUser });
   } catch (err) {

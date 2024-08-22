@@ -37,7 +37,7 @@ exports.loginUser = async (credential, password) => {
       $or: [{ username: credential }, { email: credential }],
     });
     if (!user) {
-      logger.error(`[loginUser service]  credential:${credential} not found`);
+      logger.error(`[loginUser service]  credential:${credential} user not found`);
       return { error: errorMessages.USER_NOT_FOUND };
     }
     const check = await bcrypt.compare(password, user.password);
@@ -56,7 +56,7 @@ exports.loginUser = async (credential, password) => {
 
 exports.updateUser = async (userId, updateData) => {
   try {
-    if (!userId || userId.length !== 24) return { error: errorMessages.INVALID_ID };
+    if (!userId) return { error: errorMessages.INVALID_ID };
 
     const updatedUser = await User.findByIdAndUpdate(userId, updateData, {
       new: true,

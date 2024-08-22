@@ -11,10 +11,7 @@ const userUpdateValidations = [
 ];
 
 const userRegisterValidations = [
-  check('username')
-    .notEmpty()
-    .isLength({ min: 4, max: 25 })
-    .withMessage('Username is required'),
+  check('username').notEmpty().isLength({ min: 4, max: 25 }).withMessage('Username is required'),
   check('password')
     .isLength({ min: 6, max: 25 })
     .withMessage('Password must be between 6 and 25 characters'),

@@ -46,4 +46,5 @@ module.exports = {
   UNSUBSCRIPTION_FAILED: 'Cannot unsubscribe currently',
   NO_SUBSCRIBED_USERS: 'No subscribed users found',
   FAILED_TO_SEND_NOTIFICATION: 'Failed to send notification',
+  CANNOT_CHANGE_CREDENTIALS: 'Cannot change restricted credentials',
 };

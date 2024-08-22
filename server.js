@@ -1,7 +1,4 @@
-const express = require('express');
 const mongoose = require('mongoose');
-const bodyParser = require('body-parser');
-const cors = require('cors');
 const passport = require('passport');
 const authMiddleware = require('./config/middleware');
 require('./config/passport');
@@ -9,18 +6,13 @@ const userRoutes = require('./Routes/user');
 const carRoutes = require('./Routes/car');
 const invoiceRoutes = require('./Routes/invoice');
 const paymentRoutes = require('./Routes/payment');
-const appoinmentRoutes = require('./Routes/appointment');
+const appointmentRoutes = require('./Routes/appointment');
 const cron = require('node-cron');
 const logger = require('./config/winston');
 const sendMail = require('./lib/sendWeeklyMail');
-const BookedCars = require('./Model/bookedCars');
+const createServer = require('./config/server');
 
-const app = express();
-
-app.use(cors());
-app.use(bodyParser.json());
-
-app.use(passport.initialize());
+const app = createServer();
 
 const publicRoutes = [
   '/api/user/login',
@@ -46,10 +38,9 @@ app.use('/api/user', userRoutes);
 app.use('/api/car', carRoutes);
 app.use('/api/invoice', invoiceRoutes);
 app.use('/api/payment', paymentRoutes);
-app.use('/api/appointment', appoinmentRoutes);
+app.use('/api/appointment', appointmentRoutes);
 
 const db = process.env.MONGODB_URI;
-
 mongoose
   .connect(db)
   .then(() => console.log('MongoDB connected'))
@@ -69,7 +60,7 @@ cron.schedule('0 */1 * * *', async () => {
   logger.info('Server running');
 });
 
-// saturday 12am
+// Saturday 12am
 cron.schedule('0 0 * * 6', async () => {
   sendMail();
 });

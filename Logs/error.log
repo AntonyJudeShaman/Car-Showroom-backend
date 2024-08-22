@@ -14,3 +14,308 @@
 {"level":"error","message":"[authMiddleware] Unauthorized: /api/car/create-car POST false","timestamp":"2024-08-19T07:26:57.128Z"}
 {"level":"error","message":"[createCar controller] Car already exists: Porsche 911 Carrera S","timestamp":"2024-08-19T07:27:51.974Z"}
 {"level":"error","message":"[createCar controller] Car already exists: Porsche 911 Carrera S","timestamp":"2024-08-19T07:28:49.535Z"}
+{"level":"error","message":"[authMiddleware] Unauthorized: / HEAD ","timestamp":"20-08-2024 16:45:35"}
+{"level":"error","message":"[authMiddleware] Unauthorized: / GET ","timestamp":"20-08-2024 17:04:05"}
+{"level":"error","message":"[authMiddleware] Unauthorized: / GET ","timestamp":"20-08-2024 17:04:18"}
+{"level":"error","message":"[authMiddleware] Unauthorized: / GET ","timestamp":"20-08-2024 17:04:53"}
+{"level":"error","message":"[authMiddleware] Unauthorized: / GET ","timestamp":"20-08-2024 17:05:04"}
+{"level":"error","message":"[authMiddleware] Unauthorized: / HEAD ","timestamp":"20-08-2024 17:05:18"}
+{"level":"error","message":"[authMiddleware] Unauthorized: / HEAD ","timestamp":"20-08-2024 17:05:39"}
+{"level":"error","message":"[authMiddleware] Unauthorized: / HEAD ","timestamp":"20-08-2024 17:06:19"}
+{"level":"error","timestamp":"21-08-2024 10:53:53"}
+{"level":"error","timestamp":"21-08-2024 10:56:13"}
+{"level":"error","timestamp":"21-08-2024 10:56:56"}
+{"level":"error","message":"[register controller] User already exists: testuser test@gmail.com","timestamp":"21-08-2024 10:57:21"}
+{"level":"error","timestamp":"21-08-2024 10:59:02"}
+{"level":"error","timestamp":"21-08-2024 10:59:24"}
+{"level":"error","message":"[register controller] User already exists: testuser test@gmail.com","timestamp":"21-08-2024 11:37:22"}
+{"level":"error","message":"[register controller] User already exists: testuser test@gmail.com","timestamp":"21-08-2024 11:38:09"}
+{"level":"error","matcherResult":{"actual":400,"expected":201,"message":"\u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoEqual\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // deep equality\u001b[22m\n\nExpected: \u001b[32m201\u001b[39m\nReceived: \u001b[31m400\u001b[39m","name":"toEqual","pass":false},"timestamp":"21-08-2024 11:38:09"}
+{"level":"error","message":"[register controller] User already exists: testuser2 test2@gmail.com","timestamp":"21-08-2024 11:38:09"}
+{"level":"error","matcherResult":{"actual":400,"expected":201,"message":"\u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoEqual\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // deep equality\u001b[22m\n\nExpected: \u001b[32m201\u001b[39m\nReceived: \u001b[31m400\u001b[39m","name":"toEqual","pass":false},"timestamp":"21-08-2024 11:38:09"}
+{"level":"error","message":"[register controller] User already exists: testuser3 test3@gmail.com","timestamp":"21-08-2024 11:38:09"}
+{"level":"error","matcherResult":{"actual":400,"expected":201,"message":"\u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoEqual\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // deep equality\u001b[22m\n\nExpected: \u001b[32m201\u001b[39m\nReceived: \u001b[31m400\u001b[39m","name":"toEqual","pass":false},"timestamp":"21-08-2024 11:38:09"}
+{"level":"error","message":"[register controller] User already exists: testuser test@gmail.com","timestamp":"21-08-2024 11:38:09"}
+{"level":"error","message":"[register controller] User already exists: testuser test@gmail.com","timestamp":"21-08-2024 11:41:38"}
+{"level":"error","matcherResult":{"actual":400,"expected":201,"message":"\u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBe\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // Object.is equality\u001b[22m\n\nExpected: \u001b[32m201\u001b[39m\nReceived: \u001b[31m400\u001b[39m","name":"toBe","pass":false},"timestamp":"21-08-2024 11:41:38"}
+{"level":"error","message":"[register controller] User already exists: testuser2 test2@gmail.com","timestamp":"21-08-2024 11:41:39"}
+{"level":"error","matcherResult":{"actual":400,"expected":201,"message":"\u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBe\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // Object.is equality\u001b[22m\n\nExpected: \u001b[32m201\u001b[39m\nReceived: \u001b[31m400\u001b[39m","name":"toBe","pass":false},"timestamp":"21-08-2024 11:41:39"}
+{"level":"error","message":"[register controller] User already exists: testuser3 test3@gmail.com","timestamp":"21-08-2024 11:41:39"}
+{"level":"error","matcherResult":{"actual":400,"expected":201,"message":"\u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBe\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // Object.is equality\u001b[22m\n\nExpected: \u001b[32m201\u001b[39m\nReceived: \u001b[31m400\u001b[39m","name":"toBe","pass":false},"timestamp":"21-08-2024 11:41:39"}
+{"level":"error","message":"[register controller] User already exists: testuser test@gmail.com","timestamp":"21-08-2024 11:41:39"}
+{"level":"error","message":"[register controller] User already exists: testuser test@gmail.com","timestamp":"21-08-2024 11:46:04"}
+{"level":"error","matcherResult":{"actual":400,"expected":201,"message":"\u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBe\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // Object.is equality\u001b[22m\n\nExpected: \u001b[32m201\u001b[39m\nReceived: \u001b[31m400\u001b[39m","name":"toBe","pass":false},"timestamp":"21-08-2024 11:46:04"}
+{"level":"error","message":"[register controller] User already exists: testuser2 test2@gmail.com","timestamp":"21-08-2024 11:46:04"}
+{"level":"error","matcherResult":{"actual":400,"expected":201,"message":"\u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBe\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // Object.is equality\u001b[22m\n\nExpected: \u001b[32m201\u001b[39m\nReceived: \u001b[31m400\u001b[39m","name":"toBe","pass":false},"timestamp":"21-08-2024 11:46:04"}
+{"level":"error","message":"[register controller] User already exists: testuser3 test3@gmail.com","timestamp":"21-08-2024 11:46:04"}
+{"level":"error","matcherResult":{"actual":400,"expected":201,"message":"\u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBe\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // Object.is equality\u001b[22m\n\nExpected: \u001b[32m201\u001b[39m\nReceived: \u001b[31m400\u001b[39m","name":"toBe","pass":false},"timestamp":"21-08-2024 11:46:04"}
+{"level":"error","message":"[register controller] User already exists: testuser test@gmail.com","timestamp":"21-08-2024 11:46:05"}
+{"level":"error","message":"[register controller] User already exists: testuser test@gmail.com","timestamp":"21-08-2024 11:46:51"}
+{"level":"error","matcherResult":{"actual":400,"expected":201,"message":"\u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoEqual\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // deep equality\u001b[22m\n\nExpected: \u001b[32m201\u001b[39m\nReceived: \u001b[31m400\u001b[39m","name":"toEqual","pass":false},"timestamp":"21-08-2024 11:46:51"}
+{"level":"error","message":"[register controller] User already exists: testuser2 test2@gmail.com","timestamp":"21-08-2024 11:46:51"}
+{"level":"error","matcherResult":{"actual":400,"expected":201,"message":"\u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoEqual\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // deep equality\u001b[22m\n\nExpected: \u001b[32m201\u001b[39m\nReceived: \u001b[31m400\u001b[39m","name":"toEqual","pass":false},"timestamp":"21-08-2024 11:46:51"}
+{"level":"error","message":"[register controller] User already exists: testuser3 test3@gmail.com","timestamp":"21-08-2024 11:46:51"}
+{"level":"error","matcherResult":{"actual":400,"expected":201,"message":"\u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoEqual\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // deep equality\u001b[22m\n\nExpected: \u001b[32m201\u001b[39m\nReceived: \u001b[31m400\u001b[39m","name":"toEqual","pass":false},"timestamp":"21-08-2024 11:46:51"}
+{"level":"error","message":"[register controller] User already exists: testuser test@gmail.com","timestamp":"21-08-2024 11:46:51"}
+{"level":"error","message":"[register controller] User already exists: testuser test@gmail.com","timestamp":"21-08-2024 11:48:23"}
+{"level":"error","matcherResult":{"actual":400,"expected":201,"message":"\u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBe\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // Object.is equality\u001b[22m\n\nExpected: \u001b[32m201\u001b[39m\nReceived: \u001b[31m400\u001b[39m","name":"toBe","pass":false},"timestamp":"21-08-2024 11:48:23"}
+{"level":"error","message":"[register controller] User already exists: testuser2 test2@gmail.com","timestamp":"21-08-2024 11:48:23"}
+{"level":"error","matcherResult":{"actual":400,"expected":201,"message":"\u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBe\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // Object.is equality\u001b[22m\n\nExpected: \u001b[32m201\u001b[39m\nReceived: \u001b[31m400\u001b[39m","name":"toBe","pass":false},"timestamp":"21-08-2024 11:48:23"}
+{"level":"error","message":"[register controller] User already exists: testuser3 test3@gmail.com","timestamp":"21-08-2024 11:48:23"}
+{"level":"error","matcherResult":{"actual":400,"expected":201,"message":"\u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBe\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // Object.is equality\u001b[22m\n\nExpected: \u001b[32m201\u001b[39m\nReceived: \u001b[31m400\u001b[39m","name":"toBe","pass":false},"timestamp":"21-08-2024 11:48:23"}
+{"level":"error","message":"[register controller] User already exists: testuser test@gmail.com","timestamp":"21-08-2024 11:48:23"}
+{"level":"error","message":"[register controller] User already exists: testuser test@gmail.com","timestamp":"21-08-2024 12:02:33"}
+{"level":"error","matcherResult":{"actual":400,"expected":201,"message":"\u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBe\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // Object.is equality\u001b[22m\n\nExpected: \u001b[32m201\u001b[39m\nReceived: \u001b[31m400\u001b[39m","name":"toBe","pass":false},"timestamp":"21-08-2024 12:02:33"}
+{"level":"error","message":"[register controller] User already exists: testuser2 test2@gmail.com","timestamp":"21-08-2024 12:02:33"}
+{"level":"error","matcherResult":{"actual":400,"expected":201,"message":"\u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBe\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // Object.is equality\u001b[22m\n\nExpected: \u001b[32m201\u001b[39m\nReceived: \u001b[31m400\u001b[39m","name":"toBe","pass":false},"timestamp":"21-08-2024 12:02:33"}
+{"level":"error","message":"[register controller] User already exists: testuser3 test3@gmail.com","timestamp":"21-08-2024 12:02:34"}
+{"level":"error","message":"[register controller] User already exists: testuser test@gmail.com","timestamp":"21-08-2024 12:02:34"}
+{"level":"error","message":"[register controller] User already exists: testuser test@gmail.com","timestamp":"21-08-2024 12:03:48"}
+{"level":"error","message":"[register controller] User already exists: testuser2 test2@gmail.com","timestamp":"21-08-2024 12:03:48"}
+{"level":"error","message":"[register controller] User already exists: testuser3 test3@gmail.com","timestamp":"21-08-2024 12:03:48"}
+{"level":"error","message":"[register controller] User already exists: testuser test@gmail.com","timestamp":"21-08-2024 12:03:48"}
+{"level":"error","message":"[register controller] User already exists: testuser test@gmail.com","timestamp":"21-08-2024 12:22:52"}
+{"level":"error","message":"[register controller] User already exists: testuser test@gmail.com","timestamp":"21-08-2024 12:22:53"}
+{"level":"error","message":"[register controller] User already exists: testuser test@gmail.com","timestamp":"21-08-2024 12:24:37"}
+{"level":"error","message":"[register controller] User already exists: testuser2 test2@gmail.com","timestamp":"21-08-2024 12:24:37"}
+{"level":"error","message":"[register controller] User already exists: testuser3 test3@gmail.com","timestamp":"21-08-2024 12:24:37"}
+{"level":"error","message":"[register controller] User already exists: testuser test@gmail.com","timestamp":"21-08-2024 12:24:37"}
+{"level":"error","message":"[register controller] User already exists: testuser test@gmail.com","timestamp":"21-08-2024 12:25:57"}
+{"level":"error","message":"[register controller] User already exists: testuser2 test2@gmail.com","timestamp":"21-08-2024 12:25:57"}
+{"level":"error","message":"[register controller] User already exists: testuser3 test3@gmail.com","timestamp":"21-08-2024 12:25:57"}
+{"level":"error","message":"[register controller] User already exists: testuser test@gmail.com","timestamp":"21-08-2024 12:25:57"}
+{"level":"error","message":"[register controller] User already exists: testuser test@gmail.com","timestamp":"21-08-2024 12:37:13"}
+{"level":"error","message":"[register controller] User already exists: testuser2 test2@gmail.com","timestamp":"21-08-2024 12:37:13"}
+{"level":"error","message":"[register controller] User already exists: testuser3 test3@gmail.com","timestamp":"21-08-2024 12:37:13"}
+{"level":"error","message":"[register controller] User already exists: testuser test@gmail.com","timestamp":"21-08-2024 12:37:13"}
+{"level":"error","message":"[register controller] User already exists: testuser test@gmail.com","timestamp":"21-08-2024 12:38:13"}
+{"level":"error","message":"[register controller] User already exists: testuser2 test2@gmail.com","timestamp":"21-08-2024 12:38:14"}
+{"level":"error","message":"[register controller] User already exists: testuser3 test3@gmail.com","timestamp":"21-08-2024 12:38:14"}
+{"level":"error","message":"[register controller] User already exists: testuser test@gmail.com","timestamp":"21-08-2024 12:38:14"}
+{"level":"error","message":"[register controller] User already exists: testuser test@gmail.com","timestamp":"21-08-2024 13:01:13"}
+{"level":"error","message":"[register controller] User already exists: testuser2 test2@gmail.com","timestamp":"21-08-2024 13:01:13"}
+{"level":"error","message":"[register controller] User already exists: testuser3 test3@gmail.com","timestamp":"21-08-2024 13:01:13"}
+{"level":"error","message":"[register controller] User already exists: testuser test@gmail.com","timestamp":"21-08-2024 13:01:13"}
+{"level":"error","message":"[register controller] User already exists: testuser test@gmail.com","timestamp":"21-08-2024 13:03:29"}
+{"level":"error","message":"[register controller] User already exists: testuser2 test2@gmail.com","timestamp":"21-08-2024 13:03:29"}
+{"level":"error","message":"[register controller] User already exists: testuser3 test3@gmail.com","timestamp":"21-08-2024 13:03:29"}
+{"level":"error","message":"[register controller] User already exists: testuser test@gmail.com","timestamp":"21-08-2024 13:03:29"}
+{"level":"error","message":"[register controller] User already exists: testuser test@gmail.com","timestamp":"21-08-2024 13:04:41"}
+{"level":"error","message":"[register controller] User already exists: testuser2 test2@gmail.com","timestamp":"21-08-2024 13:04:42"}
+{"level":"error","message":"[register controller] User already exists: testuser3 test3@gmail.com","timestamp":"21-08-2024 13:04:42"}
+{"level":"error","message":"[register controller] User already exists: testuser test@gmail.com","timestamp":"21-08-2024 13:04:42"}
+{"level":"error","message":"[register controller] User already exists: testuser test@gmail.com","timestamp":"21-08-2024 13:17:31"}
+{"level":"error","message":"[register controller] User already exists: testuser2 test2@gmail.com","timestamp":"21-08-2024 13:17:31"}
+{"level":"error","message":"[register controller] User already exists: testuser3 test3@gmail.com","timestamp":"21-08-2024 13:17:31"}
+{"level":"error","message":"[register controller] User already exists: testuser test@gmail.com","timestamp":"21-08-2024 13:17:31"}
+{"level":"error","timestamp":"21-08-2024 13:19:20"}
+{"level":"error","timestamp":"21-08-2024 13:19:20"}
+{"level":"error","timestamp":"21-08-2024 13:19:20"}
+{"level":"error","timestamp":"21-08-2024 13:19:20"}
+{"level":"error","message":"[register controller] User already exists: testuser test@gmail.com","timestamp":"21-08-2024 13:24:06"}
+{"level":"error","message":"[register controller] User already exists: testuser test@gmail.com","timestamp":"21-08-2024 13:24:40"}
+{"level":"error","message":"[register controller] User already exists: testuser2 test2@gmail.com","timestamp":"21-08-2024 13:24:40"}
+{"level":"error","message":"[register controller] User already exists: testuser3 test3@gmail.com","timestamp":"21-08-2024 13:24:40"}
+{"level":"error","message":"[register controller] User already exists: testuser test@gmail.com","timestamp":"21-08-2024 13:24:40"}
+{"level":"error","message":"[register controller] User already exists: testuser2 test2@gmail.com","timestamp":"21-08-2024 13:25:07"}
+{"level":"error","message":"[register controller] User already exists: testuser3 test3@gmail.com","timestamp":"21-08-2024 13:25:07"}
+{"level":"error","message":"[register controller] User already exists: testuser test@gmail.com","timestamp":"21-08-2024 13:25:07"}
+{"level":"error","message":"[register controller] User already exists: testuser test@gmail.com","timestamp":"21-08-2024 13:26:24"}
+{"level":"error","message":"[register controller] User already exists: testuser3 test3@gmail.com","timestamp":"21-08-2024 13:26:24"}
+{"level":"error","message":"[register controller] User already exists: testuser test@gmail.com","timestamp":"21-08-2024 13:26:25"}
+{"level":"error","message":"[register controller] User already exists: testuser test@gmail.com","timestamp":"21-08-2024 13:26:51"}
+{"level":"error","message":"[register controller] User already exists: testuser test@gmail.com","timestamp":"21-08-2024 13:28:54"}
+{"level":"error","message":"[register controller] User already exists: testuser test@gmail.com","timestamp":"21-08-2024 13:29:39"}
+{"level":"error","message":"[register controller] User already exists: testuser test@gmail.com","timestamp":"21-08-2024 13:30:33"}
+{"level":"error","message":"[register controller] User already exists: testuser test@gmail.com","timestamp":"21-08-2024 13:30:44"}
+{"level":"error","message":"[register controller] User already exists: testuser test@gmail.com","timestamp":"21-08-2024 13:30:55"}
+{"level":"error","message":"[register controller] User already exists: testuser test@gmail.com","timestamp":"21-08-2024 13:31:19"}
+{"level":"error","message":"[register controller] User already exists: testuser test@gmail.com","timestamp":"21-08-2024 13:31:30"}
+{"level":"error","timestamp":"21-08-2024 14:35:42"}
+{"level":"error","timestamp":"21-08-2024 14:35:44"}
+{"level":"error","message":"[register controller] User already exists: testuser test@gmail.com","timestamp":"21-08-2024 14:35:46"}
+{"level":"error","timestamp":"21-08-2024 14:35:51"}
+{"level":"error","timestamp":"21-08-2024 14:35:52"}
+{"level":"error","message":"[register controller] User already exists: testuser test@gmail.com","timestamp":"21-08-2024 14:35:52"}
+{"level":"error","message":"[register controller] User already exists: testuser2 test2@gmail.com","timestamp":"21-08-2024 14:35:52"}
+{"level":"error","message":"[register controller] User already exists: testuser3 test3@gmail.com","timestamp":"21-08-2024 14:35:53"}
+{"level":"error","message":"[register controller] User already exists: testuser test@gmail.com","timestamp":"21-08-2024 14:35:53"}
+{"level":"error","timestamp":"21-08-2024 14:42:56"}
+{"level":"error","timestamp":"21-08-2024 14:42:57"}
+{"level":"error","message":"options usefindandmodify, usecreateindex are not supported","timestamp":"21-08-2024 14:44:44"}
+{"level":"error","message":"Cannot read properties of undefined (reading 'collections')","timestamp":"21-08-2024 14:44:44"}
+{"level":"error","message":"Can't call `openUri()` on an active connection with different connection strings. Make sure you aren't calling `mongoose.connect()` multiple times. See: https://mongoosejs.com/docs/connections.html#multiple_connections","timestamp":"21-08-2024 14:44:45"}
+{"level":"error","message":"Cannot read properties of undefined (reading 'collections')","timestamp":"21-08-2024 14:44:45"}
+{"level":"error","message":"options usefindandmodify, usecreateindex are not supported","timestamp":"21-08-2024 14:45:04"}
+{"level":"error","message":"Cannot read properties of undefined (reading 'collections')","timestamp":"21-08-2024 14:45:04"}
+{"level":"error","message":"Cannot read properties of undefined (reading 'collections')","timestamp":"21-08-2024 14:45:05"}
+{"level":"error","message":"options usefindandmodify, usecreateindex are not supported","timestamp":"21-08-2024 14:45:47"}
+{"level":"error","message":"Cannot read properties of undefined (reading 'collections')","timestamp":"21-08-2024 14:45:48"}
+{"level":"error","message":"Cannot read properties of undefined (reading 'collections')","timestamp":"21-08-2024 14:45:48"}
+{"level":"error","message":"options usefindandmodify, usecreateindex are not supported","timestamp":"21-08-2024 14:46:13"}
+{"level":"error","message":"Cannot read properties of undefined (reading 'collections')","timestamp":"21-08-2024 14:46:14"}
+{"level":"error","message":"Cannot read properties of undefined (reading 'collections')","timestamp":"21-08-2024 14:46:14"}
+{"level":"error","message":"Cannot read properties of undefined (reading 'collections')","timestamp":"21-08-2024 14:46:50"}
+{"level":"error","message":"Cannot read properties of undefined (reading 'collections')","timestamp":"21-08-2024 14:46:50"}
+{"level":"error","message":"Cannot read properties of undefined (reading 'collections')","timestamp":"21-08-2024 14:47:26"}
+{"level":"error","message":"Cannot read properties of undefined (reading 'collections')","timestamp":"21-08-2024 14:47:26"}
+{"level":"error","message":"Cannot read properties of undefined (reading 'collections')","timestamp":"21-08-2024 14:47:36"}
+{"level":"error","message":"Cannot read properties of undefined (reading 'collections')","timestamp":"21-08-2024 14:47:36"}
+{"level":"error","message":"Cannot read properties of undefined (reading 'collections')","timestamp":"21-08-2024 14:48:07"}
+{"level":"error","message":"Cannot read properties of undefined (reading 'collections')","timestamp":"21-08-2024 14:48:07"}
+{"level":"error","message":"Cannot read properties of undefined (reading 'collections')","timestamp":"21-08-2024 14:50:27"}
+{"level":"error","message":"Cannot read properties of undefined (reading 'collections')","timestamp":"21-08-2024 14:50:27"}
+{"level":"error","message":"[register controller] User already exists: testuser test@gmail.com","timestamp":"21-08-2024 14:51:57"}
+{"level":"error","message":"[register controller] User already exists: testuser test@gmail.com","timestamp":"21-08-2024 14:52:34"}
+{"level":"error","message":"Cannot read properties of undefined (reading 'collections')","timestamp":"21-08-2024 14:53:28"}
+{"level":"error","message":"Cannot read properties of undefined (reading 'collections')","timestamp":"21-08-2024 14:53:28"}
+{"level":"error","message":"Cannot read properties of undefined (reading 'collections')","timestamp":"21-08-2024 14:53:47"}
+{"level":"error","message":"Cannot read properties of undefined (reading 'collections')","timestamp":"21-08-2024 14:53:47"}
+{"level":"error","message":"[register controller] User already exists: testuser test@gmail.com","timestamp":"21-08-2024 15:04:41"}
+{"level":"error","message":"[authMiddleware] Unauthorized: /create-car POST ","timestamp":"21-08-2024 15:08:03"}
+{"level":"error","message":"Cannot read properties of undefined (reading 'collections')","timestamp":"21-08-2024 15:08:03"}
+{"level":"error","message":"Cannot read properties of undefined (reading 'collections')","timestamp":"21-08-2024 15:08:03"}
+{"level":"error","message":"[register controller] User already exists: testuser test@gmail.com","timestamp":"21-08-2024 15:08:04"}
+{"level":"error","message":"[authMiddleware] Unauthorized: /create-car POST ","timestamp":"21-08-2024 15:24:35"}
+{"level":"error","message":"Cannot read properties of undefined (reading 'collections')","timestamp":"21-08-2024 15:24:35"}
+{"level":"error","message":"Cannot read properties of undefined (reading 'collections')","timestamp":"21-08-2024 15:24:35"}
+{"level":"error","message":"[register controller] User already exists: testuser test@gmail.com","timestamp":"21-08-2024 15:24:36"}
+{"level":"error","message":"[authMiddleware] Unauthorized: /create-car POST ","timestamp":"21-08-2024 15:25:24"}
+{"level":"error","message":"Cannot read properties of undefined (reading 'collections')","timestamp":"21-08-2024 15:25:24"}
+{"level":"error","message":"Cannot read properties of undefined (reading 'collections')","timestamp":"21-08-2024 15:25:24"}
+{"level":"error","message":"[register controller] User already exists: testuser test@gmail.com","timestamp":"21-08-2024 15:25:25"}
+{"level":"error","message":"[authMiddleware] Unauthorized: /create-car POST ","timestamp":"21-08-2024 15:25:55"}
+{"level":"error","message":"Cannot read properties of undefined (reading 'collections')","timestamp":"21-08-2024 15:25:55"}
+{"level":"error","message":"Cannot read properties of undefined (reading 'collections')","timestamp":"21-08-2024 15:25:55"}
+{"level":"error","message":"[register controller] User already exists: testuser test@gmail.com","timestamp":"21-08-2024 15:25:56"}
+{"level":"error","message":"[authMiddleware] Unauthorized: /api/car/create-car POST ","timestamp":"21-08-2024 15:27:30"}
+{"level":"error","message":"Cannot read properties of undefined (reading 'collections')","timestamp":"21-08-2024 15:27:30"}
+{"level":"error","message":"Cannot read properties of undefined (reading 'collections')","timestamp":"21-08-2024 15:27:30"}
+{"level":"error","message":"[register controller] User already exists: testuser test@gmail.com","timestamp":"21-08-2024 15:27:32"}
+{"level":"error","message":"[authMiddleware] Unauthorized: /api/car/create-car POST ","timestamp":"21-08-2024 15:28:23"}
+{"level":"error","message":"Cannot read properties of undefined (reading 'collections')","timestamp":"21-08-2024 15:28:23"}
+{"level":"error","message":"Cannot read properties of undefined (reading 'collections')","timestamp":"21-08-2024 15:28:23"}
+{"level":"error","message":"[register controller] User already exists: testuser test@gmail.com","timestamp":"21-08-2024 15:28:24"}
+{"level":"error","message":"[authMiddleware] Unauthorized: /api/car/create-car POST ","timestamp":"21-08-2024 15:30:02"}
+{"level":"error","message":"Cannot read properties of undefined (reading 'collections')","timestamp":"21-08-2024 15:30:02"}
+{"level":"error","message":"Cannot read properties of undefined (reading 'collections')","timestamp":"21-08-2024 15:30:02"}
+{"level":"error","message":"[register controller] User already exists: testuser test@gmail.com","timestamp":"21-08-2024 15:30:04"}
+{"level":"error","message":"[authMiddleware] Unauthorized: /api/car/create-car POST ","timestamp":"21-08-2024 15:33:40"}
+{"level":"error","message":"[authMiddleware] Unauthorized: /api/car/create-car POST ","timestamp":"21-08-2024 15:36:09"}
+{"level":"error","message":"[register controller] User already exists: testuser test@gmail.com","timestamp":"21-08-2024 15:36:10"}
+{"level":"error","message":"[createCar controller] Car already exists: Porsche 911 Carrera S","timestamp":"21-08-2024 15:36:39"}
+{"level":"error","message":"[checkToken service] token: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY2YmVkNmJkY2U4YjU5MThkMDg0ZTBhNiIsImlhdCI6MTcyMzc4Mjg0NX0.p_oPIhYNTH-PqiLkaJpuZUF9AZ_i1lFvRnpf99hJq5Q  User not found","timestamp":"21-08-2024 15:38:10"}
+{"level":"error","timestamp":"21-08-2024 15:38:10"}
+{"level":"error","message":"[checkToken service] token: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY2YmVkNjRjY2U4YjU5MThkMDg0ZTA5ZSIsImlhdCI6MTcyMzc4MjczMn0.lZY5_8ZErJhd7ZuAIcbmUsEv3vLeXkuvWeHoFVAn8YM  User not found","timestamp":"21-08-2024 15:39:12"}
+{"level":"error","timestamp":"21-08-2024 15:39:12"}
+{"level":"error","message":"[register controller] User already exists: testuser test@gmail.com","timestamp":"21-08-2024 15:39:13"}
+{"level":"error","timestamp":"21-08-2024 15:40:54"}
+{"level":"error","message":"[register controller] User already exists: testuser test@gmail.com","timestamp":"21-08-2024 15:40:55"}
+{"level":"error","timestamp":"21-08-2024 15:43:29"}
+{"level":"error","message":"[register controller] User already exists: testuser test@gmail.com","timestamp":"21-08-2024 15:43:30"}
+{"level":"error","timestamp":"21-08-2024 15:44:35"}
+{"level":"error","timestamp":"21-08-2024 15:46:55"}
+{"level":"error","timestamp":"21-08-2024 15:49:04"}
+{"level":"error","message":"[register controller] User already exists: testuser test@gmail.com","timestamp":"21-08-2024 15:49:05"}
+{"level":"error","timestamp":"21-08-2024 15:49:47"}
+{"level":"error","message":"[register controller] User already exists: testuser test@gmail.com","timestamp":"21-08-2024 15:50:11"}
+{"level":"error","message":"[register controller] User already exists: testuser test@gmail.com","timestamp":"21-08-2024 15:53:05"}
+{"level":"error","message":"[register controller] User already exists: testuser test@gmail.com","timestamp":"21-08-2024 15:53:47"}
+{"level":"error","message":"[register controller] User already exists: testuser test@gmail.com","timestamp":"21-08-2024 15:59:58"}
+{"level":"error","message":"[register controller] User already exists: testuser test@gmail.com","timestamp":"21-08-2024 16:02:54"}
+{"level":"error","message":"[register controller] User already exists: testuser test@gmail.com","timestamp":"21-08-2024 16:04:24"}
+{"level":"error","message":"[register controller] User already exists: testuser test@gmail.com","timestamp":"21-08-2024 16:04:43"}
+{"level":"error","message":"[register controller] User already exists: testuser test@gmail.com","timestamp":"21-08-2024 16:07:12"}
+{"level":"error","message":"[register controller] User already exists: testuser test@gmail.com","timestamp":"21-08-2024 16:07:57"}
+{"level":"error","message":"[register controller] User already exists: testuser test@gmail.com","timestamp":"21-08-2024 16:08:47"}
+{"level":"error","message":"[register controller] User already exists: testuser2 test2@gmail.com","timestamp":"21-08-2024 16:08:47"}
+{"level":"error","message":"[register controller] User already exists: testuser3 test3@gmail.com","timestamp":"21-08-2024 16:08:47"}
+{"level":"error","message":"[register controller] User already exists: testuser test@gmail.com","timestamp":"21-08-2024 16:08:47"}
+{"level":"error","message":"[register controller] User already exists: testuser test@gmail.com","timestamp":"21-08-2024 16:09:32"}
+{"level":"error","message":"[register controller] User already exists: testuser test@gmail.com","timestamp":"21-08-2024 16:12:12"}
+{"0":{"location":"body","msg":"Password must be between 6 and 25 characters","path":"password","type":"field","value":"wrong"},"level":"error","message":"[login controller] Data not valid","timestamp":"21-08-2024 16:12:13"}
+{"level":"error","message":"[loginUser service]  credential:wrong not found","timestamp":"21-08-2024 16:12:13"}
+{"level":"error","message":"[login controller] Login error User not found","timestamp":"21-08-2024 16:12:13"}
+{"0":{"location":"body","msg":"Username/Email is required","path":"credential","type":"field","value":""},"1":{"location":"body","msg":"Username/Email must be between 4 and 25 characters","path":"credential","type":"field","value":""},"level":"error","message":"[login controller] Data not valid","timestamp":"21-08-2024 16:12:13"}
+{"level":"error","message":"[register controller] User already exists: testuser test@gmail.com","timestamp":"21-08-2024 16:16:05"}
+{"0":{"location":"body","msg":"Password must be between 6 and 25 characters","path":"password","type":"field","value":"wrong"},"level":"error","message":"[login controller] Data not valid","timestamp":"21-08-2024 16:16:06"}
+{"level":"error","message":"[loginUser service]  credential:wrong not found","timestamp":"21-08-2024 16:16:06"}
+{"level":"error","message":"[login controller] Login error User not found","timestamp":"21-08-2024 16:16:06"}
+{"0":{"location":"body","msg":"Username/Email is required","path":"credential","type":"field","value":""},"1":{"location":"body","msg":"Username/Email must be between 4 and 25 characters","path":"credential","type":"field","value":""},"level":"error","message":"[login controller] Data not valid","timestamp":"21-08-2024 16:16:06"}
+{"level":"error","message":"[register controller] User already exists: testuser test@gmail.com","timestamp":"21-08-2024 16:17:31"}
+{"0":{"location":"body","msg":"Password must be between 6 and 25 characters","path":"password","type":"field","value":"wrong"},"level":"error","message":"[login controller] Data not valid","timestamp":"21-08-2024 16:17:31"}
+{"level":"error","message":"[loginUser service]  credential:wrong not found","timestamp":"21-08-2024 16:17:31"}
+{"level":"error","message":"[login controller] Login error User not found","timestamp":"21-08-2024 16:17:31"}
+{"0":{"location":"body","msg":"Username/Email is required","path":"credential","type":"field","value":""},"1":{"location":"body","msg":"Username/Email must be between 4 and 25 characters","path":"credential","type":"field","value":""},"level":"error","message":"[login controller] Data not valid","timestamp":"21-08-2024 16:17:31"}
+{"level":"error","message":"[register controller] User already exists: testuser test@gmail.com","timestamp":"21-08-2024 16:17:54"}
+{"0":{"location":"body","msg":"Password must be between 6 and 25 characters","path":"password","type":"field","value":"wrong"},"level":"error","message":"[login controller] Data not valid","timestamp":"21-08-2024 16:17:55"}
+{"level":"error","message":"[loginUser service]  credential:wrong not found","timestamp":"21-08-2024 16:17:55"}
+{"level":"error","message":"[login controller] Login error User not found","timestamp":"21-08-2024 16:17:55"}
+{"0":{"location":"body","msg":"Username/Email is required","path":"credential","type":"field","value":""},"1":{"location":"body","msg":"Username/Email must be between 4 and 25 characters","path":"credential","type":"field","value":""},"level":"error","message":"[login controller] Data not valid","timestamp":"21-08-2024 16:17:55"}
+{"level":"error","message":"[register controller] User already exists: testuser test@gmail.com","timestamp":"21-08-2024 16:22:21"}
+{"level":"error","message":"[loginUser service]  credential:testuser invalid password","timestamp":"21-08-2024 16:22:21"}
+{"level":"error","message":"[login controller] Login error Invalid Credentials","timestamp":"21-08-2024 16:22:21"}
+{"level":"error","message":"[loginUser service]  credential:wrong not found","timestamp":"21-08-2024 16:22:21"}
+{"level":"error","message":"[login controller] Login error User not found","timestamp":"21-08-2024 16:22:21"}
+{"0":{"location":"body","msg":"Username/Email is required","path":"credential","type":"field","value":""},"1":{"location":"body","msg":"Username/Email must be between 4 and 25 characters","path":"credential","type":"field","value":""},"level":"error","message":"[login controller] Data not valid","timestamp":"21-08-2024 16:22:21"}
+{"level":"error","message":"[register controller] User already exists: testuser test@gmail.com","timestamp":"21-08-2024 16:25:41"}
+{"level":"error","message":"[loginUser service]  credential:testuser invalid password","timestamp":"21-08-2024 16:25:41"}
+{"level":"error","message":"[loginUser service]  credential:wrong user not found","timestamp":"21-08-2024 16:25:41"}
+{"0":{"location":"body","msg":"Username/Email is required","path":"credential","type":"field","value":""},"1":{"location":"body","msg":"Username/Email must be between 4 and 25 characters","path":"credential","type":"field","value":""},"level":"error","message":"[login controller] Data not valid","timestamp":"21-08-2024 16:25:41"}
+{"level":"error","message":"[register controller] User already exists: testuser test@gmail.com","timestamp":"21-08-2024 16:27:02"}
+{"0":{"location":"body","msg":"Invalid value","path":"username","type":"field","value":""},"1":{"location":"body","msg":"Username is required","path":"username","type":"field","value":""},"2":{"location":"body","msg":"Invalid email","path":"email","type":"field","value":""},"level":"error","message":"[register controller] Data not valid","timestamp":"21-08-2024 16:27:02"}
+{"level":"error","message":"[loginUser service]  credential:testuser invalid password","timestamp":"21-08-2024 16:27:03"}
+{"level":"error","message":"[loginUser service]  credential:wrong user not found","timestamp":"21-08-2024 16:27:03"}
+{"0":{"location":"body","msg":"Username/Email is required","path":"credential","type":"field","value":""},"1":{"location":"body","msg":"Username/Email must be between 4 and 25 characters","path":"credential","type":"field","value":""},"level":"error","message":"[login controller] Data not valid","timestamp":"21-08-2024 16:27:03"}
+{"level":"error","message":"[register controller] User already exists: testuser test@gmail.com","timestamp":"21-08-2024 16:29:36"}
+{"0":{"location":"body","msg":"Invalid value","path":"username","type":"field","value":""},"1":{"location":"body","msg":"Username is required","path":"username","type":"field","value":""},"2":{"location":"body","msg":"Invalid email","path":"email","type":"field","value":""},"level":"error","message":"[register controller] Data not valid","timestamp":"21-08-2024 16:29:36"}
+{"level":"error","message":"[loginUser service]  credential:testuser invalid password","timestamp":"21-08-2024 16:29:36"}
+{"level":"error","message":"[loginUser service]  credential:wrong user not found","timestamp":"21-08-2024 16:29:36"}
+{"0":{"location":"body","msg":"Username/Email must be between 4 and 25 characters","path":"credential","type":"field","value":"abc"},"level":"error","message":"[login controller] Data not valid","timestamp":"21-08-2024 16:29:36"}
+{"0":{"location":"body","msg":"Invalid value","path":"password","type":"field","value":""},"1":{"location":"body","msg":"Password must be between 6 and 25 characters","path":"password","type":"field","value":""},"level":"error","message":"[login controller] Data not valid","timestamp":"21-08-2024 16:29:36"}
+{"level":"error","message":"[createAppointment controller] Appointment not created: [object Object]","timestamp":"21-08-2024 16:38:26"}
+{"level":"error","message":"[updateUser controller] User not updated: undefined","timestamp":"21-08-2024 16:42:28"}
+{"level":"error","message":"[updateUser controller] User not updated: 66bed64cce8b5918d084e09e","timestamp":"21-08-2024 16:43:53"}
+{"level":"error","message":"[updateUser controller] Cannot change credentials restricted values","timestamp":"21-08-2024 16:45:12"}
+{"level":"error","message":"[updateUser controller] Cannot change credentials restricted values","timestamp":"21-08-2024 16:46:20"}
+{"level":"error","message":"[updateUser controller] Cannot change credentials restricted values","timestamp":"21-08-2024 16:46:36"}
+{"0":{"location":"body","msg":"Invalid email","path":"email","type":"field","value":""},"level":"error","message":"[updateUser controller] Data not valid","timestamp":"21-08-2024 16:48:47"}
+{"level":"error","message":"[register controller] User already exists: testuser test@gmail.com","timestamp":"21-08-2024 16:53:58"}
+{"0":{"location":"body","msg":"Invalid value","path":"username","type":"field","value":""},"1":{"location":"body","msg":"Username is required","path":"username","type":"field","value":""},"2":{"location":"body","msg":"Invalid email","path":"email","type":"field","value":""},"level":"error","message":"[register controller] Data not valid","timestamp":"21-08-2024 16:53:58"}
+{"level":"error","message":"[loginUser service]  credential:testuser invalid password","timestamp":"21-08-2024 16:53:58"}
+{"level":"error","message":"[loginUser service]  credential:wrong user not found","timestamp":"21-08-2024 16:53:58"}
+{"0":{"location":"body","msg":"Username/Email must be between 4 and 25 characters","path":"credential","type":"field","value":"abc"},"level":"error","message":"[login controller] Data not valid","timestamp":"21-08-2024 16:53:58"}
+{"0":{"location":"body","msg":"Invalid value","path":"password","type":"field","value":""},"1":{"location":"body","msg":"Password must be between 6 and 25 characters","path":"password","type":"field","value":""},"level":"error","message":"[login controller] Data not valid","timestamp":"21-08-2024 16:53:58"}
+{"level":"error","message":"[authMiddleware] Unauthorized: /api/user/update PUT ","timestamp":"21-08-2024 16:53:58"}
+{"level":"error","message":"[authMiddleware] Unauthorized: /api/user/update PUT ","timestamp":"21-08-2024 16:53:58"}
+{"level":"error","message":"[authMiddleware] Unauthorized: /api/user/update PUT ","timestamp":"21-08-2024 16:53:58"}
+{"level":"error","message":"[authMiddleware] Unauthorized: /api/user/update PUT ","timestamp":"21-08-2024 16:53:58"}
+{"level":"error","message":"[authMiddleware] Unauthorized: /api/user/update PUT ","timestamp":"21-08-2024 16:53:58"}
+{"level":"error","message":"[register controller] User already exists: testuser test@gmail.com","timestamp":"21-08-2024 16:55:38"}
+{"0":{"location":"body","msg":"Invalid value","path":"username","type":"field","value":""},"1":{"location":"body","msg":"Username is required","path":"username","type":"field","value":""},"2":{"location":"body","msg":"Invalid email","path":"email","type":"field","value":""},"level":"error","message":"[register controller] Data not valid","timestamp":"21-08-2024 16:55:38"}
+{"level":"error","message":"[loginUser service]  credential:testuser invalid password","timestamp":"21-08-2024 16:55:39"}
+{"level":"error","message":"[loginUser service]  credential:wrong user not found","timestamp":"21-08-2024 16:55:39"}
+{"0":{"location":"body","msg":"Username/Email must be between 4 and 25 characters","path":"credential","type":"field","value":"abc"},"level":"error","message":"[login controller] Data not valid","timestamp":"21-08-2024 16:55:39"}
+{"0":{"location":"body","msg":"Invalid value","path":"password","type":"field","value":""},"1":{"location":"body","msg":"Password must be between 6 and 25 characters","path":"password","type":"field","value":""},"level":"error","message":"[login controller] Data not valid","timestamp":"21-08-2024 16:55:39"}
+{"level":"error","message":"[register controller] User already exists: testuser test@gmail.com","timestamp":"21-08-2024 16:58:36"}
+{"0":{"location":"body","msg":"Invalid value","path":"username","type":"field","value":""},"1":{"location":"body","msg":"Username is required","path":"username","type":"field","value":""},"2":{"location":"body","msg":"Invalid email","path":"email","type":"field","value":""},"level":"error","message":"[register controller] Data not valid","timestamp":"21-08-2024 16:58:36"}
+{"level":"error","message":"[loginUser service]  credential:testuser invalid password","timestamp":"21-08-2024 16:58:36"}
+{"level":"error","message":"[loginUser service]  credential:wrong user not found","timestamp":"21-08-2024 16:58:36"}
+{"0":{"location":"body","msg":"Username/Email must be between 4 and 25 characters","path":"credential","type":"field","value":"abc"},"level":"error","message":"[login controller] Data not valid","timestamp":"21-08-2024 16:58:36"}
+{"0":{"location":"body","msg":"Invalid value","path":"password","type":"field","value":""},"1":{"location":"body","msg":"Password must be between 6 and 25 characters","path":"password","type":"field","value":""},"level":"error","message":"[login controller] Data not valid","timestamp":"21-08-2024 16:58:36"}
+{"level":"error","message":"[register controller] User already exists: testuser test@gmail.com","timestamp":"21-08-2024 16:59:43"}
+{"0":{"location":"body","msg":"Invalid value","path":"username","type":"field","value":""},"1":{"location":"body","msg":"Username is required","path":"username","type":"field","value":""},"2":{"location":"body","msg":"Invalid email","path":"email","type":"field","value":""},"level":"error","message":"[register controller] Data not valid","timestamp":"21-08-2024 16:59:43"}
+{"level":"error","message":"[loginUser service]  credential:testuser invalid password","timestamp":"21-08-2024 16:59:44"}
+{"level":"error","message":"[loginUser service]  credential:wrong user not found","timestamp":"21-08-2024 16:59:44"}
+{"0":{"location":"body","msg":"Username/Email must be between 4 and 25 characters","path":"credential","type":"field","value":"abc"},"level":"error","message":"[login controller] Data not valid","timestamp":"21-08-2024 16:59:44"}
+{"0":{"location":"body","msg":"Invalid value","path":"password","type":"field","value":""},"1":{"location":"body","msg":"Password must be between 6 and 25 characters","path":"password","type":"field","value":""},"level":"error","message":"[login controller] Data not valid","timestamp":"21-08-2024 16:59:44"}
+{"level":"error","message":"[register controller] User already exists: testuser test@gmail.com","timestamp":"21-08-2024 17:04:02"}
+{"0":{"location":"body","msg":"Invalid value","path":"username","type":"field","value":""},"1":{"location":"body","msg":"Username is required","path":"username","type":"field","value":""},"2":{"location":"body","msg":"Invalid email","path":"email","type":"field","value":""},"level":"error","message":"[register controller] Data not valid","timestamp":"21-08-2024 17:04:02"}
+{"level":"error","message":"[loginUser service]  credential:testuser invalid password","timestamp":"21-08-2024 17:04:02"}
+{"level":"error","message":"[loginUser service]  credential:wrong user not found","timestamp":"21-08-2024 17:04:02"}
+{"0":{"location":"body","msg":"Username/Email must be between 4 and 25 characters","path":"credential","type":"field","value":"abc"},"level":"error","message":"[login controller] Data not valid","timestamp":"21-08-2024 17:04:02"}
+{"0":{"location":"body","msg":"Invalid value","path":"password","type":"field","value":""},"1":{"location":"body","msg":"Password must be between 6 and 25 characters","path":"password","type":"field","value":""},"level":"error","message":"[login controller] Data not valid","timestamp":"21-08-2024 17:04:02"}
+{"level":"error","message":"[updateUser controller] Cannot change credentials restricted values","timestamp":"21-08-2024 17:04:02"}
+{"level":"error","message":"[updateUser controller] Cannot change credentials restricted values","timestamp":"21-08-2024 17:04:02"}
+{"0":{"location":"body","msg":"Invalid email","path":"email","type":"field","value":""},"level":"error","message":"[updateUser controller] Data not valid","timestamp":"21-08-2024 17:04:03"}
+{"0":{"location":"body","msg":"Invalid email","path":"email","type":"field","value":"test"},"level":"error","message":"[updateUser controller] Data not valid","timestamp":"21-08-2024 17:04:03"}
