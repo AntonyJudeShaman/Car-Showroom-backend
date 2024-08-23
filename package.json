@@ -7,7 +7,7 @@
     "start": "node server.js",
     "build": "echo 'No build required'",
     "dev": "nodemon --env-file=.env.local server.js",
-    "test": "jest ",
+    "test": "jest  --detectOpenHandles  --watchAll --maxWorkers=1",
     "lint": "eslint .",
     "lint:fix": "eslint . --fix"
   },
@@ -25,10 +25,12 @@
     "jsonwebtoken": "^9.0.2",
     "mongoose": "^8.5.2",
     "node-cron": "^3.0.3",
+    "node-fetch": "^3.3.2",
     "nodemailer": "^6.9.14",
     "passport": "^0.7.0",
     "passport-jwt": "^4.0.1",
     "passport-local": "^1.0.0",
+    "path-to-regexp": "^7.1.0",
     "supertest": "^7.0.0",
     "validator": "^13.12.0",
     "winston": "^3.14.1"

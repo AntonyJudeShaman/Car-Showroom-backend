@@ -11,8 +11,8 @@ afterAll(async () => {
         await collection.deleteMany();
       }
       logger.info('Database cleared after all tests');
-      // await mongoose.disconnect();
-      // logger.info('Disconnected from test database');
+      await mongoose.disconnect();
+      logger.info('Disconnected from test database');
     } catch (error) {
       logger.error(error.message);
       throw error;

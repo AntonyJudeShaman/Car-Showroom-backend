@@ -11,6 +11,7 @@ const cron = require('node-cron');
 const logger = require('./config/winston');
 const sendMail = require('./lib/sendWeeklyMail');
 const createServer = require('./config/server');
+const { match } = require('path-to-regexp');
 
 const app = createServer();
 
@@ -19,6 +20,7 @@ const publicRoutes = [
   '/api/user/register',
   '/api/user/verify-user',
   '/api/car/view-all-cars',
+  '/api/user/view-car-collection/:id',
 ];
 
 app.use((req, res, next) => {

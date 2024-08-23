@@ -8,12 +8,13 @@ const Invoice = require('../Model/invoice');
 const emailjs = require('@emailjs/nodejs');
 const logger = require('../config/winston');
 
-exports.registerUser = async (username, email, password, address, phone, role) => {
+exports.registerUser = async (username, email, password, address, phone, role, wallet) => {
   try {
     const user = new User({
       username,
       email,
       password: await helpers.passwordHasher(password),
+      wallet,
       address,
       phone,
       role,
@@ -133,14 +134,16 @@ exports.searchUser = async (searchQuery) => {
   });
 };
 
-exports.buyCar = async (user, carId, selectedFeatures = [], paymentDetails) => {
+exports.buyCar = async (user, carId, selectedFeatures = [], paymentDetails, token) => {
   if (!user._id || !carId || carId.length !== 24) return { error: errorMessages.INVALID_ID };
   try {
+    token = token.split(' ')[1];
     console.log('Getting car details');
     const carResponse = await fetch(`http://localhost:3000/api/car/view-car/${carId}`, {
       method: 'GET',
       headers: {
-        Authorization: `Bearer ${process.env.JWT_TOKEN}`,
+        // Authorization: `Bearer ${process.env.JWT_TOKEN}`,
+        Authorization: `Bearer ${token}`,
       },
     });
     if (!carResponse.ok) {
@@ -196,15 +199,18 @@ exports.buyCar = async (user, carId, selectedFeatures = [], paymentDetails) => {
     }
     console.log('invoice generated');
 
-    const savedPayment = await this.processPayment({
-      user: user._id,
-      car: carId,
-      invoice: invoice._id,
-      paymentMethod: paymentDetails.method,
-      amount: totalPrice,
-      status: 'completed',
-      transactionId: paymentDetails.transactionId,
-    });
+    const savedPayment = await exports.processPayment(
+      {
+        user: user._id,
+        car: carId,
+        invoice: invoice._id,
+        paymentMethod: paymentDetails.method,
+        amount: totalPrice,
+        status: 'completed',
+        transactionId: paymentDetails.transactionId,
+      },
+      token,
+    );
     if (savedPayment.error) {
       return { error: savedPayment.error };
     }
@@ -217,7 +223,7 @@ exports.buyCar = async (user, carId, selectedFeatures = [], paymentDetails) => {
       return { error: errorMessages.FAILED_TO_SAVE_INVOICE };
     }
 
-    const verifyPayment = await this.verifyPayment(savedPayment._id);
+    const verifyPayment = await exports.verifyPayment(savedPayment._id, token);
 
     if (verifyPayment.error) {
       await Invoice.findByIdAndRemove(savedInvoice._id);
@@ -230,7 +236,7 @@ exports.buyCar = async (user, carId, selectedFeatures = [], paymentDetails) => {
       console.log('Payment verified successfully');
     }
 
-    const updatedCar = await this.updateCar(carData);
+    const updatedCar = await exports.updateCar(carData, token);
     if (updatedCar.error) {
       await Invoice.findByIdAndRemove(savedInvoice._id);
       await Payment.findByIdAndRemove(savedPayment._id);
@@ -278,7 +284,7 @@ exports.buyCar = async (user, carId, selectedFeatures = [], paymentDetails) => {
   }
 };
 
-exports.updateCar = async (carData) => {
+exports.updateCar = async (carData, token) => {
   if (!carData || !carData.car || !carData.car._id) {
     return { error: errorMessages.INVALID_CAR_DATA };
   }
@@ -292,7 +298,7 @@ exports.updateCar = async (carData) => {
       method: 'PUT',
       headers: {
         'Content-Type': 'application/json',
-        Authorization: `Bearer ${process.env.JWT_TOKEN}`,
+        Authorization: `Bearer ${token}`,
       },
       body: JSON.stringify({
         'stock.quantity': car.stock.quantity + quantity,
@@ -317,8 +323,7 @@ exports.updateCar = async (carData) => {
 };
 
 exports.getCarCollection = async (userId) => {
-  if (!userId) return { error: errorMessages.INVALID_ID };
-
+  console.log('userId:', userId);
   const user = await User.findById(userId).select('carCollection');
 
   if (!user) return { error: errorMessages.USER_NOT_FOUND };
@@ -326,12 +331,12 @@ exports.getCarCollection = async (userId) => {
   return user;
 };
 
-exports.processPayment = async (paymentInfo) => {
+exports.processPayment = async (paymentInfo, token) => {
   const savedPayment = await fetch('http://localhost:3000/api/payment/create-payment', {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
-      Authorization: `Bearer ${process.env.JWT_TOKEN}`,
+      Authorization: `Bearer ${token}`,
     },
     body: JSON.stringify(paymentInfo),
   });
@@ -339,12 +344,12 @@ exports.processPayment = async (paymentInfo) => {
   return savedPayment.json();
 };
 
-exports.verifyPayment = async (paymentId) => {
+exports.verifyPayment = async (paymentId, token) => {
   const payment = await fetch('http://localhost:3000/api/payment/verify-payment', {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
-      Authorization: `Bearer ${process.env.JWT_TOKEN}`,
+      Authorization: `Bearer ${token}`,
     },
     body: JSON.stringify({ id: paymentId }),
   });
@@ -352,34 +357,22 @@ exports.verifyPayment = async (paymentId) => {
   return payment.json();
 };
 
-exports.createAppointment = async (appointmentData, user) => {
-  try {
-    appointmentData.user = user._id;
-    appointmentData.appointmentId = helpers.generateTransactionId('APPT');
-
-    const appointment = fetch('http://localhost:3000/api/appointment/create-appointment', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        Authorization: `Bearer ${process.env.JWT_TOKEN}`,
-      },
-      body: JSON.stringify(appointmentData, user),
-    });
-    if (!appointment.ok) {
-      logger.error(
-        `[createAppointment service]  user:${user.username} failed to create appointment`,
-      );
-      return { error: errorMessages.APPOINTMENT_NOT_CREATED };
-    }
-    return appointment.json();
-  } catch (error) {
-    helpers.handleErrors(res, error);
-    return { error: errorMessages.APPOINTMENT_NOT_CREATED };
-  }
-};
-
 exports.subscribe = async (userId) => {
   try {
+    if (!userId) return { error: errorMessages.INVALID_ID };
+
+    const user = await User.findById(userId);
+
+    if (!user) {
+      logger.error(`[subscribe service]  userId:${userId} user not found`);
+      return { error: errorMessages.USER_NOT_FOUND };
+    }
+
+    if (user.subscribed) {
+      logger.error(`[subscribe service]  userId:${userId} already subscribed`);
+      return { error: errorMessages.ALREADY_SUBSCRIBED };
+    }
+
     const updatedUser = await User.findByIdAndUpdate(userId, { subscribed: true }, { new: true });
     if (!updatedUser) {
       logger.error(`[subscribe service]  userId:${userId} failed to subscribe`);
@@ -395,6 +388,19 @@ exports.subscribe = async (userId) => {
 
 exports.unsubscribe = async (userId) => {
   try {
+    if (!userId) return { error: errorMessages.INVALID_ID };
+    const user = await User.findById(userId);
+
+    if (!user) {
+      logger.error(`[unsubscribe service]  userId:${userId} user not found`);
+      return { error: errorMessages.USER_NOT_FOUND };
+    }
+
+    if (!user.subscribed) {
+      logger.error(`[unsubscribe service]  userId:${userId} was not subscribed`);
+      return { error: errorMessages.ALREADY_UNSUBSCRIBED };
+    }
+
     const updatedUser = await User.findByIdAndUpdate(userId, { subscribed: false }, { new: true });
     if (!updatedUser) {
       logger.error(`[unsubscribe service]  userId:${userId} failed to unsubscribe`);
@@ -416,7 +422,7 @@ exports.sendNotification = async (car) => {
     });
     const subscribedUsers = await User.find({ subscribed: true });
 
-    if (!subscribedUsers) {
+    if (!subscribedUsers.length) {
       logger.error(`[sendNotification service]  no subscribers found`);
       return { error: errorMessages.NO_SUBSCRIBED_USERS };
     }

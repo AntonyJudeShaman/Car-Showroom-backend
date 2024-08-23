@@ -1,17 +1,20 @@
 const Appointment = require('../Model/appointment');
 // const AppointmentSlot = require('../Model/appointmentSlot');
 const helpers = require('../lib/utils');
+const logger = require('../config/winston');
 const User = require('../Model/user');
 
 const errorMessages = require('../config/errors');
 
-exports.createAppointment = async (appointmentData) => {
+exports.createAppointment = async (appointmentData, id) => {
   try {
     const dateKey = helpers.generateDateSlotKey(
       appointmentData.date,
       appointmentData.startTime,
       appointmentData.endTime,
     );
+
+    appointmentData.user = appointmentData.user || id;
 
     appointmentData.appointmentId = helpers.generateTransactionId('APPT');
     appointmentData.dateKey = dateKey;
@@ -27,7 +30,6 @@ exports.createAppointment = async (appointmentData) => {
     if (!savedAppointment) {
       return { error: errorMessages.FAILED_TO_SAVE_APPOINTMENT };
     }
-    console.log(savedAppointment);
 
     const user = await User.findByIdAndUpdate(appointmentData.user, {
       $push: { appointments: savedAppointment },
@@ -36,11 +38,6 @@ exports.createAppointment = async (appointmentData) => {
     if (!user) {
       return { error: errorMessages.FAILED_TO_UPDATE_USER };
     }
-
-    // const savedSlot = await AppointmentSlot.create({
-    //   date: dateKey,
-    //   appointment: savedAppointment._id,
-    // });
 
     return { appointment: savedAppointment };
   } catch (error) {
@@ -93,4 +90,33 @@ exports.viewAllAppointments = async () => {
     helpers.handleErrors(res, error);
     return { error: errorMessages.NO_APPOINTMENTS_FOUND };
   }
+};
+
+exports.updateAppointment = async (id, appointmentData) => {
+  try {
+    const appointment = await Appointment.findByIdAndUpdate(id, appointmentData, { new: true });
+    if (!appointment) {
+      logger.error(`[updateAppointment service] Appointment not found: ${id}`);
+      return { error: errorMessages.APPOINTMENT_NOT_FOUND };
+    }
+    return appointment;
+  } catch (error) {
+    helpers.handleErrors(res, error);
+    return { error: errorMessages.APPOINTMENT_NOT_UPDATED };
+  }
+};
+
+exports.searchAppointment = async (searchQuery) => {
+  if (!searchQuery) {
+    logger.error(`[searchAppointmenta service]  No search query`);
+    return { error: errorMessages.NO_SEARCH_QUERY };
+  }
+  return await Appointment.find({
+    $or: [
+      { status: { $regex: searchQuery, $options: 'i' } },
+      { date: { $regex: searchQuery, $options: 'i' } },
+      { startTime: { $regex: searchQuery, $options: 'i' } },
+      { endTime: { $regex: searchQuery, $options: 'i' } },
+    ],
+  });
 };

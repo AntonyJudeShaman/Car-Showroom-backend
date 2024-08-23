@@ -6,6 +6,7 @@ const logger = require('../config/winston');
 
 exports.createCar = async (req, res) => {
   const errors = validationResult(req);
+  const token = req.headers.authorization.split(' ')[1];
   if (!errors.isEmpty()) {
     logger.error(`[createCar controller] Data not valid: ${errors.array()}`);
     return res.status(400).json({ error: errorMessages.DATA_NOT_VALID, details: errors.array() });
@@ -30,7 +31,7 @@ exports.createCar = async (req, res) => {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
-        Authorization: `Bearer ${process.env.JWT_TOKEN}`,
+        Authorization: `Bearer ${token}`,
       },
       body: JSON.stringify({ car }),
     });

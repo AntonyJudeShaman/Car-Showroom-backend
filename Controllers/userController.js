@@ -14,7 +14,7 @@ exports.register = async (req, res) => {
     return res.status(400).json({ error: errorMessages.DATA_NOT_VALID, details: errors.array() });
   }
   try {
-    const { username, email, password, address, phone, role } = req.body;
+    const { username, email, password, address, phone, role, wallet } = req.body;
 
     const userExists =
       (await userServices.getUserByEmail(email)) ||
@@ -25,7 +25,15 @@ exports.register = async (req, res) => {
       return res.status(400).json({ error: errorMessages.ALREADY_EXISTS });
     }
 
-    const user = await userServices.registerUser(username, email, password, address, phone, role);
+    const user = await userServices.registerUser(
+      username,
+      email,
+      password,
+      address,
+      phone,
+      role,
+      wallet,
+    );
     if (user.error) {
       logger.error('[register controller] User not created', user.error);
       return res.status(400).json({ error: errorMessages.USER_NOT_CREATED });
@@ -231,41 +239,59 @@ exports.buyCar = async (req, res) => {
     const paymentDetails = req.body.paymentDetails;
     const user = await userServices.checkToken(req);
 
-    console.log(
-      'User:',
-      user,
-      'Car id:',
-      carId,
-      'Selected features:',
-      selectedFeatures,
-      'Payment details:',
-      paymentDetails,
-    );
+    // console.log(
+    //   'User:',
+    //   user,
+    //   'Car id:',
+    //   carId,
+    //   'Selected features:',
+    //   selectedFeatures,
+    //   'Payment details:',
+    //   paymentDetails,
+    //   'wallet',
+    //   user.wallet,
+    //   'name',
+    //   user.username,
+    // );
 
     console.log('Buying process started');
-
-    paymentDetails.transactionId = helpers.generateTransactionId('AJS');
-
-    console.log('Transaction id generated');
 
     if (!user) {
       logger.error('[buyCar controller] Unauthorized');
       return res.status(401).json({ error: errorMessages.UNAUTHORIZED });
     }
 
-    if (!paymentDetails || !paymentDetails.method || !paymentDetails.transactionId) {
+    if (!paymentDetails || !paymentDetails.method) {
       logger.error('[buyCar controller] Missing payment details');
       return res.status(400).json({ error: errorMessages.MISSING_PAYMENT_DETAILS });
     }
 
-    const result = await userServices.buyCar(user, carId, selectedFeatures, paymentDetails);
-
-    if (result.error) {
-      return res.status(400).json({ error: result.error });
+    if (
+      paymentDetails.method !== 'UPI' &&
+      paymentDetails.method !== 'credit_card' &&
+      paymentDetails.method !== 'debit_card'
+    ) {
+      logger.error('[buyCar controller] Invalid payment method');
+      return res.status(400).json({ error: errorMessages.INVALID_PAYMENT });
     }
-    if (!result) {
-      logger.error('[buyCar controller] Car not found');
+
+    paymentDetails.transactionId = helpers.generateTransactionId('AJS');
+
+    console.log('Transaction id generated');
+
+    const result = await userServices.buyCar(
+      user,
+      carId,
+      selectedFeatures,
+      paymentDetails,
+      req.headers['authorization'],
+    );
+
+    if (result.error === errorMessages.FAILED_TO_FETCH_CAR) {
+      logger.error('[buyCar controller] Failed to fetch car details');
       return res.status(404).json({ error: errorMessages.CAR_NOT_FOUND });
+    } else if (result.error) {
+      return res.status(400).json({ error: result.error });
     }
 
     const { updatedUser, updatedCar, invoice, payment } = result;
@@ -304,32 +330,22 @@ exports.viewCarCollection = async (req, res) => {
       logger.error(`[viewCarCollection controller] Invalid id: ${id}`);
       return res.status(400).json({ error: errorMessages.INVALID_ID });
     }
-    // const user = await userServices.checkToken(req);
-    // if (!user) {
-    //   return res.status(401).json({ error: errorMessages.UNAUTHORIZED });
-    // }
-    const collection = await userServices.getCarCollection(id);
-    if (collection.error) {
-      return res.status(400).json({ error: collection.error });
-    }
-    return res.status(200).json(collection.carCollection);
-  } catch (err) {
-    helpers.handleErrors(res, err);
-  }
-};
-
-exports.createAppointment = async (req, res) => {
-  try {
     const user = await userServices.checkToken(req);
     if (!user) {
-      logger.error('[createAppointment controller] Unauthorized');
       return res.status(401).json({ error: errorMessages.UNAUTHORIZED });
     }
-    const appointment = await userServices.createAppointment(req.body, user);
-    if (appointment.error) {
-      return res.status(400).json({ error: appointment.error });
+    console.log('View car collection started');
+    const collection = await userServices.getCarCollection(id);
+
+    if (collection === null) {
+      return res.status(404).json({ error: errorMessages.NO_CARS_FOUND });
     }
-    return res.status(201).json(appointment);
+    if (collection.error === errorMessages.USER_NOT_FOUND) {
+      return res.status(404).json({ error: errorMessages.USER_NOT_FOUND });
+    } else if (collection.error) {
+      return res.status(400).json({ error: collection.error });
+    }
+    return res.status(200).json({ cars: collection.carCollection });
   } catch (err) {
     helpers.handleErrors(res, err);
   }
@@ -338,7 +354,7 @@ exports.createAppointment = async (req, res) => {
 exports.subscribe = async (req, res) => {
   try {
     const user = await userServices.checkToken(req);
-    if (!user) {
+    if (!user || !user._id) {
       logger.error('[subscribe controller] Unauthorized');
       return res.status(401).json({ error: errorMessages.UNAUTHORIZED });
     }
@@ -346,7 +362,7 @@ exports.subscribe = async (req, res) => {
     if (subscribe.error) {
       return res.status(400).json({ error: subscribe.error });
     }
-    return res.status(200).json(subscribe);
+    return res.status(200).json({ message: 'User subscribed successfully' });
   } catch (err) {
     helpers.handleErrors(res, err);
   }
@@ -355,12 +371,15 @@ exports.subscribe = async (req, res) => {
 exports.unsubscribe = async (req, res) => {
   try {
     const user = await userServices.checkToken(req);
-    if (!user) return res.status(401).json({ error: errorMessages.UNAUTHORIZED });
+    if (!user || !user._id) {
+      logger.error('[unsubscribe controller] Unauthorized');
+      return res.status(401).json({ error: errorMessages.UNAUTHORIZED });
+    }
     const unsubscribe = await userServices.unsubscribe(user._id);
     if (unsubscribe.error) {
       return res.status(400).json({ error: unsubscribe.error });
     }
-    return res.status(200).json(unsubscribe);
+    return res.status(200).json({ message: 'User unsubscribed successfully' });
   } catch (err) {
     helpers.handleErrors(res, err);
   }
@@ -368,11 +387,18 @@ exports.unsubscribe = async (req, res) => {
 
 exports.sendNotification = async (req, res) => {
   try {
-    const notification = await userServices.sendNotification(req.body.car);
-    if (notification.error) {
-      return { error: notification.error };
+    const isAdmin = await helpers.checkAdmin(req);
+    if (!isAdmin) {
+      logger.error('[userSendNotification controller] User is not an admin');
+      return res.status(403).json({ error: errorMessages.FORBIDDEN });
     }
-    return res.status(200).json('Notification sent successfully');
+    const notification = await userServices.sendNotification(req.body);
+    if (notification.error === errorMessages.NO_SUBSCRIBED_USERS) {
+      return res.status(404).json({ error: errorMessages.NO_SUBSCRIBED_USERS });
+    } else if (notification.error) {
+      return res.status(400).json({ error: notification.error });
+    }
+    return res.status(200).json({ message: 'Notification sent successfully' });
   } catch (err) {
     helpers.handleErrors(res, err);
   }
