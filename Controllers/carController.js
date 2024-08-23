@@ -11,11 +11,11 @@ exports.createCar = async (req, res) => {
     return res.status(400).json({ error: errorMessages.DATA_NOT_VALID, details: errors.array() });
   }
   try {
-    // const isAdmin = await helpers.checkAdmin(req);
-    // if (!isAdmin) {
-    //   logger.error('[createCar controller] User is not an admin');
-    //   return res.status(403).json({ error: errorMessages.FORBIDDEN });
-    // }
+    const isAdmin = await helpers.checkAdmin(req);
+    if (!isAdmin) {
+      logger.error('[createCar controller] User is not an admin');
+      return res.status(403).json({ error: errorMessages.FORBIDDEN });
+    }
     const carExists = await carServices.getCarByName(req.body.name);
     if (carExists) {
       logger.error(`[createCar controller] Car already exists: ${req.body.name}`);

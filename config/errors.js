@@ -2,6 +2,7 @@ module.exports = {
   USER_NOT_FOUND: 'User not found',
   CAR_NOT_FOUND: 'Car not found',
   UNAUTHORIZED: 'User not authorized',
+  TOKEN_NOT_VALID: 'Token not valid',
   FORBIDDEN: 'Forbidden. Admin access required',
   ALREADY_EXISTS: 'Username/Email already exists',
   INVALID_ID: 'Invalid ID',

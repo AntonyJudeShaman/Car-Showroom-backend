@@ -5,6 +5,7 @@ const userServices = require('../Services/userServices');
 const errorMessages = require('../config/errors');
 const logger = require('../config/winston');
 const BookedCars = require('../Model/bookedCars');
+const mongoose = require('mongoose');
 
 exports.register = async (req, res) => {
   const errors = validationResult(req);
@@ -119,6 +120,9 @@ exports.viewAllUser = async (req, res) => {
 exports.checkToken = async (req, res) => {
   try {
     const user = await userServices.checkToken(req);
+    if (user.error) {
+      return res.status(401).json({ error: errorMessages.TOKEN_NOT_VALID });
+    }
     if (!user) {
       logger.error('[checkToken controller] Unauthorized');
       return res.status(401).json({ error: errorMessages.UNAUTHORIZED });
@@ -162,11 +166,31 @@ exports.deleteUser = async (req, res) => {
       logger.error('[deleteUser controller] Unauthorized');
       return res.status(401).json({ error: errorMessages.UNAUTHORIZED });
     }
+
+    console.log('User role:', user.role, 'User id:', user._id, 'Request id:', req.params.id);
+
+    const userToDelete = await userServices.getUserById(req.params.id);
+
+    if (!userToDelete) {
+      logger.error(`[deleteUser controller] User not found: ${req.params.id}`);
+      return res.status(404).json({ error: errorMessages.USER_NOT_FOUND });
+    }
+
+    if (user.role !== 'admin' && user._id.toString() !== req.params.id) {
+      logger.error('[deleteUser controller] Forbidden. Cannot delete another user');
+      return res
+        .status(403)
+        .json({ error: errorMessages.FORBIDDEN + '. Cannot delete another user' });
+    }
+
     const deletedUser = await userServices.deleteUser(req.params.id);
     if (!deletedUser) {
       logger.error(`[deleteUser controller] User not deleted: ${req.params.id}`);
-      return res.status(404).json({ error: errorMessages.USER_NOT_FOUND });
+      return res.status(404).json({ error: errorMessages.USER_NOT_DELETED });
     }
+    logger.info(
+      `[deleteUser controller] User deleted: ${req.params.id} - ${deletedUser.email} - ${deletedUser.username}`,
+    );
     return res.status(200).json({ message: errorMessages.USER_DELETED });
   } catch (err) {
     helpers.handleErrors(res, err);
@@ -190,7 +214,7 @@ exports.searchUser = async (req, res) => {
       return res.status(401).json({ error: errorMessages.UNAUTHORIZED });
     }
     const users = await userServices.searchUser(req.query.q);
-    if (!users.length) {
+    if (!users.length || !users) {
       logger.error('[searchUser controller] No search results');
       return res.status(404).json({ error: errorMessages.NO_RESULTS });
     }
@@ -206,6 +230,17 @@ exports.buyCar = async (req, res) => {
     const selectedFeatures = req.body.features || [];
     const paymentDetails = req.body.paymentDetails;
     const user = await userServices.checkToken(req);
+
+    console.log(
+      'User:',
+      user,
+      'Car id:',
+      carId,
+      'Selected features:',
+      selectedFeatures,
+      'Payment details:',
+      paymentDetails,
+    );
 
     console.log('Buying process started');
 

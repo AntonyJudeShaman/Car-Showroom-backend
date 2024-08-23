@@ -319,3 +319,637 @@
 {"level":"error","message":"[updateUser controller] Cannot change credentials restricted values","timestamp":"21-08-2024 17:04:02"}
 {"0":{"location":"body","msg":"Invalid email","path":"email","type":"field","value":""},"level":"error","message":"[updateUser controller] Data not valid","timestamp":"21-08-2024 17:04:03"}
 {"0":{"location":"body","msg":"Invalid email","path":"email","type":"field","value":"test"},"level":"error","message":"[updateUser controller] Data not valid","timestamp":"21-08-2024 17:04:03"}
+{"level":"error","message":"[register controller] User already exists: testuser test@gmail.com","timestamp":"22-08-2024 11:57:07"}
+{"0":{"location":"body","msg":"Invalid value","path":"username","type":"field","value":""},"1":{"location":"body","msg":"Username is required","path":"username","type":"field","value":""},"2":{"location":"body","msg":"Invalid email","path":"email","type":"field","value":""},"level":"error","message":"[register controller] Data not valid","timestamp":"22-08-2024 11:57:07"}
+{"level":"error","message":"[loginUser service]  credential:testuser invalid password","timestamp":"22-08-2024 11:57:07"}
+{"level":"error","message":"[loginUser service]  credential:wrong user not found","timestamp":"22-08-2024 11:57:07"}
+{"0":{"location":"body","msg":"Username/Email must be between 4 and 25 characters","path":"credential","type":"field","value":"abc"},"level":"error","message":"[login controller] Data not valid","timestamp":"22-08-2024 11:57:07"}
+{"0":{"location":"body","msg":"Invalid value","path":"password","type":"field","value":""},"1":{"location":"body","msg":"Password must be between 6 and 25 characters","path":"password","type":"field","value":""},"level":"error","message":"[login controller] Data not valid","timestamp":"22-08-2024 11:57:07"}
+{"level":"error","message":"[updateUser controller] Cannot change credentials restricted values","timestamp":"22-08-2024 11:57:08"}
+{"level":"error","message":"[updateUser controller] Cannot change credentials restricted values","timestamp":"22-08-2024 11:57:08"}
+{"0":{"location":"body","msg":"Invalid email","path":"email","type":"field","value":""},"level":"error","message":"[updateUser controller] Data not valid","timestamp":"22-08-2024 11:57:08"}
+{"0":{"location":"body","msg":"Invalid email","path":"email","type":"field","value":"test"},"level":"error","message":"[updateUser controller] Data not valid","timestamp":"22-08-2024 11:57:08"}
+{"level":"error","message":"[register controller] User already exists: testuser test@gmail.com","timestamp":"22-08-2024 14:08:15"}
+{"0":{"location":"body","msg":"Invalid email","path":"email","type":"field","value":"invalidemail"},"level":"error","message":"[register controller] Data not valid","timestamp":"22-08-2024 14:08:16"}
+{"level":"error","message":"[loginUser service]  credential:testuser invalid password","timestamp":"22-08-2024 14:08:17"}
+{"level":"error","message":"[loginUser service]  credential:nonexistentuser user not found","timestamp":"22-08-2024 14:08:17"}
+{"level":"error","message":"[authMiddleware] Unauthorized: /api/user/update-user PUT ","timestamp":"22-08-2024 14:08:17"}
+{"level":"error","message":"[authMiddleware] Unauthorized: /api/user/update-user PUT ","timestamp":"22-08-2024 14:08:17"}
+{"level":"error","message":"[authMiddleware] Unauthorized: /api/user/update-user PUT ","timestamp":"22-08-2024 14:08:17"}
+{"level":"error","message":"[authMiddleware] Unauthorized: /api/user/update-user PUT ","timestamp":"22-08-2024 14:08:17"}
+{"level":"error","message":"[authMiddleware] Unauthorized: /api/user/update-user PUT ","timestamp":"22-08-2024 14:08:17"}
+{"level":"error","message":"[authMiddleware] Unauthorized: /api/user/update-user PUT ","timestamp":"22-08-2024 14:08:17"}
+{"level":"error","message":"[authMiddleware] Unauthorized: /api/user/view-all-users GET ","timestamp":"22-08-2024 14:08:17"}
+{"level":"error","message":"[authMiddleware] Unauthorized: /api/user/check-token GET ","timestamp":"22-08-2024 14:08:17"}
+{"level":"error","message":"[authMiddleware] Unauthorized: /api/user/check-token GET ","timestamp":"22-08-2024 14:08:17"}
+{"level":"error","message":"[authMiddleware] Unauthorized: /api/user/view-user/ GET ","timestamp":"22-08-2024 14:08:17"}
+{"level":"error","message":"[authMiddleware] Unauthorized: /api/user/view-user/123456789012345678901234 GET ","timestamp":"22-08-2024 14:08:17"}
+{"level":"error","message":"[authMiddleware] Unauthorized: /api/user/view-user/invalidid GET ","timestamp":"22-08-2024 14:08:17"}
+{"level":"error","message":"[authMiddleware] Unauthorized: /api/user/delete-user/ DELETE ","timestamp":"22-08-2024 14:08:17"}
+{"level":"error","message":"[authMiddleware] Unauthorized: /api/user/delete-user/123456789012345678901234 DELETE ","timestamp":"22-08-2024 14:08:17"}
+{"level":"error","message":"[authMiddleware] Unauthorized: /api/user/logout POST ","timestamp":"22-08-2024 14:08:17"}
+{"level":"error","message":"[register controller] User already exists: testuser test@gmail.com","timestamp":"22-08-2024 14:13:58"}
+{"0":{"location":"body","msg":"Invalid email","path":"email","type":"field","value":"invalidemail"},"level":"error","message":"[register controller] Data not valid","timestamp":"22-08-2024 14:13:59"}
+{"level":"error","message":"[loginUser service]  credential:testuser invalid password","timestamp":"22-08-2024 14:13:59"}
+{"level":"error","message":"[loginUser service]  credential:nonexistentuser user not found","timestamp":"22-08-2024 14:13:59"}
+{"level":"error","message":"[authMiddleware] Unauthorized: /api/user/update-user PUT ","timestamp":"22-08-2024 14:13:59"}
+{"level":"error","message":"[authMiddleware] Unauthorized: /api/user/update-user PUT ","timestamp":"22-08-2024 14:13:59"}
+{"level":"error","message":"[authMiddleware] Unauthorized: /api/user/update-user PUT ","timestamp":"22-08-2024 14:13:59"}
+{"level":"error","message":"[authMiddleware] Unauthorized: /api/user/update-user PUT ","timestamp":"22-08-2024 14:13:59"}
+{"level":"error","message":"[authMiddleware] Unauthorized: /api/user/update-user PUT ","timestamp":"22-08-2024 14:13:59"}
+{"level":"error","message":"[authMiddleware] Unauthorized: /api/user/update-user PUT ","timestamp":"22-08-2024 14:13:59"}
+{"level":"error","message":"[authMiddleware] Unauthorized: /api/user/view-all-users GET ","timestamp":"22-08-2024 14:14:00"}
+{"level":"error","message":"[authMiddleware] Unauthorized: /api/user/check-token GET ","timestamp":"22-08-2024 14:14:00"}
+{"level":"error","message":"[authMiddleware] Unauthorized: /api/user/check-token GET ","timestamp":"22-08-2024 14:14:00"}
+{"level":"error","message":"[authMiddleware] Unauthorized: /api/user/view-user/ GET ","timestamp":"22-08-2024 14:14:00"}
+{"level":"error","message":"[authMiddleware] Unauthorized: /api/user/view-user/123456789012345678901234 GET ","timestamp":"22-08-2024 14:14:00"}
+{"level":"error","message":"[authMiddleware] Unauthorized: /api/user/view-user/invalidid GET ","timestamp":"22-08-2024 14:14:00"}
+{"level":"error","message":"[authMiddleware] Unauthorized: /api/user/delete-user/ DELETE ","timestamp":"22-08-2024 14:14:00"}
+{"level":"error","message":"[authMiddleware] Unauthorized: /api/user/delete-user/123456789012345678901234 DELETE ","timestamp":"22-08-2024 14:14:00"}
+{"level":"error","message":"[authMiddleware] Unauthorized: /api/user/logout POST ","timestamp":"22-08-2024 14:14:00"}
+{"level":"error","message":"[register controller] User already exists: testuser test@gmail.com","timestamp":"22-08-2024 14:16:47"}
+{"0":{"location":"body","msg":"Invalid email","path":"email","type":"field","value":"invalidemail"},"level":"error","message":"[register controller] Data not valid","timestamp":"22-08-2024 14:16:48"}
+{"level":"error","message":"[loginUser service]  credential:testuser invalid password","timestamp":"22-08-2024 14:16:49"}
+{"level":"error","message":"[loginUser service]  credential:nonexistentuser user not found","timestamp":"22-08-2024 14:16:49"}
+{"level":"error","message":"[authMiddleware] Unauthorized: /api/user/update-user PUT ","timestamp":"22-08-2024 14:16:49"}
+{"level":"error","message":"[authMiddleware] Unauthorized: /api/user/update-user PUT ","timestamp":"22-08-2024 14:16:49"}
+{"level":"error","message":"[authMiddleware] Unauthorized: /api/user/update-user PUT ","timestamp":"22-08-2024 14:16:49"}
+{"level":"error","message":"[authMiddleware] Unauthorized: /api/user/update-user PUT ","timestamp":"22-08-2024 14:16:49"}
+{"level":"error","message":"[authMiddleware] Unauthorized: /api/user/update-user PUT ","timestamp":"22-08-2024 14:16:49"}
+{"level":"error","message":"[authMiddleware] Unauthorized: /api/user/update-user PUT ","timestamp":"22-08-2024 14:16:49"}
+{"level":"error","message":"[authMiddleware] Unauthorized: /api/user/view-all-users GET ","timestamp":"22-08-2024 14:16:49"}
+{"level":"error","message":"[authMiddleware] Unauthorized: /api/user/check-token GET ","timestamp":"22-08-2024 14:16:49"}
+{"level":"error","message":"[authMiddleware] Unauthorized: /api/user/check-token GET ","timestamp":"22-08-2024 14:16:49"}
+{"level":"error","message":"[authMiddleware] Unauthorized: /api/user/view-user/ GET ","timestamp":"22-08-2024 14:16:49"}
+{"level":"error","message":"[authMiddleware] Unauthorized: /api/user/view-user/123456789012345678901234 GET ","timestamp":"22-08-2024 14:16:49"}
+{"level":"error","message":"[authMiddleware] Unauthorized: /api/user/view-user/invalidid GET ","timestamp":"22-08-2024 14:16:49"}
+{"level":"error","message":"[authMiddleware] Unauthorized: /api/user/delete-user/ DELETE ","timestamp":"22-08-2024 14:16:49"}
+{"level":"error","message":"[authMiddleware] Unauthorized: /api/user/delete-user/123456789012345678901234 DELETE ","timestamp":"22-08-2024 14:16:49"}
+{"level":"error","message":"[authMiddleware] Unauthorized: /api/user/logout POST ","timestamp":"22-08-2024 14:16:49"}
+{"level":"error","message":"[register controller] User already exists: testuser testuser3@gmail.com","timestamp":"22-08-2024 14:17:58"}
+{"level":"error","message":"[register controller] User already exists: testuser3 test@gmail.com","timestamp":"22-08-2024 14:17:58"}
+{"0":{"location":"body","msg":"Invalid email","path":"email","type":"field","value":"invalidemail"},"level":"error","message":"[register controller] Data not valid","timestamp":"22-08-2024 14:17:58"}
+{"level":"error","message":"[loginUser service]  credential:testuser invalid password","timestamp":"22-08-2024 14:17:59"}
+{"level":"error","message":"[loginUser service]  credential:nonexistentuser user not found","timestamp":"22-08-2024 14:17:59"}
+{"level":"error","message":"[updateUser controller] Cannot change credentials restricted values","timestamp":"22-08-2024 14:17:59"}
+{"level":"error","message":"[updateUser controller] Cannot change credentials restricted values","timestamp":"22-08-2024 14:18:00"}
+{"0":{"location":"body","msg":"Invalid email","path":"email","type":"field","value":"invalidemail"},"level":"error","message":"[updateUser controller] Data not valid","timestamp":"22-08-2024 14:18:00"}
+{"level":"error","message":"[authMiddleware] Unauthorized: /api/user/update-user PUT ","timestamp":"22-08-2024 14:18:00"}
+{"level":"error","message":"[viewAllUser controller] Forbidden","timestamp":"22-08-2024 14:18:00"}
+{"level":"error","message":"[authMiddleware] Unauthorized: /api/user/check-token GET ","timestamp":"22-08-2024 14:18:00"}
+{"level":"error","message":"[viewUser controller] User not found: 123456789012345678901234","timestamp":"22-08-2024 14:18:00"}
+{"level":"error","message":"[viewUser controller] Invalid id: invalidid","timestamp":"22-08-2024 14:18:00"}
+{"level":"error","message":"[authMiddleware] Unauthorized: /api/user/delete-user/123456789012345678901234 DELETE ","timestamp":"22-08-2024 14:18:01"}
+{"level":"error","message":"[authMiddleware] Unauthorized: /api/user/logout POST ","timestamp":"22-08-2024 14:18:01"}
+{"level":"error","message":"[register controller] User already exists: testuser testuser3@gmail.com","timestamp":"22-08-2024 14:21:34"}
+{"level":"error","message":"[register controller] User already exists: testuser3 test@gmail.com","timestamp":"22-08-2024 14:21:34"}
+{"0":{"location":"body","msg":"Invalid email","path":"email","type":"field","value":"invalidemail"},"level":"error","message":"[register controller] Data not valid","timestamp":"22-08-2024 14:21:34"}
+{"level":"error","message":"[loginUser service]  credential:testuser invalid password","timestamp":"22-08-2024 14:21:34"}
+{"level":"error","message":"[loginUser service]  credential:nonexistentuser user not found","timestamp":"22-08-2024 14:21:34"}
+{"level":"error","message":"[updateUser controller] Cannot change credentials restricted values","timestamp":"22-08-2024 14:21:35"}
+{"level":"error","message":"[updateUser controller] Cannot change credentials restricted values","timestamp":"22-08-2024 14:21:35"}
+{"0":{"location":"body","msg":"Invalid email","path":"email","type":"field","value":"iaminvalid"},"level":"error","message":"[updateUser controller] Data not valid","timestamp":"22-08-2024 14:21:35"}
+{"level":"error","message":"[authMiddleware] Unauthorized: /api/user/update-user PUT ","timestamp":"22-08-2024 14:21:35"}
+{"level":"error","message":"[viewAllUser controller] Forbidden","timestamp":"22-08-2024 14:21:35"}
+{"level":"error","message":"[authMiddleware] Unauthorized: /api/user/check-token GET ","timestamp":"22-08-2024 14:21:35"}
+{"level":"error","message":"[viewUser controller] User not found: 123456789012345678901234","timestamp":"22-08-2024 14:21:35"}
+{"level":"error","message":"[viewUser controller] Invalid id: invalidid","timestamp":"22-08-2024 14:21:36"}
+{"level":"error","message":"[authMiddleware] Unauthorized: /api/user/delete-user/123456789012345678901234 DELETE ","timestamp":"22-08-2024 14:21:36"}
+{"level":"error","message":"[register controller] User already exists: testuser testuser3@gmail.com","timestamp":"22-08-2024 14:35:41"}
+{"level":"error","message":"[register controller] User already exists: testuser3 test@gmail.com","timestamp":"22-08-2024 14:35:41"}
+{"0":{"location":"body","msg":"Invalid email","path":"email","type":"field","value":"invalidemail"},"level":"error","message":"[register controller] Data not valid","timestamp":"22-08-2024 14:35:41"}
+{"level":"error","message":"[loginUser service]  credential:testuser invalid password","timestamp":"22-08-2024 14:35:42"}
+{"level":"error","message":"[loginUser service]  credential:nonexistentuser user not found","timestamp":"22-08-2024 14:35:42"}
+{"level":"error","message":"[updateUser controller] Cannot change credentials restricted values","timestamp":"22-08-2024 14:35:42"}
+{"level":"error","message":"[updateUser controller] Cannot change credentials restricted values","timestamp":"22-08-2024 14:35:42"}
+{"0":{"location":"body","msg":"Invalid email","path":"email","type":"field","value":"iaminvalid"},"level":"error","message":"[updateUser controller] Data not valid","timestamp":"22-08-2024 14:35:42"}
+{"level":"error","message":"[authMiddleware] Unauthorized: /api/user/update-user PUT ","timestamp":"22-08-2024 14:35:42"}
+{"level":"error","message":"[checkToken service] token: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY2YzZmZjY2MzZiMmU1NDcwNTA4N2M3YiIsImlhdCI6MTcyNDMxNzU0Mn0.pmgAkjsM7-hZBfLu66O8sfDiT0cDK8QHDDeD4W3u7uU  User not found","timestamp":"22-08-2024 14:35:42"}
+{"level":"error","message":"[viewAllUser controller] Unauthorized","timestamp":"22-08-2024 14:35:42"}
+{"level":"error","message":"[authMiddleware] Unauthorized: /api/user/view-all-users GET ","timestamp":"22-08-2024 14:35:42"}
+{"level":"error","message":"[authMiddleware] Unauthorized: /api/user/check-token GET ","timestamp":"22-08-2024 14:35:43"}
+{"level":"error","message":"[authMiddleware] Unauthorized: /api/user/check-token GET ","timestamp":"22-08-2024 14:35:43"}
+{"level":"error","message":"[authMiddleware] Unauthorized: /api/user/view-user/66c6ff6536b2e54705087c60 GET ","timestamp":"22-08-2024 14:35:43"}
+{"level":"error","message":"[authMiddleware] Unauthorized: /api/user/view-user/123456789012345678901234 GET ","timestamp":"22-08-2024 14:35:43"}
+{"level":"error","message":"[authMiddleware] Unauthorized: /api/user/view-user/invalidid GET ","timestamp":"22-08-2024 14:35:43"}
+{"level":"error","message":"[authMiddleware] Unauthorized: /api/user/delete-user/66c6ff6736b2e54705087c86 DELETE ","timestamp":"22-08-2024 14:35:43"}
+{"level":"error","message":"[deleteUser controller] Forbidden","timestamp":"22-08-2024 14:35:43"}
+{"level":"error","message":"[deleteUser controller] Forbidden","timestamp":"22-08-2024 14:35:43"}
+{"level":"error","message":"[authMiddleware] Unauthorized: /api/user/delete-user/123456789012345678901234 DELETE ","timestamp":"22-08-2024 14:35:43"}
+{"level":"error","message":"[authMiddleware] Unauthorized: /api/user/logout POST ","timestamp":"22-08-2024 14:35:43"}
+{"level":"error","message":"[register controller] User already exists: testuser testuser3@gmail.com","timestamp":"22-08-2024 14:39:17"}
+{"level":"error","message":"[register controller] User already exists: testuser3 test@gmail.com","timestamp":"22-08-2024 14:39:17"}
+{"0":{"location":"body","msg":"Invalid email","path":"email","type":"field","value":"invalidemail"},"level":"error","message":"[register controller] Data not valid","timestamp":"22-08-2024 14:39:17"}
+{"level":"error","message":"[register controller] User already exists: testuser testuser3@gmail.com","timestamp":"22-08-2024 14:43:44"}
+{"level":"error","message":"[register controller] User already exists: testuser3 test@gmail.com","timestamp":"22-08-2024 14:43:45"}
+{"0":{"location":"body","msg":"Invalid email","path":"email","type":"field","value":"invalidemail"},"level":"error","message":"[register controller] Data not valid","timestamp":"22-08-2024 14:43:45"}
+{"level":"error","message":"[loginUser service]  credential:testuser invalid password","timestamp":"22-08-2024 14:43:45"}
+{"level":"error","message":"[loginUser service]  credential:nonexistentuser user not found","timestamp":"22-08-2024 14:43:45"}
+{"level":"error","message":"[updateUser controller] Cannot change credentials restricted values","timestamp":"22-08-2024 14:43:45"}
+{"level":"error","message":"[updateUser controller] Cannot change credentials restricted values","timestamp":"22-08-2024 14:43:45"}
+{"0":{"location":"body","msg":"Invalid email","path":"email","type":"field","value":"iaminvalid"},"level":"error","message":"[updateUser controller] Data not valid","timestamp":"22-08-2024 14:43:45"}
+{"level":"error","message":"[authMiddleware] Unauthorized: /api/user/update-user PUT ","timestamp":"22-08-2024 14:43:45"}
+{"level":"error","message":"[viewAllUser controller] Forbidden","timestamp":"22-08-2024 14:43:46"}
+{"level":"error","message":"[authMiddleware] Unauthorized: /api/user/check-token GET ","timestamp":"22-08-2024 14:43:46"}
+{"level":"error","message":"[viewUser controller] User not found: 123456789012345678901234","timestamp":"22-08-2024 14:43:46"}
+{"level":"error","message":"[viewUser controller] Invalid id: invalidid","timestamp":"22-08-2024 14:43:46"}
+{"level":"error","message":"[authMiddleware] Unauthorized: /api/user/delete-user/66c7014a0f3a9372fee2cbea DELETE ","timestamp":"22-08-2024 14:43:46"}
+{"level":"error","message":"[authMiddleware] Unauthorized: /api/user/delete-user/66c7014a0f3a9372fee2cbf2 DELETE ","timestamp":"22-08-2024 14:43:47"}
+{"level":"error","message":"[deleteUser controller] Forbidden","timestamp":"22-08-2024 14:43:47"}
+{"level":"error","message":"[register controller] User already exists: testuser testuser3@gmail.com","timestamp":"22-08-2024 14:45:10"}
+{"level":"error","message":"[register controller] User already exists: testuser3 test@gmail.com","timestamp":"22-08-2024 14:45:10"}
+{"0":{"location":"body","msg":"Invalid email","path":"email","type":"field","value":"invalidemail"},"level":"error","message":"[register controller] Data not valid","timestamp":"22-08-2024 14:45:10"}
+{"level":"error","message":"[loginUser service]  credential:testuser invalid password","timestamp":"22-08-2024 14:45:11"}
+{"level":"error","message":"[loginUser service]  credential:nonexistentuser user not found","timestamp":"22-08-2024 14:45:11"}
+{"level":"error","message":"[updateUser controller] Cannot change credentials restricted values","timestamp":"22-08-2024 14:45:11"}
+{"level":"error","message":"[updateUser controller] Cannot change credentials restricted values","timestamp":"22-08-2024 14:45:11"}
+{"0":{"location":"body","msg":"Invalid email","path":"email","type":"field","value":"iaminvalid"},"level":"error","message":"[updateUser controller] Data not valid","timestamp":"22-08-2024 14:45:11"}
+{"level":"error","message":"[authMiddleware] Unauthorized: /api/user/update-user PUT ","timestamp":"22-08-2024 14:45:11"}
+{"level":"error","message":"[viewAllUser controller] Forbidden","timestamp":"22-08-2024 14:45:11"}
+{"level":"error","message":"[authMiddleware] Unauthorized: /api/user/check-token GET ","timestamp":"22-08-2024 14:45:12"}
+{"level":"error","message":"[viewUser controller] User not found: 123456789012345678901234","timestamp":"22-08-2024 14:45:12"}
+{"level":"error","message":"[viewUser controller] Invalid id: invalidid","timestamp":"22-08-2024 14:45:12"}
+{"level":"error","message":"[authMiddleware] Unauthorized: /api/user/delete-user/66c701a02de9fa13a58c21e9 DELETE ","timestamp":"22-08-2024 14:45:12"}
+{"level":"error","message":"[authMiddleware] Unauthorized: /api/user/delete-user/66c701a02de9fa13a58c21f1 DELETE ","timestamp":"22-08-2024 14:45:12"}
+{"level":"error","message":"[deleteUser controller] Forbidden","timestamp":"22-08-2024 14:45:13"}
+{"level":"error","message":"[register controller] User already exists: testuser testuser3@gmail.com","timestamp":"22-08-2024 14:49:16"}
+{"level":"error","message":"[register controller] User already exists: testuser3 test@gmail.com","timestamp":"22-08-2024 14:49:16"}
+{"0":{"location":"body","msg":"Invalid email","path":"email","type":"field","value":"invalidemail"},"level":"error","message":"[register controller] Data not valid","timestamp":"22-08-2024 14:49:16"}
+{"level":"error","message":"[loginUser service]  credential:testuser invalid password","timestamp":"22-08-2024 14:49:17"}
+{"level":"error","message":"[loginUser service]  credential:nonexistentuser user not found","timestamp":"22-08-2024 14:49:17"}
+{"level":"error","message":"[updateUser controller] Cannot change credentials restricted values","timestamp":"22-08-2024 14:49:17"}
+{"level":"error","message":"[updateUser controller] Cannot change credentials restricted values","timestamp":"22-08-2024 14:49:17"}
+{"0":{"location":"body","msg":"Invalid email","path":"email","type":"field","value":"iaminvalid"},"level":"error","message":"[updateUser controller] Data not valid","timestamp":"22-08-2024 14:49:17"}
+{"level":"error","message":"[authMiddleware] Unauthorized: /api/user/update-user PUT ","timestamp":"22-08-2024 14:49:17"}
+{"level":"error","message":"[viewAllUser controller] Forbidden","timestamp":"22-08-2024 14:49:18"}
+{"level":"error","message":"[authMiddleware] Unauthorized: /api/user/check-token GET ","timestamp":"22-08-2024 14:49:18"}
+{"level":"error","message":"[viewUser controller] User not found: 123456789012345678901234","timestamp":"22-08-2024 14:49:18"}
+{"level":"error","message":"[viewUser controller] Invalid id: invalidid","timestamp":"22-08-2024 14:49:18"}
+{"level":"error","message":"[deleteUser controller] Forbidden","timestamp":"22-08-2024 14:49:18"}
+{"level":"error","message":"[deleteUser controller] Forbidden","timestamp":"22-08-2024 14:49:19"}
+{"level":"error","message":"[authMiddleware] Unauthorized: /api/user/delete-user/123456789012345678901234 DELETE ","timestamp":"22-08-2024 14:49:19"}
+{"0":{"location":"body","msg":"Invalid value","path":"username","type":"field"},"1":{"location":"body","msg":"Username is required","path":"username","type":"field"},"level":"error","message":"[register controller] Data not valid","timestamp":"22-08-2024 14:53:17"}
+{"level":"error","message":"[authMiddleware] Unauthorized: /api/user/delete-user/66c7038baf5537eec76a08f7 DELETE ","timestamp":"22-08-2024 14:53:54"}
+{"level":"error","message":"[deleteUser controller] Forbidden","timestamp":"22-08-2024 14:54:37"}
+{"level":"error","message":"[deleteUser controller] Forbidden. Cannot delete another user","timestamp":"22-08-2024 14:56:22"}
+{"level":"error","message":"[deleteUser controller] Forbidden. Cannot delete another user","timestamp":"22-08-2024 14:56:33"}
+{"level":"error","message":"[deleteUser controller] Forbidden. Cannot delete another user","timestamp":"22-08-2024 14:56:41"}
+{"level":"error","message":"[deleteUser controller] Forbidden. Cannot delete another user","timestamp":"22-08-2024 14:58:28"}
+{"level":"error","timestamp":"22-08-2024 15:01:14"}
+{"level":"error","message":"[deleteUser controller] Forbidden. Cannot delete another user","timestamp":"22-08-2024 15:02:22"}
+{"level":"error","message":"[register controller] User already exists: testuser testuser3@gmail.com","timestamp":"22-08-2024 15:03:40"}
+{"level":"error","message":"[register controller] User already exists: testuser3 test@gmail.com","timestamp":"22-08-2024 15:03:40"}
+{"0":{"location":"body","msg":"Invalid email","path":"email","type":"field","value":"invalidemail"},"level":"error","message":"[register controller] Data not valid","timestamp":"22-08-2024 15:03:40"}
+{"level":"error","message":"[loginUser service]  credential:testuser invalid password","timestamp":"22-08-2024 15:03:40"}
+{"level":"error","message":"[loginUser service]  credential:nonexistentuser user not found","timestamp":"22-08-2024 15:03:40"}
+{"level":"error","message":"[updateUser controller] Cannot change credentials restricted values","timestamp":"22-08-2024 15:03:41"}
+{"level":"error","message":"[updateUser controller] Cannot change credentials restricted values","timestamp":"22-08-2024 15:03:41"}
+{"0":{"location":"body","msg":"Invalid email","path":"email","type":"field","value":"iaminvalid"},"level":"error","message":"[updateUser controller] Data not valid","timestamp":"22-08-2024 15:03:41"}
+{"level":"error","message":"[authMiddleware] Unauthorized: /api/user/update-user PUT ","timestamp":"22-08-2024 15:03:41"}
+{"level":"error","message":"[viewAllUser controller] Forbidden","timestamp":"22-08-2024 15:03:41"}
+{"level":"error","message":"[authMiddleware] Unauthorized: /api/user/check-token GET ","timestamp":"22-08-2024 15:03:41"}
+{"level":"error","message":"[viewUser controller] User not found: 123456789012345678901234","timestamp":"22-08-2024 15:03:41"}
+{"level":"error","message":"[viewUser controller] Invalid id: invalidid","timestamp":"22-08-2024 15:03:41"}
+{"level":"error","message":"[authMiddleware] Unauthorized: /api/user/delete-user/66c705f66f45e46e87bb5653 DELETE ","timestamp":"22-08-2024 15:03:42"}
+{"level":"error","message":"[authMiddleware] Unauthorized: /api/user/delete-user/123456789012345678901234 DELETE ","timestamp":"22-08-2024 15:03:42"}
+{"level":"error","message":"[register controller] User already exists: testuser testuser3@gmail.com","timestamp":"22-08-2024 15:05:09"}
+{"level":"error","message":"[register controller] User already exists: testuser3 test@gmail.com","timestamp":"22-08-2024 15:05:09"}
+{"0":{"location":"body","msg":"Invalid email","path":"email","type":"field","value":"invalidemail"},"level":"error","message":"[register controller] Data not valid","timestamp":"22-08-2024 15:05:09"}
+{"level":"error","message":"[loginUser service]  credential:testuser invalid password","timestamp":"22-08-2024 15:05:09"}
+{"level":"error","message":"[loginUser service]  credential:nonexistentuser user not found","timestamp":"22-08-2024 15:05:09"}
+{"level":"error","message":"[updateUser controller] Cannot change credentials restricted values","timestamp":"22-08-2024 15:05:10"}
+{"level":"error","message":"[updateUser controller] Cannot change credentials restricted values","timestamp":"22-08-2024 15:05:10"}
+{"0":{"location":"body","msg":"Invalid email","path":"email","type":"field","value":"iaminvalid"},"level":"error","message":"[updateUser controller] Data not valid","timestamp":"22-08-2024 15:05:10"}
+{"level":"error","message":"[authMiddleware] Unauthorized: /api/user/update-user PUT ","timestamp":"22-08-2024 15:05:10"}
+{"level":"error","message":"[viewAllUser controller] Forbidden","timestamp":"22-08-2024 15:05:11"}
+{"level":"error","message":"[authMiddleware] Unauthorized: /api/user/check-token GET ","timestamp":"22-08-2024 15:05:11"}
+{"level":"error","message":"[viewUser controller] User not found: 123456789012345678901234","timestamp":"22-08-2024 15:05:11"}
+{"level":"error","message":"[viewUser controller] Invalid id: invalidid","timestamp":"22-08-2024 15:05:11"}
+{"level":"error","message":"[authMiddleware] Unauthorized: /api/user/delete-user/66c706503d68761b340e4655 DELETE ","timestamp":"22-08-2024 15:05:12"}
+{"level":"error","message":"[authMiddleware] Unauthorized: /api/user/delete-user/123456789012345678901234 DELETE ","timestamp":"22-08-2024 15:05:12"}
+{"level":"error","message":"[register controller] User already exists: testuser testuser3@gmail.com","timestamp":"22-08-2024 15:08:59"}
+{"level":"error","message":"[register controller] User already exists: testuser3 test@gmail.com","timestamp":"22-08-2024 15:08:59"}
+{"0":{"location":"body","msg":"Invalid email","path":"email","type":"field","value":"invalidemail"},"level":"error","message":"[register controller] Data not valid","timestamp":"22-08-2024 15:08:59"}
+{"level":"error","message":"[loginUser service]  credential:testuser invalid password","timestamp":"22-08-2024 15:09:00"}
+{"level":"error","message":"[loginUser service]  credential:nonexistentuser user not found","timestamp":"22-08-2024 15:09:00"}
+{"level":"error","message":"[updateUser controller] Cannot change credentials restricted values","timestamp":"22-08-2024 15:09:00"}
+{"level":"error","message":"[updateUser controller] Cannot change credentials restricted values","timestamp":"22-08-2024 15:09:00"}
+{"0":{"location":"body","msg":"Invalid email","path":"email","type":"field","value":"iaminvalid"},"level":"error","message":"[updateUser controller] Data not valid","timestamp":"22-08-2024 15:09:00"}
+{"level":"error","message":"[authMiddleware] Unauthorized: /api/user/update-user PUT ","timestamp":"22-08-2024 15:09:00"}
+{"level":"error","message":"[viewAllUser controller] Forbidden","timestamp":"22-08-2024 15:09:00"}
+{"level":"error","message":"[authMiddleware] Unauthorized: /api/user/check-token GET ","timestamp":"22-08-2024 15:09:01"}
+{"level":"error","message":"[viewUser controller] User not found: 123456789012345678901234","timestamp":"22-08-2024 15:09:01"}
+{"level":"error","message":"[viewUser controller] Invalid id: invalidid","timestamp":"22-08-2024 15:09:01"}
+{"level":"error","message":"[deleteUser controller] Forbidden. Cannot delete another user","timestamp":"22-08-2024 15:09:02"}
+{"level":"error","message":"[deleteUser controller] Forbidden. Cannot delete another user","timestamp":"22-08-2024 15:09:02"}
+{"level":"error","message":"[register controller] User already exists: testuser testuser3@gmail.com","timestamp":"22-08-2024 15:13:58"}
+{"level":"error","message":"[register controller] User already exists: testuser3 test@gmail.com","timestamp":"22-08-2024 15:13:58"}
+{"0":{"location":"body","msg":"Invalid email","path":"email","type":"field","value":"invalidemail"},"level":"error","message":"[register controller] Data not valid","timestamp":"22-08-2024 15:13:58"}
+{"level":"error","message":"[loginUser service]  credential:testuser invalid password","timestamp":"22-08-2024 15:13:58"}
+{"level":"error","message":"[loginUser service]  credential:nonexistentuser user not found","timestamp":"22-08-2024 15:13:58"}
+{"level":"error","message":"[updateUser controller] Cannot change credentials restricted values","timestamp":"22-08-2024 15:13:58"}
+{"level":"error","message":"[updateUser controller] Cannot change credentials restricted values","timestamp":"22-08-2024 15:13:59"}
+{"0":{"location":"body","msg":"Invalid email","path":"email","type":"field","value":"iaminvalid"},"level":"error","message":"[updateUser controller] Data not valid","timestamp":"22-08-2024 15:13:59"}
+{"level":"error","message":"[authMiddleware] Unauthorized: /api/user/update-user PUT ","timestamp":"22-08-2024 15:13:59"}
+{"level":"error","message":"[viewAllUser controller] Forbidden","timestamp":"22-08-2024 15:13:59"}
+{"level":"error","message":"[authMiddleware] Unauthorized: /api/user/check-token GET ","timestamp":"22-08-2024 15:13:59"}
+{"level":"error","message":"[viewUser controller] User not found: 123456789012345678901234","timestamp":"22-08-2024 15:13:59"}
+{"level":"error","message":"[viewUser controller] Invalid id: invalidid","timestamp":"22-08-2024 15:13:59"}
+{"level":"error","message":"[deleteUser controller] Forbidden. Cannot delete another user","timestamp":"22-08-2024 15:14:00"}
+{"level":"error","message":"[deleteUser controller] User not found: 123456789012345678901234","timestamp":"22-08-2024 15:14:00"}
+{"level":"error","message":"[register controller] User already exists: testuser testuser3@gmail.com","timestamp":"22-08-2024 15:15:03"}
+{"level":"error","message":"[register controller] User already exists: testuser3 test@gmail.com","timestamp":"22-08-2024 15:15:03"}
+{"0":{"location":"body","msg":"Invalid email","path":"email","type":"field","value":"invalidemail"},"level":"error","message":"[register controller] Data not valid","timestamp":"22-08-2024 15:15:03"}
+{"level":"error","message":"[loginUser service]  credential:testuser invalid password","timestamp":"22-08-2024 15:15:04"}
+{"level":"error","message":"[loginUser service]  credential:nonexistentuser user not found","timestamp":"22-08-2024 15:15:04"}
+{"level":"error","message":"[updateUser controller] Cannot change credentials restricted values","timestamp":"22-08-2024 15:15:04"}
+{"level":"error","message":"[updateUser controller] Cannot change credentials restricted values","timestamp":"22-08-2024 15:15:04"}
+{"0":{"location":"body","msg":"Invalid email","path":"email","type":"field","value":"iaminvalid"},"level":"error","message":"[updateUser controller] Data not valid","timestamp":"22-08-2024 15:15:04"}
+{"level":"error","message":"[authMiddleware] Unauthorized: /api/user/update-user PUT ","timestamp":"22-08-2024 15:15:04"}
+{"level":"error","message":"[viewAllUser controller] Forbidden","timestamp":"22-08-2024 15:15:04"}
+{"level":"error","message":"[viewUser controller] User not found: 123456789012345678901234","timestamp":"22-08-2024 15:15:05"}
+{"level":"error","message":"[viewUser controller] Invalid id: invalidid","timestamp":"22-08-2024 15:15:05"}
+{"level":"error","message":"[deleteUser controller] Forbidden. Cannot delete another user","timestamp":"22-08-2024 15:15:05"}
+{"level":"error","message":"[deleteUser controller] User not found: 123456789012345678901234","timestamp":"22-08-2024 15:15:06"}
+{"level":"error","message":"[register controller] User already exists: testuser testuser3@gmail.com","timestamp":"22-08-2024 15:16:49"}
+{"level":"error","message":"[register controller] User already exists: testuser3 test@gmail.com","timestamp":"22-08-2024 15:16:49"}
+{"0":{"location":"body","msg":"Invalid email","path":"email","type":"field","value":"invalidemail"},"level":"error","message":"[register controller] Data not valid","timestamp":"22-08-2024 15:16:49"}
+{"level":"error","message":"[loginUser service]  credential:testuser invalid password","timestamp":"22-08-2024 15:16:50"}
+{"level":"error","message":"[loginUser service]  credential:nonexistentuser user not found","timestamp":"22-08-2024 15:16:50"}
+{"level":"error","message":"[updateUser controller] Cannot change credentials restricted values","timestamp":"22-08-2024 15:16:50"}
+{"level":"error","message":"[updateUser controller] Cannot change credentials restricted values","timestamp":"22-08-2024 15:16:50"}
+{"0":{"location":"body","msg":"Invalid email","path":"email","type":"field","value":"iaminvalid"},"level":"error","message":"[updateUser controller] Data not valid","timestamp":"22-08-2024 15:16:50"}
+{"level":"error","message":"[authMiddleware] Unauthorized: /api/user/update-user PUT ","timestamp":"22-08-2024 15:16:50"}
+{"level":"error","message":"[viewAllUser controller] Forbidden","timestamp":"22-08-2024 15:16:50"}
+{"level":"error","timestamp":"22-08-2024 15:16:50"}
+{"level":"error","message":"[viewUser controller] User not found: 123456789012345678901234","timestamp":"22-08-2024 15:16:51"}
+{"level":"error","message":"[viewUser controller] Invalid id: invalidid","timestamp":"22-08-2024 15:16:51"}
+{"level":"error","message":"[deleteUser controller] Forbidden. Cannot delete another user","timestamp":"22-08-2024 15:16:52"}
+{"level":"error","message":"[deleteUser controller] User not found: 123456789012345678901234","timestamp":"22-08-2024 15:16:52"}
+{"level":"error","message":"[register controller] User already exists: testuser testuser3@gmail.com","timestamp":"22-08-2024 15:20:58"}
+{"level":"error","message":"[register controller] User already exists: testuser3 test@gmail.com","timestamp":"22-08-2024 15:20:58"}
+{"0":{"location":"body","msg":"Invalid email","path":"email","type":"field","value":"invalidemail"},"level":"error","message":"[register controller] Data not valid","timestamp":"22-08-2024 15:20:58"}
+{"level":"error","message":"[loginUser service]  credential:testuser invalid password","timestamp":"22-08-2024 15:20:58"}
+{"level":"error","message":"[loginUser service]  credential:nonexistentuser user not found","timestamp":"22-08-2024 15:20:58"}
+{"level":"error","message":"[updateUser controller] Cannot change credentials restricted values","timestamp":"22-08-2024 15:20:59"}
+{"level":"error","message":"[updateUser controller] Cannot change credentials restricted values","timestamp":"22-08-2024 15:20:59"}
+{"0":{"location":"body","msg":"Invalid email","path":"email","type":"field","value":"iaminvalid"},"level":"error","message":"[updateUser controller] Data not valid","timestamp":"22-08-2024 15:20:59"}
+{"level":"error","message":"[authMiddleware] Unauthorized: /api/user/update-user PUT ","timestamp":"22-08-2024 15:20:59"}
+{"level":"error","message":"[viewAllUser controller] Forbidden","timestamp":"22-08-2024 15:20:59"}
+{"level":"error","timestamp":"22-08-2024 15:20:59"}
+{"level":"error","message":"[viewUser controller] User not found: 123456789012345678901234","timestamp":"22-08-2024 15:21:00"}
+{"level":"error","message":"[viewUser controller] Invalid id: invalidid","timestamp":"22-08-2024 15:21:00"}
+{"level":"error","message":"[deleteUser controller] Forbidden. Cannot delete another user","timestamp":"22-08-2024 15:21:00"}
+{"level":"error","message":"[deleteUser controller] User not found: 123456789012345678901234","timestamp":"22-08-2024 15:21:00"}
+{"level":"error","message":"[register controller] User already exists: testuser testuser3@gmail.com","timestamp":"22-08-2024 15:21:27"}
+{"level":"error","message":"[register controller] User already exists: testuser3 test@gmail.com","timestamp":"22-08-2024 15:21:27"}
+{"0":{"location":"body","msg":"Invalid email","path":"email","type":"field","value":"invalidemail"},"level":"error","message":"[register controller] Data not valid","timestamp":"22-08-2024 15:21:27"}
+{"level":"error","message":"[loginUser service]  credential:testuser invalid password","timestamp":"22-08-2024 15:21:27"}
+{"level":"error","message":"[loginUser service]  credential:nonexistentuser user not found","timestamp":"22-08-2024 15:21:27"}
+{"level":"error","message":"[updateUser controller] Cannot change credentials restricted values","timestamp":"22-08-2024 15:21:27"}
+{"level":"error","message":"[updateUser controller] Cannot change credentials restricted values","timestamp":"22-08-2024 15:21:28"}
+{"0":{"location":"body","msg":"Invalid email","path":"email","type":"field","value":"iaminvalid"},"level":"error","message":"[updateUser controller] Data not valid","timestamp":"22-08-2024 15:21:28"}
+{"level":"error","message":"[authMiddleware] Unauthorized: /api/user/update-user PUT ","timestamp":"22-08-2024 15:21:28"}
+{"level":"error","message":"[viewAllUser controller] Forbidden","timestamp":"22-08-2024 15:21:28"}
+{"level":"error","timestamp":"22-08-2024 15:21:28"}
+{"level":"error","message":"[register controller] User already exists: testuser testuser3@gmail.com","timestamp":"22-08-2024 15:22:56"}
+{"level":"error","message":"[register controller] User already exists: testuser3 test@gmail.com","timestamp":"22-08-2024 15:22:56"}
+{"0":{"location":"body","msg":"Invalid email","path":"email","type":"field","value":"invalidemail"},"level":"error","message":"[register controller] Data not valid","timestamp":"22-08-2024 15:22:56"}
+{"level":"error","message":"[loginUser service]  credential:testuser invalid password","timestamp":"22-08-2024 15:22:56"}
+{"level":"error","message":"[loginUser service]  credential:nonexistentuser user not found","timestamp":"22-08-2024 15:22:56"}
+{"level":"error","message":"[updateUser controller] Cannot change credentials restricted values","timestamp":"22-08-2024 15:22:56"}
+{"level":"error","message":"[updateUser controller] Cannot change credentials restricted values","timestamp":"22-08-2024 15:22:56"}
+{"0":{"location":"body","msg":"Invalid email","path":"email","type":"field","value":"iaminvalid"},"level":"error","message":"[updateUser controller] Data not valid","timestamp":"22-08-2024 15:22:56"}
+{"level":"error","message":"[authMiddleware] Unauthorized: /api/user/update-user PUT ","timestamp":"22-08-2024 15:22:56"}
+{"level":"error","message":"[viewAllUser controller] Forbidden","timestamp":"22-08-2024 15:22:57"}
+{"level":"error","timestamp":"22-08-2024 15:22:57"}
+{"level":"error","message":"[viewUser controller] User not found: 123456789012345678901234","timestamp":"22-08-2024 15:22:57"}
+{"level":"error","message":"[viewUser controller] Invalid id: invalidid","timestamp":"22-08-2024 15:22:57"}
+{"level":"error","message":"[deleteUser controller] Forbidden. Cannot delete another user","timestamp":"22-08-2024 15:22:58"}
+{"level":"error","message":"[deleteUser controller] User not found: 123456789012345678901234","timestamp":"22-08-2024 15:22:58"}
+{"level":"error","timestamp":"22-08-2024 15:23:26"}
+{"level":"error","timestamp":"22-08-2024 15:23:28"}
+{"level":"error","timestamp":"22-08-2024 15:23:35"}
+{"level":"error","message":"[checkToken service] token: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY2YzcwMzhiYWY1NTM3ZWVjNzZhMDhmNyIsImlhdCI6MTcyNDMxODY1NH0.RKissIa-5Ebp7WnECnGh1CQLfRHiQLt8j423ql9QiRo  User not found","timestamp":"22-08-2024 15:23:45"}
+{"level":"error","message":"[checkToken controller] Unauthorized","timestamp":"22-08-2024 15:23:45"}
+{"level":"error","timestamp":"22-08-2024 15:23:50"}
+{"level":"error","timestamp":"22-08-2024 15:24:21"}
+{"level":"error","message":"[checkToken service] token: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY2YzcwMzhiYWY1NTM3ZWVjNzZhMDhmNyIsImlhdCI6MTcyNDMxODY1NH0.RKissIa-5Ebp7WnECnGh1CQLfRHiQLt8j423ql9QiRo  User not found","timestamp":"22-08-2024 15:25:07"}
+{"level":"error","message":"[checkToken controller] Unauthorized","timestamp":"22-08-2024 15:25:07"}
+{"level":"error","message":"[register controller] User already exists: AntonyJude antonyjudeshaman@gmail.com","timestamp":"22-08-2024 15:25:16"}
+{"level":"error","timestamp":"22-08-2024 15:25:49"}
+{"level":"error","timestamp":"22-08-2024 15:26:09"}
+{"level":"error","timestamp":"22-08-2024 15:27:12"}
+{"level":"error","timestamp":"22-08-2024 15:27:22"}
+{"level":"error","timestamp":"22-08-2024 15:29:30"}
+{"level":"error","timestamp":"22-08-2024 15:29:53"}
+{"level":"error","message":"[register controller] User already exists: testuser testuser3@gmail.com","timestamp":"22-08-2024 15:32:37"}
+{"level":"error","message":"[register controller] User already exists: testuser3 test@gmail.com","timestamp":"22-08-2024 15:32:37"}
+{"0":{"location":"body","msg":"Invalid email","path":"email","type":"field","value":"invalidemail"},"level":"error","message":"[register controller] Data not valid","timestamp":"22-08-2024 15:32:37"}
+{"level":"error","message":"[loginUser service]  credential:testuser invalid password","timestamp":"22-08-2024 15:32:37"}
+{"level":"error","message":"[loginUser service]  credential:nonexistentuser user not found","timestamp":"22-08-2024 15:32:37"}
+{"level":"error","message":"[updateUser controller] Cannot change credentials restricted values","timestamp":"22-08-2024 15:32:38"}
+{"level":"error","message":"[updateUser controller] Cannot change credentials restricted values","timestamp":"22-08-2024 15:32:38"}
+{"0":{"location":"body","msg":"Invalid email","path":"email","type":"field","value":"iaminvalid"},"level":"error","message":"[updateUser controller] Data not valid","timestamp":"22-08-2024 15:32:38"}
+{"level":"error","message":"[authMiddleware] Unauthorized: /api/user/update-user PUT ","timestamp":"22-08-2024 15:32:38"}
+{"level":"error","message":"[viewAllUser controller] Forbidden","timestamp":"22-08-2024 15:32:38"}
+{"level":"error","timestamp":"22-08-2024 15:32:38"}
+{"level":"error","message":"[viewUser controller] User not found: 123456789012345678901234","timestamp":"22-08-2024 15:32:38"}
+{"level":"error","message":"[viewUser controller] Invalid id: invalidid","timestamp":"22-08-2024 15:32:38"}
+{"level":"error","message":"[deleteUser controller] Forbidden. Cannot delete another user","timestamp":"22-08-2024 15:32:40"}
+{"level":"error","message":"[deleteUser controller] User not found: 123456789012345678901234","timestamp":"22-08-2024 15:32:40"}
+{"level":"error","message":"[register controller] User already exists: testuser testuser3@gmail.com","timestamp":"22-08-2024 15:33:57"}
+{"level":"error","message":"[register controller] User already exists: testuser3 test@gmail.com","timestamp":"22-08-2024 15:33:57"}
+{"0":{"location":"body","msg":"Invalid email","path":"email","type":"field","value":"invalidemail"},"level":"error","message":"[register controller] Data not valid","timestamp":"22-08-2024 15:33:57"}
+{"level":"error","message":"[loginUser service]  credential:testuser invalid password","timestamp":"22-08-2024 15:33:58"}
+{"level":"error","message":"[loginUser service]  credential:nonexistentuser user not found","timestamp":"22-08-2024 15:33:58"}
+{"level":"error","message":"[updateUser controller] Cannot change credentials restricted values","timestamp":"22-08-2024 15:33:58"}
+{"level":"error","message":"[updateUser controller] Cannot change credentials restricted values","timestamp":"22-08-2024 15:33:58"}
+{"0":{"location":"body","msg":"Invalid email","path":"email","type":"field","value":"iaminvalid"},"level":"error","message":"[updateUser controller] Data not valid","timestamp":"22-08-2024 15:33:58"}
+{"level":"error","message":"[authMiddleware] Unauthorized: /api/user/update-user PUT ","timestamp":"22-08-2024 15:33:58"}
+{"level":"error","message":"[viewAllUser controller] Forbidden","timestamp":"22-08-2024 15:33:59"}
+{"level":"error","timestamp":"22-08-2024 15:33:59"}
+{"level":"error","message":"[viewUser controller] User not found: 123456789012345678901234","timestamp":"22-08-2024 15:33:59"}
+{"level":"error","message":"[viewUser controller] Invalid id: invalidid","timestamp":"22-08-2024 15:33:59"}
+{"level":"error","message":"[deleteUser controller] Forbidden. Cannot delete another user","timestamp":"22-08-2024 15:34:00"}
+{"level":"error","message":"[deleteUser controller] User not found: 123456789012345678901234","timestamp":"22-08-2024 15:34:00"}
+{"level":"error","timestamp":"22-08-2024 15:34:18"}
+{"level":"error","timestamp":"22-08-2024 15:36:02"}
+{"level":"error","message":"[checkToken controller] Unauthorized","timestamp":"22-08-2024 15:36:22"}
+{"level":"error","timestamp":"22-08-2024 15:36:45"}
+{"level":"error","timestamp":"22-08-2024 15:37:04"}
+{"level":"error","message":"[checkToken controller] Unauthorized","timestamp":"22-08-2024 15:37:12"}
+{"level":"error","timestamp":"22-08-2024 15:38:07"}
+{"level":"error","timestamp":"22-08-2024 15:38:16"}
+{"level":"error","timestamp":"22-08-2024 15:38:25"}
+{"level":"error","timestamp":"22-08-2024 15:38:29"}
+{"level":"error","timestamp":"22-08-2024 15:39:34"}
+{"level":"error","timestamp":"22-08-2024 15:40:28"}
+{"level":"error","timestamp":"22-08-2024 15:41:15"}
+{"level":"error","timestamp":"22-08-2024 15:42:04"}
+{"level":"error","timestamp":"22-08-2024 15:42:26"}
+{"level":"error","timestamp":"22-08-2024 15:43:13"}
+{"level":"error","timestamp":"22-08-2024 15:43:18"}
+{"level":"error","timestamp":"22-08-2024 15:43:23"}
+{"level":"error","timestamp":"22-08-2024 15:43:43"}
+{"level":"error","message":"[register controller] User already exists: testuser testuser3@gmail.com","timestamp":"22-08-2024 16:01:32"}
+{"level":"error","message":"[register controller] User already exists: testuser3 test@gmail.com","timestamp":"22-08-2024 16:01:33"}
+{"0":{"location":"body","msg":"Invalid email","path":"email","type":"field","value":"invalidemail"},"level":"error","message":"[register controller] Data not valid","timestamp":"22-08-2024 16:01:33"}
+{"level":"error","message":"[loginUser service]  credential:testuser invalid password","timestamp":"22-08-2024 16:01:33"}
+{"level":"error","message":"[loginUser service]  credential:nonexistentuser user not found","timestamp":"22-08-2024 16:01:33"}
+{"level":"error","message":"[updateUser controller] Cannot change credentials restricted values","timestamp":"22-08-2024 16:01:33"}
+{"level":"error","message":"[updateUser controller] Cannot change credentials restricted values","timestamp":"22-08-2024 16:01:33"}
+{"0":{"location":"body","msg":"Invalid email","path":"email","type":"field","value":"iaminvalid"},"level":"error","message":"[updateUser controller] Data not valid","timestamp":"22-08-2024 16:01:33"}
+{"level":"error","message":"[authMiddleware] Unauthorized: /api/user/update-user PUT ","timestamp":"22-08-2024 16:01:33"}
+{"level":"error","message":"[viewAllUser controller] Forbidden","timestamp":"22-08-2024 16:01:34"}
+{"level":"error","timestamp":"22-08-2024 16:01:34"}
+{"level":"error","message":"[viewUser controller] User not found: 123456789012345678901234","timestamp":"22-08-2024 16:01:34"}
+{"level":"error","message":"[viewUser controller] Invalid id: invalidid","timestamp":"22-08-2024 16:01:34"}
+{"level":"error","message":"[deleteUser controller] Forbidden. Cannot delete another user","timestamp":"22-08-2024 16:01:35"}
+{"level":"error","message":"[deleteUser controller] User not found: 123456789012345678901234","timestamp":"22-08-2024 16:01:35"}
+{"level":"error","message":"[authMiddleware] Unauthorized: /api/user/send-notification POST ","timestamp":"22-08-2024 16:01:35"}
+{"level":"error","message":"[createCar controller] Notification not sent","timestamp":"22-08-2024 16:01:35"}
+{"level":"error","message":"[authMiddleware] Unauthorized: /api/user/search?q=test GET ","timestamp":"22-08-2024 16:01:35"}
+{"level":"error","message":"[register controller] User already exists: testuser testuser3@gmail.com","timestamp":"22-08-2024 16:03:53"}
+{"level":"error","message":"[register controller] User already exists: testuser3 test@gmail.com","timestamp":"22-08-2024 16:03:53"}
+{"0":{"location":"body","msg":"Invalid email","path":"email","type":"field","value":"invalidemail"},"level":"error","message":"[register controller] Data not valid","timestamp":"22-08-2024 16:03:53"}
+{"level":"error","message":"[loginUser service]  credential:testuser invalid password","timestamp":"22-08-2024 16:03:54"}
+{"level":"error","message":"[loginUser service]  credential:nonexistentuser user not found","timestamp":"22-08-2024 16:03:54"}
+{"level":"error","message":"[updateUser controller] Cannot change credentials restricted values","timestamp":"22-08-2024 16:03:54"}
+{"level":"error","message":"[updateUser controller] Cannot change credentials restricted values","timestamp":"22-08-2024 16:03:54"}
+{"0":{"location":"body","msg":"Invalid email","path":"email","type":"field","value":"iaminvalid"},"level":"error","message":"[updateUser controller] Data not valid","timestamp":"22-08-2024 16:03:54"}
+{"level":"error","message":"[authMiddleware] Unauthorized: /api/user/update-user PUT ","timestamp":"22-08-2024 16:03:54"}
+{"level":"error","message":"[viewAllUser controller] Forbidden","timestamp":"22-08-2024 16:03:55"}
+{"level":"error","timestamp":"22-08-2024 16:03:55"}
+{"level":"error","message":"[viewUser controller] User not found: 123456789012345678901234","timestamp":"22-08-2024 16:03:55"}
+{"level":"error","message":"[viewUser controller] Invalid id: invalidid","timestamp":"22-08-2024 16:03:55"}
+{"level":"error","message":"[deleteUser controller] Forbidden. Cannot delete another user","timestamp":"22-08-2024 16:03:56"}
+{"level":"error","message":"[deleteUser controller] User not found: 123456789012345678901234","timestamp":"22-08-2024 16:03:56"}
+{"level":"error","message":"[authMiddleware] Unauthorized: /api/user/send-notification POST ","timestamp":"22-08-2024 16:03:57"}
+{"level":"error","message":"[createCar controller] Notification not sent","timestamp":"22-08-2024 16:03:57"}
+{"level":"error","message":"[register controller] User already exists: testuser testuser3@gmail.com","timestamp":"22-08-2024 16:06:03"}
+{"level":"error","message":"[register controller] User already exists: testuser3 test@gmail.com","timestamp":"22-08-2024 16:06:03"}
+{"0":{"location":"body","msg":"Invalid email","path":"email","type":"field","value":"invalidemail"},"level":"error","message":"[register controller] Data not valid","timestamp":"22-08-2024 16:06:03"}
+{"level":"error","message":"[loginUser service]  credential:testuser invalid password","timestamp":"22-08-2024 16:06:03"}
+{"level":"error","message":"[loginUser service]  credential:nonexistentuser user not found","timestamp":"22-08-2024 16:06:03"}
+{"level":"error","message":"[updateUser controller] Cannot change credentials restricted values","timestamp":"22-08-2024 16:06:03"}
+{"level":"error","message":"[updateUser controller] Cannot change credentials restricted values","timestamp":"22-08-2024 16:06:03"}
+{"0":{"location":"body","msg":"Invalid email","path":"email","type":"field","value":"iaminvalid"},"level":"error","message":"[updateUser controller] Data not valid","timestamp":"22-08-2024 16:06:04"}
+{"level":"error","message":"[authMiddleware] Unauthorized: /api/user/update-user PUT ","timestamp":"22-08-2024 16:06:04"}
+{"level":"error","message":"[viewAllUser controller] Forbidden","timestamp":"22-08-2024 16:06:04"}
+{"level":"error","timestamp":"22-08-2024 16:06:04"}
+{"level":"error","message":"[viewUser controller] User not found: 123456789012345678901234","timestamp":"22-08-2024 16:06:04"}
+{"level":"error","message":"[viewUser controller] Invalid id: invalidid","timestamp":"22-08-2024 16:06:04"}
+{"level":"error","message":"[deleteUser controller] Forbidden. Cannot delete another user","timestamp":"22-08-2024 16:06:05"}
+{"level":"error","message":"[deleteUser controller] User not found: 123456789012345678901234","timestamp":"22-08-2024 16:06:05"}
+{"level":"error","message":"[authMiddleware] Unauthorized: /api/user/send-notification POST ","timestamp":"22-08-2024 16:06:06"}
+{"level":"error","message":"[createCar controller] Notification not sent","timestamp":"22-08-2024 16:06:06"}
+{"level":"error","message":"[register controller] User already exists: testuser testuser3@gmail.com","timestamp":"22-08-2024 16:06:34"}
+{"level":"error","message":"[register controller] User already exists: testuser3 test@gmail.com","timestamp":"22-08-2024 16:06:34"}
+{"0":{"location":"body","msg":"Invalid email","path":"email","type":"field","value":"invalidemail"},"level":"error","message":"[register controller] Data not valid","timestamp":"22-08-2024 16:06:34"}
+{"level":"error","message":"[loginUser service]  credential:testuser invalid password","timestamp":"22-08-2024 16:06:34"}
+{"level":"error","message":"[loginUser service]  credential:nonexistentuser user not found","timestamp":"22-08-2024 16:06:34"}
+{"level":"error","message":"[updateUser controller] Cannot change credentials restricted values","timestamp":"22-08-2024 16:06:34"}
+{"level":"error","message":"[updateUser controller] Cannot change credentials restricted values","timestamp":"22-08-2024 16:06:34"}
+{"0":{"location":"body","msg":"Invalid email","path":"email","type":"field","value":"iaminvalid"},"level":"error","message":"[updateUser controller] Data not valid","timestamp":"22-08-2024 16:06:35"}
+{"level":"error","message":"[authMiddleware] Unauthorized: /api/user/update-user PUT ","timestamp":"22-08-2024 16:06:35"}
+{"level":"error","message":"[viewAllUser controller] Forbidden","timestamp":"22-08-2024 16:06:35"}
+{"level":"error","timestamp":"22-08-2024 16:06:35"}
+{"level":"error","message":"[viewUser controller] User not found: 123456789012345678901234","timestamp":"22-08-2024 16:06:35"}
+{"level":"error","message":"[viewUser controller] Invalid id: invalidid","timestamp":"22-08-2024 16:06:35"}
+{"level":"error","message":"[deleteUser controller] Forbidden. Cannot delete another user","timestamp":"22-08-2024 16:06:36"}
+{"level":"error","message":"[deleteUser controller] User not found: 123456789012345678901234","timestamp":"22-08-2024 16:06:36"}
+{"level":"error","message":"[authMiddleware] Unauthorized: /api/user/send-notification POST ","timestamp":"22-08-2024 16:06:37"}
+{"level":"error","message":"[createCar controller] Notification not sent","timestamp":"22-08-2024 16:06:37"}
+{"level":"error","message":"[searchUser controller] No search query","timestamp":"22-08-2024 16:06:37"}
+{"level":"error","message":"[searchUser controller] No search results","timestamp":"22-08-2024 16:06:37"}
+{"level":"error","message":"[register controller] User already exists: testuser testuser3@gmail.com","timestamp":"22-08-2024 16:07:42"}
+{"level":"error","message":"[register controller] User already exists: testuser3 test@gmail.com","timestamp":"22-08-2024 16:07:42"}
+{"0":{"location":"body","msg":"Invalid email","path":"email","type":"field","value":"invalidemail"},"level":"error","message":"[register controller] Data not valid","timestamp":"22-08-2024 16:07:42"}
+{"level":"error","message":"[loginUser service]  credential:testuser invalid password","timestamp":"22-08-2024 16:07:43"}
+{"level":"error","message":"[loginUser service]  credential:nonexistentuser user not found","timestamp":"22-08-2024 16:07:43"}
+{"level":"error","message":"[updateUser controller] Cannot change credentials restricted values","timestamp":"22-08-2024 16:07:43"}
+{"level":"error","message":"[updateUser controller] Cannot change credentials restricted values","timestamp":"22-08-2024 16:07:43"}
+{"0":{"location":"body","msg":"Invalid email","path":"email","type":"field","value":"iaminvalid"},"level":"error","message":"[updateUser controller] Data not valid","timestamp":"22-08-2024 16:07:43"}
+{"level":"error","message":"[authMiddleware] Unauthorized: /api/user/update-user PUT ","timestamp":"22-08-2024 16:07:43"}
+{"level":"error","message":"[viewAllUser controller] Forbidden","timestamp":"22-08-2024 16:07:44"}
+{"level":"error","timestamp":"22-08-2024 16:07:44"}
+{"level":"error","message":"[viewUser controller] User not found: 123456789012345678901234","timestamp":"22-08-2024 16:07:44"}
+{"level":"error","message":"[viewUser controller] Invalid id: invalidid","timestamp":"22-08-2024 16:07:44"}
+{"level":"error","message":"[deleteUser controller] Forbidden. Cannot delete another user","timestamp":"22-08-2024 16:07:45"}
+{"level":"error","message":"[deleteUser controller] User not found: 123456789012345678901234","timestamp":"22-08-2024 16:07:45"}
+{"level":"error","message":"[authMiddleware] Unauthorized: /api/user/send-notification POST ","timestamp":"22-08-2024 16:07:46"}
+{"level":"error","message":"[createCar controller] Notification not sent","timestamp":"22-08-2024 16:07:46"}
+{"level":"error","message":"[searchUser controller] No search query","timestamp":"22-08-2024 16:07:46"}
+{"level":"error","message":"[searchUser controller] No search results","timestamp":"22-08-2024 16:07:46"}
+{"level":"error","message":"[register controller] User already exists: testuser testuser3@gmail.com","timestamp":"22-08-2024 16:08:07"}
+{"level":"error","message":"[register controller] User already exists: testuser3 test@gmail.com","timestamp":"22-08-2024 16:08:07"}
+{"0":{"location":"body","msg":"Invalid email","path":"email","type":"field","value":"invalidemail"},"level":"error","message":"[register controller] Data not valid","timestamp":"22-08-2024 16:08:07"}
+{"level":"error","message":"[loginUser service]  credential:testuser invalid password","timestamp":"22-08-2024 16:08:07"}
+{"level":"error","message":"[loginUser service]  credential:nonexistentuser user not found","timestamp":"22-08-2024 16:08:07"}
+{"level":"error","message":"[updateUser controller] Cannot change credentials restricted values","timestamp":"22-08-2024 16:08:07"}
+{"level":"error","message":"[updateUser controller] Cannot change credentials restricted values","timestamp":"22-08-2024 16:08:08"}
+{"0":{"location":"body","msg":"Invalid email","path":"email","type":"field","value":"iaminvalid"},"level":"error","message":"[updateUser controller] Data not valid","timestamp":"22-08-2024 16:08:08"}
+{"level":"error","message":"[authMiddleware] Unauthorized: /api/user/update-user PUT ","timestamp":"22-08-2024 16:08:08"}
+{"level":"error","message":"[viewAllUser controller] Forbidden","timestamp":"22-08-2024 16:08:08"}
+{"level":"error","timestamp":"22-08-2024 16:08:08"}
+{"level":"error","message":"[viewUser controller] User not found: 123456789012345678901234","timestamp":"22-08-2024 16:08:08"}
+{"level":"error","message":"[viewUser controller] Invalid id: invalidid","timestamp":"22-08-2024 16:08:08"}
+{"level":"error","message":"[deleteUser controller] Forbidden. Cannot delete another user","timestamp":"22-08-2024 16:08:09"}
+{"level":"error","message":"[deleteUser controller] User not found: 123456789012345678901234","timestamp":"22-08-2024 16:08:09"}
+{"level":"error","message":"[authMiddleware] Unauthorized: /api/user/send-notification POST ","timestamp":"22-08-2024 16:08:10"}
+{"level":"error","message":"[createCar controller] Notification not sent","timestamp":"22-08-2024 16:08:10"}
+{"level":"error","message":"[searchUser controller] No search query","timestamp":"22-08-2024 16:08:10"}
+{"level":"error","message":"[searchUser controller] No search results","timestamp":"22-08-2024 16:08:10"}
+{"level":"error","message":"[register controller] User already exists: testuser testuser3@gmail.com","timestamp":"22-08-2024 16:20:24"}
+{"level":"error","message":"[register controller] User already exists: testuser3 test@gmail.com","timestamp":"22-08-2024 16:20:24"}
+{"0":{"location":"body","msg":"Invalid email","path":"email","type":"field","value":"invalidemail"},"level":"error","message":"[register controller] Data not valid","timestamp":"22-08-2024 16:20:24"}
+{"level":"error","message":"[loginUser service]  credential:testuser invalid password","timestamp":"22-08-2024 16:20:25"}
+{"level":"error","message":"[loginUser service]  credential:nonexistentuser user not found","timestamp":"22-08-2024 16:20:25"}
+{"level":"error","message":"[updateUser controller] Cannot change credentials restricted values","timestamp":"22-08-2024 16:20:25"}
+{"level":"error","message":"[updateUser controller] Cannot change credentials restricted values","timestamp":"22-08-2024 16:20:25"}
+{"0":{"location":"body","msg":"Invalid email","path":"email","type":"field","value":"iaminvalid"},"level":"error","message":"[updateUser controller] Data not valid","timestamp":"22-08-2024 16:20:25"}
+{"level":"error","message":"[authMiddleware] Unauthorized: /api/user/update-user PUT ","timestamp":"22-08-2024 16:20:25"}
+{"level":"error","message":"[viewAllUser controller] Forbidden","timestamp":"22-08-2024 16:20:25"}
+{"level":"error","timestamp":"22-08-2024 16:20:26"}
+{"level":"error","message":"[viewUser controller] User not found: 123456789012345678901234","timestamp":"22-08-2024 16:20:26"}
+{"level":"error","message":"[viewUser controller] Invalid id: invalidid","timestamp":"22-08-2024 16:20:26"}
+{"level":"error","message":"[deleteUser controller] Forbidden. Cannot delete another user","timestamp":"22-08-2024 16:20:27"}
+{"level":"error","message":"[deleteUser controller] User not found: 123456789012345678901234","timestamp":"22-08-2024 16:20:27"}
+{"level":"error","message":"[searchUser controller] No search query","timestamp":"22-08-2024 16:20:27"}
+{"level":"error","message":"[authMiddleware] Unauthorized: /api/user/search-user?q=nonexistent GET ","timestamp":"22-08-2024 16:20:27"}
+{"level":"error","message":"[authMiddleware] Unauthorized: /api/user/send-notification POST ","timestamp":"22-08-2024 16:20:28"}
+{"level":"error","message":"[createCar controller] Notification not sent","timestamp":"22-08-2024 16:20:28"}
+{"level":"error","message":"[authMiddleware] Unauthorized: /api/user/search-user?q=tony GET ","timestamp":"22-08-2024 16:22:22"}
+{"level":"error","message":"[searchUser controller] No search results","timestamp":"22-08-2024 16:23:12"}
+{"level":"error","message":"[register controller] User already exists: testuser testuser3@gmail.com","timestamp":"22-08-2024 16:23:37"}
+{"level":"error","message":"[register controller] User already exists: testuser3 test@gmail.com","timestamp":"22-08-2024 16:23:37"}
+{"0":{"location":"body","msg":"Invalid email","path":"email","type":"field","value":"invalidemail"},"level":"error","message":"[register controller] Data not valid","timestamp":"22-08-2024 16:23:38"}
+{"level":"error","message":"[loginUser service]  credential:testuser invalid password","timestamp":"22-08-2024 16:23:38"}
+{"level":"error","message":"[loginUser service]  credential:nonexistentuser user not found","timestamp":"22-08-2024 16:23:38"}
+{"level":"error","message":"[updateUser controller] Cannot change credentials restricted values","timestamp":"22-08-2024 16:23:38"}
+{"level":"error","message":"[updateUser controller] Cannot change credentials restricted values","timestamp":"22-08-2024 16:23:39"}
+{"0":{"location":"body","msg":"Invalid email","path":"email","type":"field","value":"iaminvalid"},"level":"error","message":"[updateUser controller] Data not valid","timestamp":"22-08-2024 16:23:39"}
+{"level":"error","message":"[authMiddleware] Unauthorized: /api/user/update-user PUT ","timestamp":"22-08-2024 16:23:39"}
+{"level":"error","message":"[viewAllUser controller] Forbidden","timestamp":"22-08-2024 16:23:39"}
+{"level":"error","timestamp":"22-08-2024 16:23:39"}
+{"level":"error","message":"[viewUser controller] User not found: 123456789012345678901234","timestamp":"22-08-2024 16:23:39"}
+{"level":"error","message":"[viewUser controller] Invalid id: invalidid","timestamp":"22-08-2024 16:23:39"}
+{"level":"error","message":"[deleteUser controller] Forbidden. Cannot delete another user","timestamp":"22-08-2024 16:23:40"}
+{"level":"error","message":"[deleteUser controller] User not found: 123456789012345678901234","timestamp":"22-08-2024 16:23:40"}
+{"level":"error","message":"[searchUser controller] No search query","timestamp":"22-08-2024 16:23:41"}
+{"level":"error","message":"[searchUser controller] No search results","timestamp":"22-08-2024 16:23:41"}
+{"level":"error","message":"[register controller] User already exists: testuser testuser3@gmail.com","timestamp":"22-08-2024 16:24:47"}
+{"level":"error","message":"[register controller] User already exists: testuser3 test@gmail.com","timestamp":"22-08-2024 16:24:47"}
+{"0":{"location":"body","msg":"Invalid email","path":"email","type":"field","value":"invalidemail"},"level":"error","message":"[register controller] Data not valid","timestamp":"22-08-2024 16:24:47"}
+{"level":"error","message":"[loginUser service]  credential:testuser invalid password","timestamp":"22-08-2024 16:24:47"}
+{"level":"error","message":"[loginUser service]  credential:nonexistentuser user not found","timestamp":"22-08-2024 16:24:47"}
+{"level":"error","message":"[updateUser controller] Cannot change credentials restricted values","timestamp":"22-08-2024 16:24:48"}
+{"level":"error","message":"[updateUser controller] Cannot change credentials restricted values","timestamp":"22-08-2024 16:24:48"}
+{"0":{"location":"body","msg":"Invalid email","path":"email","type":"field","value":"iaminvalid"},"level":"error","message":"[updateUser controller] Data not valid","timestamp":"22-08-2024 16:24:48"}
+{"level":"error","message":"[authMiddleware] Unauthorized: /api/user/update-user PUT ","timestamp":"22-08-2024 16:24:48"}
+{"level":"error","message":"[viewAllUser controller] Forbidden","timestamp":"22-08-2024 16:24:48"}
+{"level":"error","timestamp":"22-08-2024 16:24:48"}
+{"level":"error","message":"[viewUser controller] User not found: 123456789012345678901234","timestamp":"22-08-2024 16:24:48"}
+{"level":"error","message":"[viewUser controller] Invalid id: invalidid","timestamp":"22-08-2024 16:24:48"}
+{"level":"error","message":"[deleteUser controller] Forbidden. Cannot delete another user","timestamp":"22-08-2024 16:24:49"}
+{"level":"error","message":"[deleteUser controller] User not found: 123456789012345678901234","timestamp":"22-08-2024 16:24:49"}
+{"level":"error","message":"[searchUser controller] No search query","timestamp":"22-08-2024 16:24:50"}
+{"level":"error","message":"[searchUser controller] No search results","timestamp":"22-08-2024 16:24:50"}
+{"level":"error","message":"[authMiddleware] Unauthorized: /api/user/send-notification POST ","timestamp":"22-08-2024 16:24:50"}
+{"level":"error","message":"[createCar controller] Notification not sent","timestamp":"22-08-2024 16:24:50"}
+{"level":"error","message":"[register controller] User already exists: testuser testuser3@gmail.com","timestamp":"22-08-2024 16:25:17"}
+{"level":"error","message":"[register controller] User already exists: testuser3 test@gmail.com","timestamp":"22-08-2024 16:25:17"}
+{"0":{"location":"body","msg":"Invalid email","path":"email","type":"field","value":"invalidemail"},"level":"error","message":"[register controller] Data not valid","timestamp":"22-08-2024 16:25:17"}
+{"level":"error","message":"[loginUser service]  credential:testuser invalid password","timestamp":"22-08-2024 16:25:18"}
+{"level":"error","message":"[loginUser service]  credential:nonexistentuser user not found","timestamp":"22-08-2024 16:25:18"}
+{"level":"error","message":"[updateUser controller] Cannot change credentials restricted values","timestamp":"22-08-2024 16:25:18"}
+{"level":"error","message":"[updateUser controller] Cannot change credentials restricted values","timestamp":"22-08-2024 16:25:18"}
+{"0":{"location":"body","msg":"Invalid email","path":"email","type":"field","value":"iaminvalid"},"level":"error","message":"[updateUser controller] Data not valid","timestamp":"22-08-2024 16:25:18"}
+{"level":"error","message":"[authMiddleware] Unauthorized: /api/user/update-user PUT ","timestamp":"22-08-2024 16:25:18"}
+{"level":"error","message":"[viewAllUser controller] Forbidden","timestamp":"22-08-2024 16:25:19"}
+{"level":"error","timestamp":"22-08-2024 16:25:19"}
+{"level":"error","message":"[viewUser controller] User not found: 123456789012345678901234","timestamp":"22-08-2024 16:25:19"}
+{"level":"error","message":"[viewUser controller] Invalid id: invalidid","timestamp":"22-08-2024 16:25:19"}
+{"level":"error","message":"[deleteUser controller] Forbidden. Cannot delete another user","timestamp":"22-08-2024 16:25:20"}
+{"level":"error","message":"[deleteUser controller] User not found: 123456789012345678901234","timestamp":"22-08-2024 16:25:20"}
+{"level":"error","message":"[searchUser controller] No search query","timestamp":"22-08-2024 16:25:21"}
+{"level":"error","message":"[searchUser controller] No search results","timestamp":"22-08-2024 16:25:21"}
+{"level":"error","message":"[authMiddleware] Unauthorized: /api/user/send-notification POST ","timestamp":"22-08-2024 16:25:21"}
+{"level":"error","message":"[createCar controller] Notification not sent","timestamp":"22-08-2024 16:25:21"}
+{"level":"error","message":"[register controller] User already exists: testuser testuser3@gmail.com","timestamp":"22-08-2024 16:27:08"}
+{"level":"error","message":"[register controller] User already exists: testuser3 test@gmail.com","timestamp":"22-08-2024 16:27:08"}
+{"0":{"location":"body","msg":"Invalid email","path":"email","type":"field","value":"invalidemail"},"level":"error","message":"[register controller] Data not valid","timestamp":"22-08-2024 16:27:08"}
+{"level":"error","message":"[loginUser service]  credential:testuser invalid password","timestamp":"22-08-2024 16:27:08"}
+{"level":"error","message":"[loginUser service]  credential:nonexistentuser user not found","timestamp":"22-08-2024 16:27:08"}
+{"level":"error","message":"[updateUser controller] Cannot change credentials restricted values","timestamp":"22-08-2024 16:27:08"}
+{"level":"error","message":"[updateUser controller] Cannot change credentials restricted values","timestamp":"22-08-2024 16:27:08"}
+{"0":{"location":"body","msg":"Invalid email","path":"email","type":"field","value":"iaminvalid"},"level":"error","message":"[updateUser controller] Data not valid","timestamp":"22-08-2024 16:27:08"}
+{"level":"error","message":"[authMiddleware] Unauthorized: /api/user/update-user PUT ","timestamp":"22-08-2024 16:27:08"}
+{"level":"error","message":"[viewAllUser controller] Forbidden","timestamp":"22-08-2024 16:27:09"}
+{"level":"error","timestamp":"22-08-2024 16:27:09"}
+{"level":"error","message":"[viewUser controller] User not found: 123456789012345678901234","timestamp":"22-08-2024 16:27:09"}
+{"level":"error","message":"[viewUser controller] Invalid id: invalidid","timestamp":"22-08-2024 16:27:09"}
+{"level":"error","message":"[deleteUser controller] Forbidden. Cannot delete another user","timestamp":"22-08-2024 16:27:10"}
+{"level":"error","message":"[deleteUser controller] User not found: 123456789012345678901234","timestamp":"22-08-2024 16:27:10"}
+{"level":"error","message":"[searchUser controller] No search query","timestamp":"22-08-2024 16:27:11"}
+{"level":"error","message":"[searchUser controller] No search results","timestamp":"22-08-2024 16:27:11"}
+{"level":"error","message":"[authMiddleware] Unauthorized: /api/user/send-notification POST ","timestamp":"22-08-2024 16:27:11"}
+{"level":"error","message":"[createCar controller] Notification not sent","timestamp":"22-08-2024 16:27:11"}
+{"level":"error","message":"[register controller] User already exists: testuser testuser3@gmail.com","timestamp":"22-08-2024 16:27:49"}
+{"level":"error","message":"[register controller] User already exists: testuser3 test@gmail.com","timestamp":"22-08-2024 16:27:49"}
+{"0":{"location":"body","msg":"Invalid email","path":"email","type":"field","value":"invalidemail"},"level":"error","message":"[register controller] Data not valid","timestamp":"22-08-2024 16:27:49"}
+{"level":"error","message":"[loginUser service]  credential:testuser invalid password","timestamp":"22-08-2024 16:27:50"}
+{"level":"error","message":"[loginUser service]  credential:nonexistentuser user not found","timestamp":"22-08-2024 16:27:50"}
+{"level":"error","message":"[updateUser controller] Cannot change credentials restricted values","timestamp":"22-08-2024 16:27:50"}
+{"level":"error","message":"[updateUser controller] Cannot change credentials restricted values","timestamp":"22-08-2024 16:27:50"}
+{"0":{"location":"body","msg":"Invalid email","path":"email","type":"field","value":"iaminvalid"},"level":"error","message":"[updateUser controller] Data not valid","timestamp":"22-08-2024 16:27:50"}
+{"level":"error","message":"[authMiddleware] Unauthorized: /api/user/update-user PUT ","timestamp":"22-08-2024 16:27:50"}
+{"level":"error","message":"[viewAllUser controller] Forbidden","timestamp":"22-08-2024 16:27:51"}
+{"level":"error","timestamp":"22-08-2024 16:27:51"}
+{"level":"error","message":"[viewUser controller] User not found: 123456789012345678901234","timestamp":"22-08-2024 16:27:51"}
+{"level":"error","message":"[viewUser controller] Invalid id: invalidid","timestamp":"22-08-2024 16:27:51"}
+{"level":"error","message":"[deleteUser controller] Forbidden. Cannot delete another user","timestamp":"22-08-2024 16:27:52"}
+{"level":"error","message":"[deleteUser controller] User not found: 123456789012345678901234","timestamp":"22-08-2024 16:27:52"}
+{"level":"error","message":"[searchUser controller] No search query","timestamp":"22-08-2024 16:27:52"}
+{"level":"error","message":"[searchUser controller] No search results","timestamp":"22-08-2024 16:27:52"}
+{"level":"error","message":"[authMiddleware] Unauthorized: /api/user/send-notification POST ","timestamp":"22-08-2024 16:27:53"}
+{"level":"error","message":"[createCar controller] Notification not sent","timestamp":"22-08-2024 16:27:53"}
+{"level":"error","message":"[register controller] User already exists: testuser testuser3@gmail.com","timestamp":"22-08-2024 16:32:49"}
+{"level":"error","message":"[register controller] User already exists: testuser3 test@gmail.com","timestamp":"22-08-2024 16:32:49"}
+{"0":{"location":"body","msg":"Invalid email","path":"email","type":"field","value":"invalidemail"},"level":"error","message":"[register controller] Data not valid","timestamp":"22-08-2024 16:32:49"}
+{"level":"error","message":"[loginUser service]  credential:testuser invalid password","timestamp":"22-08-2024 16:32:49"}
+{"level":"error","message":"[loginUser service]  credential:nonexistentuser user not found","timestamp":"22-08-2024 16:32:49"}
+{"level":"error","message":"[updateUser controller] Cannot change credentials restricted values","timestamp":"22-08-2024 16:32:50"}
+{"level":"error","message":"[updateUser controller] Cannot change credentials restricted values","timestamp":"22-08-2024 16:32:50"}
+{"0":{"location":"body","msg":"Invalid email","path":"email","type":"field","value":"iaminvalid"},"level":"error","message":"[updateUser controller] Data not valid","timestamp":"22-08-2024 16:32:50"}
+{"level":"error","message":"[authMiddleware] Unauthorized: /api/user/update-user PUT ","timestamp":"22-08-2024 16:32:50"}
+{"level":"error","message":"[viewAllUser controller] Forbidden","timestamp":"22-08-2024 16:32:50"}
+{"level":"error","timestamp":"22-08-2024 16:32:50"}
+{"level":"error","message":"[viewUser controller] User not found: 123456789012345678901234","timestamp":"22-08-2024 16:32:50"}
+{"level":"error","message":"[viewUser controller] Invalid id: invalidid","timestamp":"22-08-2024 16:32:50"}
+{"level":"error","message":"[deleteUser controller] Forbidden. Cannot delete another user","timestamp":"22-08-2024 16:32:51"}
+{"level":"error","message":"[deleteUser controller] User not found: 123456789012345678901234","timestamp":"22-08-2024 16:32:51"}
+{"level":"error","message":"[searchUser controller] No search query","timestamp":"22-08-2024 16:32:52"}
+{"level":"error","message":"[searchUser controller] No search results","timestamp":"22-08-2024 16:32:52"}
+{"level":"error","message":"[authMiddleware] Unauthorized: /api/user/send-notification POST ","timestamp":"22-08-2024 16:32:52"}
+{"level":"error","message":"[createCar controller] Notification not sent","timestamp":"22-08-2024 16:32:52"}
+{"level":"error","message":"[register controller] User already exists: testuser testuser3@gmail.com","timestamp":"22-08-2024 16:34:43"}
+{"level":"error","message":"[register controller] User already exists: testuser3 test@gmail.com","timestamp":"22-08-2024 16:34:43"}
+{"0":{"location":"body","msg":"Invalid email","path":"email","type":"field","value":"invalidemail"},"level":"error","message":"[register controller] Data not valid","timestamp":"22-08-2024 16:34:43"}
+{"level":"error","message":"[authMiddleware] Unauthorized: /api/user/send-notification POST ","timestamp":"22-08-2024 16:34:43"}
+{"level":"error","message":"[createCar controller] Notification not sent","timestamp":"22-08-2024 16:34:43"}
+{"level":"error","message":"[register controller] User already exists: testuser testuser3@gmail.com","timestamp":"22-08-2024 16:35:11"}
+{"level":"error","message":"[register controller] User already exists: testuser3 test@gmail.com","timestamp":"22-08-2024 16:35:11"}
+{"0":{"location":"body","msg":"Invalid email","path":"email","type":"field","value":"invalidemail"},"level":"error","message":"[register controller] Data not valid","timestamp":"22-08-2024 16:35:11"}
+{"level":"error","message":"[authMiddleware] Unauthorized: /api/user/send-notification POST ","timestamp":"22-08-2024 16:35:11"}
+{"level":"error","message":"[createCar controller] Notification not sent","timestamp":"22-08-2024 16:35:11"}
+{"level":"error","message":"[authMiddleware] Unauthorized: /api/car/view-car/66c71b67fd27b188e5e6263e GET ","timestamp":"22-08-2024 16:35:12"}
+{"level":"error","message":"[buyCar service]  carId:66c71b67fd27b188e5e6263e Cannot fetch car","timestamp":"22-08-2024 16:35:12"}
+{"level":"error","message":"[register controller] User already exists: testuser testuser3@gmail.com","timestamp":"22-08-2024 16:37:37"}
+{"level":"error","message":"[register controller] User already exists: testuser3 test@gmail.com","timestamp":"22-08-2024 16:37:37"}
+{"0":{"location":"body","msg":"Invalid email","path":"email","type":"field","value":"invalidemail"},"level":"error","message":"[register controller] Data not valid","timestamp":"22-08-2024 16:37:37"}
+{"level":"error","message":"[authMiddleware] Unauthorized: /api/user/send-notification POST ","timestamp":"22-08-2024 16:37:38"}
+{"level":"error","message":"[createCar controller] Notification not sent","timestamp":"22-08-2024 16:37:38"}
+{"level":"error","message":"[buyCar service]  carId:66c71bfaa426ec9749e93009 no car found","timestamp":"22-08-2024 16:37:38"}
+{"level":"error","timestamp":"22-08-2024 16:37:38"}

@@ -88,8 +88,7 @@ exports.checkToken = async (req) => {
     return user;
   } catch (error) {
     logger.error(`[checkToken service] token: ${authHeader}  Cannot verify token`);
-    helpers.handleErrors(res, error);
-    return null;
+    return { error };
   }
 };
 
