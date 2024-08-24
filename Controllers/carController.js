@@ -12,8 +12,8 @@ exports.createCar = async (req, res) => {
     return res.status(400).json({ error: errorMessages.DATA_NOT_VALID, details: errors.array() });
   }
   try {
-    const isAdmin = await helpers.checkAdmin(req);
-    if (!isAdmin) {
+    const admin = await helpers.checkAdmin(req);
+    if (admin.error) {
       logger.error('[createCar controller] User is not an admin');
       return res.status(403).json({ error: errorMessages.FORBIDDEN });
     }
@@ -23,7 +23,7 @@ exports.createCar = async (req, res) => {
       return res.status(400).json({ error: errorMessages.CAR_ALREADY_EXISTS });
     }
     const car = await carServices.createCar(req.body);
-    if (!car) {
+    if (!car || car.error) {
       logger.error(`[createCar controller] Car not created: ${req.body}`);
       return res.status(400).json({ error: errorMessages.CAR_NOT_CREATED });
     }
@@ -36,12 +36,6 @@ exports.createCar = async (req, res) => {
       body: JSON.stringify({ car }),
     });
 
-    if (!notification.ok) {
-      console.log(notification);
-      logger.error('[createCar controller] Notification not sent');
-      console.log('Notification not sent');
-    }
-
     if (notification.error) {
       logger.error('[createCar controller] Notification not sent');
       return res.status(400).json({ error: errorMessages.error });
@@ -49,7 +43,7 @@ exports.createCar = async (req, res) => {
 
     logger.info(`[createCar controller] Car created: ${car.name} and notification sent`);
 
-    return res.status(201).json({ car, sent: true });
+    return res.status(201).json({ car, sent: !notification.error ? true : false });
   } catch (err) {
     helpers.handleErrors(res, err);
   }

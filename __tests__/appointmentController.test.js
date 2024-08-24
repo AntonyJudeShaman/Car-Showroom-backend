@@ -1,7 +1,7 @@
-const app = require('../config/server');
-const request = require('supertest');
-const mongoose = require('mongoose');
-const logger = require('../config/winston');
+// const app = require('../config/server');
+// const request = require('supertest');
+// const mongoose = require('mongoose');
+// const logger = require('../config/winston');
 
 describe('Appointment Controller Tests', () => {
   it('should return true', () => {

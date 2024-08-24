@@ -1,6 +1,23 @@
 const mongoose = require('mongoose');
 const logger = require('../../config/winston');
 
+// const { app } = require('../../server');
+
+// let server, agent;
+
+// beforeAll((done) => {
+//   server = app.listen(4000, (err) => {
+//     if (err) return done(err);
+
+//     agent = request.agent(server);
+//     done();
+//   });
+// });
+
+// afterEach((done) => {
+//   return server && server.close(done);
+// });
+
 afterAll(async () => {
   try {
     await mongoose.connect(process.env.MONGODB_URI);

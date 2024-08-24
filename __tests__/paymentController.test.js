@@ -1,6 +1,6 @@
-const { app, server } = require('../server');
-const request = require('supertest');
-const helpers = require('../lib/utils');
+// const { app, server } = require('../server');
+// const request = require('supertest');
+// const helpers = require('../lib/utils');
 
 describe('Payment Controller Tests', () => {
   it('should return true', () => {
@@ -19,7 +19,7 @@ describe('Payment Controller Tests', () => {
 //   ////////////////////////////////////////
 
 //   describe('Create a user to create payment', () => {
-//     it('should register a user with role', async () => {
+//     it('should register a user with role admin', async () => {
 //       const res = await request(app).post('/api/user/register').send({
 //         username: 'antony',
 //         email: 'starkshaman30@gmail.com',

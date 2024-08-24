@@ -1,12 +1,321 @@
 const { app, server } = require('../server');
 const request = require('supertest');
 const helpers = require('../lib/utils');
+const Invoice = require('../Model/invoice');
+const User = require('../Model/user');
 
 // describe('running setupTests', () => {
 //   it('returns true', () => {
 //     expect(true).toBe(true);
 //   });
 // });
+
+describe('Invoice Controller Tests', () => {
+  let token = '';
+  let userId = '';
+  let invoiceId = '';
+  let carId = '';
+  let carData;
+  let user;
+
+  //////////////////////////////////////////
+  //////////// CREATE INVOICE /////////////
+  ////////////////////////////////////////
+
+  describe('Create a user to create invoice', () => {
+    it('should register a user', async () => {
+      const res = await request(app).post('/api/user/register').send({
+        username: 'antonyjude',
+        email: 'antonyjude@gmail.com',
+        password: 'password',
+        role: 'admin',
+      });
+      token = res.body.token;
+      userId = res.body.user._id;
+      user = res.body.user;
+      expect(res.status).toBe(201);
+      expect(res.body.user.username).toBe('antonyjude');
+      expect(res.body.user.role).toBe('admin');
+    });
+  });
+
+  describe('Create a Car to create invoice', () => {
+    it('should create a car successfully', async () => {
+      const res = await request(app)
+        .post('/api/car/create-car')
+        .set('Authorization', `Bearer ${token}`)
+        .send({
+          name: 'Mercedes-Benz S-Class',
+          brand: 'Mercedes',
+          basePrice: 120000,
+          color: 'black',
+          fuelType: 'petrol',
+          engine: {
+            capacity: 4000,
+            cylinders: 6,
+            horsepower: 429,
+          },
+          transmission: 'automatic',
+          features: [
+            { name: 'remote start', price: 6000 },
+            { name: 'adaptive cruise control', price: 12000 },
+            { name: 'lane departure warning', price: 10000 },
+          ],
+          tyres: 'tubeless',
+          bodyType: 'sedan',
+          bodyMaterial: 'aluminium',
+          stock: {
+            quantity: 10,
+          },
+          status: 'available',
+          tax: 0.1,
+        });
+      carId = res.body.car._id;
+      carData = res.body;
+    });
+  });
+
+  describe('Create a invoice', () => {
+    it('should create a invoice', async () => {
+      const res = await helpers.generateInvoice(user, carData);
+
+      res.totalAmount = 120000;
+      res.remainingBalance = 10000;
+      res.tax = 0.1;
+      console.log(res);
+      const savedInvoice = await res.save();
+      const updatedUser = await User.findByIdAndUpdate(
+        user._id,
+        {
+          $push: {
+            invoices: savedInvoice,
+          },
+        },
+        { new: true },
+      );
+      invoiceId = res._id;
+      expect(res).toBeInstanceOf(Invoice);
+      expect(res).toHaveProperty('user');
+      expect(res).toHaveProperty('car');
+      expect(res).toHaveProperty('_id');
+      expect(updatedUser.invoices.length).toBe(1);
+      console.log(updatedUser.invoices);
+      expect(Object.keys(updatedUser.invoices[0]).length).toBe(15);
+    });
+  });
+
+  //////////////////////////////////////////
+  //////////// VIEW INVOICE  //////////////
+  ////////////////////////////////////////
+
+  describe('View a invoice', () => {
+    it('should view a invoice', async () => {
+      const res = await request(app)
+        .get(`/api/invoice/view-invoice/${invoiceId}`)
+        .set('Authorization', `Bearer ${token}`);
+      expect(res.status).toBe(200);
+      expect(res.body).toHaveProperty('user');
+      expect(Object.keys(res.body).length).toBe(15);
+    });
+  });
+
+  //////////////////////////////////////////
+  /////////// VIEW ALL INVOICES  //////////
+  ////////////////////////////////////////
+
+  describe('View all invoices', () => {
+    it('should view all invoices', async () => {
+      const res = await request(app)
+        .get('/api/invoice/view-all-invoices')
+        .set('Authorization', `Bearer ${token}`);
+      expect(res.status).toBe(200);
+      expect(res.body.length).toBe(1);
+    });
+  });
+
+  //////////////////////////////////////////
+  /////////// VIEW USER INVOICE  //////////
+  ////////////////////////////////////////
+
+  describe('View user invoices', () => {
+    it('should view user invoices', async () => {
+      const res = await request(app)
+        .get(`/api/invoice/view-user-invoices?id=${userId}`)
+        .set('Authorization', `Bearer ${token}`);
+
+      expect(res.status).toBe(200);
+      expect(res.body.length).toBe(1);
+    });
+  });
+});
+
+describe('Car Controller Tests', () => {
+  let adminToken = '';
+  let carId = '';
+  let token = '';
+
+  describe('Create a user to buy car', () => {
+    it('should register a user with role admin', async () => {
+      const res = await request(app).post('/api/user/register').send({
+        username: 'shaman',
+        email: 'shamangenius@gmail.com',
+        password: 'adminpassword',
+        wallet: 123456789,
+        role: 'admin',
+      });
+      adminToken = res.body.token;
+      expect(res.status).toBe(201);
+      expect(res.body.user.username).toBe('shaman');
+      expect(res.body.user.role).toBe('admin');
+    });
+
+    it('should register a user with role customer', async () => {
+      const res = await request(app).post('/api/user/register').send({
+        username: 'jude',
+        email: 'jude@gmail.com',
+        password: 'adminpassword',
+      });
+      token = res.body.token;
+      console.log(res.body);
+      expect(res.status).toBe(201);
+      expect(res.body.user.role).toBe('customer');
+      expect(res.body.user.username).toBe('jude');
+    });
+  });
+
+  describe('Create a Car ', () => {
+    it('should create a car successfully', async () => {
+      const res = await request(app)
+        .post('/api/car/create-car')
+        .set('Authorization', `Bearer ${adminToken}`)
+        .send({
+          name: 'Koenigsegg Regera',
+          brand: 'Koenigsegg',
+          basePrice: 1900000,
+          color: 'silver',
+          fuelType: 'hybrid',
+          engine: {
+            capacity: 5000,
+            cylinders: 8,
+            horsepower: 1500,
+          },
+          transmission: 'automatic',
+          features: [
+            { name: 'adaptive cruise control', price: 12000 },
+            { name: 'navigation system', price: 15000 },
+            { name: 'aerodynamic Kit', price: 25000 },
+            { name: 'lane departure warning', price: 10000 },
+            { name: 'android auto', price: 5000 },
+            { name: 'sunroof', price: 1000 },
+            { name: 'premium sound system', price: 25000 },
+            { name: 'navigation system', price: 15000 },
+          ],
+          tyres: 'tubeless',
+          bodyType: 'coupe',
+          bodyMaterial: 'carbon fiber',
+          stock: {
+            quantity: 5,
+          },
+          status: 'available',
+          tax: 0.12,
+        });
+      carId = res.body.car._id;
+      expect(res.status).toBe(201);
+      expect(res.body.car.name).toBe('Koenigsegg Regera');
+      expect(res.body.car.brand).toBe('Koenigsegg');
+      expect(res.body.car.basePrice).toBe(1900000);
+      expect(res.body.car.features.length).toBe(8);
+      expect(res.body.car.stock.quantity).toBe(5);
+      expect(res.body.sent).toBe(true);
+    });
+  });
+
+  describe('Create a Car with a customer role user', () => {
+    it('should return 403 for not being admin', async () => {
+      const res = await request(app)
+        .post('/api/car/create-car')
+        .set('Authorization', `Bearer ${token}`)
+        .send({
+          name: 'Koenigsegg Agera RS',
+          brand: 'Koenigsegg',
+          basePrice: 1900000,
+          color: 'silver',
+          fuelType: 'hybrid',
+          engine: {
+            capacity: 5000,
+            cylinders: 8,
+            horsepower: 1500,
+          },
+          transmission: 'automatic',
+          features: [
+            { name: 'adaptive cruise control', price: 12000 },
+            { name: 'navigation system', price: 15000 },
+            { name: 'aerodynamic Kit', price: 25000 },
+            { name: 'lane departure warning', price: 10000 },
+            { name: 'android auto', price: 5000 },
+            { name: 'sunroof', price: 1000 },
+            { name: 'premium sound system', price: 25000 },
+            { name: 'navigation system', price: 15000 },
+          ],
+          tyres: 'tubeless',
+          bodyType: 'coupe',
+          bodyMaterial: 'carbon fiber',
+          stock: {
+            quantity: 5,
+          },
+          status: 'available',
+          tax: 0.12,
+        });
+      expect(res.status).toBe(403);
+      expect(res.body.error).toBe('Forbidden. Admin access required');
+    });
+  });
+
+  describe('View a car', () => {
+    it('should view a car by id', async () => {
+      const res = await request(app)
+        .get(`/api/car/view-car/${carId}`)
+        .set('Authorization', `Bearer ${adminToken}`);
+      expect(res.status).toBe(200);
+      expect(res.body.car.name).toBe('Koenigsegg Regera');
+      expect(res.body.car.brand).toBe('Koenigsegg');
+      expect(res.body.car.basePrice).toBe(1900000);
+      expect(res.body.car.features.length).toBe(8);
+    });
+  });
+
+  describe('View all cars', () => {
+    it('should view all cars', async () => {
+      const res = await request(app)
+        .get('/api/car/view-all-cars')
+        .set('Authorization', `Bearer ${adminToken}`);
+      expect(res.status).toBe(200);
+      expect(res.body.cars.length).toBeGreaterThan(0);
+    });
+  });
+
+  describe('Update a car', () => {
+    it('should update a car by id', async () => {
+      const res = await request(app)
+        .put(`/api/car/update-car/${carId}`)
+        .set('Authorization', `Bearer ${adminToken}`)
+        .send({
+          stock: {
+            quantity: 2,
+          },
+          tax: 0.25,
+        });
+      expect(res.status).toBe(200);
+      expect(res.body.car.name).toBe('Koenigsegg Regera');
+      expect(res.body.car.tax).toBe(0.25);
+      expect(res.body.car.stock.quantity).toBe(2);
+    });
+  });
+
+  // afterAll((done) => {
+  //   server.close(done);
+  // });
+});
 
 describe('Payment Controller Tests', () => {
   let token = '';
@@ -19,7 +328,7 @@ describe('Payment Controller Tests', () => {
   ////////////////////////////////////////
 
   describe('Create a user to create payment', () => {
-    it('should register a user with role', async () => {
+    it('should register a user with role admin', async () => {
       const res = await request(app).post('/api/user/register').send({
         username: 'antony',
         email: 'starkshaman30@gmail.com',
