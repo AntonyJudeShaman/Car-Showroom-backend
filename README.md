@@ -1,4 +1,4 @@
-## Car Showroom Application
+# Car Showroom Application
 
 ### This project uses pnpm as package manager
 

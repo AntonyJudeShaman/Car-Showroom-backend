@@ -1,12 +1,6 @@
-.env
-.env.local
-.env.test
 
 node_modules
 
 Logs
-
-package-lock.json
-pnpm-lock.yaml
 
 coverage

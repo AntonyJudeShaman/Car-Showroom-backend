@@ -1,0 +1,24 @@
+services:
+  app:
+    build:
+      context: .
+      target: prod
+    volumes:
+      - /app/node_modules
+    ports:
+      - "3000:3000"
+    environment:
+      - NODE_ENV=production
+    command: pnpm start
+    env_file:
+      - .env.local
+
+  db:
+    image: mongo:latest
+    volumes:
+      - mongodb_data:/data/db
+
+volumes:
+  mongodb_data:
+
+

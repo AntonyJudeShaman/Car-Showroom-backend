@@ -1,6 +1,5 @@
-
+# base steps for development and production
 FROM node:20-alpine AS base
-
 
 RUN npm install -g pnpm
 
@@ -12,12 +11,14 @@ RUN mkdir -p /root/.pnpm
 WORKDIR /app
 
 COPY package.json pnpm-lock.yaml* ./
+RUN pnpm install --prod --frozen-lockfile
 
-RUN pnpm install --prod 
 
+
+# development steps
 FROM base AS dev
-RUN pnpm install 
 
+RUN pnpm install
 RUN pnpm add -g nodemon
 
 COPY . .
@@ -26,9 +27,12 @@ EXPOSE 3000
 
 ENV NODE_ENV=development
 
-CMD ["pnpm","dev"]
+CMD ["pnpm", "dev"]
 
-FROM base AS production
+
+
+# production steps
+FROM base AS prod
 
 COPY . .
 

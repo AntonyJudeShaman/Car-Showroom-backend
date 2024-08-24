@@ -11,12 +11,20 @@ const userUpdateValidations = [
 ];
 
 const userRegisterValidations = [
-  check('username').notEmpty().isLength({ min: 4, max: 25 }).withMessage('Username is required'),
+  check('username')
+    .notEmpty()
+    .withMessage('Username is required')
+    .isLength({ min: 4, max: 25 })
+    .withMessage('Username is invalid'),
   check('password')
     .isLength({ min: 6, max: 25 })
     .withMessage('Password must be between 6 and 25 characters'),
 
-  check('email').isEmail().withMessage('Invalid email'),
+  check('email')
+    .notEmpty()
+    .withMessage('Email is required')
+    .isEmail()
+    .withMessage('Email is invalid'),
   check('address').optional().notEmpty().withMessage('Address is Invalid'),
   check('phone')
     .optional()
