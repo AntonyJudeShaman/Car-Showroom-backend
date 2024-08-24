@@ -1,22 +1,230 @@
-const app = require('../config/server');
+const { app, server } = require('../server');
 const request = require('supertest');
 
-let token = '';
-let token2 = '';
-let userId = '';
-let adminToken = '';
-let deleteToken = '';
-let searchToken = '';
-let carId = '';
-let buyToken = '';
-let noBuyToken = '';
-let carData;
+describe('Appointment Controller Tests', () => {
+  beforeEach(async () => {
+    server.close();
+    server.listen(3000);
+    console.log('beforeAll');
+  });
+
+  afterEach(async () => {
+    server.closeAllConnections();
+    console.log('afterAll');
+  });
+
+  let appointmentId;
+  let token;
+  let id;
+
+  describe('Create a user to create appointment', () => {
+    it('should create a user', async () => {
+      const res = await request(app).post('/api/user/register').send({
+        username: 'appointmentuser',
+        email: 'appointmentuser@gmail.com',
+        password: 'password',
+      });
+      token = res.body.token;
+      id = res.body.user._id;
+    });
+  });
+
+  ///////////////////////////////////////
+  //////// CREATE APPOINTMENT //////////
+  /////////////////////////////////////
+
+  describe('Create Appointment', () => {
+    it('should create an appointment', async () => {
+      const res = await request(app)
+        .post('/api/appointment/create-appointment')
+        .set('Authorization', `Bearer ${token}`)
+        .send({
+          date: '24/08/2024',
+          startTime: '10:00',
+          endTime: '11:00',
+        });
+      appointmentId = res.body.appointment._id;
+      expect(res.status).toBe(201);
+      expect(res.body).toHaveProperty('appointment');
+      expect(res.body.appointment.date).toBe('24/08/2024');
+    });
+
+    it('should return 400', async () => {
+      const res = await request(app)
+        .post('/api/appointment/create-appointment')
+        .set('Authorization', `Bearer ${token}`)
+        .send({
+          date: '24/08/2024',
+          startTime: '10:00',
+          endTime: '11:00',
+        });
+      expect(res.status).toBe(400);
+      expect(res.body.error).toBe('Slot not available. Please choose another slot');
+    });
+
+    it('should return an appointment', async () => {
+      const res = await request(app)
+        .get(`/api/appointment/view-appointment/${appointmentId}`)
+        .set('Authorization', `Bearer ${token}`);
+      expect(res.status).toBe(200);
+      expect(res.body.date).toBe('24/08/2024');
+    });
+  });
+
+  /////////////////////////////////////////
+  //////// VIEW APPOINTMENT BY ID ////////
+  ///////////////////////////////////////
+
+  describe('Cancel Appointment', () => {
+    it('should cancel an appointment', async () => {
+      const res = await request(app)
+        .get(`/api/appointment/cancel-appointment?id=${appointmentId}`)
+        .set('Authorization', `Bearer ${token}`);
+      expect(res.status).toBe(200);
+      expect(res.body.message).toBe('Appointment Cancelled');
+    });
+
+    it('should return 404', async () => {
+      const res = await request(app)
+        .get(`/api/appointment/cancel-appointment?id=123456789012345678901234`)
+        .set('Authorization', `Bearer ${token}`);
+      expect(res.status).toBe(404);
+      expect(res.body.error).toBe('Appointment not found');
+    });
+  });
+
+  /////////////////////////////////////////
+  //////// VIEW ALL APPOINTMENTS /////////
+  ///////////////////////////////////////
+
+  describe('View All Appointments', () => {
+    it('should create an appointment', async () => {
+      const res = await request(app)
+        .post('/api/appointment/create-appointment')
+        .set('Authorization', `Bearer ${token}`)
+        .send({
+          date: '25/08/2024',
+          startTime: '10:00',
+          endTime: '11:00',
+        });
+      appointmentId = res.body.appointment._id;
+      expect(res.status).toBe(201);
+      expect(res.body).toHaveProperty('appointment');
+      expect(res.body.appointment.date).toBe('25/08/2024');
+    });
+
+    it('should return all appointments', async () => {
+      const res = await request(app)
+        .get('/api/appointment/view-all-appointments')
+        .set('Authorization', `Bearer ${token}`);
+      expect(res.status).toBe(200);
+      expect(res.body.length).toBe(2);
+    });
+  });
+
+  /////////////////////////////////////////
+  ////////// UPDATE APPOINTMENT //////////
+  ///////////////////////////////////////
+
+  describe('Update Appointment', () => {
+    it('should update an appointment', async () => {
+      const res = await request(app)
+        .put(`/api/appointment/update-appointment/${appointmentId}`)
+        .set('Authorization', `Bearer ${token}`)
+        .send({
+          date: '26/08/2024',
+          startTime: '10:00',
+          endTime: '11:00',
+        });
+      expect(res.status).toBe(200);
+      expect(res.body.date).toBe('26/08/2024');
+    });
+  });
+
+  /////////////////////////////////////////
+  ////////// SEARCH APPOINTMENT //////////
+  ///////////////////////////////////////
+
+  describe('Search Appointment', () => {
+    it('should search for an appointment based on status', async () => {
+      const res = await request(app)
+        .get(`/api/appointment/search-appointment?q=sche`)
+        .set('Authorization', `Bearer ${token}`)
+        .query('schedu');
+      expect(res.status).toBe(200);
+    });
+
+    it('should search for an appointment based on date', async () => {
+      const res = await request(app)
+        .get(`/api/appointment/search-appointment?q=26/08`)
+        .set('Authorization', `Bearer ${token}`)
+        .query('schedu');
+      expect(res.status).toBe(200);
+    });
+
+    it('should return 400', async () => {
+      const res = await request(app)
+        .get('/api/appointment/search-appointment')
+        .set('Authorization', `Bearer ${token}`);
+      expect(res.status).toBe(400);
+      expect(res.body.error).toBe('No search query');
+    });
+
+    it('should return 404', async () => {
+      const res = await request(app)
+        .get('/api/appointment/search-appointment?q=hello')
+        .set('Authorization', `Bearer ${token}`);
+      expect(res.status).toBe(404);
+      expect(res.body.error).toBe('No results found for the query');
+    });
+  });
+});
 
 describe('User Controller Tests', () => {
   /////////////////////////////////////////////////
   /////////////// REGISTER MODULE ////////////////
   ///////////////////////////////////////////////
 
+  // describe('running setupTests', () => {
+  //   it('returns true', () => {
+  //     expect(true).toBe(true);
+  //   });
+  // });
+
+  // beforeAll(async () => {
+  //   try {
+  //     await mongoose.connect(process.env.MONGODB_URI);
+  //     logger.info('Connected to the test database');
+  //   } catch (error) {
+  //     logger.error('Error connecting to the test database:', error.message);
+  //     throw error;
+  //   }
+  //   if (!app.listening) {
+  //     await new Promise((resolve) => app.listen(resolve));
+  //     logger.info('app started for testing');
+  //   }
+  // });
+  // afterAll(async () => {
+  //   await new Promise((resolve) => app.close(resolve));
+  //   logger.info('app closed after tests');
+  //   try {
+  //     await mongoose.disconnect();
+  //     logger.info('Disconnected from the test database');
+  //   } catch (error) {
+  //     logger.error('Error disconnecting from the test database:', error.message);
+  //     throw error;
+  //   }
+  // });
+  let token = '';
+  let token2 = '';
+  let userId = '';
+  let adminToken = '';
+  let deleteToken = '';
+  let searchToken = '';
+  let carId = '';
+  let buyToken = '';
+  let noBuyToken = '';
+  let carData;
   describe('Register Module', () => {
     it('should register a user successfully', async () => {
       const res = await request(app).post('/api/user/register').send({
@@ -37,21 +245,17 @@ describe('User Controller Tests', () => {
       expect(res.body.user.username).toBe('testuser');
       expect(res.body.user.email).toBe('test@gmail.com');
     });
-
     it('should register a user with admin role', async () => {
       const res = await request(app).post('/api/user/register').send({
         username: 'adminuser',
-        email: 'admin@gmail.com',
+        email: 'antonyjudeshaman@gmail.com',
         password: 'adminpassword',
         role: 'admin',
       });
-
       adminToken = res.body.token;
-
       expect(res.status).toBe(201);
       expect(res.body.user.role).toBe('admin');
     });
-
     it('should register a user with default role when role is not provided', async () => {
       const res = await request(app).post('/api/user/register').send({
         username: 'testuser2',
@@ -65,7 +269,6 @@ describe('User Controller Tests', () => {
       expect(res.status).toBe(201);
       expect(res.body.user.role).toBe('customer');
     });
-
     it('should not register a user with an existing username', async () => {
       const res = await request(app).post('/api/user/register').send({
         username: 'testuser',
@@ -77,7 +280,6 @@ describe('User Controller Tests', () => {
       expect(res.status).toBe(400);
       expect(res.body).toHaveProperty('error');
     });
-
     it('should not register a user with an existing email', async () => {
       const res = await request(app).post('/api/user/register').send({
         username: 'testuser3',
@@ -89,7 +291,6 @@ describe('User Controller Tests', () => {
       expect(res.status).toBe(400);
       expect(res.body).toHaveProperty('error');
     });
-
     it('should not register a user with invalid email format', async () => {
       const res = await request(app).post('/api/user/register').send({
         username: 'testuser3',
@@ -102,11 +303,9 @@ describe('User Controller Tests', () => {
       expect(res.body).toHaveProperty('details');
     });
   });
-
-  /////////////////////////////////////////////////
-  /////////////// LOGIN MODULE ///////////////////
   ///////////////////////////////////////////////
-
+  ///////////// LOGIN MODULE ///////////////////
+  /////////////////////////////////////////////
   describe('Login Module', () => {
     it('should login a user with correct credentials', async () => {
       const res = await request(app).post('/api/user/login').send({
@@ -117,7 +316,6 @@ describe('User Controller Tests', () => {
       expect(res.body).toHaveProperty('user');
       expect(res.body).toHaveProperty('token');
     });
-
     it('should login a user with email as credential', async () => {
       const res = await request(app).post('/api/user/login').send({
         credential: 'test@gmail.com',
@@ -127,7 +325,6 @@ describe('User Controller Tests', () => {
       expect(res.body).toHaveProperty('user');
       expect(res.body).toHaveProperty('token');
     });
-
     it('should not login a user with incorrect password', async () => {
       const res = await request(app).post('/api/user/login').send({
         credential: 'testuser',
@@ -136,7 +333,6 @@ describe('User Controller Tests', () => {
       expect(res.status).toBe(404);
       expect(res.body).toHaveProperty('error');
     });
-
     it('should not login a non-existent user', async () => {
       const res = await request(app).post('/api/user/login').send({
         credential: 'nonexistentuser',
@@ -146,11 +342,9 @@ describe('User Controller Tests', () => {
       expect(res.body).toHaveProperty('error');
     });
   });
-
   /////////////////////////////////////////////////
   /////////////// UPDATE USER MODULE /////////////
   ///////////////////////////////////////////////
-
   describe('Update User Module', () => {
     it('should update user address', async () => {
       const res = await request(app)
@@ -162,7 +356,6 @@ describe('User Controller Tests', () => {
       expect(res.status).toBe(200);
       expect(res.body.user.address).toBe('newaddress');
     });
-
     it('should update user phone', async () => {
       const res = await request(app)
         .put('/api/user/update-user')
@@ -173,7 +366,6 @@ describe('User Controller Tests', () => {
       expect(res.status).toBe(200);
       expect(res.body.user.phone).toBe(9876543210);
     });
-
     it('should not update user role', async () => {
       const res = await request(app)
         .put('/api/user/update-user')
@@ -184,7 +376,6 @@ describe('User Controller Tests', () => {
       expect(res.status).toBe(400);
       expect(res.body).toHaveProperty('error');
     });
-
     it('should not update user username', async () => {
       const res = await request(app)
         .put('/api/user/update-user')
@@ -195,7 +386,6 @@ describe('User Controller Tests', () => {
       expect(res.status).toBe(400);
       expect(res.body).toHaveProperty('error');
     });
-
     it('should not update user with invalid email', async () => {
       const res = await request(app)
         .put('/api/user/update-user')
@@ -206,7 +396,6 @@ describe('User Controller Tests', () => {
       expect(res.status).toBe(400);
       expect(res.body).toHaveProperty('details');
     });
-
     it('should not update user without authentication', async () => {
       const res = await request(app).put('/api/user/update-user').send({
         address: 'newaddress',
@@ -214,11 +403,9 @@ describe('User Controller Tests', () => {
       expect(res.status).toBe(401);
     });
   });
-
   /////////////////////////////////////////////////
   /////////////// VIEW ALL USERS MODULE //////////
   ///////////////////////////////////////////////
-
   describe('View All Users Module', () => {
     it('should allow admin to view all users', async () => {
       const res = await request(app)
@@ -227,7 +414,6 @@ describe('User Controller Tests', () => {
       expect(res.status).toBe(200);
       expect(Array.isArray(res.body)).toBeTruthy();
     });
-
     it('should not allow non-admin users to view all users', async () => {
       const res = await request(app)
         .get('/api/user/view-all-users')
@@ -235,11 +421,9 @@ describe('User Controller Tests', () => {
       expect(res.status).toBe(403);
     });
   });
-
   /////////////////////////////////////////////////
   /////////////// VERIFY TOKEN MODULE ////////////
   ///////////////////////////////////////////////
-
   describe('Verify Token Module', () => {
     it('should return user data for valid token', async () => {
       const res = await request(app)
@@ -249,7 +433,6 @@ describe('User Controller Tests', () => {
       expect(res.body).toHaveProperty('_id');
       expect(res.body).toHaveProperty('username');
     });
-
     it('should return unauthorized for invalid token', async () => {
       const res = await request(app)
         .post('/api/user/verify-user')
@@ -257,11 +440,9 @@ describe('User Controller Tests', () => {
       expect(res.status).toBe(500);
     });
   });
-
   /////////////////////////////////////////////////
   /////////////// VIEW USER MODULE ///////////////
   ///////////////////////////////////////////////
-
   describe('View User Module', () => {
     it('should return user data for valid user ID', async () => {
       const res = await request(app)
@@ -271,14 +452,12 @@ describe('User Controller Tests', () => {
       expect(res.body).toHaveProperty('_id');
       expect(res.body).toHaveProperty('username');
     });
-
     it('should return not found for invalid user ID', async () => {
       const res = await request(app)
         .get('/api/user/view-user/123456789012345678901234')
         .set('Authorization', `Bearer ${token}`);
       expect(res.status).toBe(404);
     });
-
     it('should return bad request for malformed user ID', async () => {
       const res = await request(app)
         .get('/api/user/view-user/invalidid')
@@ -286,14 +465,11 @@ describe('User Controller Tests', () => {
       expect(res.status).toBe(400);
     });
   });
-
   /////////////////////////////////////////////////
   /////////////// DELETE USER MODULE /////////////
   ///////////////////////////////////////////////
-
   describe('Delete User Module', () => {
     let id = '';
-
     describe('create a user to delete', () => {
       it('should register a user successfully', async () => {
         const res = await request(app).post('/api/user/register').send({
@@ -305,7 +481,6 @@ describe('User Controller Tests', () => {
         deleteToken = res.body.token;
       });
     });
-
     it('should allow admin to delete any user', async () => {
       const res = await request(app)
         .delete(`/api/user/delete-user/${userId}`)
@@ -315,7 +490,6 @@ describe('User Controller Tests', () => {
       expect(res.body.message).toBe('User deleted successfully');
     });
     //////////////////////////////
-
     it('should allow user to delete their own account', async () => {
       const res = await request(app)
         .delete(`/api/user/delete-user/${id}`)
@@ -325,7 +499,6 @@ describe('User Controller Tests', () => {
       expect(res.body.message).toBe('User deleted successfully');
     });
     //////////////////////////////
-
     it('should not allow user to delete another user account', async () => {
       const anotherUser = await request(app).post('/api/user/register').send({
         username: 'anotheruser',
@@ -333,7 +506,6 @@ describe('User Controller Tests', () => {
         password: 'anotherpassword',
       });
       const anotherId = anotherUser.body.user._id;
-
       const res = await request(app)
         .delete(`/api/user/delete-user/${anotherId}`)
         .set('Authorization', `Bearer ${token2}`);
@@ -341,7 +513,6 @@ describe('User Controller Tests', () => {
       expect(res.body).toHaveProperty('error');
       expect(res.body.error).toBe('Forbidden. Admin access required. Cannot delete another user');
     });
-
     it('should return not found for deleting non-existent user', async () => {
       const res = await request(app)
         .delete('/api/user/delete-user/123456789012345678901234')
@@ -349,7 +520,6 @@ describe('User Controller Tests', () => {
       expect(res.status).toBe(404);
     });
   });
-
   describe('Logout Module', () => {
     it('should logout user successfully', async () => {
       const res = await request(app)
@@ -359,11 +529,9 @@ describe('User Controller Tests', () => {
       expect(res.body).toHaveProperty('message');
     });
   });
-
   /////////////////////////////////////////////////////////
   //////////////// SEARCH USER MODULE ////////////////////
   ///////////////////////////////////////////////////////
-
   describe('Search User Module', () => {
     describe('Create a user to search', () => {
       it('should register a user successfully', async () => {
@@ -376,41 +544,33 @@ describe('User Controller Tests', () => {
         searchToken = res.body.token;
       });
     });
-
     it('should return users when given a valid search query', async () => {
       const res = await request(app)
         .get('/api/user/search-user?q=sear')
         .set('Authorization', `Bearer ${searchToken}`);
-
       expect(res.status).toBe(200);
       expect(Array.isArray(res.body)).toBeTruthy();
       expect(res.body[0]).toHaveProperty('username', 'searchuser');
       expect(res.body[0]).toHaveProperty('email', 'searchuser@gmail.com');
     });
-
     it('should return 400 if no search query is provided', async () => {
       const res = await request(app)
         .get('/api/user/search-user')
         .set('Authorization', `Bearer ${searchToken}`);
-
       expect(res.status).toBe(400);
       expect(res.body).toHaveProperty('error');
     });
-
     it('should return 404 if no users are found', async () => {
       const res = await request(app)
         .get('/api/user/search-user?q=noresult')
         .set('Authorization', `Bearer ${searchToken}`);
-
       expect(res.status).toBe(404);
       expect(res.body).toHaveProperty('error');
     });
   });
-
   /////////////////////////////////////////////////////////
   //////////////// BUY CAR MODULE ////////////////////////
   ///////////////////////////////////////////////////////
-
   describe('Buy Car Module', () => {
     describe('Create a user to buy a car', () => {
       describe('User with enough balance', () => {
@@ -426,7 +586,6 @@ describe('User Controller Tests', () => {
           console.log('wallet', res.body.user.wallet);
         });
       });
-
       describe('User with insufficient balance', () => {
         it('should register a user successfully', async () => {
           const res = await request(app).post('/api/user/register').send({
@@ -439,7 +598,6 @@ describe('User Controller Tests', () => {
         });
       });
     });
-
     describe('Create a car to buy', () => {
       it('should create a car successfully', async () => {
         const res = await request(app)
@@ -474,6 +632,7 @@ describe('User Controller Tests', () => {
             status: 'available',
             tax: 0.12,
           });
+        console.log('car', res.body);
         carId = res.body.car._id;
         carData = res.body.car;
       });
@@ -488,11 +647,9 @@ describe('User Controller Tests', () => {
             features: ['android auto'],
             paymentDetails: { method: 'credit_card' },
           });
-
         expect(res.status).toBe(400);
         expect(res.body.error).toBe('Insufficient balance in your wallet');
       });
-
       it('should buy a car successfully', async () => {
         const res = await request(app)
           .post('/api/user/buy-car')
@@ -508,7 +665,6 @@ describe('User Controller Tests', () => {
             ],
             paymentDetails: { method: 'credit_card' },
           });
-
         expect(res.status).toBe(200);
         expect(res.body).toHaveProperty('invoice');
         expect(res.body).toHaveProperty('car');
@@ -517,7 +673,6 @@ describe('User Controller Tests', () => {
         expect(res.body.payment).toHaveProperty('status', 'completed');
         expect(res.body).toHaveProperty('totalPrice');
       });
-
       it('should return 400 for missing payment details', async () => {
         const res = await request(app)
           .post('/api/user/buy-car')
@@ -526,11 +681,9 @@ describe('User Controller Tests', () => {
             id: carId,
             features: ['android auto'],
           });
-
         expect(res.status).toBe(400);
         expect(res.body.error).toBe('Missing payment details');
       });
-
       it('should return 400 for invalid payment details', async () => {
         const res = await request(app)
           .post('/api/user/buy-car')
@@ -540,11 +693,9 @@ describe('User Controller Tests', () => {
             features: ['android auto', 'navigation system', 'sunroof'],
             paymentDetails: { method: 'not-valid' },
           });
-
         expect(res.status).toBe(400);
         expect(res.body.error).toBe('Invalid payment details');
       });
-
       it('should return 400 for car out of stock', async () => {
         const res = await request(app)
           .post('/api/user/buy-car')
@@ -554,11 +705,9 @@ describe('User Controller Tests', () => {
             features: ['android auto'],
             paymentDetails: { method: 'debit_card' },
           });
-
         expect(res.status).toBe(400);
         expect(res.body.error).toBe('Car is out of stock');
       });
-
       it('should return 404 for car not found', async () => {
         const res = await request(app)
           .post('/api/user/buy-car')
@@ -568,17 +717,14 @@ describe('User Controller Tests', () => {
             features: ['android auto'],
             paymentDetails: { method: 'UPI' },
           });
-
         expect(res.status).toBe(404);
         expect(res.body.error).toBe('Car not found');
       });
     });
   });
-
   //////////////////////////////////////////////////
   ////////// VIEW CAR COLLECTION MODULE ///////////
   ////////////////////////////////////////////////
-
   describe('View Car Collection Module', () => {
     it('should return 200 and all cars in the collection', async () => {
       const res = await request(app)
@@ -587,7 +733,6 @@ describe('User Controller Tests', () => {
       expect(res.status).toBe(200);
       expect(res.body).toHaveProperty('cars');
     });
-
     it('should return 404 for non-existent user ID', async () => {
       const res = await request(app)
         .get('/api/user/view-car-collection?id=123456789012345678901234')
@@ -595,7 +740,6 @@ describe('User Controller Tests', () => {
       expect(res.status).toBe(404);
       expect(res.body.error).toBe('User not found');
     });
-
     it('should return 400 for missing user ID', async () => {
       const res = await request(app)
         .get('/api/user/view-car-collection')
@@ -604,11 +748,9 @@ describe('User Controller Tests', () => {
       expect(res.body.error).toBe('Invalid ID');
     });
   });
-
   //////////////////////////////////////////////////
   /////////////// SUBSCRIBE MODULE ////////////////
   ////////////////////////////////////////////////
-
   describe('Subscribe Module', () => {
     it('should subscribe a user successfully', async () => {
       const res = await request(app)
@@ -617,7 +759,6 @@ describe('User Controller Tests', () => {
       expect(res.status).toBe(200);
       expect(res.body).toHaveProperty('message', 'User subscribed successfully');
     });
-
     it('should subscribe a user successfully', async () => {
       const res = await request(app)
         .get('/api/user/subscribe')
@@ -625,7 +766,6 @@ describe('User Controller Tests', () => {
       expect(res.status).toBe(200);
       expect(res.body).toHaveProperty('message', 'User subscribed successfully');
     });
-
     it('should return 400 for already subscribed user', async () => {
       const res = await request(app)
         .get('/api/user/subscribe')
@@ -634,11 +774,9 @@ describe('User Controller Tests', () => {
       expect(res.body.error).toBe('Already subscribed');
     });
   });
-
   //////////////////////////////////////////////////
   /////////////// UNSUBSCRIBE MODULE //////////////
   ////////////////////////////////////////////////
-
   describe('Unsubscribe Module', () => {
     it('should unsubscribe a user successfully', async () => {
       const res = await request(app)
@@ -647,7 +785,6 @@ describe('User Controller Tests', () => {
       expect(res.status).toBe(200);
       expect(res.body).toHaveProperty('message', 'User unsubscribed successfully');
     });
-
     it('should return 400 for already unsubscribed user', async () => {
       const res = await request(app)
         .get('/api/user/unsubscribe')
@@ -656,11 +793,9 @@ describe('User Controller Tests', () => {
       expect(res.body.error).toBe('No active subscription found');
     });
   });
-
   //////////////////////////////////////////////////
   /////////// SEND NOTIFICATION MODULE ////////////
   ////////////////////////////////////////////////
-
   describe('Send Notification Module', () => {
     it('should send notification to subscribed users', async () => {
       const res = await request(app)
@@ -670,7 +805,6 @@ describe('User Controller Tests', () => {
       expect(res.status).toBe(200);
       expect(res.body).toHaveProperty('message', 'Notification sent successfully');
     });
-
     describe('Unsubscribe user to test no subscribed users', () => {
       it('should unsubscribe a user successfully', async () => {
         const res = await request(app)
@@ -680,7 +814,6 @@ describe('User Controller Tests', () => {
         expect(res.body).toHaveProperty('message', 'User unsubscribed successfully');
       });
     });
-
     it('should return 404 for no subscribed users', async () => {
       const res = await request(app)
         .post('/api/user/send-notification')

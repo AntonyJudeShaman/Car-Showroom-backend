@@ -10,10 +10,8 @@ const appointmentRoutes = require('./Routes/appointment');
 const cron = require('node-cron');
 const logger = require('./config/winston');
 const sendMail = require('./lib/sendWeeklyMail');
-const createServer = require('./config/server');
-const { match } = require('path-to-regexp');
-
-const app = createServer();
+const app = require('./config/server');
+const http = require('http');
 
 const publicRoutes = [
   '/api/user/login',
@@ -52,7 +50,14 @@ app.get('/', (req, res) => {
   res.send('Server Online');
 });
 
-app.listen(3000, () => {
+const server = http.createServer(app);
+
+// if (!NODE_ENV === 'test') {
+//   server.listen(3000, () => {
+//     console.log('Server is running');
+//   });
+// }
+server.listen(3000, () => {
   console.log('Server is running');
 });
 
@@ -67,4 +72,4 @@ cron.schedule('0 0 * * 6', async () => {
   sendMail();
 });
 
-module.exports = app;
+module.exports = { app, server };
