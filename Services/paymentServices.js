@@ -25,7 +25,6 @@ exports.createPayment = async (paymentInfo) => {
 exports.verifyPayment = async (paymentId) => {
   try {
     const payment = await Payment.findById(paymentId);
-
     if (!payment) {
       logger.error(`[verifyPayment service] Payment not found: ${paymentId}`);
       return { error: errorMessages.PAYMENT_NOT_FOUND };

@@ -422,7 +422,7 @@ exports.sendNotification = async (car) => {
     });
     const subscribedUsers = await User.find({ subscribed: true });
 
-    if (!subscribedUsers.length) {
+    if (!subscribedUsers.length || !subscribedUsers) {
       logger.error(`[sendNotification service]  no subscribers found`);
       return { error: errorMessages.NO_SUBSCRIBED_USERS };
     }

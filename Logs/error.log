@@ -4792,3 +4792,878 @@
 {"level":"error","message":"[subscribe service]  userId:66c9b762f52f481861f82ad6 already subscribed","timestamp":"24-08-2024 16:05:21"}
 {"level":"error","message":"[unsubscribe service]  userId:66c9b766f52f481861f82b20 was not subscribed","timestamp":"24-08-2024 16:05:21"}
 {"level":"error","message":"[sendNotification service]  no subscribers found","timestamp":"24-08-2024 16:05:23"}
+{"level":"error","message":"[createAppointment controller] Appointment not created: [object Object]","timestamp":"24-08-2024 18:27:45"}
+{"level":"error","message":"[cancelAppointment service] Appointment not found: 123456789012345678901234","timestamp":"24-08-2024 18:27:45"}
+{"level":"error","message":"[searchAppointment controller] No search query","timestamp":"24-08-2024 18:27:46"}
+{"level":"error","message":"[searchAppointment controller] No search results","timestamp":"24-08-2024 18:27:47"}
+{"level":"error","message":"[register controller] User already exists: testuser testuser3@gmail.com","timestamp":"24-08-2024 18:27:47"}
+{"level":"error","message":"[register controller] User already exists: testuser3 test@gmail.com","timestamp":"24-08-2024 18:27:47"}
+{"0":{"location":"body","msg":"Invalid email","path":"email","type":"field","value":"invalidemail"},"level":"error","message":"[register controller] Data not valid","timestamp":"24-08-2024 18:27:47"}
+{"level":"error","message":"[loginUser service]  credential:testuser invalid password","timestamp":"24-08-2024 18:27:48"}
+{"level":"error","message":"[loginUser service]  credential:nonexistentuser user not found","timestamp":"24-08-2024 18:27:48"}
+{"level":"error","message":"[updateUser controller] Cannot change credentials restricted values","timestamp":"24-08-2024 18:27:49"}
+{"level":"error","message":"[updateUser controller] Cannot change credentials restricted values","timestamp":"24-08-2024 18:27:49"}
+{"0":{"location":"body","msg":"Invalid email","path":"email","type":"field","value":"iaminvalid"},"level":"error","message":"[updateUser controller] Data not valid","timestamp":"24-08-2024 18:27:49"}
+{"level":"error","message":"[authMiddleware] Unauthorized: /api/user/update-user PUT ","timestamp":"24-08-2024 18:27:49"}
+{"level":"error","message":"[viewAllUser controller] Forbidden","timestamp":"24-08-2024 18:27:50"}
+{"level":"error","timestamp":"24-08-2024 18:27:50"}
+{"level":"error","message":"[viewUser controller] User not found: 123456789012345678901234","timestamp":"24-08-2024 18:27:50"}
+{"level":"error","message":"[viewUser controller] Invalid id: invalidid","timestamp":"24-08-2024 18:27:50"}
+{"level":"error","message":"[deleteUser controller] Forbidden. Cannot delete another user","timestamp":"24-08-2024 18:27:51"}
+{"level":"error","message":"[deleteUser controller] User not found: 123456789012345678901234","timestamp":"24-08-2024 18:27:51"}
+{"level":"error","message":"[searchUser controller] No search query","timestamp":"24-08-2024 18:27:51"}
+{"level":"error","message":"[searchUser controller] No search results","timestamp":"24-08-2024 18:27:52"}
+{"level":"error","message":"[sendNotification service]  no subscribers found","timestamp":"24-08-2024 18:27:52"}
+{"level":"error","message":"[createCar controller] Notification not sent","timestamp":"24-08-2024 18:27:52"}
+{"level":"error","message":"[buyCar service]  user:poorbuyer insufficient balance","timestamp":"24-08-2024 18:27:53"}
+{"level":"error","message":"[buyCar controller] Missing payment details","timestamp":"24-08-2024 18:27:54"}
+{"level":"error","message":"[buyCar controller] Invalid payment method","timestamp":"24-08-2024 18:27:54"}
+{"level":"error","message":"[buyCar service]  carId:66c9d8d0fa21aa92a694b1a9 out of stock","timestamp":"24-08-2024 18:27:54"}
+{"level":"error","message":"[getCar controller] Car not found: 123456789012345678901234","timestamp":"24-08-2024 18:27:55"}
+{"level":"error","message":"[buyCar service]  carId:123456789012345678901234 Cannot fetch car","timestamp":"24-08-2024 18:27:55"}
+{"level":"error","message":"[buyCar controller] Failed to fetch car details","timestamp":"24-08-2024 18:27:55"}
+{"level":"error","message":"[viewCarCollection controller] Invalid id: undefined","timestamp":"24-08-2024 18:27:55"}
+{"level":"error","message":"[subscribe service]  userId:66c9d8cbfa21aa92a694b156 already subscribed","timestamp":"24-08-2024 18:27:56"}
+{"level":"error","message":"[unsubscribe service]  userId:66c9d8d0fa21aa92a694b1a0 was not subscribed","timestamp":"24-08-2024 18:27:56"}
+{"level":"error","message":"[sendNotification service]  no subscribers found","timestamp":"24-08-2024 18:27:59"}
+{"level":"error","message":"[createAppointment controller] Appointment not created: [object Object]","timestamp":"24-08-2024 18:31:12"}
+{"level":"error","message":"[cancelAppointment service] Appointment not found: 123456789012345678901234","timestamp":"24-08-2024 18:31:12"}
+{"level":"error","message":"[searchAppointment controller] No search query","timestamp":"24-08-2024 18:31:13"}
+{"level":"error","message":"[searchAppointment controller] No search results","timestamp":"24-08-2024 18:31:13"}
+{"level":"error","message":"[register controller] User already exists: testuser testuser3@gmail.com","timestamp":"24-08-2024 18:31:14"}
+{"level":"error","message":"[register controller] User already exists: testuser3 test@gmail.com","timestamp":"24-08-2024 18:31:14"}
+{"0":{"location":"body","msg":"Invalid email","path":"email","type":"field","value":"invalidemail"},"level":"error","message":"[register controller] Data not valid","timestamp":"24-08-2024 18:31:14"}
+{"level":"error","message":"[loginUser service]  credential:testuser invalid password","timestamp":"24-08-2024 18:31:14"}
+{"level":"error","message":"[loginUser service]  credential:nonexistentuser user not found","timestamp":"24-08-2024 18:31:14"}
+{"level":"error","message":"[updateUser controller] Cannot change credentials restricted values","timestamp":"24-08-2024 18:31:14"}
+{"level":"error","message":"[updateUser controller] Cannot change credentials restricted values","timestamp":"24-08-2024 18:31:15"}
+{"0":{"location":"body","msg":"Invalid email","path":"email","type":"field","value":"iaminvalid"},"level":"error","message":"[updateUser controller] Data not valid","timestamp":"24-08-2024 18:31:15"}
+{"level":"error","message":"[authMiddleware] Unauthorized: /api/user/update-user PUT ","timestamp":"24-08-2024 18:31:15"}
+{"level":"error","message":"[viewAllUser controller] Forbidden","timestamp":"24-08-2024 18:31:15"}
+{"level":"error","timestamp":"24-08-2024 18:31:15"}
+{"level":"error","message":"[viewUser controller] User not found: 123456789012345678901234","timestamp":"24-08-2024 18:31:15"}
+{"level":"error","message":"[viewUser controller] Invalid id: invalidid","timestamp":"24-08-2024 18:31:15"}
+{"level":"error","message":"[deleteUser controller] Forbidden. Cannot delete another user","timestamp":"24-08-2024 18:31:16"}
+{"level":"error","message":"[deleteUser controller] User not found: 123456789012345678901234","timestamp":"24-08-2024 18:31:16"}
+{"level":"error","message":"[searchUser controller] No search query","timestamp":"24-08-2024 18:31:17"}
+{"level":"error","message":"[searchUser controller] No search results","timestamp":"24-08-2024 18:31:17"}
+{"level":"error","message":"[sendNotification service]  no subscribers found","timestamp":"24-08-2024 18:31:18"}
+{"level":"error","message":"[createCar controller] Notification not sent","timestamp":"24-08-2024 18:31:18"}
+{"level":"error","message":"[buyCar service]  user:poorbuyer insufficient balance","timestamp":"24-08-2024 18:31:18"}
+{"level":"error","message":"[buyCar controller] Missing payment details","timestamp":"24-08-2024 18:31:19"}
+{"level":"error","message":"[buyCar controller] Invalid payment method","timestamp":"24-08-2024 18:31:19"}
+{"level":"error","message":"[buyCar service]  carId:66c9d99ea181aaf3477277b2 out of stock","timestamp":"24-08-2024 18:31:20"}
+{"level":"error","message":"[getCar controller] Car not found: 123456789012345678901234","timestamp":"24-08-2024 18:31:20"}
+{"level":"error","message":"[buyCar service]  carId:123456789012345678901234 Cannot fetch car","timestamp":"24-08-2024 18:31:20"}
+{"level":"error","message":"[buyCar controller] Failed to fetch car details","timestamp":"24-08-2024 18:31:20"}
+{"level":"error","message":"[viewCarCollection controller] Invalid id: undefined","timestamp":"24-08-2024 18:31:20"}
+{"level":"error","message":"[subscribe service]  userId:66c9d999a181aaf34772775f already subscribed","timestamp":"24-08-2024 18:31:21"}
+{"level":"error","message":"[unsubscribe service]  userId:66c9d99da181aaf3477277a9 was not subscribed","timestamp":"24-08-2024 18:31:21"}
+{"level":"error","message":"[sendNotification service]  no subscribers found","timestamp":"24-08-2024 18:31:24"}
+{"level":"error","message":"[register controller] User already exists: testuser testuser3@gmail.com","timestamp":"24-08-2024 18:32:29"}
+{"level":"error","message":"[register controller] User already exists: testuser3 test@gmail.com","timestamp":"24-08-2024 18:32:29"}
+{"0":{"location":"body","msg":"Invalid email","path":"email","type":"field","value":"invalidemail"},"level":"error","message":"[register controller] Data not valid","timestamp":"24-08-2024 18:32:29"}
+{"level":"error","message":"[loginUser service]  credential:testuser invalid password","timestamp":"24-08-2024 18:32:30"}
+{"level":"error","message":"[loginUser service]  credential:nonexistentuser user not found","timestamp":"24-08-2024 18:32:30"}
+{"level":"error","message":"[updateUser controller] Cannot change credentials restricted values","timestamp":"24-08-2024 18:32:30"}
+{"level":"error","message":"[updateUser controller] Cannot change credentials restricted values","timestamp":"24-08-2024 18:32:30"}
+{"0":{"location":"body","msg":"Invalid email","path":"email","type":"field","value":"iaminvalid"},"level":"error","message":"[updateUser controller] Data not valid","timestamp":"24-08-2024 18:32:30"}
+{"level":"error","message":"[authMiddleware] Unauthorized: /api/user/update-user PUT ","timestamp":"24-08-2024 18:32:30"}
+{"level":"error","message":"[viewAllUser controller] Forbidden","timestamp":"24-08-2024 18:32:31"}
+{"level":"error","timestamp":"24-08-2024 18:32:31"}
+{"level":"error","message":"[viewUser controller] User not found: 123456789012345678901234","timestamp":"24-08-2024 18:32:31"}
+{"level":"error","message":"[viewUser controller] Invalid id: invalidid","timestamp":"24-08-2024 18:32:31"}
+{"level":"error","message":"[deleteUser controller] Forbidden. Cannot delete another user","timestamp":"24-08-2024 18:32:32"}
+{"level":"error","message":"[deleteUser controller] User not found: 123456789012345678901234","timestamp":"24-08-2024 18:32:32"}
+{"level":"error","message":"[searchUser controller] No search query","timestamp":"24-08-2024 18:32:33"}
+{"level":"error","message":"[searchUser controller] No search results","timestamp":"24-08-2024 18:32:33"}
+{"level":"error","message":"[sendNotification service]  no subscribers found","timestamp":"24-08-2024 18:32:34"}
+{"level":"error","message":"[createCar controller] Notification not sent","timestamp":"24-08-2024 18:32:34"}
+{"level":"error","message":"[buyCar service]  user:poorbuyer insufficient balance","timestamp":"24-08-2024 18:32:34"}
+{"level":"error","message":"[buyCar controller] Missing payment details","timestamp":"24-08-2024 18:32:35"}
+{"level":"error","message":"[buyCar controller] Invalid payment method","timestamp":"24-08-2024 18:32:35"}
+{"level":"error","message":"[buyCar service]  carId:66c9d9ea4a575461aa5b21af out of stock","timestamp":"24-08-2024 18:32:35"}
+{"level":"error","message":"[getCar controller] Car not found: 123456789012345678901234","timestamp":"24-08-2024 18:32:35"}
+{"level":"error","message":"[buyCar service]  carId:123456789012345678901234 Cannot fetch car","timestamp":"24-08-2024 18:32:35"}
+{"level":"error","message":"[buyCar controller] Failed to fetch car details","timestamp":"24-08-2024 18:32:35"}
+{"level":"error","message":"[viewCarCollection controller] Invalid id: undefined","timestamp":"24-08-2024 18:32:36"}
+{"level":"error","message":"[subscribe service]  userId:66c9d9e54a575461aa5b215c already subscribed","timestamp":"24-08-2024 18:32:36"}
+{"level":"error","message":"[unsubscribe service]  userId:66c9d9e94a575461aa5b21a6 was not subscribed","timestamp":"24-08-2024 18:32:37"}
+{"level":"error","message":"[sendNotification service]  no subscribers found","timestamp":"24-08-2024 18:32:39"}
+{"level":"error","message":"[createAppointment controller] Appointment not created: [object Object]","timestamp":"24-08-2024 18:33:01"}
+{"level":"error","message":"[register controller] User already exists: testuser testuser3@gmail.com","timestamp":"24-08-2024 18:33:01"}
+{"level":"error","message":"[register controller] User already exists: testuser3 test@gmail.com","timestamp":"24-08-2024 18:33:01"}
+{"0":{"location":"body","msg":"Invalid email","path":"email","type":"field","value":"invalidemail"},"level":"error","message":"[register controller] Data not valid","timestamp":"24-08-2024 18:33:01"}
+{"level":"error","message":"[cancelAppointment service] Appointment not found: 123456789012345678901234","timestamp":"24-08-2024 18:33:01"}
+{"level":"error","message":"[loginUser service]  credential:testuser invalid password","timestamp":"24-08-2024 18:33:01"}
+{"level":"error","message":"[loginUser service]  credential:nonexistentuser user not found","timestamp":"24-08-2024 18:33:01"}
+{"level":"error","message":"[updateUser controller] Cannot change credentials restricted values","timestamp":"24-08-2024 18:33:02"}
+{"level":"error","message":"[updateUser controller] Cannot change credentials restricted values","timestamp":"24-08-2024 18:33:02"}
+{"0":{"location":"body","msg":"Invalid email","path":"email","type":"field","value":"iaminvalid"},"level":"error","message":"[updateUser controller] Data not valid","timestamp":"24-08-2024 18:33:02"}
+{"level":"error","message":"[authMiddleware] Unauthorized: /api/user/update-user PUT ","timestamp":"24-08-2024 18:33:02"}
+{"level":"error","message":"[searchAppointment controller] No search query","timestamp":"24-08-2024 18:33:02"}
+{"level":"error","message":"[searchAppointment controller] No search results","timestamp":"24-08-2024 18:33:02"}
+{"level":"error","message":"[authMiddleware] Unauthorized: /api/user/view-all-users GET ","timestamp":"24-08-2024 18:33:02"}
+{"level":"error","message":"[checkToken service] token: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY2YzlkYTA0N2YyNjVkOTQ5ZTcyODVkMCIsImlhdCI6MTcyNDUwNDU4MH0.UbV4zCH4b_Fhp5EH1ArNr1knGErSsizMKIMuxc1RLSs  User not found","timestamp":"24-08-2024 18:33:03"}
+{"level":"error","timestamp":"24-08-2024 18:33:03"}
+{"level":"error","timestamp":"24-08-2024 18:33:03"}
+{"level":"error","message":"[authMiddleware] Unauthorized: /api/user/view-user/66c9da047f265d949e7285d0 GET ","timestamp":"24-08-2024 18:33:03"}
+{"level":"error","message":"[authMiddleware] Unauthorized: /api/user/view-user/123456789012345678901234 GET ","timestamp":"24-08-2024 18:33:03"}
+{"level":"error","message":"[authMiddleware] Unauthorized: /api/user/view-user/invalidid GET ","timestamp":"24-08-2024 18:33:03"}
+{"level":"error","message":"[authMiddleware] Unauthorized: /api/user/delete-user/66c9da047f265d949e7285d0 DELETE ","timestamp":"24-08-2024 18:33:03"}
+{"level":"error","message":"[authMiddleware] Unauthorized: /api/user/delete-user/66c9da077f265d949e728600 DELETE ","timestamp":"24-08-2024 18:33:03"}
+{"level":"error","message":"[authMiddleware] Unauthorized: /api/user/delete-user/123456789012345678901234 DELETE ","timestamp":"24-08-2024 18:33:03"}
+{"level":"error","message":"[authMiddleware] Unauthorized: /api/user/logout POST ","timestamp":"24-08-2024 18:33:04"}
+{"level":"error","message":"[searchUser controller] No search query","timestamp":"24-08-2024 18:33:04"}
+{"level":"error","message":"[searchUser controller] No search results","timestamp":"24-08-2024 18:33:04"}
+{"level":"error","message":"[authMiddleware] Unauthorized: /api/car/create-car POST ","timestamp":"24-08-2024 18:33:05"}
+{"level":"error","message":"[buyCar controller] Missing payment details","timestamp":"24-08-2024 18:33:05"}
+{"level":"error","message":"[buyCar controller] Invalid payment method","timestamp":"24-08-2024 18:33:05"}
+{"level":"error","message":"[getCar controller] Car not found: 123456789012345678901234","timestamp":"24-08-2024 18:33:05"}
+{"level":"error","message":"[buyCar service]  carId:123456789012345678901234 Cannot fetch car","timestamp":"24-08-2024 18:33:05"}
+{"level":"error","message":"[buyCar controller] Failed to fetch car details","timestamp":"24-08-2024 18:33:05"}
+{"level":"error","message":"[viewCarCollection controller] Invalid id: undefined","timestamp":"24-08-2024 18:33:06"}
+{"level":"error","message":"[authMiddleware] Unauthorized: /api/user/subscribe GET ","timestamp":"24-08-2024 18:33:06"}
+{"level":"error","message":"[authMiddleware] Unauthorized: /api/user/subscribe GET ","timestamp":"24-08-2024 18:33:06"}
+{"level":"error","message":"[unsubscribe service]  userId:66c9da087f265d949e728612 was not subscribed","timestamp":"24-08-2024 18:33:06"}
+{"level":"error","message":"[authMiddleware] Unauthorized: /api/user/send-notification POST ","timestamp":"24-08-2024 18:33:06"}
+{"level":"error","message":"[authMiddleware] Unauthorized: /api/user/unsubscribe GET ","timestamp":"24-08-2024 18:33:06"}
+{"level":"error","message":"[authMiddleware] Unauthorized: /api/user/send-notification POST ","timestamp":"24-08-2024 18:33:06"}
+{"level":"error","message":"[register controller] User already exists: testuser testuser3@gmail.com","timestamp":"24-08-2024 18:33:48"}
+{"level":"error","message":"[createAppointment controller] Appointment not created: [object Object]","timestamp":"24-08-2024 18:33:48"}
+{"level":"error","message":"[register controller] User already exists: testuser3 test@gmail.com","timestamp":"24-08-2024 18:33:48"}
+{"0":{"location":"body","msg":"Invalid email","path":"email","type":"field","value":"invalidemail"},"level":"error","message":"[register controller] Data not valid","timestamp":"24-08-2024 18:33:48"}
+{"level":"error","message":"[cancelAppointment service] Appointment not found: 123456789012345678901234","timestamp":"24-08-2024 18:33:48"}
+{"level":"error","message":"[loginUser service]  credential:testuser invalid password","timestamp":"24-08-2024 18:33:48"}
+{"level":"error","message":"[loginUser service]  credential:nonexistentuser user not found","timestamp":"24-08-2024 18:33:48"}
+{"level":"error","message":"[updateUser controller] Cannot change credentials restricted values","timestamp":"24-08-2024 18:33:49"}
+{"level":"error","message":"[updateUser controller] Cannot change credentials restricted values","timestamp":"24-08-2024 18:33:49"}
+{"0":{"location":"body","msg":"Invalid email","path":"email","type":"field","value":"iaminvalid"},"level":"error","message":"[updateUser controller] Data not valid","timestamp":"24-08-2024 18:33:49"}
+{"level":"error","message":"[authMiddleware] Unauthorized: /api/user/update-user PUT ","timestamp":"24-08-2024 18:33:49"}
+{"level":"error","message":"[searchAppointment controller] No search query","timestamp":"24-08-2024 18:33:49"}
+{"level":"error","message":"[viewAllUser controller] Forbidden","timestamp":"24-08-2024 18:33:49"}
+{"level":"error","timestamp":"24-08-2024 18:33:49"}
+{"level":"error","message":"[searchAppointment controller] No search results","timestamp":"24-08-2024 18:33:49"}
+{"level":"error","message":"[viewUser controller] User not found: 66c9da33c637206e93a275c8","timestamp":"24-08-2024 18:33:50"}
+{"level":"error","message":"[authMiddleware] Unauthorized: /api/user/view-user/123456789012345678901234 GET ","timestamp":"24-08-2024 18:33:50"}
+{"level":"error","message":"[authMiddleware] Unauthorized: /api/user/view-user/invalidid GET ","timestamp":"24-08-2024 18:33:50"}
+{"level":"error","message":"[authMiddleware] Unauthorized: /api/user/delete-user/66c9da33c637206e93a275c8 DELETE ","timestamp":"24-08-2024 18:33:50"}
+{"level":"error","message":"[authMiddleware] Unauthorized: /api/user/delete-user/66c9da36c637206e93a275ff DELETE ","timestamp":"24-08-2024 18:33:50"}
+{"level":"error","message":"[authMiddleware] Unauthorized: /api/user/delete-user/123456789012345678901234 DELETE ","timestamp":"24-08-2024 18:33:50"}
+{"level":"error","message":"[authMiddleware] Unauthorized: /api/user/logout POST ","timestamp":"24-08-2024 18:33:50"}
+{"level":"error","message":"[searchUser controller] No search query","timestamp":"24-08-2024 18:33:51"}
+{"level":"error","message":"[searchUser controller] No search results","timestamp":"24-08-2024 18:33:51"}
+{"level":"error","message":"[authMiddleware] Unauthorized: /api/car/create-car POST ","timestamp":"24-08-2024 18:33:51"}
+{"level":"error","message":"[buyCar controller] Missing payment details","timestamp":"24-08-2024 18:33:52"}
+{"level":"error","message":"[buyCar controller] Invalid payment method","timestamp":"24-08-2024 18:33:52"}
+{"level":"error","message":"[getCar controller] Car not found: 123456789012345678901234","timestamp":"24-08-2024 18:33:52"}
+{"level":"error","message":"[buyCar service]  carId:123456789012345678901234 Cannot fetch car","timestamp":"24-08-2024 18:33:52"}
+{"level":"error","message":"[buyCar controller] Failed to fetch car details","timestamp":"24-08-2024 18:33:52"}
+{"level":"error","message":"[viewCarCollection controller] Invalid id: undefined","timestamp":"24-08-2024 18:33:52"}
+{"level":"error","message":"[authMiddleware] Unauthorized: /api/user/subscribe GET ","timestamp":"24-08-2024 18:33:53"}
+{"level":"error","message":"[authMiddleware] Unauthorized: /api/user/subscribe GET ","timestamp":"24-08-2024 18:33:53"}
+{"level":"error","message":"[unsubscribe service]  userId:66c9da37c637206e93a27611 was not subscribed","timestamp":"24-08-2024 18:33:53"}
+{"level":"error","message":"[authMiddleware] Unauthorized: /api/user/send-notification POST ","timestamp":"24-08-2024 18:33:53"}
+{"level":"error","message":"[authMiddleware] Unauthorized: /api/user/unsubscribe GET ","timestamp":"24-08-2024 18:33:53"}
+{"level":"error","message":"[authMiddleware] Unauthorized: /api/user/send-notification POST ","timestamp":"24-08-2024 18:33:53"}
+{"level":"error","message":"[register controller] User already exists: testuser testuser3@gmail.com","timestamp":"24-08-2024 18:34:07"}
+{"level":"error","message":"[register controller] User already exists: testuser3 test@gmail.com","timestamp":"24-08-2024 18:34:07"}
+{"0":{"location":"body","msg":"Invalid email","path":"email","type":"field","value":"invalidemail"},"level":"error","message":"[register controller] Data not valid","timestamp":"24-08-2024 18:34:07"}
+{"level":"error","message":"[createAppointment controller] Appointment not created: [object Object]","timestamp":"24-08-2024 18:34:07"}
+{"level":"error","message":"[loginUser service]  credential:testuser invalid password","timestamp":"24-08-2024 18:34:07"}
+{"level":"error","message":"[cancelAppointment service] Appointment not found: 123456789012345678901234","timestamp":"24-08-2024 18:34:08"}
+{"level":"error","message":"[loginUser service]  credential:nonexistentuser user not found","timestamp":"24-08-2024 18:34:08"}
+{"level":"error","message":"[updateUser controller] Cannot change credentials restricted values","timestamp":"24-08-2024 18:34:08"}
+{"level":"error","message":"[updateUser controller] Cannot change credentials restricted values","timestamp":"24-08-2024 18:34:08"}
+{"0":{"location":"body","msg":"Invalid email","path":"email","type":"field","value":"iaminvalid"},"level":"error","message":"[updateUser controller] Data not valid","timestamp":"24-08-2024 18:34:08"}
+{"level":"error","message":"[authMiddleware] Unauthorized: /api/user/update-user PUT ","timestamp":"24-08-2024 18:34:08"}
+{"level":"error","message":"[searchAppointment controller] No search query","timestamp":"24-08-2024 18:34:09"}
+{"level":"error","message":"[viewAllUser controller] Forbidden","timestamp":"24-08-2024 18:34:09"}
+{"level":"error","timestamp":"24-08-2024 18:34:09"}
+{"level":"error","message":"[searchAppointment controller] No search results","timestamp":"24-08-2024 18:34:09"}
+{"level":"error","message":"[authMiddleware] Unauthorized: /api/user/view-user/123456789012345678901234 GET ","timestamp":"24-08-2024 18:34:09"}
+{"level":"error","message":"[authMiddleware] Unauthorized: /api/user/view-user/invalidid GET ","timestamp":"24-08-2024 18:34:09"}
+{"level":"error","message":"[authMiddleware] Unauthorized: /api/user/delete-user/66c9da4770cbd66c9271ed39 DELETE ","timestamp":"24-08-2024 18:34:09"}
+{"level":"error","message":"[authMiddleware] Unauthorized: /api/user/delete-user/66c9da4a70cbd66c9271ed6e DELETE ","timestamp":"24-08-2024 18:34:10"}
+{"level":"error","message":"[authMiddleware] Unauthorized: /api/user/delete-user/123456789012345678901234 DELETE ","timestamp":"24-08-2024 18:34:10"}
+{"level":"error","message":"[authMiddleware] Unauthorized: /api/user/logout POST ","timestamp":"24-08-2024 18:34:10"}
+{"level":"error","message":"[searchUser controller] No search query","timestamp":"24-08-2024 18:34:10"}
+{"level":"error","message":"[searchUser controller] No search results","timestamp":"24-08-2024 18:34:10"}
+{"level":"error","message":"[authMiddleware] Unauthorized: /api/car/create-car POST ","timestamp":"24-08-2024 18:34:11"}
+{"level":"error","message":"[buyCar controller] Missing payment details","timestamp":"24-08-2024 18:34:12"}
+{"level":"error","message":"[buyCar controller] Invalid payment method","timestamp":"24-08-2024 18:34:12"}
+{"level":"error","message":"[getCar controller] Car not found: 123456789012345678901234","timestamp":"24-08-2024 18:34:12"}
+{"level":"error","message":"[buyCar service]  carId:123456789012345678901234 Cannot fetch car","timestamp":"24-08-2024 18:34:12"}
+{"level":"error","message":"[buyCar controller] Failed to fetch car details","timestamp":"24-08-2024 18:34:12"}
+{"level":"error","message":"[viewCarCollection controller] Invalid id: undefined","timestamp":"24-08-2024 18:34:12"}
+{"level":"error","message":"[authMiddleware] Unauthorized: /api/user/subscribe GET ","timestamp":"24-08-2024 18:34:12"}
+{"level":"error","message":"[authMiddleware] Unauthorized: /api/user/subscribe GET ","timestamp":"24-08-2024 18:34:13"}
+{"level":"error","message":"[unsubscribe service]  userId:66c9da4a70cbd66c9271ed80 was not subscribed","timestamp":"24-08-2024 18:34:13"}
+{"level":"error","message":"[authMiddleware] Unauthorized: /api/user/send-notification POST ","timestamp":"24-08-2024 18:34:13"}
+{"level":"error","message":"[authMiddleware] Unauthorized: /api/user/unsubscribe GET ","timestamp":"24-08-2024 18:34:13"}
+{"level":"error","message":"[authMiddleware] Unauthorized: /api/user/send-notification POST ","timestamp":"24-08-2024 18:34:13"}
+{"level":"error","message":"[createAppointment controller] Appointment not created: [object Object]","timestamp":"24-08-2024 18:34:58"}
+{"level":"error","message":"[register controller] User already exists: testuser testuser3@gmail.com","timestamp":"24-08-2024 18:34:58"}
+{"level":"error","message":"[register controller] User already exists: testuser3 test@gmail.com","timestamp":"24-08-2024 18:34:58"}
+{"0":{"location":"body","msg":"Invalid email","path":"email","type":"field","value":"invalidemail"},"level":"error","message":"[register controller] Data not valid","timestamp":"24-08-2024 18:34:58"}
+{"level":"error","message":"[cancelAppointment service] Appointment not found: 123456789012345678901234","timestamp":"24-08-2024 18:34:58"}
+{"level":"error","message":"[loginUser service]  credential:testuser invalid password","timestamp":"24-08-2024 18:34:59"}
+{"level":"error","message":"[loginUser service]  credential:nonexistentuser user not found","timestamp":"24-08-2024 18:34:59"}
+{"level":"error","message":"[searchAppointment controller] No search query","timestamp":"24-08-2024 18:34:59"}
+{"level":"error","message":"[searchAppointment controller] No search results","timestamp":"24-08-2024 18:34:59"}
+{"level":"error","message":"[updateUser controller] Cannot change credentials restricted values","timestamp":"24-08-2024 18:34:59"}
+{"level":"error","message":"[checkToken service] token: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY2YzlkYTdhNDk3MmI3NWM5MmVjYzQ5NyIsImlhdCI6MTcyNDUwNDY5OH0.LVsaCKgUXyod6XDnDQCEUQNWCeDmBrrxiSkEnNpZcTI  User not found","timestamp":"24-08-2024 18:34:59"}
+{"level":"error","message":"[updateUser controller] Cannot change credentials restricted values","timestamp":"24-08-2024 18:34:59"}
+{"level":"error","message":"[authMiddleware] Unauthorized: /api/user/update-user PUT ","timestamp":"24-08-2024 18:34:59"}
+{"level":"error","message":"[authMiddleware] Unauthorized: /api/user/update-user PUT ","timestamp":"24-08-2024 18:35:00"}
+{"level":"error","message":"[authMiddleware] Unauthorized: /api/user/view-all-users GET ","timestamp":"24-08-2024 18:35:00"}
+{"level":"error","message":"[authMiddleware] Unauthorized: /api/user/view-all-users GET ","timestamp":"24-08-2024 18:35:00"}
+{"level":"error","message":"[checkToken service] token: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY2YzlkYTdhNDk3MmI3NWM5MmVjYzQ5NyIsImlhdCI6MTcyNDUwNDY5OH0.LVsaCKgUXyod6XDnDQCEUQNWCeDmBrrxiSkEnNpZcTI  User not found","timestamp":"24-08-2024 18:35:00"}
+{"level":"error","timestamp":"24-08-2024 18:35:00"}
+{"level":"error","timestamp":"24-08-2024 18:35:00"}
+{"level":"error","message":"[authMiddleware] Unauthorized: /api/user/view-user/66c9da7a4972b75c92ecc497 GET ","timestamp":"24-08-2024 18:35:00"}
+{"level":"error","message":"[authMiddleware] Unauthorized: /api/user/view-user/123456789012345678901234 GET ","timestamp":"24-08-2024 18:35:00"}
+{"level":"error","message":"[authMiddleware] Unauthorized: /api/user/view-user/invalidid GET ","timestamp":"24-08-2024 18:35:00"}
+{"level":"error","message":"[authMiddleware] Unauthorized: /api/user/delete-user/66c9da7a4972b75c92ecc497 DELETE ","timestamp":"24-08-2024 18:35:00"}
+{"level":"error","message":"[authMiddleware] Unauthorized: /api/user/delete-user/66c9da7c4972b75c92ecc4c6 DELETE ","timestamp":"24-08-2024 18:35:00"}
+{"level":"error","message":"[authMiddleware] Unauthorized: /api/user/delete-user/123456789012345678901234 DELETE ","timestamp":"24-08-2024 18:35:00"}
+{"level":"error","message":"[authMiddleware] Unauthorized: /api/user/logout POST ","timestamp":"24-08-2024 18:35:01"}
+{"level":"error","message":"[searchUser controller] No search query","timestamp":"24-08-2024 18:35:01"}
+{"level":"error","message":"[searchUser controller] No search results","timestamp":"24-08-2024 18:35:01"}
+{"level":"error","message":"[authMiddleware] Unauthorized: /api/car/create-car POST ","timestamp":"24-08-2024 18:35:01"}
+{"level":"error","message":"[buyCar controller] Missing payment details","timestamp":"24-08-2024 18:35:02"}
+{"level":"error","message":"[buyCar controller] Invalid payment method","timestamp":"24-08-2024 18:35:02"}
+{"level":"error","timestamp":"24-08-2024 18:35:02"}
+{"level":"error","message":"[viewCarCollection controller] Invalid id: undefined","timestamp":"24-08-2024 18:35:02"}
+{"level":"error","message":"[authMiddleware] Unauthorized: /api/user/subscribe GET ","timestamp":"24-08-2024 18:35:02"}
+{"level":"error","message":"[authMiddleware] Unauthorized: /api/user/subscribe GET ","timestamp":"24-08-2024 18:35:03"}
+{"level":"error","message":"[unsubscribe service]  userId:66c9da7d4972b75c92ecc4d8 was not subscribed","timestamp":"24-08-2024 18:35:03"}
+{"level":"error","message":"[authMiddleware] Unauthorized: /api/user/send-notification POST ","timestamp":"24-08-2024 18:35:03"}
+{"level":"error","message":"[authMiddleware] Unauthorized: /api/user/unsubscribe GET ","timestamp":"24-08-2024 18:35:03"}
+{"level":"error","message":"[authMiddleware] Unauthorized: /api/user/send-notification POST ","timestamp":"24-08-2024 18:35:03"}
+{"level":"error","message":"[createAppointment controller] Appointment not created: [object Object]","timestamp":"24-08-2024 18:35:40"}
+{"level":"error","message":"[register controller] User already exists: testuser testuser3@gmail.com","timestamp":"24-08-2024 18:35:40"}
+{"level":"error","message":"[register controller] User already exists: testuser3 test@gmail.com","timestamp":"24-08-2024 18:35:40"}
+{"0":{"location":"body","msg":"Invalid email","path":"email","type":"field","value":"invalidemail"},"level":"error","message":"[register controller] Data not valid","timestamp":"24-08-2024 18:35:40"}
+{"level":"error","message":"[cancelAppointment service] Appointment not found: 123456789012345678901234","timestamp":"24-08-2024 18:35:40"}
+{"level":"error","message":"[loginUser service]  credential:testuser invalid password","timestamp":"24-08-2024 18:35:40"}
+{"level":"error","message":"[loginUser service]  credential:nonexistentuser user not found","timestamp":"24-08-2024 18:35:40"}
+{"level":"error","message":"[updateUser controller] Cannot change credentials restricted values","timestamp":"24-08-2024 18:35:41"}
+{"level":"error","message":"[updateUser controller] Cannot change credentials restricted values","timestamp":"24-08-2024 18:35:41"}
+{"0":{"location":"body","msg":"Invalid email","path":"email","type":"field","value":"iaminvalid"},"level":"error","message":"[updateUser controller] Data not valid","timestamp":"24-08-2024 18:35:41"}
+{"level":"error","message":"[authMiddleware] Unauthorized: /api/user/update-user PUT ","timestamp":"24-08-2024 18:35:41"}
+{"level":"error","message":"[viewAllUser controller] Forbidden","timestamp":"24-08-2024 18:35:41"}
+{"level":"error","message":"[searchAppointment controller] No search query","timestamp":"24-08-2024 18:35:41"}
+{"level":"error","timestamp":"24-08-2024 18:35:41"}
+{"level":"error","message":"[viewUser controller] User not found: 123456789012345678901234","timestamp":"24-08-2024 18:35:42"}
+{"level":"error","message":"[viewUser controller] Invalid id: invalidid","timestamp":"24-08-2024 18:35:42"}
+{"level":"error","message":"[searchAppointment controller] No search results","timestamp":"24-08-2024 18:35:42"}
+{"level":"error","message":"[authMiddleware] Unauthorized: /api/user/delete-user/66c9daa335b0f2774934379c DELETE ","timestamp":"24-08-2024 18:35:42"}
+{"level":"error","message":"[authMiddleware] Unauthorized: /api/user/delete-user/66c9daa635b0f277493437d2 DELETE ","timestamp":"24-08-2024 18:35:42"}
+{"level":"error","message":"[authMiddleware] Unauthorized: /api/user/delete-user/123456789012345678901234 DELETE ","timestamp":"24-08-2024 18:35:42"}
+{"level":"error","message":"[authMiddleware] Unauthorized: /api/user/logout POST ","timestamp":"24-08-2024 18:35:42"}
+{"level":"error","message":"[searchUser controller] No search query","timestamp":"24-08-2024 18:35:43"}
+{"level":"error","message":"[searchUser controller] No search results","timestamp":"24-08-2024 18:35:43"}
+{"level":"error","message":"[authMiddleware] Unauthorized: /api/car/create-car POST ","timestamp":"24-08-2024 18:35:43"}
+{"level":"error","message":"[buyCar controller] Missing payment details","timestamp":"24-08-2024 18:35:44"}
+{"level":"error","message":"[buyCar controller] Invalid payment method","timestamp":"24-08-2024 18:35:44"}
+{"level":"error","timestamp":"24-08-2024 18:35:44"}
+{"level":"error","message":"[viewCarCollection controller] Invalid id: undefined","timestamp":"24-08-2024 18:35:44"}
+{"level":"error","message":"[authMiddleware] Unauthorized: /api/user/subscribe GET ","timestamp":"24-08-2024 18:35:44"}
+{"level":"error","message":"[authMiddleware] Unauthorized: /api/user/subscribe GET ","timestamp":"24-08-2024 18:35:45"}
+{"level":"error","message":"[unsubscribe service]  userId:66c9daa735b0f277493437e4 was not subscribed","timestamp":"24-08-2024 18:35:45"}
+{"level":"error","message":"[authMiddleware] Unauthorized: /api/user/send-notification POST ","timestamp":"24-08-2024 18:35:45"}
+{"level":"error","message":"[authMiddleware] Unauthorized: /api/user/unsubscribe GET ","timestamp":"24-08-2024 18:35:45"}
+{"level":"error","message":"[authMiddleware] Unauthorized: /api/user/send-notification POST ","timestamp":"24-08-2024 18:35:45"}
+{"level":"error","message":"[register controller] User already exists: testuser testuser3@gmail.com","timestamp":"24-08-2024 18:36:32"}
+{"level":"error","message":"[createAppointment controller] Appointment not created: [object Object]","timestamp":"24-08-2024 18:36:32"}
+{"level":"error","message":"[register controller] User already exists: testuser3 test@gmail.com","timestamp":"24-08-2024 18:36:32"}
+{"0":{"location":"body","msg":"Invalid email","path":"email","type":"field","value":"invalidemail"},"level":"error","message":"[register controller] Data not valid","timestamp":"24-08-2024 18:36:32"}
+{"level":"error","message":"[loginUser service]  credential:testuser invalid password","timestamp":"24-08-2024 18:36:32"}
+{"level":"error","message":"[cancelAppointment service] Appointment not found: 123456789012345678901234","timestamp":"24-08-2024 18:36:32"}
+{"level":"error","message":"[loginUser service]  credential:nonexistentuser user not found","timestamp":"24-08-2024 18:36:32"}
+{"level":"error","message":"[updateUser controller] Cannot change credentials restricted values","timestamp":"24-08-2024 18:36:32"}
+{"level":"error","message":"[updateUser controller] Cannot change credentials restricted values","timestamp":"24-08-2024 18:36:32"}
+{"0":{"location":"body","msg":"Invalid email","path":"email","type":"field","value":"iaminvalid"},"level":"error","message":"[updateUser controller] Data not valid","timestamp":"24-08-2024 18:36:33"}
+{"level":"error","message":"[authMiddleware] Unauthorized: /api/user/update-user PUT ","timestamp":"24-08-2024 18:36:33"}
+{"level":"error","message":"[viewAllUser controller] Forbidden","timestamp":"24-08-2024 18:36:33"}
+{"level":"error","timestamp":"24-08-2024 18:36:33"}
+{"level":"error","message":"[viewUser controller] User not found: 123456789012345678901234","timestamp":"24-08-2024 18:36:33"}
+{"level":"error","message":"[viewUser controller] Invalid id: invalidid","timestamp":"24-08-2024 18:36:33"}
+{"level":"error","message":"[searchAppointment controller] No search query","timestamp":"24-08-2024 18:36:33"}
+{"level":"error","message":"[searchAppointment controller] No search results","timestamp":"24-08-2024 18:36:33"}
+{"level":"error","message":"[deleteUser controller] User not found: 66c9dad703e65939b88a125f","timestamp":"24-08-2024 18:36:34"}
+{"level":"error","message":"[authMiddleware] Unauthorized: /api/user/delete-user/66c9dad903e65939b88a128f DELETE ","timestamp":"24-08-2024 18:36:34"}
+{"level":"error","message":"[authMiddleware] Unauthorized: /api/user/delete-user/66c9dada03e65939b88a1297 DELETE ","timestamp":"24-08-2024 18:36:34"}
+{"level":"error","message":"[authMiddleware] Unauthorized: /api/user/delete-user/123456789012345678901234 DELETE ","timestamp":"24-08-2024 18:36:34"}
+{"level":"error","message":"[authMiddleware] Unauthorized: /api/user/logout POST ","timestamp":"24-08-2024 18:36:34"}
+{"level":"error","message":"[searchUser controller] No search query","timestamp":"24-08-2024 18:36:34"}
+{"level":"error","message":"[searchUser controller] No search results","timestamp":"24-08-2024 18:36:34"}
+{"level":"error","message":"[authMiddleware] Unauthorized: /api/car/create-car POST ","timestamp":"24-08-2024 18:36:35"}
+{"level":"error","message":"[buyCar controller] Missing payment details","timestamp":"24-08-2024 18:36:35"}
+{"level":"error","message":"[buyCar controller] Invalid payment method","timestamp":"24-08-2024 18:36:35"}
+{"level":"error","timestamp":"24-08-2024 18:36:35"}
+{"level":"error","message":"[viewCarCollection controller] Invalid id: undefined","timestamp":"24-08-2024 18:36:36"}
+{"level":"error","message":"[authMiddleware] Unauthorized: /api/user/subscribe GET ","timestamp":"24-08-2024 18:36:36"}
+{"level":"error","message":"[authMiddleware] Unauthorized: /api/user/subscribe GET ","timestamp":"24-08-2024 18:36:36"}
+{"level":"error","message":"[unsubscribe service]  userId:66c9dadb03e65939b88a12a9 was not subscribed","timestamp":"24-08-2024 18:36:36"}
+{"level":"error","message":"[authMiddleware] Unauthorized: /api/user/send-notification POST ","timestamp":"24-08-2024 18:36:36"}
+{"level":"error","message":"[authMiddleware] Unauthorized: /api/user/unsubscribe GET ","timestamp":"24-08-2024 18:36:36"}
+{"level":"error","message":"[authMiddleware] Unauthorized: /api/user/send-notification POST ","timestamp":"24-08-2024 18:36:36"}
+{"level":"error","message":"[createAppointment controller] Appointment not created: [object Object]","timestamp":"24-08-2024 18:37:00"}
+{"level":"error","message":"[cancelAppointment service] Appointment not found: 123456789012345678901234","timestamp":"24-08-2024 18:37:00"}
+{"level":"error","message":"[register controller] User already exists: testuser testuser3@gmail.com","timestamp":"24-08-2024 18:37:01"}
+{"level":"error","message":"[register controller] User already exists: testuser3 test@gmail.com","timestamp":"24-08-2024 18:37:01"}
+{"0":{"location":"body","msg":"Invalid email","path":"email","type":"field","value":"invalidemail"},"level":"error","message":"[register controller] Data not valid","timestamp":"24-08-2024 18:37:01"}
+{"level":"error","message":"[loginUser service]  credential:testuser invalid password","timestamp":"24-08-2024 18:37:01"}
+{"level":"error","message":"[loginUser service]  credential:nonexistentuser user not found","timestamp":"24-08-2024 18:37:01"}
+{"level":"error","message":"[searchAppointment controller] No search query","timestamp":"24-08-2024 18:37:01"}
+{"level":"error","message":"[updateUser controller] Cannot change credentials restricted values","timestamp":"24-08-2024 18:37:01"}
+{"level":"error","message":"[searchAppointment controller] No search results","timestamp":"24-08-2024 18:37:01"}
+{"level":"error","message":"[updateUser controller] Cannot change credentials restricted values","timestamp":"24-08-2024 18:37:01"}
+{"level":"error","message":"[authMiddleware] Unauthorized: /api/user/update-user PUT ","timestamp":"24-08-2024 18:37:01"}
+{"level":"error","message":"[authMiddleware] Unauthorized: /api/user/update-user PUT ","timestamp":"24-08-2024 18:37:01"}
+{"level":"error","message":"[authMiddleware] Unauthorized: /api/user/view-all-users GET ","timestamp":"24-08-2024 18:37:01"}
+{"level":"error","message":"[authMiddleware] Unauthorized: /api/user/view-all-users GET ","timestamp":"24-08-2024 18:37:02"}
+{"level":"error","message":"[checkToken service] token: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY2YzlkYWY0NDgyZjVlOTg5MTcyZjJmOCIsImlhdCI6MTcyNDUwNDgyMH0.5_ycKUBE8baNIEGFdB404XdY3U2QfymgeN8vp4Alyxk  User not found","timestamp":"24-08-2024 18:37:02"}
+{"level":"error","timestamp":"24-08-2024 18:37:02"}
+{"level":"error","timestamp":"24-08-2024 18:37:02"}
+{"level":"error","message":"[authMiddleware] Unauthorized: /api/user/view-user/66c9daf4482f5e989172f2f8 GET ","timestamp":"24-08-2024 18:37:02"}
+{"level":"error","message":"[authMiddleware] Unauthorized: /api/user/view-user/123456789012345678901234 GET ","timestamp":"24-08-2024 18:37:02"}
+{"level":"error","message":"[authMiddleware] Unauthorized: /api/user/view-user/invalidid GET ","timestamp":"24-08-2024 18:37:02"}
+{"level":"error","message":"[authMiddleware] Unauthorized: /api/user/delete-user/66c9daf4482f5e989172f2f8 DELETE ","timestamp":"24-08-2024 18:37:02"}
+{"level":"error","message":"[authMiddleware] Unauthorized: /api/user/delete-user/66c9daf6482f5e989172f326 DELETE ","timestamp":"24-08-2024 18:37:02"}
+{"level":"error","message":"[authMiddleware] Unauthorized: /api/user/delete-user/123456789012345678901234 DELETE ","timestamp":"24-08-2024 18:37:02"}
+{"level":"error","message":"[authMiddleware] Unauthorized: /api/user/logout POST ","timestamp":"24-08-2024 18:37:02"}
+{"level":"error","message":"[searchUser controller] No search query","timestamp":"24-08-2024 18:37:03"}
+{"level":"error","message":"[searchUser controller] No search results","timestamp":"24-08-2024 18:37:03"}
+{"level":"error","message":"[authMiddleware] Unauthorized: /api/car/create-car POST ","timestamp":"24-08-2024 18:37:03"}
+{"level":"error","message":"[buyCar controller] Missing payment details","timestamp":"24-08-2024 18:37:03"}
+{"level":"error","message":"[buyCar controller] Invalid payment method","timestamp":"24-08-2024 18:37:04"}
+{"level":"error","message":"[getCar controller] Car not found: 123456789012345678901234","timestamp":"24-08-2024 18:37:04"}
+{"level":"error","message":"[buyCar service]  carId:123456789012345678901234 Cannot fetch car","timestamp":"24-08-2024 18:37:04"}
+{"level":"error","message":"[buyCar controller] Failed to fetch car details","timestamp":"24-08-2024 18:37:04"}
+{"level":"error","message":"[viewCarCollection controller] Invalid id: undefined","timestamp":"24-08-2024 18:37:04"}
+{"level":"error","message":"[authMiddleware] Unauthorized: /api/user/subscribe GET ","timestamp":"24-08-2024 18:37:04"}
+{"level":"error","message":"[authMiddleware] Unauthorized: /api/user/subscribe GET ","timestamp":"24-08-2024 18:37:04"}
+{"level":"error","message":"[createAppointment controller] Appointment not created: [object Object]","timestamp":"24-08-2024 18:37:47"}
+{"level":"error","message":"[cancelAppointment service] Appointment not found: 123456789012345678901234","timestamp":"24-08-2024 18:37:48"}
+{"level":"error","message":"[searchAppointment controller] No search query","timestamp":"24-08-2024 18:37:49"}
+{"level":"error","message":"[searchAppointment controller] No search results","timestamp":"24-08-2024 18:37:49"}
+{"level":"error","message":"[register controller] User already exists: testuser testuser3@gmail.com","timestamp":"24-08-2024 18:37:50"}
+{"level":"error","message":"[register controller] User already exists: testuser3 test@gmail.com","timestamp":"24-08-2024 18:37:50"}
+{"0":{"location":"body","msg":"Invalid email","path":"email","type":"field","value":"invalidemail"},"level":"error","message":"[register controller] Data not valid","timestamp":"24-08-2024 18:37:50"}
+{"level":"error","message":"[loginUser service]  credential:testuser invalid password","timestamp":"24-08-2024 18:37:50"}
+{"level":"error","message":"[loginUser service]  credential:nonexistentuser user not found","timestamp":"24-08-2024 18:37:50"}
+{"level":"error","message":"[updateUser controller] Cannot change credentials restricted values","timestamp":"24-08-2024 18:37:50"}
+{"level":"error","message":"[updateUser controller] Cannot change credentials restricted values","timestamp":"24-08-2024 18:37:51"}
+{"0":{"location":"body","msg":"Invalid email","path":"email","type":"field","value":"iaminvalid"},"level":"error","message":"[updateUser controller] Data not valid","timestamp":"24-08-2024 18:37:51"}
+{"level":"error","message":"[authMiddleware] Unauthorized: /api/user/update-user PUT ","timestamp":"24-08-2024 18:37:51"}
+{"level":"error","message":"[viewAllUser controller] Forbidden","timestamp":"24-08-2024 18:37:51"}
+{"level":"error","timestamp":"24-08-2024 18:37:51"}
+{"level":"error","message":"[viewUser controller] User not found: 123456789012345678901234","timestamp":"24-08-2024 18:37:51"}
+{"level":"error","message":"[viewUser controller] Invalid id: invalidid","timestamp":"24-08-2024 18:37:51"}
+{"level":"error","message":"[deleteUser controller] Forbidden. Cannot delete another user","timestamp":"24-08-2024 18:37:52"}
+{"level":"error","message":"[deleteUser controller] User not found: 123456789012345678901234","timestamp":"24-08-2024 18:37:52"}
+{"level":"error","message":"[searchUser controller] No search query","timestamp":"24-08-2024 18:37:53"}
+{"level":"error","message":"[searchUser controller] No search results","timestamp":"24-08-2024 18:37:53"}
+{"level":"error","message":"[sendNotification service]  no subscribers found","timestamp":"24-08-2024 18:37:53"}
+{"level":"error","message":"[createCar controller] Notification not sent","timestamp":"24-08-2024 18:37:53"}
+{"level":"error","message":"[buyCar service]  user:poorbuyer insufficient balance","timestamp":"24-08-2024 18:37:53"}
+{"level":"error","message":"[buyCar controller] Missing payment details","timestamp":"24-08-2024 18:37:54"}
+{"level":"error","message":"[buyCar controller] Invalid payment method","timestamp":"24-08-2024 18:37:54"}
+{"level":"error","message":"[buyCar service]  carId:66c9db29999a1fce4d65aa75 out of stock","timestamp":"24-08-2024 18:37:55"}
+{"level":"error","message":"[getCar controller] Car not found: 123456789012345678901234","timestamp":"24-08-2024 18:37:55"}
+{"level":"error","message":"[buyCar service]  carId:123456789012345678901234 Cannot fetch car","timestamp":"24-08-2024 18:37:55"}
+{"level":"error","message":"[buyCar controller] Failed to fetch car details","timestamp":"24-08-2024 18:37:55"}
+{"level":"error","message":"[viewCarCollection controller] Invalid id: undefined","timestamp":"24-08-2024 18:37:55"}
+{"level":"error","message":"[subscribe service]  userId:66c9db25999a1fce4d65aa22 already subscribed","timestamp":"24-08-2024 18:37:56"}
+{"level":"error","message":"[unsubscribe service]  userId:66c9db29999a1fce4d65aa6c was not subscribed","timestamp":"24-08-2024 18:37:56"}
+{"level":"error","message":"[sendNotification service]  no subscribers found","timestamp":"24-08-2024 18:38:01"}
+{"level":"error","timestamp":"24-08-2024 19:01:45"}
+{"level":"error","timestamp":"24-08-2024 19:02:18"}
+{"level":"error","message":"[verifyPayment service] Payment not found: undefined","timestamp":"24-08-2024 19:02:19"}
+{"level":"error","message":"[verifyPayment controller] Payment not verified: undefined","timestamp":"24-08-2024 19:02:19"}
+{"level":"error","timestamp":"24-08-2024 19:02:45"}
+{"level":"error","timestamp":"24-08-2024 19:02:45"}
+{"level":"error","message":"[verifyPayment service] Payment not found: undefined","timestamp":"24-08-2024 19:02:45"}
+{"level":"error","message":"[verifyPayment controller] Payment not verified: undefined","timestamp":"24-08-2024 19:02:45"}
+{"level":"error","timestamp":"24-08-2024 19:03:04"}
+{"level":"error","timestamp":"24-08-2024 19:03:04"}
+{"level":"error","message":"[verifyPayment service] Payment not found: undefined","timestamp":"24-08-2024 19:03:04"}
+{"level":"error","message":"[verifyPayment controller] Payment not verified: undefined","timestamp":"24-08-2024 19:03:04"}
+{"level":"error","timestamp":"24-08-2024 19:03:42"}
+{"level":"error","timestamp":"24-08-2024 19:03:42"}
+{"level":"error","message":"[verifyPayment service] Payment not found: undefined","timestamp":"24-08-2024 19:03:42"}
+{"level":"error","message":"[verifyPayment controller] Payment not verified: undefined","timestamp":"24-08-2024 19:03:42"}
+{"level":"error","timestamp":"24-08-2024 19:04:23"}
+{"level":"error","timestamp":"24-08-2024 19:04:23"}
+{"level":"error","message":"[verifyPayment service] Payment not found: undefined","timestamp":"24-08-2024 19:04:23"}
+{"level":"error","message":"[verifyPayment controller] Payment not verified: undefined","timestamp":"24-08-2024 19:04:23"}
+{"level":"error","message":"[verifyPayment service] Payment not found: 66c9e24a6d39b77fb299b0a5","timestamp":"24-08-2024 19:08:19"}
+{"level":"error","message":"[verifyPayment controller] Payment not verified: 66c9e24a6d39b77fb299b0a5","timestamp":"24-08-2024 19:08:19"}
+{"level":"error","message":"Cannot read properties of undefined (reading 'collections')","timestamp":"24-08-2024 19:13:49"}
+{"level":"error","message":"Cannot read properties of undefined (reading 'collections')","timestamp":"24-08-2024 19:13:49"}
+{"level":"error","message":"Cannot read properties of undefined (reading 'collections')","timestamp":"24-08-2024 19:14:14"}
+{"level":"error","message":"Cannot read properties of undefined (reading 'collections')","timestamp":"24-08-2024 19:14:14"}
+{"level":"error","message":"Cannot read properties of undefined (reading 'collections')","timestamp":"24-08-2024 19:15:00"}
+{"level":"error","message":"Cannot read properties of undefined (reading 'collections')","timestamp":"24-08-2024 19:15:00"}
+{"level":"error","timestamp":"24-08-2024 19:15:40"}
+{"level":"error","message":"[createAppointment controller] Appointment not created: [object Object]","timestamp":"24-08-2024 19:15:41"}
+{"level":"error","message":"[cancelAppointment service] Appointment not found: 123456789012345678901234","timestamp":"24-08-2024 19:15:41"}
+{"level":"error","message":"[searchAppointment controller] No search query","timestamp":"24-08-2024 19:15:42"}
+{"level":"error","message":"[searchAppointment controller] No search results","timestamp":"24-08-2024 19:15:42"}
+{"level":"error","message":"[register controller] User already exists: testuser testuser3@gmail.com","timestamp":"24-08-2024 19:15:43"}
+{"level":"error","message":"[register controller] User already exists: testuser3 test@gmail.com","timestamp":"24-08-2024 19:15:43"}
+{"0":{"location":"body","msg":"Invalid email","path":"email","type":"field","value":"invalidemail"},"level":"error","message":"[register controller] Data not valid","timestamp":"24-08-2024 19:15:43"}
+{"level":"error","message":"[loginUser service]  credential:testuser invalid password","timestamp":"24-08-2024 19:15:43"}
+{"level":"error","message":"[loginUser service]  credential:nonexistentuser user not found","timestamp":"24-08-2024 19:15:43"}
+{"level":"error","message":"[updateUser controller] Cannot change credentials restricted values","timestamp":"24-08-2024 19:15:43"}
+{"level":"error","message":"[updateUser controller] Cannot change credentials restricted values","timestamp":"24-08-2024 19:15:43"}
+{"0":{"location":"body","msg":"Invalid email","path":"email","type":"field","value":"iaminvalid"},"level":"error","message":"[updateUser controller] Data not valid","timestamp":"24-08-2024 19:15:43"}
+{"level":"error","message":"[authMiddleware] Unauthorized: /api/user/update-user PUT ","timestamp":"24-08-2024 19:15:43"}
+{"level":"error","message":"[viewAllUser controller] Forbidden","timestamp":"24-08-2024 19:15:44"}
+{"level":"error","timestamp":"24-08-2024 19:15:44"}
+{"level":"error","message":"[viewUser controller] User not found: 123456789012345678901234","timestamp":"24-08-2024 19:15:44"}
+{"level":"error","message":"[viewUser controller] Invalid id: invalidid","timestamp":"24-08-2024 19:15:44"}
+{"level":"error","message":"[deleteUser controller] Forbidden. Cannot delete another user","timestamp":"24-08-2024 19:15:45"}
+{"level":"error","message":"[deleteUser controller] User not found: 123456789012345678901234","timestamp":"24-08-2024 19:15:45"}
+{"level":"error","message":"[searchUser controller] No search query","timestamp":"24-08-2024 19:15:46"}
+{"level":"error","message":"[searchUser controller] No search results","timestamp":"24-08-2024 19:15:46"}
+{"level":"error","message":"[sendNotification service]  no subscribers found","timestamp":"24-08-2024 19:15:46"}
+{"level":"error","message":"[createCar controller] Notification not sent","timestamp":"24-08-2024 19:15:46"}
+{"level":"error","message":"[buyCar service]  user:poorbuyer insufficient balance","timestamp":"24-08-2024 19:15:47"}
+{"level":"error","message":"[buyCar controller] Missing payment details","timestamp":"24-08-2024 19:15:47"}
+{"level":"error","message":"[buyCar controller] Invalid payment method","timestamp":"24-08-2024 19:15:47"}
+{"level":"error","message":"[buyCar service]  carId:66c9e40a4c45a72870ba4c51 out of stock","timestamp":"24-08-2024 19:15:48"}
+{"level":"error","message":"[getCar controller] Car not found: 123456789012345678901234","timestamp":"24-08-2024 19:15:48"}
+{"level":"error","message":"[buyCar service]  carId:123456789012345678901234 Cannot fetch car","timestamp":"24-08-2024 19:15:48"}
+{"level":"error","message":"[buyCar controller] Failed to fetch car details","timestamp":"24-08-2024 19:15:48"}
+{"level":"error","message":"[viewCarCollection controller] Invalid id: undefined","timestamp":"24-08-2024 19:15:49"}
+{"level":"error","message":"[subscribe service]  userId:66c9e4064c45a72870ba4bfe already subscribed","timestamp":"24-08-2024 19:15:49"}
+{"level":"error","message":"[unsubscribe service]  userId:66c9e40a4c45a72870ba4c48 was not subscribed","timestamp":"24-08-2024 19:15:49"}
+{"level":"error","message":"[sendNotification service]  no subscribers found","timestamp":"24-08-2024 19:15:52"}
+{"level":"error","message":"[createAppointment controller] Appointment not created: [object Object]","timestamp":"24-08-2024 19:16:16"}
+{"level":"error","message":"[cancelAppointment service] Appointment not found: 123456789012345678901234","timestamp":"24-08-2024 19:16:16"}
+{"level":"error","message":"[searchAppointment controller] No search query","timestamp":"24-08-2024 19:16:17"}
+{"level":"error","message":"[searchAppointment controller] No search results","timestamp":"24-08-2024 19:16:17"}
+{"level":"error","message":"[register controller] User already exists: testuser testuser3@gmail.com","timestamp":"24-08-2024 19:16:17"}
+{"level":"error","message":"[register controller] User already exists: testuser3 test@gmail.com","timestamp":"24-08-2024 19:16:17"}
+{"0":{"location":"body","msg":"Invalid email","path":"email","type":"field","value":"invalidemail"},"level":"error","message":"[register controller] Data not valid","timestamp":"24-08-2024 19:16:17"}
+{"level":"error","message":"[loginUser service]  credential:testuser invalid password","timestamp":"24-08-2024 19:16:18"}
+{"level":"error","message":"[loginUser service]  credential:nonexistentuser user not found","timestamp":"24-08-2024 19:16:18"}
+{"level":"error","message":"[updateUser controller] Cannot change credentials restricted values","timestamp":"24-08-2024 19:16:18"}
+{"level":"error","message":"[updateUser controller] Cannot change credentials restricted values","timestamp":"24-08-2024 19:16:18"}
+{"0":{"location":"body","msg":"Invalid email","path":"email","type":"field","value":"iaminvalid"},"level":"error","message":"[updateUser controller] Data not valid","timestamp":"24-08-2024 19:16:18"}
+{"level":"error","message":"[authMiddleware] Unauthorized: /api/user/update-user PUT ","timestamp":"24-08-2024 19:16:18"}
+{"level":"error","message":"[viewAllUser controller] Forbidden","timestamp":"24-08-2024 19:16:19"}
+{"level":"error","timestamp":"24-08-2024 19:16:19"}
+{"level":"error","message":"[viewUser controller] User not found: 123456789012345678901234","timestamp":"24-08-2024 19:16:19"}
+{"level":"error","message":"[viewUser controller] Invalid id: invalidid","timestamp":"24-08-2024 19:16:19"}
+{"level":"error","message":"[deleteUser controller] Forbidden. Cannot delete another user","timestamp":"24-08-2024 19:16:20"}
+{"level":"error","message":"[deleteUser controller] User not found: 123456789012345678901234","timestamp":"24-08-2024 19:16:20"}
+{"level":"error","message":"[searchUser controller] No search query","timestamp":"24-08-2024 19:16:20"}
+{"level":"error","message":"[searchUser controller] No search results","timestamp":"24-08-2024 19:16:20"}
+{"level":"error","message":"[sendNotification service]  no subscribers found","timestamp":"24-08-2024 19:16:21"}
+{"level":"error","message":"[createCar controller] Notification not sent","timestamp":"24-08-2024 19:16:21"}
+{"level":"error","message":"[buyCar service]  user:poorbuyer insufficient balance","timestamp":"24-08-2024 19:16:21"}
+{"level":"error","message":"[buyCar controller] Missing payment details","timestamp":"24-08-2024 19:16:22"}
+{"level":"error","message":"[buyCar controller] Invalid payment method","timestamp":"24-08-2024 19:16:22"}
+{"level":"error","message":"[buyCar service]  carId:66c9e42df9c9a5db64c6c343 out of stock","timestamp":"24-08-2024 19:16:23"}
+{"level":"error","message":"[getCar controller] Car not found: 123456789012345678901234","timestamp":"24-08-2024 19:16:23"}
+{"level":"error","message":"[buyCar service]  carId:123456789012345678901234 Cannot fetch car","timestamp":"24-08-2024 19:16:23"}
+{"level":"error","message":"[buyCar controller] Failed to fetch car details","timestamp":"24-08-2024 19:16:23"}
+{"level":"error","message":"[viewCarCollection controller] Invalid id: undefined","timestamp":"24-08-2024 19:16:23"}
+{"level":"error","message":"[subscribe service]  userId:66c9e429f9c9a5db64c6c2f0 already subscribed","timestamp":"24-08-2024 19:16:24"}
+{"level":"error","message":"[unsubscribe service]  userId:66c9e42df9c9a5db64c6c33a was not subscribed","timestamp":"24-08-2024 19:16:24"}
+{"level":"error","message":"[sendNotification service]  no subscribers found","timestamp":"24-08-2024 19:16:26"}
+{"level":"error","timestamp":"24-08-2024 19:17:35"}
+{"level":"error","message":"[verifyPayment service] Payment not found: undefined","timestamp":"24-08-2024 19:17:35"}
+{"level":"error","message":"[verifyPayment controller] Payment not verified: undefined","timestamp":"24-08-2024 19:17:35"}
+{"level":"error","message":"[createAppointment controller] Appointment not created: [object Object]","timestamp":"24-08-2024 19:17:36"}
+{"level":"error","message":"[cancelAppointment service] Appointment not found: 123456789012345678901234","timestamp":"24-08-2024 19:17:36"}
+{"level":"error","message":"[searchAppointment controller] No search query","timestamp":"24-08-2024 19:17:37"}
+{"level":"error","message":"[searchAppointment controller] No search results","timestamp":"24-08-2024 19:17:37"}
+{"level":"error","message":"[register controller] User already exists: testuser testuser3@gmail.com","timestamp":"24-08-2024 19:17:38"}
+{"level":"error","message":"[register controller] User already exists: testuser3 test@gmail.com","timestamp":"24-08-2024 19:17:38"}
+{"0":{"location":"body","msg":"Invalid email","path":"email","type":"field","value":"invalidemail"},"level":"error","message":"[register controller] Data not valid","timestamp":"24-08-2024 19:17:38"}
+{"level":"error","message":"[loginUser service]  credential:testuser invalid password","timestamp":"24-08-2024 19:17:38"}
+{"level":"error","message":"[loginUser service]  credential:nonexistentuser user not found","timestamp":"24-08-2024 19:17:38"}
+{"level":"error","message":"[updateUser controller] Cannot change credentials restricted values","timestamp":"24-08-2024 19:17:39"}
+{"level":"error","message":"[updateUser controller] Cannot change credentials restricted values","timestamp":"24-08-2024 19:17:39"}
+{"0":{"location":"body","msg":"Invalid email","path":"email","type":"field","value":"iaminvalid"},"level":"error","message":"[updateUser controller] Data not valid","timestamp":"24-08-2024 19:17:39"}
+{"level":"error","message":"[authMiddleware] Unauthorized: /api/user/update-user PUT ","timestamp":"24-08-2024 19:17:39"}
+{"level":"error","message":"[viewAllUser controller] Forbidden","timestamp":"24-08-2024 19:17:39"}
+{"level":"error","timestamp":"24-08-2024 19:17:39"}
+{"level":"error","message":"[viewUser controller] User not found: 123456789012345678901234","timestamp":"24-08-2024 19:17:39"}
+{"level":"error","message":"[viewUser controller] Invalid id: invalidid","timestamp":"24-08-2024 19:17:39"}
+{"level":"error","message":"[deleteUser controller] Forbidden. Cannot delete another user","timestamp":"24-08-2024 19:17:40"}
+{"level":"error","message":"[deleteUser controller] User not found: 123456789012345678901234","timestamp":"24-08-2024 19:17:40"}
+{"level":"error","message":"[searchUser controller] No search query","timestamp":"24-08-2024 19:17:41"}
+{"level":"error","message":"[searchUser controller] No search results","timestamp":"24-08-2024 19:17:41"}
+{"level":"error","message":"[sendNotification service]  no subscribers found","timestamp":"24-08-2024 19:17:41"}
+{"level":"error","message":"[createCar controller] Notification not sent","timestamp":"24-08-2024 19:17:41"}
+{"level":"error","message":"[buyCar service]  user:poorbuyer insufficient balance","timestamp":"24-08-2024 19:17:42"}
+{"level":"error","message":"[buyCar controller] Missing payment details","timestamp":"24-08-2024 19:17:42"}
+{"level":"error","message":"[buyCar controller] Invalid payment method","timestamp":"24-08-2024 19:17:43"}
+{"level":"error","message":"[buyCar service]  carId:66c9e47d79f6eb38148f0470 out of stock","timestamp":"24-08-2024 19:17:43"}
+{"level":"error","message":"[getCar controller] Car not found: 123456789012345678901234","timestamp":"24-08-2024 19:17:43"}
+{"level":"error","message":"[buyCar service]  carId:123456789012345678901234 Cannot fetch car","timestamp":"24-08-2024 19:17:43"}
+{"level":"error","message":"[buyCar controller] Failed to fetch car details","timestamp":"24-08-2024 19:17:43"}
+{"level":"error","message":"[viewCarCollection controller] Invalid id: undefined","timestamp":"24-08-2024 19:17:43"}
+{"level":"error","message":"[subscribe service]  userId:66c9e47979f6eb38148f041d already subscribed","timestamp":"24-08-2024 19:17:44"}
+{"level":"error","message":"[unsubscribe service]  userId:66c9e47d79f6eb38148f0467 was not subscribed","timestamp":"24-08-2024 19:17:44"}
+{"level":"error","message":"[sendNotification service]  no subscribers found","timestamp":"24-08-2024 19:17:47"}
+{"level":"error","timestamp":"24-08-2024 19:19:33"}
+{"level":"error","timestamp":"24-08-2024 19:19:33"}
+{"level":"error","message":"[createAppointment controller] Appointment not created: [object Object]","timestamp":"24-08-2024 19:19:34"}
+{"level":"error","message":"[cancelAppointment service] Appointment not found: 123456789012345678901234","timestamp":"24-08-2024 19:19:34"}
+{"level":"error","message":"[searchAppointment controller] No search query","timestamp":"24-08-2024 19:19:35"}
+{"level":"error","message":"[searchAppointment controller] No search results","timestamp":"24-08-2024 19:19:35"}
+{"level":"error","message":"[register controller] User already exists: testuser testuser3@gmail.com","timestamp":"24-08-2024 19:19:36"}
+{"level":"error","message":"[register controller] User already exists: testuser3 test@gmail.com","timestamp":"24-08-2024 19:19:36"}
+{"0":{"location":"body","msg":"Invalid email","path":"email","type":"field","value":"invalidemail"},"level":"error","message":"[register controller] Data not valid","timestamp":"24-08-2024 19:19:36"}
+{"level":"error","message":"[loginUser service]  credential:testuser invalid password","timestamp":"24-08-2024 19:19:36"}
+{"level":"error","message":"[loginUser service]  credential:nonexistentuser user not found","timestamp":"24-08-2024 19:19:36"}
+{"level":"error","message":"[updateUser controller] Cannot change credentials restricted values","timestamp":"24-08-2024 19:19:36"}
+{"level":"error","message":"[updateUser controller] Cannot change credentials restricted values","timestamp":"24-08-2024 19:19:36"}
+{"0":{"location":"body","msg":"Invalid email","path":"email","type":"field","value":"iaminvalid"},"level":"error","message":"[updateUser controller] Data not valid","timestamp":"24-08-2024 19:19:37"}
+{"level":"error","message":"[authMiddleware] Unauthorized: /api/user/update-user PUT ","timestamp":"24-08-2024 19:19:37"}
+{"level":"error","message":"[viewAllUser controller] Forbidden","timestamp":"24-08-2024 19:19:37"}
+{"level":"error","timestamp":"24-08-2024 19:19:37"}
+{"level":"error","message":"[viewUser controller] User not found: 123456789012345678901234","timestamp":"24-08-2024 19:19:37"}
+{"level":"error","message":"[viewUser controller] Invalid id: invalidid","timestamp":"24-08-2024 19:19:37"}
+{"level":"error","message":"[deleteUser controller] Forbidden. Cannot delete another user","timestamp":"24-08-2024 19:19:38"}
+{"level":"error","message":"[deleteUser controller] User not found: 123456789012345678901234","timestamp":"24-08-2024 19:19:38"}
+{"level":"error","message":"[searchUser controller] No search query","timestamp":"24-08-2024 19:19:39"}
+{"level":"error","message":"[searchUser controller] No search results","timestamp":"24-08-2024 19:19:39"}
+{"level":"error","message":"[sendNotification service]  no subscribers found","timestamp":"24-08-2024 19:19:40"}
+{"level":"error","message":"[createCar controller] Notification not sent","timestamp":"24-08-2024 19:19:40"}
+{"level":"error","message":"[buyCar service]  user:poorbuyer insufficient balance","timestamp":"24-08-2024 19:19:40"}
+{"level":"error","message":"[buyCar controller] Missing payment details","timestamp":"24-08-2024 19:19:41"}
+{"level":"error","message":"[buyCar controller] Invalid payment method","timestamp":"24-08-2024 19:19:41"}
+{"level":"error","message":"[buyCar service]  carId:66c9e4f351d3d64443c09561 out of stock","timestamp":"24-08-2024 19:19:41"}
+{"level":"error","message":"[getCar controller] Car not found: 123456789012345678901234","timestamp":"24-08-2024 19:19:41"}
+{"level":"error","message":"[buyCar service]  carId:123456789012345678901234 Cannot fetch car","timestamp":"24-08-2024 19:19:41"}
+{"level":"error","message":"[buyCar controller] Failed to fetch car details","timestamp":"24-08-2024 19:19:41"}
+{"level":"error","message":"[viewCarCollection controller] Invalid id: undefined","timestamp":"24-08-2024 19:19:41"}
+{"level":"error","message":"[subscribe service]  userId:66c9e4ef51d3d64443c0950e already subscribed","timestamp":"24-08-2024 19:19:42"}
+{"level":"error","message":"[unsubscribe service]  userId:66c9e4f351d3d64443c09558 was not subscribed","timestamp":"24-08-2024 19:19:42"}
+{"level":"error","message":"[sendNotification service]  no subscribers found","timestamp":"24-08-2024 19:19:45"}
+{"level":"error","timestamp":"24-08-2024 19:20:47"}
+{"level":"error","timestamp":"24-08-2024 19:20:47"}
+{"level":"error","timestamp":"24-08-2024 19:21:17"}
+{"level":"error","timestamp":"24-08-2024 19:21:17"}
+{"level":"error","message":"[verifyPayment service] Payment not found: undefined","timestamp":"24-08-2024 19:21:17"}
+{"level":"error","message":"[verifyPayment controller] Payment not verified: undefined","timestamp":"24-08-2024 19:21:17"}
+{"level":"error","timestamp":"24-08-2024 19:21:43"}
+{"level":"error","timestamp":"24-08-2024 19:21:43"}
+{"level":"error","message":"[verifyPayment service] Payment not found: undefined","timestamp":"24-08-2024 19:21:43"}
+{"level":"error","message":"[verifyPayment controller] Payment not verified: undefined","timestamp":"24-08-2024 19:21:43"}
+{"level":"error","timestamp":"24-08-2024 19:22:18"}
+{"level":"error","message":"[verifyPayment service] Payment not found: undefined","timestamp":"24-08-2024 19:22:18"}
+{"level":"error","message":"[verifyPayment controller] Payment not verified: undefined","timestamp":"24-08-2024 19:22:18"}
+{"level":"error","timestamp":"24-08-2024 19:22:52"}
+{"level":"error","timestamp":"24-08-2024 19:24:07"}
+{"level":"error","timestamp":"24-08-2024 19:25:48"}
+{"level":"error","timestamp":"24-08-2024 19:27:31"}
+{"level":"error","timestamp":"24-08-2024 19:27:32"}
+{"level":"error","message":"[verifyPayment service] Payment not found: undefined","timestamp":"24-08-2024 19:27:32"}
+{"level":"error","message":"[verifyPayment controller] Payment not verified: undefined","timestamp":"24-08-2024 19:27:32"}
+{"level":"error","timestamp":"24-08-2024 19:27:55"}
+{"level":"error","timestamp":"24-08-2024 19:29:23"}
+{"level":"error","timestamp":"24-08-2024 19:32:04"}
+{"level":"error","message":"[sendNotification service]  no subscribers found","timestamp":"24-08-2024 19:36:45"}
+{"level":"error","message":"Cannot read properties of undefined (reading 'collections')","timestamp":"24-08-2024 19:37:26"}
+{"level":"error","message":"Cannot read properties of undefined (reading 'collections')","timestamp":"24-08-2024 19:37:26"}
+{"level":"error","message":"[createAppointment controller] Appointment not created: [object Object]","timestamp":"24-08-2024 19:37:29"}
+{"level":"error","message":"[cancelAppointment service] Appointment not found: 123456789012345678901234","timestamp":"24-08-2024 19:37:29"}
+{"level":"error","message":"[searchAppointment controller] No search query","timestamp":"24-08-2024 19:37:30"}
+{"level":"error","message":"[searchAppointment controller] No search results","timestamp":"24-08-2024 19:37:30"}
+{"level":"error","message":"[register controller] User already exists: testuser testuser3@gmail.com","timestamp":"24-08-2024 19:37:31"}
+{"level":"error","message":"[register controller] User already exists: testuser3 test@gmail.com","timestamp":"24-08-2024 19:37:31"}
+{"0":{"location":"body","msg":"Invalid email","path":"email","type":"field","value":"invalidemail"},"level":"error","message":"[register controller] Data not valid","timestamp":"24-08-2024 19:37:31"}
+{"level":"error","message":"[loginUser service]  credential:testuser invalid password","timestamp":"24-08-2024 19:37:31"}
+{"level":"error","message":"[loginUser service]  credential:nonexistentuser user not found","timestamp":"24-08-2024 19:37:31"}
+{"level":"error","message":"[updateUser controller] Cannot change credentials restricted values","timestamp":"24-08-2024 19:37:32"}
+{"level":"error","message":"[updateUser controller] Cannot change credentials restricted values","timestamp":"24-08-2024 19:37:32"}
+{"0":{"location":"body","msg":"Invalid email","path":"email","type":"field","value":"iaminvalid"},"level":"error","message":"[updateUser controller] Data not valid","timestamp":"24-08-2024 19:37:32"}
+{"level":"error","message":"[authMiddleware] Unauthorized: /api/user/update-user PUT ","timestamp":"24-08-2024 19:37:32"}
+{"level":"error","message":"[viewAllUser controller] Forbidden","timestamp":"24-08-2024 19:37:32"}
+{"level":"error","timestamp":"24-08-2024 19:37:32"}
+{"level":"error","message":"[viewUser controller] User not found: 123456789012345678901234","timestamp":"24-08-2024 19:37:33"}
+{"level":"error","message":"[viewUser controller] Invalid id: invalidid","timestamp":"24-08-2024 19:37:33"}
+{"level":"error","message":"[deleteUser controller] Forbidden. Cannot delete another user","timestamp":"24-08-2024 19:37:34"}
+{"level":"error","message":"[deleteUser controller] User not found: 123456789012345678901234","timestamp":"24-08-2024 19:37:34"}
+{"level":"error","message":"[searchUser controller] No search query","timestamp":"24-08-2024 19:37:35"}
+{"level":"error","message":"[searchUser controller] No search results","timestamp":"24-08-2024 19:37:35"}
+{"level":"error","message":"[authMiddleware] Right-hand side of 'instanceof' is not callable","timestamp":"24-08-2024 19:37:35"}
+{"level":"error","timestamp":"24-08-2024 19:37:35"}
+{"level":"error","message":"[buyCar service]  carId:66c9e9275a5255cd4ca7b72d Cannot fetch car","timestamp":"24-08-2024 19:37:35"}
+{"level":"error","message":"[buyCar controller] Failed to fetch car details","timestamp":"24-08-2024 19:37:35"}
+{"level":"error","message":"[authMiddleware] Right-hand side of 'instanceof' is not callable","timestamp":"24-08-2024 19:37:36"}
+{"level":"error","timestamp":"24-08-2024 19:37:36"}
+{"level":"error","message":"[buyCar service]  carId:66c9e9275a5255cd4ca7b72d Cannot fetch car","timestamp":"24-08-2024 19:37:36"}
+{"level":"error","message":"[buyCar controller] Failed to fetch car details","timestamp":"24-08-2024 19:37:36"}
+{"level":"error","message":"[buyCar controller] Missing payment details","timestamp":"24-08-2024 19:37:36"}
+{"level":"error","message":"[buyCar controller] Invalid payment method","timestamp":"24-08-2024 19:37:36"}
+{"level":"error","message":"[authMiddleware] Right-hand side of 'instanceof' is not callable","timestamp":"24-08-2024 19:37:36"}
+{"level":"error","timestamp":"24-08-2024 19:37:36"}
+{"level":"error","message":"[buyCar service]  carId:66c9e9275a5255cd4ca7b72d Cannot fetch car","timestamp":"24-08-2024 19:37:36"}
+{"level":"error","message":"[buyCar controller] Failed to fetch car details","timestamp":"24-08-2024 19:37:36"}
+{"level":"error","message":"[authMiddleware] Right-hand side of 'instanceof' is not callable","timestamp":"24-08-2024 19:37:36"}
+{"level":"error","timestamp":"24-08-2024 19:37:36"}
+{"level":"error","message":"[buyCar service]  carId:123456789012345678901234 Cannot fetch car","timestamp":"24-08-2024 19:37:36"}
+{"level":"error","message":"[buyCar controller] Failed to fetch car details","timestamp":"24-08-2024 19:37:36"}
+{"level":"error","message":"[viewCarCollection controller] Invalid id: undefined","timestamp":"24-08-2024 19:37:36"}
+{"level":"error","message":"[subscribe service]  userId:66c9e9235a5255cd4ca7b6da already subscribed","timestamp":"24-08-2024 19:37:37"}
+{"level":"error","message":"[unsubscribe service]  userId:66c9e9275a5255cd4ca7b724 was not subscribed","timestamp":"24-08-2024 19:37:38"}
+{"level":"error","message":"[sendNotification service]  no subscribers found","timestamp":"24-08-2024 19:37:41"}
+{"level":"error","message":"[sendNotification service]  no subscribers found","timestamp":"24-08-2024 19:37:51"}
+{"level":"error","message":"[createAppointment controller] Appointment not created: [object Object]","timestamp":"24-08-2024 19:37:52"}
+{"level":"error","message":"[cancelAppointment service] Appointment not found: 123456789012345678901234","timestamp":"24-08-2024 19:37:52"}
+{"level":"error","message":"[searchAppointment controller] No search query","timestamp":"24-08-2024 19:37:53"}
+{"level":"error","message":"[searchAppointment controller] No search results","timestamp":"24-08-2024 19:37:53"}
+{"level":"error","message":"[register controller] User already exists: testuser testuser3@gmail.com","timestamp":"24-08-2024 19:37:54"}
+{"level":"error","message":"[register controller] User already exists: testuser3 test@gmail.com","timestamp":"24-08-2024 19:37:54"}
+{"0":{"location":"body","msg":"Invalid email","path":"email","type":"field","value":"invalidemail"},"level":"error","message":"[register controller] Data not valid","timestamp":"24-08-2024 19:37:54"}
+{"level":"error","message":"[loginUser service]  credential:testuser invalid password","timestamp":"24-08-2024 19:37:54"}
+{"level":"error","message":"[loginUser service]  credential:nonexistentuser user not found","timestamp":"24-08-2024 19:37:54"}
+{"level":"error","message":"[updateUser controller] Cannot change credentials restricted values","timestamp":"24-08-2024 19:37:54"}
+{"level":"error","message":"[updateUser controller] Cannot change credentials restricted values","timestamp":"24-08-2024 19:37:54"}
+{"0":{"location":"body","msg":"Invalid email","path":"email","type":"field","value":"iaminvalid"},"level":"error","message":"[updateUser controller] Data not valid","timestamp":"24-08-2024 19:37:55"}
+{"level":"error","message":"[authMiddleware] Unauthorized: /api/user/update-user PUT ","timestamp":"24-08-2024 19:37:55"}
+{"level":"error","message":"[viewAllUser controller] Forbidden","timestamp":"24-08-2024 19:37:55"}
+{"level":"error","timestamp":"24-08-2024 19:37:55"}
+{"level":"error","message":"[viewUser controller] User not found: 123456789012345678901234","timestamp":"24-08-2024 19:37:55"}
+{"level":"error","message":"[viewUser controller] Invalid id: invalidid","timestamp":"24-08-2024 19:37:55"}
+{"level":"error","message":"[deleteUser controller] Forbidden. Cannot delete another user","timestamp":"24-08-2024 19:37:56"}
+{"level":"error","message":"[deleteUser controller] User not found: 123456789012345678901234","timestamp":"24-08-2024 19:37:56"}
+{"level":"error","message":"[searchUser controller] No search query","timestamp":"24-08-2024 19:37:57"}
+{"level":"error","message":"[searchUser controller] No search results","timestamp":"24-08-2024 19:37:57"}
+{"level":"error","message":"[sendNotification service]  no subscribers found","timestamp":"24-08-2024 19:37:57"}
+{"level":"error","message":"[buyCar service]  user:poorbuyer insufficient balance","timestamp":"24-08-2024 19:37:58"}
+{"level":"error","message":"[buyCar controller] Missing payment details","timestamp":"24-08-2024 19:37:59"}
+{"level":"error","message":"[buyCar controller] Invalid payment method","timestamp":"24-08-2024 19:37:59"}
+{"level":"error","message":"[buyCar service]  carId:66c9e93de2c1ab7edcc719b7 out of stock","timestamp":"24-08-2024 19:37:59"}
+{"level":"error","message":"[getCar controller] Car not found: 123456789012345678901234","timestamp":"24-08-2024 19:37:59"}
+{"level":"error","message":"[buyCar service]  carId:123456789012345678901234 Cannot fetch car","timestamp":"24-08-2024 19:37:59"}
+{"level":"error","message":"[buyCar controller] Failed to fetch car details","timestamp":"24-08-2024 19:37:59"}
+{"level":"error","message":"[viewCarCollection controller] Invalid id: undefined","timestamp":"24-08-2024 19:38:00"}
+{"level":"error","message":"[subscribe service]  userId:66c9e939e2c1ab7edcc71964 already subscribed","timestamp":"24-08-2024 19:38:00"}
+{"level":"error","message":"[unsubscribe service]  userId:66c9e93de2c1ab7edcc719ae was not subscribed","timestamp":"24-08-2024 19:38:01"}
+{"level":"error","message":"[sendNotification service]  no subscribers found","timestamp":"24-08-2024 19:38:03"}
+{"level":"error","message":"Cannot read properties of undefined (reading 'collections')","timestamp":"24-08-2024 19:38:13"}
+{"level":"error","message":"Cannot read properties of undefined (reading 'collections')","timestamp":"24-08-2024 19:38:13"}
+{"level":"error","message":"[createAppointment controller] Appointment not created: [object Object]","timestamp":"24-08-2024 19:38:16"}
+{"level":"error","message":"[cancelAppointment service] Appointment not found: 123456789012345678901234","timestamp":"24-08-2024 19:38:16"}
+{"level":"error","message":"[searchAppointment controller] No search query","timestamp":"24-08-2024 19:38:17"}
+{"level":"error","message":"Cannot read properties of undefined (reading 'collections')","timestamp":"24-08-2024 19:38:21"}
+{"level":"error","message":"Cannot read properties of undefined (reading 'collections')","timestamp":"24-08-2024 19:38:21"}
+{"level":"error","message":"[createAppointment controller] Appointment not created: [object Object]","timestamp":"24-08-2024 19:38:24"}
+{"level":"error","message":"[cancelAppointment service] Appointment not found: 123456789012345678901234","timestamp":"24-08-2024 19:38:24"}
+{"level":"error","message":"[searchAppointment controller] No search query","timestamp":"24-08-2024 19:38:25"}
+{"level":"error","message":"[searchAppointment controller] No search results","timestamp":"24-08-2024 19:38:25"}
+{"level":"error","message":"[register controller] User already exists: testuser testuser3@gmail.com","timestamp":"24-08-2024 19:38:26"}
+{"level":"error","message":"[register controller] User already exists: testuser3 test@gmail.com","timestamp":"24-08-2024 19:38:26"}
+{"0":{"location":"body","msg":"Invalid email","path":"email","type":"field","value":"invalidemail"},"level":"error","message":"[register controller] Data not valid","timestamp":"24-08-2024 19:38:26"}
+{"level":"error","message":"[loginUser service]  credential:testuser invalid password","timestamp":"24-08-2024 19:38:26"}
+{"level":"error","message":"[loginUser service]  credential:nonexistentuser user not found","timestamp":"24-08-2024 19:38:26"}
+{"level":"error","message":"[updateUser controller] Cannot change credentials restricted values","timestamp":"24-08-2024 19:38:27"}
+{"level":"error","message":"[updateUser controller] Cannot change credentials restricted values","timestamp":"24-08-2024 19:38:27"}
+{"0":{"location":"body","msg":"Invalid email","path":"email","type":"field","value":"iaminvalid"},"level":"error","message":"[updateUser controller] Data not valid","timestamp":"24-08-2024 19:38:27"}
+{"level":"error","message":"[authMiddleware] Unauthorized: /api/user/update-user PUT ","timestamp":"24-08-2024 19:38:27"}
+{"level":"error","message":"[viewAllUser controller] Forbidden","timestamp":"24-08-2024 19:38:27"}
+{"level":"error","timestamp":"24-08-2024 19:38:27"}
+{"level":"error","message":"[viewUser controller] User not found: 123456789012345678901234","timestamp":"24-08-2024 19:38:27"}
+{"level":"error","message":"[viewUser controller] Invalid id: invalidid","timestamp":"24-08-2024 19:38:27"}
+{"level":"error","message":"[deleteUser controller] Forbidden. Cannot delete another user","timestamp":"24-08-2024 19:38:29"}
+{"level":"error","message":"[deleteUser controller] User not found: 123456789012345678901234","timestamp":"24-08-2024 19:38:29"}
+{"level":"error","message":"[searchUser controller] No search query","timestamp":"24-08-2024 19:38:29"}
+{"level":"error","message":"[searchUser controller] No search results","timestamp":"24-08-2024 19:38:29"}
+{"level":"error","message":"[authMiddleware] Right-hand side of 'instanceof' is not callable","timestamp":"24-08-2024 19:38:30"}
+{"level":"error","timestamp":"24-08-2024 19:38:30"}
+{"level":"error","message":"[buyCar service]  carId:66c9e95ea5a57b3c1079039a Cannot fetch car","timestamp":"24-08-2024 19:38:30"}
+{"level":"error","message":"[buyCar controller] Failed to fetch car details","timestamp":"24-08-2024 19:38:30"}
+{"level":"error","message":"[authMiddleware] Right-hand side of 'instanceof' is not callable","timestamp":"24-08-2024 19:38:30"}
+{"level":"error","timestamp":"24-08-2024 19:38:30"}
+{"level":"error","message":"[buyCar service]  carId:66c9e95ea5a57b3c1079039a Cannot fetch car","timestamp":"24-08-2024 19:38:30"}
+{"level":"error","message":"[buyCar controller] Failed to fetch car details","timestamp":"24-08-2024 19:38:30"}
+{"level":"error","message":"[buyCar controller] Missing payment details","timestamp":"24-08-2024 19:38:30"}
+{"level":"error","message":"[buyCar controller] Invalid payment method","timestamp":"24-08-2024 19:38:30"}
+{"level":"error","message":"[authMiddleware] Right-hand side of 'instanceof' is not callable","timestamp":"24-08-2024 19:38:30"}
+{"level":"error","timestamp":"24-08-2024 19:38:30"}
+{"level":"error","message":"[buyCar service]  carId:66c9e95ea5a57b3c1079039a Cannot fetch car","timestamp":"24-08-2024 19:38:30"}
+{"level":"error","message":"[buyCar controller] Failed to fetch car details","timestamp":"24-08-2024 19:38:30"}
+{"level":"error","message":"[authMiddleware] Right-hand side of 'instanceof' is not callable","timestamp":"24-08-2024 19:38:30"}
+{"level":"error","timestamp":"24-08-2024 19:38:30"}
+{"level":"error","message":"[buyCar service]  carId:123456789012345678901234 Cannot fetch car","timestamp":"24-08-2024 19:38:30"}
+{"level":"error","message":"[buyCar controller] Failed to fetch car details","timestamp":"24-08-2024 19:38:30"}
+{"level":"error","message":"[viewCarCollection controller] Invalid id: undefined","timestamp":"24-08-2024 19:38:31"}
+{"level":"error","message":"[subscribe service]  userId:66c9e959a5a57b3c10790347 already subscribed","timestamp":"24-08-2024 19:38:31"}
+{"level":"error","message":"[unsubscribe service]  userId:66c9e95da5a57b3c10790391 was not subscribed","timestamp":"24-08-2024 19:38:32"}
+{"level":"error","message":"[sendNotification service]  no subscribers found","timestamp":"24-08-2024 19:38:34"}
+{"level":"error","message":"Cannot read properties of undefined (reading 'collections')","timestamp":"24-08-2024 19:39:05"}
+{"level":"error","message":"Cannot read properties of undefined (reading 'collections')","timestamp":"24-08-2024 19:39:05"}
+{"level":"error","message":"[createAppointment controller] Appointment not created: [object Object]","timestamp":"24-08-2024 19:39:06"}
+{"level":"error","message":"[cancelAppointment service] Appointment not found: 123456789012345678901234","timestamp":"24-08-2024 19:39:07"}
+{"level":"error","message":"[searchAppointment controller] No search query","timestamp":"24-08-2024 19:39:08"}
+{"level":"error","message":"[searchAppointment controller] No search results","timestamp":"24-08-2024 19:39:08"}
+{"level":"error","message":"[register controller] User already exists: testuser testuser3@gmail.com","timestamp":"24-08-2024 19:39:09"}
+{"level":"error","message":"[register controller] User already exists: testuser3 test@gmail.com","timestamp":"24-08-2024 19:39:09"}
+{"0":{"location":"body","msg":"Invalid email","path":"email","type":"field","value":"invalidemail"},"level":"error","message":"[register controller] Data not valid","timestamp":"24-08-2024 19:39:09"}
+{"level":"error","message":"[loginUser service]  credential:testuser invalid password","timestamp":"24-08-2024 19:39:09"}
+{"level":"error","message":"[loginUser service]  credential:nonexistentuser user not found","timestamp":"24-08-2024 19:39:09"}
+{"level":"error","message":"[updateUser controller] Cannot change credentials restricted values","timestamp":"24-08-2024 19:39:09"}
+{"level":"error","message":"[updateUser controller] Cannot change credentials restricted values","timestamp":"24-08-2024 19:39:09"}
+{"0":{"location":"body","msg":"Invalid email","path":"email","type":"field","value":"iaminvalid"},"level":"error","message":"[updateUser controller] Data not valid","timestamp":"24-08-2024 19:39:10"}
+{"level":"error","message":"[authMiddleware] Unauthorized: /api/user/update-user PUT ","timestamp":"24-08-2024 19:39:10"}
+{"level":"error","message":"[viewAllUser controller] Forbidden","timestamp":"24-08-2024 19:39:10"}
+{"level":"error","timestamp":"24-08-2024 19:39:10"}
+{"level":"error","message":"[viewUser controller] User not found: 123456789012345678901234","timestamp":"24-08-2024 19:39:10"}
+{"level":"error","message":"[viewUser controller] Invalid id: invalidid","timestamp":"24-08-2024 19:39:10"}
+{"level":"error","message":"[deleteUser controller] Forbidden. Cannot delete another user","timestamp":"24-08-2024 19:39:11"}
+{"level":"error","message":"[deleteUser controller] User not found: 123456789012345678901234","timestamp":"24-08-2024 19:39:11"}
+{"level":"error","message":"[searchUser controller] No search query","timestamp":"24-08-2024 19:39:12"}
+{"level":"error","message":"[searchUser controller] No search results","timestamp":"24-08-2024 19:39:12"}
+{"level":"error","message":"[authMiddleware] Right-hand side of 'instanceof' is not callable","timestamp":"24-08-2024 19:39:12"}
+{"level":"error","timestamp":"24-08-2024 19:39:12"}
+{"level":"error","message":"[buyCar service]  carId:66c9e9885f507f460647d75d Cannot fetch car","timestamp":"24-08-2024 19:39:12"}
+{"level":"error","message":"[buyCar controller] Failed to fetch car details","timestamp":"24-08-2024 19:39:12"}
+{"level":"error","message":"[authMiddleware] Right-hand side of 'instanceof' is not callable","timestamp":"24-08-2024 19:39:13"}
+{"level":"error","timestamp":"24-08-2024 19:39:13"}
+{"level":"error","message":"[buyCar service]  carId:66c9e9885f507f460647d75d Cannot fetch car","timestamp":"24-08-2024 19:39:13"}
+{"level":"error","message":"[buyCar controller] Failed to fetch car details","timestamp":"24-08-2024 19:39:13"}
+{"level":"error","message":"[buyCar controller] Missing payment details","timestamp":"24-08-2024 19:39:13"}
+{"level":"error","message":"[buyCar controller] Invalid payment method","timestamp":"24-08-2024 19:39:13"}
+{"level":"error","message":"[authMiddleware] Right-hand side of 'instanceof' is not callable","timestamp":"24-08-2024 19:39:13"}
+{"level":"error","timestamp":"24-08-2024 19:39:13"}
+{"level":"error","message":"[buyCar service]  carId:66c9e9885f507f460647d75d Cannot fetch car","timestamp":"24-08-2024 19:39:13"}
+{"level":"error","message":"[buyCar controller] Failed to fetch car details","timestamp":"24-08-2024 19:39:13"}
+{"level":"error","message":"[authMiddleware] Right-hand side of 'instanceof' is not callable","timestamp":"24-08-2024 19:39:13"}
+{"level":"error","timestamp":"24-08-2024 19:39:13"}
+{"level":"error","message":"[buyCar service]  carId:123456789012345678901234 Cannot fetch car","timestamp":"24-08-2024 19:39:13"}
+{"level":"error","message":"[buyCar controller] Failed to fetch car details","timestamp":"24-08-2024 19:39:13"}
+{"level":"error","message":"[viewCarCollection controller] Invalid id: undefined","timestamp":"24-08-2024 19:39:13"}
+{"level":"error","message":"[subscribe service]  userId:66c9e9845f507f460647d70a already subscribed","timestamp":"24-08-2024 19:39:14"}
+{"level":"error","message":"[unsubscribe service]  userId:66c9e9885f507f460647d754 was not subscribed","timestamp":"24-08-2024 19:39:14"}
+{"level":"error","message":"[sendNotification service]  no subscribers found","timestamp":"24-08-2024 19:39:17"}
+{"level":"error","message":"[sendNotification service]  no subscribers found","timestamp":"24-08-2024 19:40:40"}
+{"level":"error","message":"[createCar controller] Notification not sent","timestamp":"24-08-2024 19:40:40"}
+{"level":"error","message":"[createAppointment controller] Appointment not created: [object Object]","timestamp":"24-08-2024 19:40:40"}
+{"level":"error","message":"[cancelAppointment service] Appointment not found: 123456789012345678901234","timestamp":"24-08-2024 19:40:41"}
+{"level":"error","message":"[searchAppointment controller] No search query","timestamp":"24-08-2024 19:40:41"}
+{"level":"error","message":"[searchAppointment controller] No search results","timestamp":"24-08-2024 19:40:42"}
+{"level":"error","message":"[register controller] User already exists: testuser testuser3@gmail.com","timestamp":"24-08-2024 19:40:42"}
+{"level":"error","message":"[register controller] User already exists: testuser3 test@gmail.com","timestamp":"24-08-2024 19:40:42"}
+{"0":{"location":"body","msg":"Invalid email","path":"email","type":"field","value":"invalidemail"},"level":"error","message":"[register controller] Data not valid","timestamp":"24-08-2024 19:40:42"}
+{"level":"error","message":"[loginUser service]  credential:testuser invalid password","timestamp":"24-08-2024 19:40:43"}
+{"level":"error","message":"[loginUser service]  credential:nonexistentuser user not found","timestamp":"24-08-2024 19:40:43"}
+{"level":"error","message":"[updateUser controller] Cannot change credentials restricted values","timestamp":"24-08-2024 19:40:44"}
+{"level":"error","message":"[updateUser controller] Cannot change credentials restricted values","timestamp":"24-08-2024 19:40:44"}
+{"0":{"location":"body","msg":"Invalid email","path":"email","type":"field","value":"iaminvalid"},"level":"error","message":"[updateUser controller] Data not valid","timestamp":"24-08-2024 19:40:44"}
+{"level":"error","message":"[authMiddleware] Unauthorized: /api/user/update-user PUT ","timestamp":"24-08-2024 19:40:44"}
+{"level":"error","message":"[viewAllUser controller] Forbidden","timestamp":"24-08-2024 19:40:44"}
+{"level":"error","timestamp":"24-08-2024 19:40:44"}
+{"level":"error","message":"[viewUser controller] User not found: 123456789012345678901234","timestamp":"24-08-2024 19:40:44"}
+{"level":"error","message":"[viewUser controller] Invalid id: invalidid","timestamp":"24-08-2024 19:40:44"}
+{"level":"error","message":"[deleteUser controller] Forbidden. Cannot delete another user","timestamp":"24-08-2024 19:40:46"}
+{"level":"error","message":"[deleteUser controller] User not found: 123456789012345678901234","timestamp":"24-08-2024 19:40:46"}
+{"level":"error","message":"[searchUser controller] No search query","timestamp":"24-08-2024 19:40:46"}
+{"level":"error","message":"[searchUser controller] No search results","timestamp":"24-08-2024 19:40:47"}
+{"level":"error","message":"[sendNotification service]  no subscribers found","timestamp":"24-08-2024 19:40:47"}
+{"level":"error","message":"[createCar controller] Notification not sent","timestamp":"24-08-2024 19:40:47"}
+{"level":"error","message":"[buyCar service]  user:poorbuyer insufficient balance","timestamp":"24-08-2024 19:40:47"}
+{"level":"error","message":"[buyCar controller] Missing payment details","timestamp":"24-08-2024 19:40:48"}
+{"level":"error","message":"[buyCar controller] Invalid payment method","timestamp":"24-08-2024 19:40:49"}
+{"level":"error","message":"[buyCar service]  carId:66c9e9e766a83cf71b048c1e out of stock","timestamp":"24-08-2024 19:40:49"}
+{"level":"error","message":"[getCar controller] Car not found: 123456789012345678901234","timestamp":"24-08-2024 19:40:49"}
+{"level":"error","message":"[buyCar service]  carId:123456789012345678901234 Cannot fetch car","timestamp":"24-08-2024 19:40:49"}
+{"level":"error","message":"[buyCar controller] Failed to fetch car details","timestamp":"24-08-2024 19:40:49"}
+{"level":"error","message":"[viewCarCollection controller] Invalid id: undefined","timestamp":"24-08-2024 19:40:49"}
+{"level":"error","message":"[subscribe service]  userId:66c9e9e266a83cf71b048bcb already subscribed","timestamp":"24-08-2024 19:40:50"}
+{"level":"error","message":"[unsubscribe service]  userId:66c9e9e766a83cf71b048c15 was not subscribed","timestamp":"24-08-2024 19:40:50"}
+{"level":"error","message":"[sendNotification service]  no subscribers found","timestamp":"24-08-2024 19:40:52"}
+{"level":"error","message":"Cannot read properties of undefined (reading 'collections')","timestamp":"24-08-2024 19:43:10"}
+{"level":"error","message":"Cannot read properties of undefined (reading 'collections')","timestamp":"24-08-2024 19:43:10"}
+{"level":"error","message":"[createCar controller] Notification not sent","timestamp":"24-08-2024 19:43:12"}
+{"level":"error","message":"[createAppointment controller] Appointment not created: [object Object]","timestamp":"24-08-2024 19:43:13"}
+{"level":"error","message":"[cancelAppointment service] Appointment not found: 123456789012345678901234","timestamp":"24-08-2024 19:43:13"}
+{"level":"error","message":"[searchAppointment controller] No search query","timestamp":"24-08-2024 19:43:14"}
+{"level":"error","message":"[searchAppointment controller] No search results","timestamp":"24-08-2024 19:43:14"}
+{"level":"error","message":"[register controller] User already exists: testuser testuser3@gmail.com","timestamp":"24-08-2024 19:43:15"}
+{"level":"error","message":"[register controller] User already exists: testuser3 test@gmail.com","timestamp":"24-08-2024 19:43:15"}
+{"0":{"location":"body","msg":"Invalid email","path":"email","type":"field","value":"invalidemail"},"level":"error","message":"[register controller] Data not valid","timestamp":"24-08-2024 19:43:15"}
+{"level":"error","message":"[loginUser service]  credential:testuser invalid password","timestamp":"24-08-2024 19:43:15"}
+{"level":"error","message":"[loginUser service]  credential:nonexistentuser user not found","timestamp":"24-08-2024 19:43:15"}
+{"level":"error","message":"[updateUser controller] Cannot change credentials restricted values","timestamp":"24-08-2024 19:43:16"}
+{"level":"error","message":"[updateUser controller] Cannot change credentials restricted values","timestamp":"24-08-2024 19:43:16"}
+{"0":{"location":"body","msg":"Invalid email","path":"email","type":"field","value":"iaminvalid"},"level":"error","message":"[updateUser controller] Data not valid","timestamp":"24-08-2024 19:43:16"}
+{"level":"error","message":"[authMiddleware] Unauthorized: /api/user/update-user PUT ","timestamp":"24-08-2024 19:43:16"}
+{"level":"error","message":"[viewAllUser controller] Forbidden","timestamp":"24-08-2024 19:43:16"}
+{"level":"error","timestamp":"24-08-2024 19:43:16"}
+{"level":"error","message":"[viewUser controller] User not found: 123456789012345678901234","timestamp":"24-08-2024 19:43:17"}
+{"level":"error","message":"[viewUser controller] Invalid id: invalidid","timestamp":"24-08-2024 19:43:17"}
+{"level":"error","message":"[deleteUser controller] Forbidden. Cannot delete another user","timestamp":"24-08-2024 19:43:18"}
+{"level":"error","message":"[deleteUser controller] User not found: 123456789012345678901234","timestamp":"24-08-2024 19:43:18"}
+{"level":"error","message":"[searchUser controller] No search query","timestamp":"24-08-2024 19:43:19"}
+{"level":"error","message":"[searchUser controller] No search results","timestamp":"24-08-2024 19:43:19"}
+{"level":"error","message":"[createCar controller] Notification not sent","timestamp":"24-08-2024 19:43:19"}
+{"level":"error","message":"[authMiddleware] Right-hand side of 'instanceof' is not callable","timestamp":"24-08-2024 19:43:19"}
+{"level":"error","timestamp":"24-08-2024 19:43:19"}
+{"level":"error","message":"[buyCar service]  carId:66c9ea7fed86936320a42cbb Cannot fetch car","timestamp":"24-08-2024 19:43:19"}
+{"level":"error","message":"[buyCar controller] Failed to fetch car details","timestamp":"24-08-2024 19:43:19"}
+{"level":"error","message":"[authMiddleware] Right-hand side of 'instanceof' is not callable","timestamp":"24-08-2024 19:43:20"}
+{"level":"error","timestamp":"24-08-2024 19:43:20"}
+{"level":"error","message":"[buyCar service]  carId:66c9ea7fed86936320a42cbb Cannot fetch car","timestamp":"24-08-2024 19:43:20"}
+{"level":"error","message":"[buyCar controller] Failed to fetch car details","timestamp":"24-08-2024 19:43:20"}
+{"level":"error","message":"[buyCar controller] Missing payment details","timestamp":"24-08-2024 19:43:20"}
+{"level":"error","message":"[buyCar controller] Invalid payment method","timestamp":"24-08-2024 19:43:20"}
+{"level":"error","message":"[authMiddleware] Right-hand side of 'instanceof' is not callable","timestamp":"24-08-2024 19:43:20"}
+{"level":"error","timestamp":"24-08-2024 19:43:20"}
+{"level":"error","message":"[buyCar service]  carId:66c9ea7fed86936320a42cbb Cannot fetch car","timestamp":"24-08-2024 19:43:20"}
+{"level":"error","message":"[buyCar controller] Failed to fetch car details","timestamp":"24-08-2024 19:43:20"}
+{"level":"error","message":"[authMiddleware] Right-hand side of 'instanceof' is not callable","timestamp":"24-08-2024 19:43:20"}
+{"level":"error","timestamp":"24-08-2024 19:43:20"}
+{"level":"error","message":"[buyCar service]  carId:123456789012345678901234 Cannot fetch car","timestamp":"24-08-2024 19:43:20"}
+{"level":"error","message":"[buyCar controller] Failed to fetch car details","timestamp":"24-08-2024 19:43:20"}
+{"level":"error","message":"[viewCarCollection controller] Invalid id: undefined","timestamp":"24-08-2024 19:43:20"}
+{"level":"error","message":"[subscribe service]  userId:66c9ea7bed86936320a42c68 already subscribed","timestamp":"24-08-2024 19:43:21"}
+{"level":"error","message":"[unsubscribe service]  userId:66c9ea7fed86936320a42cb2 was not subscribed","timestamp":"24-08-2024 19:43:22"}
+{"level":"error","message":"[sendNotification service]  no subscribers found","timestamp":"24-08-2024 19:43:24"}
+{"level":"error","message":"[sendNotification service]  no subscribers found","timestamp":"24-08-2024 19:43:31"}
+{"level":"error","message":"[createCar controller] Notification not sent","timestamp":"24-08-2024 19:43:31"}
+{"level":"error","message":"[createAppointment controller] Appointment not created: [object Object]","timestamp":"24-08-2024 19:43:32"}
+{"level":"error","message":"[cancelAppointment service] Appointment not found: 123456789012345678901234","timestamp":"24-08-2024 19:43:32"}
+{"level":"error","message":"[searchAppointment controller] No search query","timestamp":"24-08-2024 19:43:33"}
+{"level":"error","message":"[searchAppointment controller] No search results","timestamp":"24-08-2024 19:43:33"}
+{"level":"error","message":"[register controller] User already exists: testuser testuser3@gmail.com","timestamp":"24-08-2024 19:43:33"}
+{"level":"error","message":"[register controller] User already exists: testuser3 test@gmail.com","timestamp":"24-08-2024 19:43:33"}
+{"0":{"location":"body","msg":"Invalid email","path":"email","type":"field","value":"invalidemail"},"level":"error","message":"[register controller] Data not valid","timestamp":"24-08-2024 19:43:33"}
+{"level":"error","message":"[loginUser service]  credential:testuser invalid password","timestamp":"24-08-2024 19:43:34"}
+{"level":"error","message":"[loginUser service]  credential:nonexistentuser user not found","timestamp":"24-08-2024 19:43:34"}
+{"level":"error","message":"[updateUser controller] Cannot change credentials restricted values","timestamp":"24-08-2024 19:43:34"}
+{"level":"error","message":"[updateUser controller] Cannot change credentials restricted values","timestamp":"24-08-2024 19:43:34"}
+{"0":{"location":"body","msg":"Invalid email","path":"email","type":"field","value":"iaminvalid"},"level":"error","message":"[updateUser controller] Data not valid","timestamp":"24-08-2024 19:43:34"}
+{"level":"error","message":"[authMiddleware] Unauthorized: /api/user/update-user PUT ","timestamp":"24-08-2024 19:43:34"}
+{"level":"error","message":"[viewAllUser controller] Forbidden","timestamp":"24-08-2024 19:43:35"}
+{"level":"error","timestamp":"24-08-2024 19:43:35"}
+{"level":"error","message":"[viewUser controller] User not found: 123456789012345678901234","timestamp":"24-08-2024 19:43:35"}
+{"level":"error","message":"[viewUser controller] Invalid id: invalidid","timestamp":"24-08-2024 19:43:35"}
+{"level":"error","message":"[deleteUser controller] Forbidden. Cannot delete another user","timestamp":"24-08-2024 19:43:36"}
+{"level":"error","message":"[deleteUser controller] User not found: 123456789012345678901234","timestamp":"24-08-2024 19:43:36"}
+{"level":"error","message":"[searchUser controller] No search query","timestamp":"24-08-2024 19:43:36"}
+{"level":"error","message":"[searchUser controller] No search results","timestamp":"24-08-2024 19:43:37"}
+{"level":"error","message":"[sendNotification service]  no subscribers found","timestamp":"24-08-2024 19:43:37"}
+{"level":"error","message":"[createCar controller] Notification not sent","timestamp":"24-08-2024 19:43:37"}
+{"level":"error","message":"[buyCar service]  user:poorbuyer insufficient balance","timestamp":"24-08-2024 19:43:37"}
+{"level":"error","message":"[buyCar controller] Missing payment details","timestamp":"24-08-2024 19:43:38"}
+{"level":"error","message":"[buyCar controller] Invalid payment method","timestamp":"24-08-2024 19:43:39"}
+{"level":"error","message":"[buyCar service]  carId:66c9ea91676275fc1473b521 out of stock","timestamp":"24-08-2024 19:43:39"}
+{"level":"error","message":"[getCar controller] Car not found: 123456789012345678901234","timestamp":"24-08-2024 19:43:39"}
+{"level":"error","message":"[buyCar service]  carId:123456789012345678901234 Cannot fetch car","timestamp":"24-08-2024 19:43:39"}
+{"level":"error","message":"[buyCar controller] Failed to fetch car details","timestamp":"24-08-2024 19:43:39"}
+{"level":"error","message":"[viewCarCollection controller] Invalid id: undefined","timestamp":"24-08-2024 19:43:40"}
+{"level":"error","message":"[subscribe service]  userId:66c9ea8d676275fc1473b4ce already subscribed","timestamp":"24-08-2024 19:43:40"}
+{"level":"error","message":"[unsubscribe service]  userId:66c9ea91676275fc1473b518 was not subscribed","timestamp":"24-08-2024 19:43:40"}
+{"level":"error","message":"[sendNotification service]  no subscribers found","timestamp":"24-08-2024 19:43:43"}

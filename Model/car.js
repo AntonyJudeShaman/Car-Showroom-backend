@@ -34,7 +34,7 @@ const carSchema = new mongoose.Schema(
     color: {
       type: String,
       required: true,
-      enum: ['red', 'blue', 'black', 'white', 'silver', 'matte black'],
+      enum: ['red', 'blue', 'black', 'white', 'silver', 'matte black', 'yellow', 'green'],
     },
     fuelType: {
       type: String,

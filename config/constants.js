@@ -15,4 +15,5 @@ exports.featureList = [
   { name: 'carplay', price: 5000 },
   { name: 'android auto', price: 5000 },
   { name: 'premium sound system', price: 25000 },
+  { name: 'aerodynamic Kit', price: 25000 },
 ];

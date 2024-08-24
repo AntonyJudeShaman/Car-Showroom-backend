@@ -146,6 +146,7 @@ const carUpdateValidations = [
       'carplay',
       'android auto',
       'premium sound system',
+      'aerodynamic Kit',
     ])
     .withMessage('Invalid feature'),
   check('tyres')

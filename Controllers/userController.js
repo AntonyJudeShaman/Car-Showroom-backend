@@ -387,11 +387,11 @@ exports.unsubscribe = async (req, res) => {
 
 exports.sendNotification = async (req, res) => {
   try {
-    const isAdmin = await helpers.checkAdmin(req);
-    if (!isAdmin) {
-      logger.error('[userSendNotification controller] User is not an admin');
-      return res.status(403).json({ error: errorMessages.FORBIDDEN });
-    }
+    // const isAdmin = await helpers.checkAdmin(req);
+    // if (!isAdmin) {
+    //   logger.error('[userSendNotification controller] User is not an admin');
+    //   return res.status(403).json({ error: errorMessages.FORBIDDEN });
+    // }
     const notification = await userServices.sendNotification(req.body);
     if (notification.error === errorMessages.NO_SUBSCRIBED_USERS) {
       return res.status(404).json({ error: errorMessages.NO_SUBSCRIBED_USERS });

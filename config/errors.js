@@ -17,6 +17,7 @@ module.exports = {
   CAR_ALREADY_EXISTS: 'Car already exists',
   CAR_NOT_CREATED: 'Car not created',
   CAR_NOT_UPDATED: 'Car not updated',
+  INVALID_CAR_DATA: 'Invalid car data',
   CARS_NOT_FOUND: 'No cars found',
   SOME_ERROR: 'Some error occured. Try again later',
   INVALID_CREDENTIALS: 'Invalid Credentials',
