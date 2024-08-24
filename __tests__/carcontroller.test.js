@@ -12,6 +12,10 @@ describe('running setupTests', () => {
 //   let carId = '';
 //   let token = '';
 
+//   //////////////////////////////////////////
+//   ////////////// CREATE CAR ///////////////
+//   ////////////////////////////////////////
+
 //   describe('Create a user to buy car', () => {
 //     it('should register a user with role admin', async () => {
 //       const res = await request(app).post('/api/user/register').send({
@@ -129,6 +133,10 @@ describe('running setupTests', () => {
 //     });
 //   });
 
+//   //////////////////////////////////////////
+//   /////////////// VIEW CAR ////////////////
+//   ////////////////////////////////////////
+
 //   describe('View a car', () => {
 //     it('should view a car by id', async () => {
 //       const res = await request(app)
@@ -142,6 +150,10 @@ describe('running setupTests', () => {
 //     });
 //   });
 
+//   //////////////////////////////////////////
+//   //////////// VIEW ALL CARS //////////////
+//   ////////////////////////////////////////
+
 //   describe('View all cars', () => {
 //     it('should view all cars', async () => {
 //       const res = await request(app)
@@ -151,6 +163,10 @@ describe('running setupTests', () => {
 //       expect(res.body.cars.length).toBeGreaterThan(0);
 //     });
 //   });
+
+//   /////////////////////////////////////////
+//   ////////////// UPDATE CAR //////////////
+//   ///////////////////////////////////////
 
 //   describe('Update a car', () => {
 //     it('should update a car by id', async () => {
