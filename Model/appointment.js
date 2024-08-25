@@ -38,6 +38,10 @@ const appointmentSchema = new mongoose.Schema({
   },
 });
 
+appointmentSchema.index({ startTime: 1 });
+appointmentSchema.index({ endTime: 1 });
+appointmentSchema.index({ status: 1 });
+
 const Appointment = mongoose.model('Appointment', appointmentSchema);
 
 module.exports = Appointment;

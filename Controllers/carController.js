@@ -33,7 +33,7 @@ exports.createCar = async (req, res) => {
         'Content-Type': 'application/json',
         Authorization: `Bearer ${token}`,
       },
-      body: JSON.stringify({ car }),
+      body: JSON.stringify(car),
     });
 
     if (notification.error) {

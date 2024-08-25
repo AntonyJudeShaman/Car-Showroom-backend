@@ -53,6 +53,10 @@ const invoiceSchema = new mongoose.Schema(
   { timestamps: true },
 );
 
+invoiceSchema.index({ name: 1 });
+invoiceSchema.index({ brand: 1 });
+invoiceSchema.index({ date: 1 });
+
 const Invoice = mongoose.model('Invoice', invoiceSchema);
 
 module.exports = Invoice;
