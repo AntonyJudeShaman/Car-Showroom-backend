@@ -24,7 +24,8 @@ EXPOSE 3000
 
 ENV NODE_ENV=development
 
-CMD ["pnpm", "dev"]
+ENTRYPOINT ["pnpm"]
+CMD ["dev"]
 
 # production steps
 FROM base AS prod
@@ -33,4 +34,5 @@ COPY . .
 
 ENV NODE_ENV=production
 
-CMD ["pnpm", "start"]
+ENTRYPOINT ["pnpm"]
+CMD ["start"]

@@ -45,8 +45,7 @@ docker run --env-file .env.local -p 3000:3000 car-showroom-app:dev
 # using docker image for production
 docker build --target prod -t car-showroom-app:prod .
 
-docker run --env-file .env.local -p 3000:3000 car-showroom-app:prod
-
+docker run -p 3000:3000 car-showroom-app:prod
 ```
 
 > [!WARNING]
