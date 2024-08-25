@@ -12,4 +12,8 @@ router.get('/view-car/:id', carController.getCar);
 
 router.put('/update-car/:id', carUpdateValidations, carController.updateCar);
 
+router.get('/ping', (req, res) => {
+  res.json('I am car route');
+});
+
 module.exports = router;

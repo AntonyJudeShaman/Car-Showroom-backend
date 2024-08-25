@@ -1,5 +1,4 @@
 const mongoose = require('mongoose');
-const passport = require('passport');
 const authMiddleware = require('./config/middleware');
 require('./config/passport');
 const userRoutes = require('./Routes/user');
@@ -12,13 +11,19 @@ const logger = require('./config/winston');
 const sendMail = require('./lib/sendWeeklyMail');
 const app = require('./config/server');
 const http = require('http');
+const helpers = require('./lib/utils');
 
 const publicRoutes = [
   '/api/user/login',
   '/api/user/register',
   '/api/user/verify-user',
   '/api/car/view-all-cars',
-  '/api/user/view-car-collection/:id',
+  '/',
+  '/api/user/ping',
+  '/api/car/ping',
+  '/api/invoice/ping',
+  '/api/payment/ping',
+  '/api/appointment/ping',
 ];
 
 app.use((req, res, next) => {
@@ -46,17 +51,28 @@ mongoose
   .then(() => console.log('MongoDB connected'))
   .catch((err) => console.log(err));
 
-app.get('/', (req, res) => {
-  res.send('Server Online');
+app.get('/', async (req, res) => {
+  res.write('Main route working\n');
+  res.write('\nTesting routes...\n\n');
+
+  try {
+    const data = await helpers.testRoutes();
+    for (const item of data) {
+      res.write(`${item}\n`);
+    }
+    if (data.length === 5) {
+      res.write('\nAll routes are working\n');
+    } else {
+      res.write('Some routes are not working\n');
+    }
+    res.end();
+  } catch (error) {
+    res.status(500).json({ error: 'Server is facing some issues' });
+  }
 });
 
 const server = http.createServer(app);
 
-// if (!NODE_ENV === 'test') {
-//   server.listen(3000, () => {
-//     console.log('Server is running');
-//   });
-// }
 server.listen(3000, () => {
   console.log('Server is running');
 });

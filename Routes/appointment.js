@@ -14,4 +14,8 @@ router.put('/update-appointment/:id', appointmentController.updateAppointment);
 
 router.get('/search-appointment', appointmentController.searchAppointment);
 
+router.get('/ping', (req, res) => {
+  res.json('I am appointment route');
+});
+
 module.exports = router;

@@ -139,7 +139,7 @@ exports.buyCar = async (user, carId, selectedFeatures = [], paymentDetails, toke
   try {
     token = token.split(' ')[1];
     console.log('Getting car details');
-    const carResponse = await fetch(`http://localhost:3000/api/car/view-car/${carId}`, {
+    const carResponse = await fetch(`${process.env.API_URL}/api/car/view-car/${carId}`, {
       method: 'GET',
       headers: {
         // Authorization: `Bearer ${process.env.JWT_TOKEN}`,
@@ -294,7 +294,7 @@ exports.updateCar = async (carData, token) => {
   const quantity = carData?.reverse ? 1 : -1;
 
   try {
-    const response = await fetch(`http://localhost:3000/api/car/update-car/${car._id}`, {
+    const response = await fetch(`${process.env.API_URL}/api/car/update-car/${car._id}`, {
       method: 'PUT',
       headers: {
         'Content-Type': 'application/json',
@@ -332,7 +332,7 @@ exports.getCarCollection = async (userId) => {
 };
 
 exports.processPayment = async (paymentInfo, token) => {
-  const savedPayment = await fetch('http://localhost:3000/api/payment/create-payment', {
+  const savedPayment = await fetch(`${process.env.API_URL}/api/payment/create-payment`, {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
@@ -345,7 +345,7 @@ exports.processPayment = async (paymentInfo, token) => {
 };
 
 exports.verifyPayment = async (paymentId, token) => {
-  const payment = await fetch('http://localhost:3000/api/payment/verify-payment', {
+  const payment = await fetch(`${process.env.API_URL}/api/payment/verify-payment`, {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',

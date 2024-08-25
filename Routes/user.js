@@ -26,4 +26,8 @@ router.get('/unsubscribe', userController.unsubscribe);
 
 router.post('/send-notification', userController.sendNotification);
 
+router.get('/ping', (req, res) => {
+  res.json('I am user route');
+});
+
 module.exports = router;
