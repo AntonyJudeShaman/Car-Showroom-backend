@@ -1,0 +1,6 @@
+{
+  "watch": ["server.js", "."],
+  "ext": "js,json",
+  "ignore": ["node_modules", "Logs", "coverage"],
+  "exec": "node --env-file=.env.local server.js"
+}

@@ -13,11 +13,15 @@ services:
     command: pnpm run dev
     env_file:
       - .env.local
+    develop:
+      watch:
+        - path: .
+          action: rebuild
 
-  db:
-    image: mongo:latest
-    volumes:
-      - mongodb_data:/data/db
+#   db:
+#     image: mongo:latest
+#     volumes:
+#       - mongodb_data:/data/db
 
-volumes:
-  mongodb_data:
+# volumes:
+#   mongodb_data:

@@ -29,11 +29,21 @@ pnpm dev
 ```bash
 # docker commands to build and run the application
 
-# using docker-compose for development
-docker-compose up --build
+# using docker compose for development
+docker compose up
 
-# using docker for production
-docker build --target production -t car-showroom-app:prod .
+# to watch for changes in the code
+docker compose watch
+
+------------------ OR --------------------
+
+# using docker image for development
+docker build --target dev -t car-showroom-app:dev .
+
+docker run --env-file .env.local -p 3000:3000 car-showroom-app:dev
+
+# using docker image for production
+docker build --target prod -t car-showroom-app:prod .
 
 docker run --env-file .env.local -p 3000:3000 car-showroom-app:prod
 

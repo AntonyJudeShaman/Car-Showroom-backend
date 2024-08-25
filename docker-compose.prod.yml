@@ -12,6 +12,10 @@ services:
     command: pnpm start
     env_file:
       - .env.local
+    develop:
+      watch:
+        - path: .
+          action: rebuild
 
   db:
     image: mongo:latest
