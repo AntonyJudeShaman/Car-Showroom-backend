@@ -10,6 +10,8 @@ const User = require('../Model/user');
 //   });
 // });
 
+let subUserToken = '';
+
 describe('Invoice Controller Tests', () => {
   let token = '';
   let userId = '';
@@ -26,16 +28,27 @@ describe('Invoice Controller Tests', () => {
     it('should register a user', async () => {
       const res = await request(app).post('/api/user/register').send({
         username: 'antonyjude',
-        email: 'antonyjude@gmail.com',
+        email: 'antonyjudeshaman@gmail.com',
         password: 'password',
         role: 'admin',
       });
       token = res.body.token;
+      subUserToken = res.body.token;
       userId = res.body.user._id;
       user = res.body.user;
       expect(res.status).toBe(201);
       expect(res.body.user.username).toBe('antonyjude');
       expect(res.body.user.role).toBe('admin');
+    });
+  });
+
+  describe('Initial Subscribe User', () => {
+    it('should subscribe a user successfully', async () => {
+      const res = await request(app)
+        .get('/api/user/subscribe')
+        .set('Authorization', `Bearer ${subUserToken}`);
+      expect(res.status).toBe(200);
+      expect(res.body).toHaveProperty('message', 'User subscribed successfully');
     });
   });
 
@@ -633,6 +646,7 @@ describe('User Controller Tests', () => {
   let buyToken = '';
   let noBuyToken = '';
   let carData;
+
   describe('Register Module', () => {
     it('should register a user successfully', async () => {
       const res = await request(app).post('/api/user/register').send({
@@ -656,7 +670,7 @@ describe('User Controller Tests', () => {
     it('should register a user with admin role', async () => {
       const res = await request(app).post('/api/user/register').send({
         username: 'adminuser',
-        email: 'antonyjudeshaman@gmail.com',
+        email: 'antonyjudeshaman.24cs@licet.ac.in',
         password: 'adminpassword',
         role: 'admin',
       });
@@ -1193,6 +1207,15 @@ describe('User Controller Tests', () => {
       expect(res.status).toBe(200);
       expect(res.body).toHaveProperty('message', 'User unsubscribed successfully');
     });
+
+    it('should unsubscribe a user successfully', async () => {
+      const res = await request(app)
+        .get('/api/user/unsubscribe')
+        .set('Authorization', `Bearer ${subUserToken}`);
+      expect(res.status).toBe(200);
+      expect(res.body).toHaveProperty('message', 'User unsubscribed successfully');
+    });
+
     it('should return 400 for already unsubscribed user', async () => {
       const res = await request(app)
         .get('/api/user/unsubscribe')
