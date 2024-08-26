@@ -27,19 +27,19 @@ exports.createCar = async (req, res) => {
       logger.error(`[createCar controller] Car not created: ${req.body}`);
       return res.status(400).json({ error: errorMessages.CAR_NOT_CREATED });
     }
-    // const notification = await fetch(`${process.env.API_URL}/api/user/send-notification`, {
-    //   method: 'POST',
-    //   headers: {
-    //     'Content-Type': 'application/json',
-    //     Authorization: `Bearer ${token}`,
-    //   },
-    //   body: JSON.stringify(car),
-    // });
+    const notification = await fetch(`${process.env.API_URL}/api/user/send-notification`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        Authorization: `Bearer ${token}`,
+      },
+      body: JSON.stringify(car),
+    });
 
-    // if (notification.error) {
-    //   logger.error('[createCar controller] Notification not sent');
-    //   return res.status(400).json({ error: errorMessages.error });
-    // }
+    if (notification.error) {
+      logger.error('[createCar controller] Notification not sent');
+      return res.status(400).json({ error: errorMessages.error });
+    }
 
     logger.info(`[createCar controller] Car created: ${car.name} and notification sent`);
 
