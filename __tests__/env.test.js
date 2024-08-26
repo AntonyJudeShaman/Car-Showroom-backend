@@ -39,4 +39,9 @@ describe('Environment Variables', () => {
     expect(process.env.EMAILJS_PRIVATE_KEY).toBeDefined();
     expect(process.env.EMAILJS_PRIVATE_KEY).not.toBe('');
   });
+
+  test('API_URL', () => {
+    expect(process.env.API_URL).toBeDefined();
+    expect(process.env.API_URL).not.toBe('');
+  });
 });

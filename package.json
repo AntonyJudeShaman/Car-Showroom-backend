@@ -6,8 +6,8 @@
   "scripts": {
     "start": "node server.js",
     "build": "echo 'No build required'",
-    "dev": "nodemon --legacy-watch",
-    "test": "cross-env NODE_ENV=test jest",
+    "dev": "nodemon --legacy-watch --env-file=.env.test server.js",
+    "test": " jest",
     "lint": "eslint .",
     "lint:fix": "eslint . --fix"
   },

@@ -427,8 +427,6 @@ exports.sendNotification = async (car) => {
       return { error: errorMessages.NO_SUBSCRIBED_USERS };
     }
 
-    console.log('Sending notifications');
-
     for (const user of subscribedUsers) {
       const res = await emailjs.send(
         process.env.EMAILJS_SERVICE_ID,
@@ -444,7 +442,9 @@ exports.sendNotification = async (car) => {
         },
       );
 
-      if (!res) {
+      console.log('res:', res);
+
+      if (res.status !== 200) {
         console.log('notification not sent', user.email);
         logger.error(`[sendNotification service]  email:${user.email} failed to send notification`);
         return { error: errorMessages.FAILED_TO_SEND_NOTIFICATION };
