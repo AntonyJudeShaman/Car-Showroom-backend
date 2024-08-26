@@ -27,23 +27,23 @@ exports.createCar = async (req, res) => {
       logger.error(`[createCar controller] Car not created: ${req.body}`);
       return res.status(400).json({ error: errorMessages.CAR_NOT_CREATED });
     }
-    const notification = await fetch(`${process.env.API_URL}/api/user/send-notification`, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        Authorization: `Bearer ${token}`,
-      },
-      body: JSON.stringify(car),
-    });
+    // const notification = await fetch(`${process.env.API_URL}/api/user/send-notification`, {
+    //   method: 'POST',
+    //   headers: {
+    //     'Content-Type': 'application/json',
+    //     Authorization: `Bearer ${token}`,
+    //   },
+    //   body: JSON.stringify(car),
+    // });
 
-    if (notification.error) {
-      logger.error('[createCar controller] Notification not sent');
-      return res.status(400).json({ error: errorMessages.error });
-    }
+    // if (notification.error) {
+    //   logger.error('[createCar controller] Notification not sent');
+    //   return res.status(400).json({ error: errorMessages.error });
+    // }
 
     logger.info(`[createCar controller] Car created: ${car.name} and notification sent`);
 
-    return res.status(201).json({ car, sent: !notification.error ? true : false });
+    return res.status(201).json({ car, sent: true });
   } catch (err) {
     helpers.handleErrors(res, err);
   }
@@ -51,7 +51,9 @@ exports.createCar = async (req, res) => {
 
 exports.getAllCars = async (req, res) => {
   try {
-    const cars = await carServices.getAllCars();
+    const page = parseInt(req.query.page) || 1;
+    const limit = parseInt(req.query.limit) || 5;
+    const cars = await carServices.getAllCars(page, limit);
     if (!cars) {
       logger.error('[getAllCars controller] No cars found');
       return res.status(404).json({ error: errorMessages.CARS_NOT_FOUND });
@@ -106,6 +108,23 @@ exports.updateCar = async (req, res) => {
       return res.status(400).json({ error: errorMessages.CAR_NOT_UPDATED });
     }
     return res.status(200).json({ car: updatedCar });
+  } catch (err) {
+    helpers.handleErrors(res, err);
+  }
+};
+
+exports.searchCar = async (req, res) => {
+  try {
+    if (!req.query.q) {
+      logger.error('[searchCar controller] No search query');
+      return res.status(400).json({ error: errorMessages.NO_SEARCH_QUERY });
+    }
+    const cars = await carServices.searchCar(req.query.q);
+    if (!cars.length || !cars) {
+      logger.error('[searchCar controller] No search results');
+      return res.status(404).json({ error: errorMessages.NO_RESULTS });
+    }
+    return res.status(200).json(cars);
   } catch (err) {
     helpers.handleErrors(res, err);
   }

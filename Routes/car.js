@@ -12,6 +12,8 @@ router.get('/view-car/:id', carController.getCar);
 
 router.put('/update-car/:id', carUpdateValidations, carController.updateCar);
 
+router.get('/search-car', carController.searchCar);
+
 router.get('/ping', (req, res) => {
   res.json('I am car route');
 });

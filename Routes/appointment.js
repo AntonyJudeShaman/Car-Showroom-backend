@@ -14,6 +14,8 @@ router.put('/update-appointment/:id', appointmentController.updateAppointment);
 
 router.get('/search-appointment', appointmentController.searchAppointment);
 
+router.get('/view-user-appointments', appointmentController.viewUserAppointments);
+
 router.get('/ping', (req, res) => {
   res.json('I am appointment route');
 });

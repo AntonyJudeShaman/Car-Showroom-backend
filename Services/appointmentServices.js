@@ -78,9 +78,11 @@ exports.cancelAppointment = async (id) => {
   }
 };
 
-exports.viewAllAppointments = async () => {
+exports.viewAllAppointments = async (page, limit) => {
   try {
-    const appointments = await Appointment.find();
+    const skip = (page - 1) * limit;
+
+    const appointments = await Appointment.find().skip(skip).limit(limit);
     if (!appointments) {
       logger.error('[viewAllAppointments service] No appointments found');
       return { error: errorMessages.NO_APPOINTMENTS_FOUND };
@@ -88,7 +90,7 @@ exports.viewAllAppointments = async () => {
     return appointments;
   } catch (error) {
     helpers.handleErrors(res, error);
-    return { error: errorMessages.NO_APPOINTMENTS_FOUND };
+    return null;
   }
 };
 
@@ -119,4 +121,21 @@ exports.searchAppointment = async (searchQuery) => {
       { endTime: { $regex: searchQuery, $options: 'i' } },
     ],
   });
+};
+
+exports.viewUserAppointments = async (userId, page, limit) => {
+  try {
+    const skip = (page - 1) * limit;
+
+    const appointments = await Appointment.find({ user: userId }).skip(skip).limit(limit);
+
+    if (!appointments) {
+      logger.error('[viewUserAppointments service] No appointments found');
+      return { error: errorMessages.NO_APPOINTMENTS_FOUND };
+    }
+
+    return appointments;
+  } catch (error) {
+    return { error: errorMessages.NO_APPOINTMENTS_FOUND };
+  }
 };

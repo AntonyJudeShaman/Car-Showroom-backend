@@ -312,7 +312,7 @@ describe('Car Controller Tests', () => {
   describe('View all cars', () => {
     it('should view all cars', async () => {
       const res = await request(app)
-        .get('/api/car/view-all-cars')
+        .get('/api/car/view-all-cars?page=1&limit=4')
         .set('Authorization', `Bearer ${adminToken}`);
       expect(res.status).toBe(200);
       expect(res.body.cars.length).toBeGreaterThan(0);
@@ -341,6 +341,20 @@ describe('Car Controller Tests', () => {
     });
   });
 
+  /////////////////////////////////////////
+  //////////// SEARCH CAR ////////////////
+  ///////////////////////////////////////
+
+  describe('Search a car', () => {
+    it('should search for a car by name', async () => {
+      const res = await request(app)
+        .get('/api/car/search-car?q=Koeni')
+        .set('Authorization', `Bearer ${adminToken}`);
+
+      expect(res.status).toBe(200);
+      expect(res.body.length).toBe(1);
+    });
+  });
   // afterAll((done) => {
   //   server.close(done);
   // });

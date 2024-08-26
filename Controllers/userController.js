@@ -118,7 +118,15 @@ exports.viewAllUser = async (req, res) => {
       logger.error('[viewAllUser controller] Forbidden');
       return res.status(403).json({ error: errorMessages.FORBIDDEN });
     }
-    const users = await userServices.getAllUsers();
+
+    const page = parseInt(req.query.page) || 1;
+    const limit = parseInt(req.query.limit) || 10;
+
+    const users = await userServices.getAllUsers(page, limit);
+    if (!users) {
+      logger.error(`[viewAllUser controller] No users found: ${users}`);
+      return res.status(404).json({ error: errorMessages.SOME_ERROR });
+    }
     return res.status(200).json(users);
   } catch (err) {
     helpers.handleErrors(res, err);
@@ -326,6 +334,9 @@ exports.buyCar = async (req, res) => {
 exports.viewCarCollection = async (req, res) => {
   try {
     const id = req.query.id;
+    const page = parseInt(req.query.page) || 1;
+    const limit = parseInt(req.query.limit) || 4;
+
     if (!id || id.length !== 24) {
       logger.error(`[viewCarCollection controller] Invalid id: ${id}`);
       return res.status(400).json({ error: errorMessages.INVALID_ID });
@@ -334,10 +345,12 @@ exports.viewCarCollection = async (req, res) => {
     if (!user) {
       return res.status(401).json({ error: errorMessages.UNAUTHORIZED });
     }
-    console.log('View car collection started');
-    const collection = await userServices.getCarCollection(id);
+    const collection = await userServices.getCarCollection(id, page, limit);
 
     if (collection === null) {
+      return res.status(404).json({ error: errorMessages.NO_CARS_FOUND });
+    }
+    if (collection.length === 0) {
       return res.status(404).json({ error: errorMessages.NO_CARS_FOUND });
     }
     if (collection.error === errorMessages.USER_NOT_FOUND) {
@@ -345,7 +358,7 @@ exports.viewCarCollection = async (req, res) => {
     } else if (collection.error) {
       return res.status(400).json({ error: collection.error });
     }
-    return res.status(200).json({ cars: collection.carCollection });
+    return res.status(200).json({ cars: collection });
   } catch (err) {
     helpers.handleErrors(res, err);
   }

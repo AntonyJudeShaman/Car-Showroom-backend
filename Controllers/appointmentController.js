@@ -61,7 +61,9 @@ exports.cancelAppointment = async (req, res) => {
 
 exports.viewAllAppointments = async (req, res) => {
   try {
-    const appointments = await appointmentServices.viewAllAppointments();
+    const page = parseInt(req.query.page) || 1;
+    const limit = parseInt(req.query.limit) || 10;
+    const appointments = await appointmentServices.viewAllAppointments(page, limit);
     if (!appointments) {
       logger.error('[viewAllAppointments controller] No appointments found');
       return res.status(400).json({ error: appointments.error });
@@ -107,6 +109,26 @@ exports.searchAppointment = async (req, res) => {
     if (!appointments.length || !appointments) {
       logger.error('[searchAppointment controller] No search results');
       return res.status(404).json({ error: errorMessages.NO_RESULTS });
+    }
+    return res.status(200).json(appointments);
+  } catch (err) {
+    helpers.handleErrors(res, err);
+  }
+};
+
+exports.viewUserAppointments = async (req, res) => {
+  try {
+    const user = await userServices.checkToken(req);
+    const page = parseInt(req.query.page) || 1;
+    const limit = parseInt(req.query.limit) || 3;
+    if (!user) {
+      logger.error('[viewUserAppointments controller] Unauthorized');
+      return res.status(401).json({ error: errorMessages.UNAUTHORIZED });
+    }
+    const appointments = await appointmentServices.viewUserAppointments(user._id, page, limit);
+    if (appointments.error) {
+      logger.error(`[viewUserAppointments controller] No appointments found for user: ${user._id}`);
+      return res.status(404).json({ error: appointments.error });
     }
     return res.status(200).json(appointments);
   } catch (err) {

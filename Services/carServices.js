@@ -19,9 +19,21 @@ exports.createCar = async (carData) => {
   }
 };
 
-exports.getAllCars = async () => {
-  const cars = await Car.find();
-  return cars;
+exports.getAllCars = async (page, limit) => {
+  try {
+    const skip = (page - 1) * limit;
+
+    const cars = await Car.find().skip(skip).limit(limit);
+
+    if (!cars) {
+      logger.error('[getAllCars service] No cars found');
+      return null;
+    }
+
+    return cars;
+  } catch (error) {
+    return null;
+  }
 };
 
 exports.getCarById = async (id) => {
@@ -43,4 +55,19 @@ exports.updateCar = async (id, data) => {
     runValidators: true,
   });
   return car;
+};
+
+exports.searchCar = async (searchQuery) => {
+  if (!searchQuery) {
+    logger.error(`[searchCar service]  No search query`);
+    return { error: errorMessages.NO_SEARCH_QUERY };
+  }
+  return await Car.find({
+    $or: [
+      { name: { $regex: searchQuery, $options: 'i' } },
+      { brand: { $regex: searchQuery, $options: 'i' } },
+      { fuelType: { $regex: searchQuery, $options: 'i' } },
+      { bodyType: { $regex: searchQuery, $options: 'i' } },
+    ],
+  });
 };

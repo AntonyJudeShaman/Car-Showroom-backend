@@ -93,8 +93,15 @@ exports.checkToken = async (req) => {
   }
 };
 
-exports.getAllUsers = async () => {
-  return await User.find();
+exports.getAllUsers = async (page, limit) => {
+  try {
+    const skip = (page - 1) * limit;
+    const users = await User.find().skip(skip).limit(limit).select('-password');
+
+    return users;
+  } catch (error) {
+    return null;
+  }
 };
 
 exports.getUserById = async (userId) => {
@@ -322,13 +329,14 @@ exports.updateCar = async (carData, token) => {
   }
 };
 
-exports.getCarCollection = async (userId) => {
-  console.log('userId:', userId);
-  const user = await User.findById(userId).select('carCollection');
+exports.getCarCollection = async (userId, page, limit) => {
+  const start = (page - 1) * limit;
+  const end = page * limit;
+  const user = await User.findById(userId);
 
   if (!user) return { error: errorMessages.USER_NOT_FOUND };
 
-  return user;
+  return user.carCollection.slice(start, end);
 };
 
 exports.processPayment = async (paymentInfo, token) => {
