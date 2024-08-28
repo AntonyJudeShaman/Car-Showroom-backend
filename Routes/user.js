@@ -4,6 +4,7 @@ const {
   userUpdateValidations,
   userRegisterValidations,
   userLoginValidations,
+  resetPasswordValidations,
 } = require('../Validators/userValidator');
 
 router.post('/register', userRegisterValidations, userController.register);
@@ -25,6 +26,10 @@ router.get('/subscribe', userController.subscribe);
 router.get('/unsubscribe', userController.unsubscribe);
 
 router.post('/send-notification', userController.sendNotification);
+
+router.post('/forgot-password', userController.forgotPassword);
+
+router.post('/reset-password', resetPasswordValidations, userController.resetPassword);
 
 router.get('/ping', (req, res) => {
   res.json('I am user route');

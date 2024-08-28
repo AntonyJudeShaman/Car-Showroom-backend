@@ -34,19 +34,21 @@ const userRegisterValidations = [
 ];
 
 const userLoginValidations = [
-  check('credential')
-    .notEmpty()
-    .withMessage('Username/Email is required')
-    .isLength({ min: 4, max: 25 })
-    .withMessage('Username/Email must be between 4 and 25 characters'),
+  check('credential').notEmpty().isEmail().withMessage('Username/Email is Invalid'),
   check('password')
     .notEmpty()
     .isLength({ min: 6, max: 25 })
     .withMessage('Password must be between 6 and 25 characters'),
 ];
 
+const resetPasswordValidations = [
+  check('password').isLength({ min: 6 }).withMessage('Password must be at least 8 characters long'),
+  check('token').notEmpty().withMessage('Token is required'),
+];
+
 module.exports = {
   userUpdateValidations,
   userRegisterValidations,
   userLoginValidations,
+  resetPasswordValidations,
 };

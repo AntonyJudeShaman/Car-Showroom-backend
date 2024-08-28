@@ -54,4 +54,9 @@ module.exports = {
   FAILED_TO_SEND_NOTIFICATION: 'Failed to send notification',
   CANNOT_CHANGE_CREDENTIALS: 'Cannot change restricted credentials',
   MISSING_PAYMENT_DETAILS: 'Missing payment details',
+  INVALID_EMAIL: 'Invalid email',
+  FAILED_TO_SEND_EMAIL: 'Failed to send email',
+  PASSWORD_RESET_FAILED: 'Password reset failed',
+  USER_NOT_FOUND_OR_TOKEN_INVALID: 'User not found or token invalid',
+  PASSWORD_OR_TOKEN_INVALID: 'Password or token invalid',
 };

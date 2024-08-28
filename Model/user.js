@@ -33,7 +33,7 @@ const userSchema = new mongoose.Schema(
     wallet: {
       type: Number,
       required: true,
-      default: 100000,
+      default: 0,
     },
     carCollection: [
       {
@@ -56,6 +56,14 @@ const userSchema = new mongoose.Schema(
     subscribed: {
       type: Boolean,
       default: false,
+    },
+    resetToken: {
+      type: String,
+      default: null,
+    },
+    resetTokenExpiry: {
+      type: Date,
+      default: null,
     },
   },
   { timestamps: true },

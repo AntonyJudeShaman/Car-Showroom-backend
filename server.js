@@ -24,6 +24,8 @@ const publicRoutes = [
   '/api/invoice/ping',
   '/api/payment/ping',
   '/api/appointment/ping',
+  '/api/user/forgot-password',
+  '/api/user/reset-password',
 ];
 
 app.use((req, res, next) => {
@@ -77,15 +79,24 @@ server.listen(3000, () => {
   console.log('Server is running');
 });
 
-// 1 hour
 cron.schedule('0 */1 * * *', async () => {
   console.log('Server running');
   logger.info('Server running');
 });
 
-// Saturday 12am
-cron.schedule('0 0 * * 6', async () => {
-  sendMail();
-});
+cron.schedule(
+  '0 10 * * 4',
+  async () => {
+    try {
+      await sendMail();
+    } catch (error) {
+      console.error(error);
+    }
+  },
+  {
+    scheduled: true,
+    timezone: 'Asia/Kolkata',
+  },
+);
 
 module.exports = { app, server };

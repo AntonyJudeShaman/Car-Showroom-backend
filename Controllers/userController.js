@@ -416,3 +416,45 @@ exports.sendNotification = async (req, res) => {
     helpers.handleErrors(res, err);
   }
 };
+
+exports.forgotPassword = async (req, res) => {
+  try {
+    const { email } = req.body;
+    if (!email) {
+      return res.status(400).json({ error: errorMessages.INVALID_EMAIL });
+    }
+    const user = await userServices.getUserByEmail(email);
+    if (!user) {
+      logger.error(`[forgotPassword controller] User not found: ${email}`);
+      return res.status(404).json({ error: errorMessages.USER_NOT_FOUND });
+    }
+    const result = await userServices.forgotPassword(user.email);
+    if (result.error) {
+      return res.status(400).json({ error: result.error });
+    }
+    return res.status(200).json({ message: result.message });
+  } catch (err) {
+    helpers.handleErrors(res, err);
+  }
+};
+
+exports.resetPassword = async (req, res) => {
+  try {
+    const errors = validationResult(req);
+    if (!errors.isEmpty()) {
+      return res.status(400).json({ errors: errors.array() });
+    }
+
+    const { password, token } = req.body;
+    const result = await userServices.resetPassword(password, token);
+
+    if (result.error) {
+      return res.status(400).json({ error: result.error });
+    }
+
+    return res.status(200).json({ message: result.message });
+  } catch (err) {
+    logger.error(`[resetPassword controller] Error: ${err.message}`);
+    helpers.handleErrors(res, err);
+  }
+};

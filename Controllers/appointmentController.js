@@ -63,6 +63,11 @@ exports.viewAllAppointments = async (req, res) => {
   try {
     const page = parseInt(req.query.page) || 1;
     const limit = parseInt(req.query.limit) || 10;
+    const isAdmin = await helpers.checkAdmin(req);
+    if (!isAdmin) {
+      logger.error('[userSendNotification controller] User is not an admin');
+      return res.status(403).json({ error: errorMessages.FORBIDDEN });
+    }
     const appointments = await appointmentServices.viewAllAppointments(page, limit);
     if (!appointments) {
       logger.error('[viewAllAppointments controller] No appointments found');

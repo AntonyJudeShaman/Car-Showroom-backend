@@ -7,6 +7,7 @@ const Payment = require('../Model/payment');
 const Invoice = require('../Model/invoice');
 const emailjs = require('@emailjs/nodejs');
 const logger = require('../config/winston');
+const sendEmail = require('../lib/sendPasswordRestMail');
 
 exports.registerUser = async (username, email, password, address, phone, role, wallet) => {
   try {
@@ -465,5 +466,70 @@ exports.sendNotification = async (car) => {
   } catch (error) {
     helpers.handleErrors(res, error);
     return { error: errorMessages.SOME_ERROR };
+  }
+};
+
+exports.forgotPassword = async (email) => {
+  try {
+    const user = await User.findOne({ email });
+    if (!user) {
+      logger.error(`[forgotPassword service] email:${email} user not found`);
+      return { error: errorMessages.USER_NOT_FOUND };
+    }
+
+    const token = jwt.sign({ id: user._id }, process.env.JWT_SECRET, { expiresIn: '15m' });
+    user.resetToken = token;
+    user.resetTokenExpiry = Date.now() + 15 * 60 * 1000;
+
+    await user.save();
+
+    const result = await sendEmail(user.username, email, 'AJS Cars Password Reset', token);
+
+    if (!result.success) {
+      logger.error(`[forgotPassword service] email:${email} failed to send reset mail`);
+      return { error: result.error };
+    }
+
+    return { success: true, message: 'Password reset email sent successfully' };
+  } catch (error) {
+    logger.error(`[forgotPassword service] Error: ${error.message}`);
+    return { error: errorMessages.SOME_ERROR };
+  }
+};
+
+exports.resetPassword = async (password, token) => {
+  try {
+    let decoded;
+    try {
+      decoded = jwt.verify(token, process.env.JWT_SECRET);
+    } catch (error) {
+      logger.error(`[resetPassword service] Invalid token: ${error.message}`);
+      return { error: errorMessages.INVALID_TOKEN };
+    }
+
+    const user = await User.findOne({
+      _id: decoded.id,
+      resetToken: token,
+      resetTokenExpiry: { $gt: Date.now() },
+    });
+
+    if (!user) {
+      logger.error(`[resetPassword service] User not found or token invalid`);
+      return { error: errorMessages.USER_NOT_FOUND_OR_TOKEN_INVALID };
+    }
+
+    const hashedPassword = await helpers.passwordHasher(password);
+
+    user.password = hashedPassword;
+    user.resetToken = null;
+    user.resetTokenExpiry = null;
+
+    await user.save();
+
+    logger.info(`[resetPassword service] Password reset successful for user: ${user._id}`);
+    return { message: 'Password reset successful' };
+  } catch (error) {
+    logger.error(`[resetPassword service] Error: ${error.message}`);
+    return { error: errorMessages.INTERNAL_SERVER_ERROR };
   }
 };
