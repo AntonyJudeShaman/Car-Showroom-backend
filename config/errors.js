@@ -59,4 +59,5 @@ module.exports = {
   PASSWORD_RESET_FAILED: 'Password reset failed',
   USER_NOT_FOUND_OR_TOKEN_INVALID: 'User not found or token invalid',
   PASSWORD_OR_TOKEN_INVALID: 'Password or token invalid',
+  INVALID_PASSWORD: 'Invalid password',
 };

@@ -38,15 +38,28 @@ exports.register = async (req, res) => {
       logger.error('[register controller] User not created', user.error);
       return res.status(400).json({ error: errorMessages.USER_NOT_CREATED });
     }
-    const token = jwt.sign({ id: user._id }, process.env.JWT_SECRET);
+    const token = jwt.sign({ id: user._id }, process.env.JWT_SECRET, {
+      expiresIn: '5d',
+    });
+
+    const refreshToken = jwt.sign({ id: user._id }, process.env.JWT_SECRET, {
+      expiresIn: '30d',
+    });
 
     logger.info(`[register controller] User created: ${username} ${email}`);
     res.cookie('token', token, {
       httpOnly: true,
       secure: true,
-      maxAge: 15 * 24 * 60 * 60 * 1000,
+      maxAge: 5 * 24 * 60 * 60 * 1000,
     });
-    return res.status(201).json({ user, token });
+
+    res.cookie('refreshToken', refreshToken, {
+      httpOnly: true,
+      secure: true,
+      maxAge: 30 * 24 * 60 * 60 * 1000,
+    });
+
+    return res.status(201).json({ user, token, refreshToken });
   } catch (err) {
     helpers.handleErrors(res, err);
   }
@@ -64,13 +77,20 @@ exports.login = async (req, res) => {
     if (login.error) {
       return res.status(404).json({ error: login.error });
     }
-    const { user, token } = login;
+    const { user, token, refreshToken } = login;
     res.cookie('token', token, {
+      httpOnly: true,
+      secure: true,
+      maxAge: 1 * 24 * 60 * 60 * 1000,
+    });
+
+    res.cookie('refreshToken', refreshToken, {
       httpOnly: true,
       secure: true,
       maxAge: 15 * 24 * 60 * 60 * 1000,
     });
-    return res.status(200).json({ user, token });
+
+    return res.status(200).json({ user, token, refreshToken });
   } catch (err) {
     helpers.handleErrors(res, err);
   }
@@ -85,9 +105,11 @@ exports.updateUser = async (req, res) => {
     return res.status(400).json({ error: errorMessages.DATA_NOT_VALID, details: errors.array() });
   }
   try {
-    const { username, password, role, carCollection, ...updateData } = req.body;
-    if (username || password || role) {
-      logger.error('[updateUser controller] Cannot change credentials restricted values');
+    const { username, password, role, carCollection, wallet, email, ...updateData } = req.body;
+    if (username || password || role || carCollection || wallet || email) {
+      logger.error(
+        `[updateUser controller] Cannot change credentials restricted values: User ID: ${user._id} - ${req.body}`,
+      );
       return res.status(400).json({ error: errorMessages.CANNOT_CHANGE_CREDENTIALS });
     }
 
@@ -215,6 +237,7 @@ exports.deleteUser = async (req, res) => {
 
 exports.logout = async (req, res) => {
   res.clearCookie('token');
+  res.clearCookie('refreshToken');
   return res.status(200).json({ message: errorMessages.LOGGED_OUT });
 };
 
@@ -455,6 +478,42 @@ exports.resetPassword = async (req, res) => {
     return res.status(200).json({ message: result.message });
   } catch (err) {
     logger.error(`[resetPassword controller] Error: ${err.message}`);
+    helpers.handleErrors(res, err);
+  }
+};
+
+exports.getNewAccessToken = async (req, res) => {
+  try {
+    const refreshToken = req.cookies.refreshToken;
+    if (!refreshToken) {
+      return res.status(401).json({ error: errorMessages.NO_REFRESH_TOKEN });
+    }
+    const user = await userServices.getNewAccessToken(refreshToken);
+    if (user.error) {
+      return res.status(401).json({ error: user.error });
+    }
+    return res.status(200).json({ user });
+  } catch (err) {
+    helpers.handleErrors(res, err);
+  }
+};
+
+exports.changePassword = async (req, res) => {
+  try {
+    const user = await userServices.checkToken(req);
+    if (!user) {
+      return res.status(401).json({ error: errorMessages.UNAUTHORIZED });
+    }
+    const { oldPassword, newPassword } = req.body;
+    if (!oldPassword || !newPassword) {
+      return res.status(400).json({ error: errorMessages.INVALID_PASSWORD });
+    }
+    const result = await userServices.changePassword(user._id, oldPassword, newPassword);
+    if (result.error) {
+      return res.status(400).json({ error: result.error });
+    }
+    return res.status(200).json({ message: result.message });
+  } catch (err) {
     helpers.handleErrors(res, err);
   }
 };

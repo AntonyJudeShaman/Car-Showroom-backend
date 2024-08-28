@@ -47,8 +47,13 @@ exports.loginUser = async (credential, password) => {
       logger.error(`[loginUser service]  credential:${credential} invalid password`);
       return { error: errorMessages.INVALID_CREDENTIALS };
     }
-    const token = jwt.sign({ id: user._id }, process.env.JWT_SECRET);
-    return { user, token };
+    const token = jwt.sign({ id: user._id }, process.env.JWT_SECRET, {
+      expiresIn: '1d',
+    });
+    const refreshToken = jwt.sign({ id: user._id }, process.env.JWT_REFRESH_SECRET, {
+      expiresIn: '15d',
+    });
+    return { user, token, refreshToken };
   } catch (error) {
     logger.error(`[loginUser service]  credential:${username} Cannot login`);
     helpers.handleErrors(res, error);
@@ -531,5 +536,63 @@ exports.resetPassword = async (password, token) => {
   } catch (error) {
     logger.error(`[resetPassword service] Error: ${error.message}`);
     return { error: errorMessages.INTERNAL_SERVER_ERROR };
+  }
+};
+
+exports.getNewAccessToken = async (refreshToken) => {
+  try {
+    let decoded;
+    try {
+      decoded = jwt.verify(refreshToken, process.env.JWT_REFRESH_SECRET);
+    } catch (error) {
+      logger.error(`[getNewAccessToken service] Invalid token: ${error.message}`);
+      return { error: errorMessages.INVALID_TOKEN };
+    }
+
+    const user = await User.findById(decoded.id);
+
+    if (!user) {
+      logger.error(`[getNewAccessToken service] User not found`);
+      return { error: errorMessages.USER_NOT_FOUND };
+    }
+
+    const token = jwt.sign({ id: user._id }, process.env.JWT_SECRET, {
+      expiresIn: '1d',
+    });
+
+    return { token };
+  } catch (error) {
+    logger.error(`[getNewAccessToken service] Error: ${error.message}`);
+    return { error: errorMessages.INTERNAL_SERVER_ERROR };
+  }
+};
+
+exports.changePassword = async (userId, oldPassword, newPassword) => {
+  try {
+    const user = await User.findById(userId);
+
+    if (!user) {
+      logger.error(`[changePassword service] User not found`);
+      return { error: errorMessages.USER_NOT_FOUND };
+    }
+
+    const check = await bcrypt.compare(oldPassword, user.password);
+
+    if (!check) {
+      logger.error(`[changePassword service] Invalid password`);
+      return { error: errorMessages.INVALID_PASSWORD };
+    }
+
+    const hashedPassword = await helpers.passwordHasher(newPassword);
+
+    user.password = hashedPassword;
+
+    await user.save();
+
+    logger.info(`[changePassword service] Password updated for user: ${user._id}`);
+    return { message: 'Password updated successfully' };
+  } catch (error) {
+    logger.error(`[changePassword service] Error: ${error.message}`);
+    return { error: errorMessages.SOME_ERROR };
   }
 };

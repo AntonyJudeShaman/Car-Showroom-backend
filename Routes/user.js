@@ -31,6 +31,10 @@ router.post('/forgot-password', userController.forgotPassword);
 
 router.post('/reset-password', resetPasswordValidations, userController.resetPassword);
 
+router.get('/get-new-access-token', userController.getNewAccessToken);
+
+router.put('/change-password', userController.changePassword);
+
 router.get('/ping', (req, res) => {
   res.json('I am user route');
 });

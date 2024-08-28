@@ -13,7 +13,6 @@ passport.use(
     try {
       const user = await User.findById(payload.id);
       // console.log(payload);
-      // process.write(payload);
       if (user) {
         return done(null, user, 'User found');
       } else {
